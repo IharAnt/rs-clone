@@ -1,12 +1,7 @@
 import React, { ReactNode } from "react";
 import './style.css'
 import close from "../../assets/icons/close.svg";
-
-type ModalType = {
-  children?: ReactNode;
-  isOpen: boolean;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { ModalType } from "./types/ModalType";
 
 export default function Modal({ isOpen, setModal, children }: ModalType) {
 
