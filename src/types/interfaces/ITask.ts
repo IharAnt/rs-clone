@@ -7,6 +7,7 @@ import { IProfile } from "./IUser";
 export interface ITask {
   executor: IProfile;
   inspector: IProfile;
+  img: string;
   summary: string;
   description: string;
   dueDate?: number;

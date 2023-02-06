@@ -1,5 +1,6 @@
 enum TaskStatusEnum {
   Open = 'open',
+  Inprogress = 'inprogress',
   Cancelled = 'cancelled',
   Resolved = 'resolved',
   Rejected = 'rejected',
