@@ -10,8 +10,8 @@ export interface IUser {
   name: string;
 }
 
-export interface IPrifile extends IUser {
-  birthday: number;
-  phone: string;
+export interface IProfile extends IUser {
+  birthday?: number;
+  phone?: string;
   photo?: string;
 }
