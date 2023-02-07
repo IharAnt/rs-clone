@@ -1,6 +1,6 @@
 import TaskStatusEnum from "../enums/TaskStatusEnum";
 import TaskTypeEnum from "../enums/TaskTypeEnum";
-import { IFile } from "./IFile";
+import { IImg } from "./IImg";
 import { IMessage } from "./IMessage";
 import { IProfile } from "./IUser";
 
@@ -15,5 +15,5 @@ export interface ITask {
   status: TaskStatusEnum;
   taskReport?: string;
   messages?: IMessage[];
-  files?: IFile[];
+  imgFiles?: IImg[];
 }
