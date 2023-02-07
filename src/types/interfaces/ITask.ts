@@ -2,11 +2,11 @@ import TaskStatusEnum from "../enums/TaskStatusEnum";
 import TaskTypeEnum from "../enums/TaskTypeEnum";
 import { IImg } from "./IImg";
 import { IMessage } from "./IMessage";
-import { IProfile } from "./IUser";
+import { IUser } from "./IUser";
 
 export interface ITask {
-  executor: IProfile;
-  inspector: IProfile;
+  executor: IUser;
+  inspector: IUser;
   img: string;
   summary: string;
   description: string;
