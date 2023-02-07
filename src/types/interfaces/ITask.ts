@@ -5,6 +5,7 @@ import { IMessage } from "./IMessage";
 import { IUser } from "./IUser";
 
 export interface ITask {
+  id: string;
   executor: IUser;
   inspector: IUser;
   img: string;
