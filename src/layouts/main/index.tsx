@@ -9,7 +9,7 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="container mx-auto">
+    <div className="flex flex-col justify-between h-screen items-center">
       <Header />
       <div>{children}</div>
       <Footer />
