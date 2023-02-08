@@ -15,7 +15,7 @@ export interface IUser {
 }
 
 export interface IProfile extends IUser {
-  birthday?: number;
+  birthday?: string;
   phone?: string;
   photo?: string;
   moticoins: number;
