@@ -25,7 +25,6 @@ const profile: IProfile = {
     {
       type: TaskTypeEnum.Power,
       id: 'sdf5sd4af6sd54f',
-      img: '',
       maxPoints: 200,
     },
   ],
