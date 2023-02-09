@@ -2,8 +2,9 @@ import MainLayout from '../../layouts/main';
 import React from "react";
 import titleMotivation from '../../assets/img/mainTitle.png';
 import Slider from '../../components/slider';
-import ButtonMainPage from '../../components/buttonMainPage/ButtonMainPage';
+
 import './index.css';
+import ButtonMainPage from '../../components/buttonMainPage';
 
 const MainPage = () => {
   return (
