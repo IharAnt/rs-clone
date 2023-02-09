@@ -1,0 +1,6 @@
+.header-container {
+    width: 98vw;
+    background: rgba(55 , 48, 163, 0.1);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+}
