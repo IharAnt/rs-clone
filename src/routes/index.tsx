@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MainPage from '../pages/main';
+import MotivatorsPage from '../pages/motivators';
 
 const routes = [
   {
@@ -9,14 +10,9 @@ const routes = [
     name: 'Home',
   },
   {
-    path: '/example',
-    element: (
-      <div>
-        <h1>HelloWord</h1>
-        <Link to="about">About Us</Link>
-      </div>
-    ),
-    name: 'Example',
+    path: '/motivators',
+    element: <MotivatorsPage />,
+    name: 'motivators',
   },
 ];
 
