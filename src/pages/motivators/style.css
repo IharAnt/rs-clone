@@ -1,0 +1,33 @@
+.motivatorsCnt-container{
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: 30px 1fr;
+  gap: 20px;
+}
+
+.motivators{
+  font-size: 16px;
+}
+
+.motivatorsNav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.motivatorsNav__item{
+  display: flex;
+  gap: 20px;
+}
+
+.motivators-block{
+  outline: none;
+  border-radius: 3px;
+  background-color: rgba(55 , 48, 163, 0.1);
+  border: 1px solid rgba(55 , 48, 163, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  height: 27px;
+}
