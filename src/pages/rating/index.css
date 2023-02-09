@@ -1,0 +1,21 @@
+.rating-container {
+    height: 60vh;
+    border: solid 2px fuchsia;
+}
+
+.rating-strip {
+    height: 50px;
+    background: firebrick;
+}
+
+.rating-quantily-member {
+    height: 50px;
+}
+
+
+.rating-title {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--COLOR_FONT_BLACK);
+}
