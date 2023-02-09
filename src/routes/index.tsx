@@ -1,23 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import MainPage from '../pages/main';
 
-const routes = [
+export const NAVIGATION_ROUTES = [
+  {
+    path: '/achievements',
+    element: <MainPage />,
+    name: 'Достижения',
+  },
+  {
+    path: '/motivators',
+    element: <MainPage />,
+    name: 'Мотиваторы',
+  },
+  {
+    path: '/store',
+    element: <MainPage />,
+    name: 'Магазин',
+  },
+  {
+    path: '/rating',
+    element: <MainPage />,
+    name: 'Рейтинг',
+  },
+]
+
+export const ROUTES = [
   {
     path: '/',
     element: <MainPage />,
     name: 'Home',
   },
-  {
-    path: '/example',
-    element: (
-      <div>
-        <h1>HelloWord</h1>
-        <Link to="about">About Us</Link>
-      </div>
-    ),
-    name: 'Example',
-  },
+  ...NAVIGATION_ROUTES,
 ];
-
-export default routes;
