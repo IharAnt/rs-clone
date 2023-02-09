@@ -5,7 +5,17 @@
 
 .rating-strip {
     height: 50px;
-    background: firebrick;
+    background: rgba(55, 48, 163, 0.2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+}
+
+.rating-title_menu {
+    display: flex;
+    gap: 15px;
 }
 
 .rating-quantily-member {
