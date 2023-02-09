@@ -8,13 +8,14 @@ export interface ITask {
   id: string;
   executor: IUser;
   inspector: IUser;
-  img: string;
+  icon: string;
   summary: string;
   description: string;
-  dueDate?: number;
+  dueDate?: string | null;
   type: TaskTypeEnum;
   status: TaskStatusEnum;
-  taskReport?: string;
-  messages?: IMessage[];
-  imgFiles?: IImg[];
+  taskReport?: string | null;
+  messages?: IMessage[] | null;
+  imgFiles?: IImg[] | null;
+  points: number;
 }

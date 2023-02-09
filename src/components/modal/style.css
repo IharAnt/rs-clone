@@ -1,32 +1,42 @@
-.modal-overlay{
+.modal-overlay {
   position: fixed;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   display: none;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 11;
 }
 
-.modal-overlay.active{
+.modal-overlay.active {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-box{
+.modal-box {
+  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+  -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
+  -webkit-box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+  -o-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
+  -ms-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
   position: relative;
-  padding: 20px;
-  background: white;
-  border-radius: 6px;
+  background: var(--BACKGROUND_BASIC);
+  border-radius: 10px;
   min-width: 250px;
 }
 
-.modal-close{
+.modal-close {
   cursor: pointer;
   position: absolute;
   top: 7px;
   right: 7px;
   width: 20px;
-  margin-right: 5px;
+  z-index: 20;
+  transition: .3s;
+}
+
+.modal-close:hover {
+  transform: rotate(-0.5turn);
 }
