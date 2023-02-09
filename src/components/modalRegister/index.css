@@ -1,0 +1,8 @@
+.register-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button {
+    margin: 0;
+}
