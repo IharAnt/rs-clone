@@ -1,5 +1,5 @@
-import TaskTypeEnum from "../types/enums/TaskTypeEnum";
-import { IProfile } from "../types/interfaces/IUser";
+import TaskTypeEnum from '../types/enums/TaskTypeEnum';
+import { IProfile } from '../types/interfaces/IUser';
 
 const profile: IProfile = {
   id: 'sdf5sd4af6sd54f',
