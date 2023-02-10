@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { limitChange } from '../../store/ratingStore/sliceRating/slice';
 import './index.css';

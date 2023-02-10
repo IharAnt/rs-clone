@@ -1,0 +1,9 @@
+.item-user {
+    height: 25px;
+
+}
+
+.item-rating-user_text {
+    justify-self: center;
+    color: var(--COLOR_FONT_BLACK);
+}

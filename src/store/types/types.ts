@@ -13,7 +13,7 @@ export type typeRatingPage = {
     limit: number,
     search: string,
     sort: RatingSortType,
-    order: OrderType
+    order: OrderType,
 }
 
 export type typeActualModalAuth = 'register' | 'login' | 'forget';

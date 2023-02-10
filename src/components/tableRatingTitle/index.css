@@ -1,7 +1,8 @@
 .table-container_item {
-    max-width: 1000px;
-    width: 75vw;
+    max-width: 1200px;
+    width: 77vw;
     height: 44px;
+    margin-bottom: 8px;
     background: rgba(55, 48, 163, 0.2);
     border-radius: 10px;
     display: grid;

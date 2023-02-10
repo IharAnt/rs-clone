@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDebaunce } from '../../hooks/debounce';
 import './index.css';
-import { useAppDispatch } from '../../store';
-import { authChange } from '../../store/appStore/sliceApp/slice';
 
 
 const SearchUser = () => {
     const [search, serSearch] = useState('')
-    // const distatch = useAppDispatch();
+
     const debounced = useDebaunce(search);
     useEffect(() => {
         console.log(debounced)
