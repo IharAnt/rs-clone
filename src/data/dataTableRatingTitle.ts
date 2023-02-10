@@ -24,7 +24,7 @@ const dataTableRatingTitle: ITableRatingTitle[] = [
     },
     {
         name: 'totalExperience',
-        text: 'Суммарное количество опыт',
+        text: 'Суммарное количество опыта',
         img: xpIco,
     },
     {

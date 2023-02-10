@@ -7,5 +7,5 @@
     border-radius: 10px;
     display: grid;
     align-items: center;
-    grid-template-columns: 50px 1fr repeat(4, 11vw);
+    grid-template-columns: 60px 1fr repeat(4, 11vw);
 }

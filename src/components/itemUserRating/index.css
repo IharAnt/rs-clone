@@ -6,4 +6,21 @@
 .item-rating-user_text {
     justify-self: center;
     color: var(--COLOR_FONT_BLACK);
+    font-weight: 500;
+}
+
+
+.medal-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.item-rating-user_medal {
+    right: 0;
+    top: 2px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+
 }
