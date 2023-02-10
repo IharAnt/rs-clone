@@ -29,7 +29,6 @@ items: [{
     {
       type: TaskTypeEnum.Power,
       id: 'sdf5sd4af6sd54f',
-      img: '',
       maxPoints: 200,
     },
   ],
@@ -59,7 +58,6 @@ items: [{
     {
       type: TaskTypeEnum.Power,
       id: 'sdf5sd4af6sd54f',
-      img: '',
       maxPoints: 200,
     },
   ],
@@ -89,7 +87,6 @@ items: [{
     {
       type: TaskTypeEnum.Power,
       id: 'sdf5sd4af6sd54f',
-      img: '',
       maxPoints: 200,
     },
   ],
