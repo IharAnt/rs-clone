@@ -1,10 +1,15 @@
 .rating-container {
-    height: 60vh;
+    height: 75vh;
     border: solid 2px fuchsia;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .rating-strip {
     height: 50px;
+    width: 100%;
     background: rgba(55, 48, 163, 0.2);
     border-radius: 10px;
     display: flex;
@@ -20,6 +25,11 @@
 
 .rating-quantily-member {
     height: 50px;
+}
+
+.container-table-rating_items {
+    overflow: auto;
+    height: 100%;
 }
 
 

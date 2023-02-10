@@ -9,6 +9,7 @@ import { IRating } from '../../types/interfaces/IRating';
 import { IPaginationResponse } from '../../types/interfaces/IPagination';
 import { useAppSelector } from '../../store';
 import ItemUserRating from '../../components/itemUserRating';
+import PaginationRating from '../../components/paginationRating';
 
 const RatingPage = () => {
 
@@ -27,22 +28,22 @@ const RatingPage = () => {
   return (
     <MainLayout>
       <div className='rating-container'>
-
         <div className='rating-strip'>
           <h1 className='rating-title'>Рейтинг игроков</h1>
           <div className='rating-title_menu'>
             <ChangelimitUser />
             <SearchUser />
           </div>
-
         </div>
-        <div className='rating-quantily-member'>
-          <p>{`Всего участников: ${ratingArr.count}`}</p>
-          <p>{zapr}</p>
-        </div>
-        { }
-        <TableRatingTitle />
-        {ratingArr.items.map((userItem) => { return <ItemUserRating {...userItem} /> })}
+          <div className='rating-quantily-member'>
+            <p>{`Всего участников: ${ratingArr.count}`}</p>
+            <p>{zapr}</p>
+          </div>
+          <TableRatingTitle />
+          <div className='container-table-rating_items'>
+            {ratingArr.items.map((userItem) => { return <ItemUserRating {...userItem} /> })}
+          </div>
+        < PaginationRating />
       </div>
     </MainLayout >
   );
