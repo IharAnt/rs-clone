@@ -11,14 +11,14 @@ import { useAppSelector } from '../../store';
 
 const RatingPage = () => {
 
-  const limitUser = useAppSelector(state => state.ratingPage.limit);
-  const [ratingArr, setrattingArr] = useState<IPaginationResponse<IRating>>({ count: 0, items: [], limit: limitUser, page: 0 });
+  const { page, limit, sort, order } = useAppSelector(state => state.ratingPage);
+  const [ratingArr, setrattingArr] = useState<IPaginationResponse<IRating>>({ count: 0, items: [], limit, page });
 
-  useEffect(() => { getRattingArr() }, [limitUser])
+  useEffect(() => { getRattingArr() }, [page, limit, sort, order])
 
   const getRattingArr = async () => {
-    console.log('запрос')
-    const ratingArr = await new RatingService().getRating(1, limitUser);
+    console.log('запрос', sort, limit, order)
+    const ratingArr = await new RatingService().getRating(1, limit, sort, order);
     setrattingArr(ratingArr)
   }
 
@@ -38,7 +38,6 @@ const RatingPage = () => {
           <p>{`Всего участников: ${ratingArr.count}`}</p>
         </div>
         <TableRatingTitle />
-        <p>{limitUser}</p>
         {ratingArr.items.map((user) => { return <li>{user.totalExperience}</li> })}
       </div>
     </MainLayout >

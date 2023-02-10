@@ -52,3 +52,12 @@
     left: -80px;
     pointer-events: none;
 }
+
+.order-text {
+    position: absolute;
+    font-size: 32px;
+    color: var(--COLOR_YELLOW_DEFAULT);
+    font-weight: 400;
+    right: -13px;
+    top: -4px;
+}
