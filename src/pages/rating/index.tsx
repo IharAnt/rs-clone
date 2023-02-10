@@ -3,10 +3,24 @@ import './index.css';
 import TableRatingTitle from '../../components/tableRatingTitle';
 import SearchUser from '../../components/searchUser';
 import ChangelimitUser from '../../components/changeLimitUser';
+import RatingService from '../../services/RatingService';
+import { useEffect, useState } from 'react';
+import { IRating } from '../../types/interfaces/IRating';
+import { IPaginationResponse } from '../../types/interfaces/IPagination';
+import { useAppSelector } from '../../store';
 
 const RatingPage = () => {
 
-  const quantilyMember = 34;
+  const limitUser = useAppSelector(state => state.ratingPage.limit);
+  const [ratingArr, setrattingArr] = useState<IPaginationResponse<IRating>>({ count: 0, items: [], limit: limitUser, page: 0 });
+
+  useEffect(() => { getRattingArr() }, [limitUser])
+
+  const getRattingArr = async () => {
+    console.log('запрос')
+    const ratingArr = await new RatingService().getRating(1, limitUser);
+    setrattingArr(ratingArr)
+  }
 
   return (
     <MainLayout>
@@ -21,9 +35,11 @@ const RatingPage = () => {
 
         </div>
         <div className='rating-quantily-member'>
-          <p>{`Всего участников: ${quantilyMember}`}</p>
+          <p>{`Всего участников: ${ratingArr.count}`}</p>
         </div>
         <TableRatingTitle />
+        <p>{limitUser}</p>
+        {ratingArr.items.map((user) => { return <li>{user.totalExperience}</li> })}
       </div>
     </MainLayout >
   );
