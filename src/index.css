@@ -1,9 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('./fonts/fonts.css');
+
 
 :root {
     --BACKGROUND_BASIC: #f3f3f3;
     --COLOR_FONT_BLACK: #031530;
     --COLOR_BLUY_DEFAULT: #3730A3;
+}
+
+* {
+    font-family: 'Philosopher', sans-serif;
 }
