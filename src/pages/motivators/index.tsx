@@ -7,43 +7,56 @@ import MotivatorsTasks from '../../components/motivatorsTasks/index';
 import { ITask } from '../../types/interfaces/ITask';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react'
+import { type } from '@testing-library/user-event/dist/type';
+import { getTasks } from '../../store/appStore/sliceTasks/tasks';
+import { useAppDispatch, useAppSelector } from '../../store';
+
 
 const MotivatorsPage = () => {
 
   const [content, setContent] = useState('myTasks');
   const [menu, setMenu] = useState(false)
+  const dispatch = useAppDispatch()
 
-  const data: ITask[] = [{
-    id: 'string',
-    executor: { id: '1', email: 'ss', name: 'Stepan' },
-    inspector: { id: '1', email: 'ss', name: 'Stepan' },
-    summary: 'отжаться 10 раз',
-    description: 'сделать 10 отжиманий',
-    dueDate: '233',
-    type: TaskTypeEnum.Power,
-    status: TaskStatusEnum.Open,
-    points: 200
-  },{
-    id: 'string',
-    executor: { id: '1', email: 'ss', name: 'Stepan' },
-    inspector: { id: '1', email: 'ss', name: 'Stepan' },
-    summary: 'отжаться 10 раз',
-    description: 'сделать 10 отжиманий',
-    dueDate: '233',
-    type: TaskTypeEnum.Power,
-    status: TaskStatusEnum.Inprogress,
-    points: 200
-  },{
-    id: 'string',
-    executor: { id: '1', email: 'ss', name: 'Stepan' },
-    inspector: { id: '1', email: 'ss', name: 'Stepan' },
-    summary: 'отжаться 10 раз',
-    description: 'сделать 10 отжиманий',
-    dueDate: '233',
-    type: TaskTypeEnum.Teacher,
-    status: TaskStatusEnum.Resolved,
-    points: 200
-  }];
+  useEffect(()=> {
+    dispatch(getTasks())},
+    []
+  )
+
+  const data = useAppSelector((state) => state.tasks.tasks)
+  // const data: ITask[] = [{
+  //   id: 'string',
+  //   executor: { id: '1', email: 'ss', name: 'Stepan' },
+  //   inspector: { id: '1', email: 'ss', name: 'Stepan' },
+  //   summary: 'отжаться 10 раз',
+  //   description: 'сделать 10 отжиманий',
+  //   dueDate: '233',
+  //   type: TaskTypeEnum.Power,
+  //   status: TaskStatusEnum.Open,
+  //   points: 200
+  // },{
+  //   id: 'string',
+  //   executor: { id: '1', email: 'ss', name: 'Stepan' },
+  //   inspector: { id: '1', email: 'ss', name: 'Stepan' },
+  //   summary: 'отжаться 10 раз',
+  //   description: 'сделать 10 отжиманий',
+  //   dueDate: '233',
+  //   type: TaskTypeEnum.Power,
+  //   status: TaskStatusEnum.Inprogress,
+  //   points: 200
+  // },{
+  //   id: 'string',
+  //   executor: { id: '1', email: 'ss', name: 'Stepan' },
+  //   inspector: { id: '1', email: 'ss', name: 'Stepan' },
+  //   summary: 'отжаться 10 раз',
+  //   description: 'сделать 10 отжиманий',
+  //   dueDate: '233',
+  //   type: TaskTypeEnum.Teacher,
+  //   status: TaskStatusEnum.Resolved,
+  //   points: 200
+  // }];
 
   return (
     <MotivatorsLayout>
