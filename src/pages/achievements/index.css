@@ -1,7 +1,6 @@
 .achievements-container {
-    width: 80vw;
+    width: 85vw;
     height: 60vh;
-    border: 2px solid darkgreen;
 }
 
 .achievements-container_title {
@@ -20,7 +19,51 @@
 }
 
 .achievements-container_item {
+    position: relative;
+    display: flex;
+    align-items: center;
     border-radius: 10px;
+    gap: 20px;
+    padding: 5px 10px;
     background: var(--COLOR_BACKGROUND_ITEM);
+    margin-bottom: 10px;
+}
+
+.achievements-item_ico_active {
     height: 100px;
+    width: 55px;
+    object-fit: cover;
+    object-position: 0px;
+    position: absolute;
+}
+
+.achievements-item_ico_dissable {
+    filter: grayscale(100%);
+    width: 100px;
+    height: 100px;
+}
+
+.achievements-item_title {
+    font-size: 18px;
+    font-weight: bolder;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.achievements-item_description {
+    text-align: justify;
+    font-size: 16px;
+    color: var(--COLOR_FONT_BLACK);
+    margin-bottom: 5px;
+}
+
+.achievements-item_score {
+    margin-bottom: -3px;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.achievements-container-items {
+    height: 88%;
+    overflow: auto;
 }
