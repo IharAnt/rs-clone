@@ -29,8 +29,7 @@ const ratings: IPaginationResponse<IRating> = {
       {
         type: TaskTypeEnum.Power,
         id: 'sdf5sd4af6sd54f',
-        img: '',
-        maxPoints: 200,
+          maxPoints: 200,
       },
     ],
     level: 1,
@@ -59,8 +58,7 @@ const ratings: IPaginationResponse<IRating> = {
       {
         type: TaskTypeEnum.Power,
         id: 'sdf5sd4af6sd54f',
-        img: '',
-        maxPoints: 200,
+          maxPoints: 200,
       },
     ],
     level: 1,
@@ -89,8 +87,7 @@ const ratings: IPaginationResponse<IRating> = {
       {
         type: TaskTypeEnum.Power,
         id: 'sdf5sd4af6sd54f',
-        img: '',
-        maxPoints: 200,
+          maxPoints: 200,
       },
     ],
     level: 1,
