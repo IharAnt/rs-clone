@@ -4,7 +4,7 @@ import { IpropsLogo } from './types/ILogo';
 
 const Logo = (props: IpropsLogo) => {
     return <Link
-        className={`block cursor-pointer hover:scale-105 duration-300 ${props.heigthLogo}`}
+        className={`header-logo block cursor-pointer hover:scale-105 duration-300 ${props.heigthLogo}`}
         to='/'
     >
         <img className='h-full' src={logo} alt="logo" />

@@ -7,7 +7,7 @@ const LoginHeader: React.FC = () => {
     const IsLogin = useAppSelector(state => state.appState.isLogin);
     
     return (
-        <div>
+        <div className='header-profile'>
             {IsLogin
                 ? <LoginTrue />
                 : <LoginFalse />}

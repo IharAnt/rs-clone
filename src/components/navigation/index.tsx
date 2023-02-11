@@ -14,7 +14,7 @@ const Navigation: FC = () => {
         dispatch(pageChange(location));
     }, [dispatch, location]);
 
-    return <ul className='flex gap-4'>
+    return <ul className='flex gap-4 header-navigation'>
         {NAVIGATION_ROUTES.map((route) => {
             return (
                 <li key={route.name} className='list-none'>
