@@ -1,10 +1,11 @@
 import React from 'react';
+import AchievementsPage from '../pages/achievements';
 import MainPage from '../pages/main';
 
 export const NAVIGATION_ROUTES = [
   {
     path: '/achievements',
-    element: <MainPage />,
+    element: <AchievementsPage />,
     name: 'Достижения',
   },
   {
