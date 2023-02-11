@@ -9,6 +9,7 @@ const ChangelimitUser = () => {
   
     return (
         <select value={limitUser} onChange={(e) => dispatch(limitChange(Number(e.currentTarget.value)))} className='select_limit'>
+            <option value='5'>Показывать по 5</option>
             <option value='10'>Показывать по 10</option>
             <option value='20'>Показывать по 20</option>
             <option value='30'>Показывать по 30</option>
