@@ -6,6 +6,21 @@
     justify-content: space-between;
 }
 
+.rating-title_container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-title-update {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    background-image: url('../../assets/img/updateRating.png');
+    transition: .4s;
+}
+
 .rating-strip {
     height: 50px;
     width: 100%;
@@ -43,6 +58,10 @@
     font-size: 24px;
     font-weight: bold;
     color: var(--COLOR_FONT_BLACK);
+}
+
+.rating-title-update:hover {
+    transform: rotate(450deg);
 }
 
 

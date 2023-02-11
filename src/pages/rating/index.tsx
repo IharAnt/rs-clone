@@ -14,6 +14,7 @@ import PaginationRating from '../../components/paginationRating';
 const RatingPage = () => {
 
   const { page, limit, sort, order } = useAppSelector(state => state.ratingPage);
+  const [update, setUpdate] = useState(0);
   const [ratingArr, setrattingArr] = useState<IPaginationResponse<IRating>>({ count: 0, items: [], limit, page });
   const zapr = `запрос: page=${page} sort=${sort}, limit=${limit}, order=${order}`; //удалить потом
 
@@ -23,13 +24,16 @@ const RatingPage = () => {
       setrattingArr(responceArr)
     }
     getRattingArr()
-  }, [page, limit, sort, order])
+  }, [page, limit, sort, order, update])
 
   return (
     <MainLayout>
       <div className='rating-container'>
         <div className='rating-strip'>
-          <h1 className='rating-title'>Рейтинг игроков</h1>
+          <div className='rating-title_container'>
+            <h1 className='rating-title'>Рейтинг игроков</h1>
+            <div className='rating-title-update' onClick={() => setUpdate(update + 1)}></div>
+          </div>
           <div className='rating-title_menu'>
             <ChangelimitUser />
             <SearchUser />
