@@ -8,7 +8,7 @@ const SearchUser = () => {
 
     const debounced = useDebaunce(search);
     useEffect(() => {
-        console.log(debounced)
+
     }, [debounced])
 
     return (

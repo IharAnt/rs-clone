@@ -1,6 +1,5 @@
 .rating-container {
     height: 70vh;
-    border: solid 2px fuchsia;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +9,7 @@
 .rating-strip {
     height: 50px;
     width: 100%;
-    background: rgba(55, 48, 163, 0.2);
+    background: var(--COLOR_BACKGROUND_ITEM);
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -24,7 +23,14 @@
 }
 
 .rating-quantily-member {
-    height: 50px;
+    height: 65px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.rating-quantily-member_text {
+    color: var(--COLOR_FONT_BLACK);
+    font-weight: bolder;
 }
 
 .container-table-rating_items {
@@ -32,10 +38,9 @@
     height: 100%;
 }
 
-
 .rating-title {
     text-transform: uppercase;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: bold;
     color: var(--COLOR_FONT_BLACK);
 }

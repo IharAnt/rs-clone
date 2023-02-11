@@ -44,10 +44,10 @@
     text-align: center;
     border-radius: 10px;
     padding: 2px 3px;
-    background: rgba(55, 48, 163, 0.2);
+    background: var(--COLOR_BACKGROUND_ITEM);
     color: var(--COLOR_FONT_BLACK);
     opacity: 0;
-    transition: .4s;
+    transition: .3s;
     top: 0;
     left: -80px;
     pointer-events: none;
@@ -58,6 +58,6 @@
     font-size: 32px;
     color: var(--COLOR_YELLOW_DEFAULT);
     font-weight: 400;
-    right: -13px;
-    top: -4px;
+    right: -14px;
+    top: -7px;
 }

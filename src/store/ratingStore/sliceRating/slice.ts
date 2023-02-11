@@ -8,6 +8,9 @@ const sliceRatingPage = createSlice({
     name: 'rating-page',
     initialState: initalState,
     reducers: {
+        pageChangeRating(state: typeRatingPage, action: PayloadAction<number>) {
+            state.page = action.payload;
+        },
         limitChange(state: typeRatingPage, action: PayloadAction<number>) {
             state.limit = action.payload;
         },
@@ -21,4 +24,4 @@ const sliceRatingPage = createSlice({
 })
 
 export default sliceRatingPage.reducer;
-export const { limitChange, sortChange, orderChange } = sliceRatingPage.actions;
+export const { limitChange, sortChange, orderChange, pageChangeRating } = sliceRatingPage.actions;

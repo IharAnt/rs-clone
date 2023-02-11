@@ -1,5 +1,47 @@
-.pagination-rating-container{
+.pagination-rating-container {
     height: 25px;
     width: 100%;
-    background: darkcyan;
+    display: flex;
+    text-align: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.text-arrow-pagination {
+    opacity: .5;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.pagination-item-container {
+    position: relative;
+    top: 3px;
+    display: flex;
+    gap: 5px;
+}
+
+.pagination-item {
+    color: var(--COLOR_FONT_BLACK);
+    font-size: 20px;
+    cursor: pointer;
+    list-style: none;
+    opacity: .4;
+}
+
+.pagination-item_active {
+    position: relative;
+    bottom: 2px;
+    font-size: 22px;
+    pointer-events: none;
+    opacity: 1;
+}
+
+
+.text-arrow-pagination:hover {
+    opacity: 1;
+}
+
+.pagination-item:hover {
+    opacity: 1;
 }

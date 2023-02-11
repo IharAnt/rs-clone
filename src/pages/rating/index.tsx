@@ -15,8 +15,8 @@ const RatingPage = () => {
 
   const { page, limit, sort, order } = useAppSelector(state => state.ratingPage);
   const [ratingArr, setrattingArr] = useState<IPaginationResponse<IRating>>({ count: 0, items: [], limit, page });
-  const zapr = `запрос: sort=${sort}, limit=${limit}, order=${order}`;
-  
+  const zapr = `запрос: page=${page} sort=${sort}, limit=${limit}, order=${order}`; //удалить потом
+
   useEffect(() => {
     const getRattingArr = async () => {
       const responceArr = await new RatingService().getRating(page, limit, sort, order);
@@ -36,7 +36,7 @@ const RatingPage = () => {
           </div>
         </div>
         <div className='rating-quantily-member'>
-          <p>{`Всего участников: ${ratingArr.count}`}</p>
+          <p className='rating-quantily-member_text'>{`Всего участников: ${ratingArr.count}`}</p>
           <p>{zapr}</p>
         </div>
         <TableRatingTitle />

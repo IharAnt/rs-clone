@@ -36,8 +36,7 @@ export default class RatingService {
     // const result = await this.webRequest.get<IPaginationResponse<IRating>>(`${this.ratingPath}${query}`);
     
     // return result;
-console.log(limit)
-    ratings.count = 10;
+    ratings.count = 20;
     ratings.limit = limit;
     ratings.page = page;
 
