@@ -1,60 +1,84 @@
-.motivatorsTask{
+.motivatorsTask {
   font-size: 18px;
   border-radius: 10px;
-  background-color: rgba(55 , 48, 163, 0.1);
-  border: 1px solid rgba(55 , 48, 163, 0.2);
+  background-color: var(--COLOR_BLOCK);
+  border: 1px solid var(--COLOR_BLOCK_BORDER);
   padding: 10px;
   line-height: 1;
 }
 
-.motivatorsTask__icon{
+.motivatorsTask__icon {
   width: 3.5em;
+  height: 3.5em;
 }
 
-.motivatorsTask__header{
+.motivatorsTask__header {
   display: flex;
   justify-content: space-around;
   gap: 10px;
 }
 
-.motivatorsTask__title{
+.motivatorsTask__title {
+  font-weight: 700;
   flex-grow: 1;
   font-size: 1.5em;
   font-weight: 600;
 }
 
-.motivatorsTask__description{
-  margin-top: 7px;
-  font-size: 0.9em;
-}
-
-.motivatorsTask__deadline{
+.motivatorsTask__description {
   margin-top: 7px;
 }
 
-.motivatorsTask__description .italic{
+.motivatorsTask__deadline {
+  margin-top: 7px;
+}
+
+.motivatorsTask__description .italic {
   font-style: italic;
 }
 
-.motivatorsTask__completion{
+.motivatorsTask__completion {
   margin-top: 7px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.motivatorsTask__btn{
+.motivatorsTask__btn {
   opacity: 0.85;
 }
 
-.motivatorsTask__btn:hover{
+.motivatorsTask__btn:hover {
   opacity: 1;
 }
 
-.motivatorsTask__btn--inProgress{
+.motivatorsTask__btn--inProgress {
   background: var(--COLOR_BLUY_DEFAULT);
+  color: white;
 }
 
-.motivatorsTask__btn--open{
+.motivatorsTask__btn--open {
   background: var(--COLOR_YELLOW);
+}
+
+.motivatorsTask__coinsImg {
+  width: 1em;
+  height: 1em;
+}
+
+.motivatorsTask__coins {
+  display: flex;
+  gap: 1px;
+}
+
+@media (max-width: 1200px) {
+  .motivatorsTask {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  .motivatorsTask {
+    font-size: 12px;
+  }
 }

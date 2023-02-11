@@ -1,4 +1,3 @@
-import React from 'react'
 import './style.css'
 import open from '../../assets/icons/tasksStatus/open.png'
 import inProcess from '../../assets/icons/tasksStatus/inProcess.png'
@@ -12,7 +11,7 @@ export default function MotivatorsTaskHeaders() {
 
   return (
     <>
-      {headers.map((header) => <MotivatorsTaskHeader title={header.title} icon={header.icon} />)}
+      {headers.map((header) => <MotivatorsTaskHeader title={header.title} icon={header.icon} key={header.title} />)}
     </>
   )
 }

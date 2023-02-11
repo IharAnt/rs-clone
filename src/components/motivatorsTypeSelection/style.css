@@ -24,7 +24,7 @@
   top: 27px;
   left: 0;
   transition: all 0.1s linear;
-  background-color: rgba(55 , 48, 163, 0.1);
+  background-color: var(--COLOR_BLOCK);
   overflow: hidden;
   border-radius: 3px;
 }
@@ -36,7 +36,7 @@
 }
 
 .selectTypeMode__item.selected{
-  background: rgba(55 , 48, 163, 0.2);
+  background: var(--COLOR_BLOCK_BORDER);
 }
 
 .selectTypeMode__menu.closed{

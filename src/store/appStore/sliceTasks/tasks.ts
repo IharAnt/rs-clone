@@ -1,24 +1,42 @@
 import { ITask } from './../../../types/interfaces/ITask';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import TasksService from '../../../services/TasksService';
+import TaskStatusEnum from '../../../types/enums/TaskStatusEnum';
 
 const service = new TasksService()
 
-export const getTasks = createAsyncThunk<ITask[], undefined, { rejectValue: string }>(
+export const getTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
   'tasks/getTasks',
-  async function (_, { rejectWithValue }) {
-    const result = await service.getExecutorTasks('1')
-    // dispatch(setTasks(result))
-    return result
+  async function ({ id }, { rejectWithValue }) {
+    const result = await service.getExecutorTasks(id);
+    return result;
+  }
+)
+
+export const updateTaskStatus = createAsyncThunk<ITask, { id: string, status: TaskStatusEnum }, { rejectValue: string }>(
+  'tasks/updateTask',
+  async function ({ id, status }) {
+    const result = await service.updateTasksStatus(id, status);
+    return result;
+  }
+)
+
+export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
+  'tasks/getInspectorTasks',
+  async function ({ id }) {
+    const result = await service.getInspectorTasks(id);
+    return result;
   }
 )
 
 type tasks = {
   tasks: ITask[]
+  inspectorTasks: ITask[]
 }
 
 const initialState: tasks = {
-  tasks: []
+  tasks: [],
+  inspectorTasks: []
 }
 
 const tasksSlice = createSlice({
@@ -26,11 +44,20 @@ const tasksSlice = createSlice({
   initialState,
   reducers: {
 
-  }, 
-  extraReducers: (builder)=> {
-    builder.addCase(getTasks.fulfilled, (state, action) => {
-      state.tasks = action.payload
-    })
-  }})
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getTasks.fulfilled, (state, action) => {
+        state.tasks = action.payload;
+      })
+      .addCase(updateTaskStatus.fulfilled, (state, action) => {
+        const task = state.tasks.find((task) => action.payload.id === task.id)
+        task!.status = TaskStatusEnum.Inprogress;
+      })
+      .addCase(getInspectorTasks.fulfilled, (state, action) => {
+        state.inspectorTasks = action.payload;
+      })
+  }
+})
 
 export default tasksSlice.reducer

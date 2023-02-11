@@ -6,7 +6,9 @@
     --BACKGROUND_BASIC: #f3f3f3;
     --COLOR_FONT_BLACK: #031530;
     --COLOR_BLUY_DEFAULT: #3730A3;
-    --COLOR_YELLOW: #ead538
+    --COLOR_YELLOW: #ead538;
+    --COLOR_BLOCK: rgba(55 , 48, 163, 0.1);
+    --COLOR_BLOCK_BORDER: rgba(55 , 48, 163, 0.2);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');

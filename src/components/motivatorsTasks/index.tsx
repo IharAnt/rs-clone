@@ -1,9 +1,22 @@
-import React from 'react'
 import TaskList from '../taskList/index'
-import { props } from './types'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
+import {useEffect} from 'react'
+import { useAppDispatch, useAppSelector } from '../../store'
+import { getTasks } from '../../store/appStore/sliceTasks/tasks'
+import './style.css'
 
-export default function MotivatorsTasks({data}: props) {
+export default function MotivatorsTasks() {
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getTasks({'id': '1'}))
+  },
+    [dispatch]
+  )
+
+  const data = useAppSelector((state) => state.tasks.tasks)
+
   return (
     <>
       <TaskList data={data.filter(task => task.status === TaskStatusEnum.Open)}/>
