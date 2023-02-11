@@ -44,3 +44,16 @@
     font-weight: bold;
     color: var(--COLOR_FONT_BLACK);
 }
+
+
+@media (max-width:650px) {
+    .rating-strip {
+        padding: 5px 0;
+        gap: 5px;
+        height: 100px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

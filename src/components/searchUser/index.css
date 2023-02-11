@@ -33,3 +33,9 @@
 .search-user_input:focus {
     border: 2px solid rgb(209, 136, 0);
 }
+
+@media (max-width:390px) {
+    .search-form {
+        width: 120px;
+    }
+}

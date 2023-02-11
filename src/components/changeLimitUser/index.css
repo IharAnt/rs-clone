@@ -11,3 +11,9 @@
 .select_limit:focus {
     border: 2px solid rgb(209, 136, 0);
 }
+
+@media (max-width:390px) {
+    .select_limit {
+        width: 120px;
+    }
+}
