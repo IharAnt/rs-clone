@@ -18,18 +18,6 @@
     color: var(--COLOR_FONT_BLACK);
 }
 
-.achievements-container_item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    gap: 20px;
-    padding: 5px 10px;
-    background: var(--COLOR_BACKGROUND_ITEM);
-    margin-bottom: 10px;
-}
-
-
 
 .achievements-container-items {
     height: 88%;

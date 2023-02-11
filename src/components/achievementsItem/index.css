@@ -3,19 +3,6 @@
     border-bottom: 2px solid var(--COLOR_YELLOW_DEFAULT);
 }
 
-.achievements-item_ico_active {
-    height: 100px;
-    object-fit: cover;
-    object-position: 0px;
-    position: absolute;
-}
-
-.achievements-item_ico_dissable {
-    filter: grayscale(100%);
-    width: 100px;
-    height: 100px;
-}
-
 .achievements-item_done{
     margin-left: 5px;
     color: #19a800;
@@ -39,4 +26,14 @@
     font-weight: bold;
     font-size: 14px;
     color: var(--COLOR_FONT_BLACK);
+}
+
+.achievements-container_item {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 5px 10px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    margin-bottom: 10px;
 }

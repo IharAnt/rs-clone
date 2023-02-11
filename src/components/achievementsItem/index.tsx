@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IAchievementsPageData } from '../../pages/achievements/types/types';
 import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
+import ImgAchievementItem from '../imgAchievementItem';
 import './index.css';
 
 const AchievementsItem = (data: IAchievementsPageData) => {
@@ -13,7 +14,7 @@ const AchievementsItem = (data: IAchievementsPageData) => {
         {
             type: TaskTypeEnum.Power,
             id: 'sdf5sd4af6sd54f',
-            maxPoints: 300,
+            maxPoints: 900,
         },
         {
             type: TaskTypeEnum.Learner,
@@ -44,17 +45,7 @@ const AchievementsItem = (data: IAchievementsPageData) => {
 
     return (
         <li className='achievements-container_item'>
-            <img
-                className='achievements-item_ico_dissable'
-                src={data.img}
-                alt={`ico_${data.name}`} />
-            <img
-                style={{
-                    width: `${widthImg}px`,
-                }}
-                className='achievements-item_ico_active'
-                src={data.img}
-                alt={`ico_${data.name}`} />
+            <ImgAchievementItem width='100' img={data.img} control={widthImg} />
             <div>
                 <p className='achievements-item_title'>
                     Достижение: {data.name}
