@@ -7,7 +7,19 @@
 :root {
     --BACKGROUND_BASIC: #f3f3f3;
     --COLOR_FONT_BLACK: #031530;
+    --COLOR_FONT_BLACK: #434190;
     --COLOR_BLUY_DEFAULT: #3730A3;
+    --COLOR_YELLOW_DEFAULT: #F7B41F;
+    --COLOR_BACKGROUND_ITEM: #EAEAF6;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--COLOR_YELLOW_DEFAULT);
 }
 
 * {
