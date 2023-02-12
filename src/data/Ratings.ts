@@ -29,6 +29,9 @@ const ratings: IPaginationResponse<IRating> = {
       {
         type: TaskTypeEnum.Power,
         id: 'sdf5sd4af6sd54f',
+      description: 'sdfsdfsdf',
+      img: '0sdf',
+      name: 'Силач',
           maxPoints: 200,
       },
     ],
@@ -58,6 +61,9 @@ const ratings: IPaginationResponse<IRating> = {
       {
         type: TaskTypeEnum.Power,
         id: 'sdf5sd4af6sd54f',
+      description: 'sdfsdfsdf',
+      img: '0sdf',
+      name: 'Силач',
           maxPoints: 200,
       },
     ],
@@ -87,6 +93,9 @@ const ratings: IPaginationResponse<IRating> = {
       {
         type: TaskTypeEnum.Power,
         id: 'sdf5sd4af6sd54f',
+      description: 'sdfsdfsdf',
+      img: '0sdf',
+      name: 'Силач',
           maxPoints: 200,
       },
     ],
