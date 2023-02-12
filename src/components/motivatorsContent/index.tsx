@@ -1,7 +1,6 @@
-import React from 'react'
 import MotivatorsTaskHeaders from '../motivatorsTaskHeaders'
 import MotivatorsTasks from '../motivatorsTasks'
-import TaskTesting from '../taskTesting'
+import TestingTasksList from '../testingTasksList'
 import { props } from './types'
 import './style.css'
 
@@ -15,7 +14,7 @@ export default function MotivatorsContent({ content, setContent }: props) {
             <MotivatorsTasks />
           </div>
           : ''}
-        {content === 'testedTasks' ? <TaskTesting /> : ''}
+        {content === 'testedTasks' ? <TestingTasksList /> : ''}
       </div>
     </div>
   )

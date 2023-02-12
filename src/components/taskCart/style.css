@@ -2,9 +2,8 @@
   font-size: 18px;
   border-radius: 10px;
   background-color: var(--COLOR_BLOCK);
-  border: 1px solid var(--COLOR_BLOCK_BORDER);
+  /* border: 1px solid var(--COLOR_BLOCK_BORDER); */
   padding: 10px;
-  line-height: 1;
 }
 
 .motivatorsTask__icon {

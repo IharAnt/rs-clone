@@ -1,6 +1,8 @@
 import TaskTypeEnum from "../../types/enums/TaskTypeEnum";
 import { MyOptionType } from "./types";
-import { CSSProperties } from 'react'
+import { CSSProperties } from 'react';
+import { optionInspectorType } from './types';
+import { StylesConfig } from "react-select";
 
 export const options: MyOptionType[] = [{
   value: TaskTypeEnum.Idler,
@@ -29,4 +31,22 @@ export const customControlStyles: CSSProperties = {
   margin: '0',
   padding: '0',
   minHeight: '35px'
+};
+
+const colorFocus = '#3730A3'
+const colorHover = '#ead538'
+
+type IsMulti = false;
+
+export const selectStyle: StylesConfig<MyOptionType | optionInspectorType, IsMulti> = {
+  control: (provided, state) => {
+    return {
+      ...provided,
+      ...customControlStyles,
+      border: state.isFocused ? `solid 1px ${colorFocus}` : '',
+      '&:hover': state.isFocused ? {
+        border: `1px solid ${colorFocus}`
+      } : { border: `1px solid ${colorHover}`},
+    };
+  }
 };

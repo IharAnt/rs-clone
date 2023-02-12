@@ -4,7 +4,7 @@ import { getInspectorTasks } from '../../store/appStore/sliceTasks/tasks'
 import './style.css'
 import TestingTask from '../testingTask'
 
-export default function TaskTesting() {
+export default function TestingTasksList() {
 
   const dispatch = useAppDispatch()
 

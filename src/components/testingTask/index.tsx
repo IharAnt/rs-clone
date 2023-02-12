@@ -2,6 +2,7 @@ import { props } from './types'
 import './style.css'
 import { useState } from 'react'
 import Modal from '../modal'
+import ModalTestTask from '../modalTestTask'
 
 export default function TestingTask({ task }: props) {
 
@@ -14,8 +15,8 @@ export default function TestingTask({ task }: props) {
       <div className='motivatorsTesting__report'>{task.taskReport}</div>
       <button className='motivators-block motivatorsTask__btn motivatorsTesting__btn' onClick={() => setModal(true)}>проверить</button>
       <Modal isOpen={modal} setModal={setModal}>
-        Проверка
-      </Modal>
+        <ModalTestTask task={task} />
+      </Modal >
     </div>
   )
 }
