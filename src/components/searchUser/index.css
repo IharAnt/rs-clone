@@ -1,0 +1,41 @@
+.search-form {
+    position: relative;
+    width: 200px;
+}
+
+.search-user_input {
+    padding: 0 5px;
+    border-radius: 10px;
+    width: 100%;
+    outline: none;
+    background: var(--BACKGROUND_BASIC);
+    color: var(--COLOR_FONT_BLACK);
+    border: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}
+
+.search-user_reser {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    background-image: url('./../../assets/img/resetInput.png');
+    background-size: cover;
+    cursor: pointer;
+    top: 6px;
+    right: 6px;
+    transition: .3s;
+}
+
+.search-user_reser:hover {
+    transform: scale(1.05);
+}
+
+
+.search-user_input:focus {
+    border: 2px solid rgb(209, 136, 0);
+}
+
+@media (max-width:390px) {
+    .search-form {
+        width: 120px;
+    }
+}

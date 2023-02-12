@@ -1,5 +1,7 @@
 import React from 'react';
 import MainPage from '../pages/main';
+import RatingPage from '../pages/rating';
+
 
 export const NAVIGATION_ROUTES = [
   {
@@ -19,7 +21,7 @@ export const NAVIGATION_ROUTES = [
   },
   {
     path: '/rating',
-    element: <MainPage />,
+    element: <RatingPage />,
     name: 'Рейтинг',
   },
 ]
