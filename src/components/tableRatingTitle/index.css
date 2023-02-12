@@ -1,0 +1,20 @@
+.table-container_item {
+    position: relative;
+    max-width: 1300px;
+    width: 85vw;
+    height: 44px;
+    margin-bottom: 8px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 60px 1fr repeat(4, 11vw);
+}
+
+
+@media (max-width:800px) {
+    .table-container_item {
+        width: 98vw;
+    }
+
+}

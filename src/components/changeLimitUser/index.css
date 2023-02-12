@@ -1,0 +1,19 @@
+.select_limit {
+    width: 170px;
+    padding: 0 5px;
+    border-radius: 10px;
+    outline: none;
+    background: var(--BACKGROUND_BASIC);
+    color: var(--COLOR_FONT_BLACK);
+    border: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}
+
+.select_limit:focus {
+    border: 2px solid rgb(209, 136, 0);
+}
+
+@media (max-width:390px) {
+    .select_limit {
+        width: 120px;
+    }
+}

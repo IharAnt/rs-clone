@@ -1,5 +1,5 @@
-import TaskTypeEnum from "../types/enums/TaskTypeEnum";
-import { IProfile } from "../types/interfaces/IUser";
+import TaskTypeEnum from '../types/enums/TaskTypeEnum';
+import { IProfile } from '../types/interfaces/IUser';
 
 const profile: IProfile = {
   id: 'sdf5sd4af6sd54f',
@@ -25,7 +25,9 @@ const profile: IProfile = {
     {
       type: TaskTypeEnum.Power,
       id: 'sdf5sd4af6sd54f',
-      img: '',
+      description: 'sdfsdfsdf',
+      img: '0sdf',
+      name: 'Силач',
       maxPoints: 200,
     },
   ],
