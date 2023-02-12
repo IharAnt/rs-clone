@@ -9,7 +9,7 @@ interface MainLayoutProps {
 
 const MotivatorsLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-col h-screen items-center overflow-hidden">
       <Header />
         <div className='motivators'>{children}</div>
       <Footer />

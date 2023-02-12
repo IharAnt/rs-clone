@@ -12,13 +12,8 @@ export const NAVIGATION_ROUTES = [
   },
   {
     path: '/motivators',
-    element: <MainPage />,
-    name: 'Мотиваторы',
-  },
-  {
-    path: '/motivators',
     element: <MotivatorsPage />,
-    name: 'motivators',
+    name: 'Мотиваторы',
    },
    {
     path: '/store',

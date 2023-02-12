@@ -1,6 +1,6 @@
 
 .motivators{
-  height:90vh;
+  min-height: calc(100vh - 160px);
   margin: 0 auto;
   width: 94vw;
   box-sizing: border-box;

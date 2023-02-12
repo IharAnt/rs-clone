@@ -9,7 +9,7 @@ import tasksSlice from './appStore/sliceTasks/tasks'
 
 const rootReducer = combineReducers({
     appState: sliceChangeApp,
-    tasks: tasksSlice
+    tasks: tasksSlice,
     ratingPage: sliceRatingPage
 })
 
