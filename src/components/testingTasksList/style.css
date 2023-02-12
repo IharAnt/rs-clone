@@ -1,0 +1,16 @@
+.motivatorsTesting {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.motivatorsTesting__name{
+  font-weight: 700;
+}
+
+.motivatorsTesting-grid {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr 1fr;
+  align-items: start;
+}

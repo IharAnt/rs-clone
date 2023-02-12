@@ -1,0 +1,48 @@
+.selectTypeMode{
+  width: 200px;
+  position: relative;
+}
+
+.selectTypeMode__arrow{
+  transform: rotate(90deg);
+  width: 16px;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.selectTypeMode__input {
+  justify-content: space-between;
+}
+
+.selectTypeMode__arrow.opened{
+  transform: rotate(180deg);
+}
+
+.selectTypeMode__menu{
+  width: 100%;
+  position: absolute;
+  top: 27px;
+  left: 0;
+  transition: all 0.1s linear;
+  background-color: var(--COLOR_BLOCK);
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.selectTypeMode__item{
+  height: 27px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.selectTypeMode__item.selected{
+  background: var(--COLOR_BLOCK_BORDER);
+}
+
+.selectTypeMode__menu.closed{
+  max-height: 0px;
+}
+
+.selectTypeMode__menu.opened{
+  max-height: 54px;
+}

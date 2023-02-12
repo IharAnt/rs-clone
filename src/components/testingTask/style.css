@@ -1,0 +1,14 @@
+.motivatorsTesting__item{
+  background: var(--COLOR_BLOCK);
+  border: 1px solid var(--COLOR_BLOCK_BORDER);
+  border-radius: 10px;
+}
+
+.motivatorsTesting__btn{
+  background: var(--COLOR_YELLOW);
+  align-self: center;
+}
+
+.motivatorsTesting__description{
+  font-style: italic;
+}

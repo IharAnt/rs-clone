@@ -1,5 +1,8 @@
 import React from 'react';
 import MainPage from '../pages/main';
+import MotivatorsPage from '../pages/motivators';
+import RatingPage from '../pages/rating';
+
 
 export const NAVIGATION_ROUTES = [
   {
@@ -9,17 +12,17 @@ export const NAVIGATION_ROUTES = [
   },
   {
     path: '/motivators',
-    element: <MainPage />,
+    element: <MotivatorsPage />,
     name: 'Мотиваторы',
-  },
-  {
+   },
+   {
     path: '/store',
     element: <MainPage />,
     name: 'Магазин',
   },
   {
     path: '/rating',
-    element: <MainPage />,
+    element: <RatingPage />,
     name: 'Рейтинг',
   },
 ]
