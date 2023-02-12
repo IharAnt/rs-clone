@@ -8,7 +8,7 @@ export interface ITask {
   id: string;
   executor: IUser;
   inspector: IUser;
-  icon: string;
+  icon?: string;
   summary: string;
   description: string;
   dueDate?: string | null;

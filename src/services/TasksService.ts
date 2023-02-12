@@ -33,14 +33,15 @@ export default class TasksService {
     // return result;
     let task = executorTasks.find(task => task.id === taskId);
     if (task) {
-      task.status = newStatus;
-      return task;
+      task = {...task, status: newStatus}
+      return Promise.resolve(task);
     }
     task = inspectorTasks.find(task => task.id === taskId);
     if (task) {
-      task.status = newStatus;
-      return task;
+      task = {...task, status: newStatus}
+      return Promise.resolve(task);
     }
+
     return Promise.resolve({} as ITask);
   }
 

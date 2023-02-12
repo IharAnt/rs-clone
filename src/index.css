@@ -7,8 +7,15 @@
     --BACKGROUND_BASIC: #f3f3f3;
     --COLOR_FONT_BLACK: #434190;
     --COLOR_BLUY_DEFAULT: #3730A3;
+    --COLOR_YELLOW: #ead538;
+    --COLOR_BLOCK: rgba(55 , 48, 163, 0.1);
+    --COLOR_BLOCK_BORDER: rgba(55 , 48, 163, 0.2);
     --COLOR_YELLOW_DEFAULT: #F7B41F;
     --COLOR_BACKGROUND_ITEM: #EAEAF6;
+}
+
+*{
+  font-family: 'Philosopher', sans-serif;
 }
 
 ::-webkit-scrollbar {

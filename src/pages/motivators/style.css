@@ -1,0 +1,39 @@
+.motivatorsCnt-container{
+  margin-top: 40px;
+}
+
+.motivatorsNav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.motivatorsNav__item{
+  display: flex;
+  gap: 20px;
+}
+
+.motivators-block{
+  outline: none;
+  border-radius: 3px;
+  background-color: var(--COLOR_BLOCK);
+  border: 1px solid var(--COLOR_BLOCK_BORDER);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  height: 27px;
+}
+
+.motivators-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 35px;
+  min-width: 150px;
+  border-radius: 3px;
+  opacity: 0.85;
+}
+
+.motivators-btn:hover{
+  opacity: 1;
+}

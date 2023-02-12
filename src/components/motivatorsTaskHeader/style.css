@@ -1,0 +1,9 @@
+.motivatorsCnt__taskHeader{
+  height: 35px;
+  padding: 0 20px;
+  justify-content: space-between;
+}
+
+.motivatorsCnt__taskHeaderIcon{
+  width: 27px;
+}
