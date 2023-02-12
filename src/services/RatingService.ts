@@ -7,15 +7,9 @@ import { IRating } from '../types/interfaces/IRating';
 import ratings from '../data/Ratings';
 
 export default class RatingService {
-  private webRequest: WebRequest;
-
   private ratingPath = `${appConfig.apiUrl}/rating`;
 
-  constructor(webRequest: WebRequest = new WebRequest()) {
-    this.webRequest = webRequest;
-  }
-
-  async getRating(
+  static async getRating(
     page: number,
     limit = 10,
     sort?: RatingSortType,

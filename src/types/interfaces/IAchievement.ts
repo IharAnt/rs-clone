@@ -8,3 +8,9 @@ export interface IAchievement {
   description: string;
   maxPoints: number;
 }
+
+export interface IUserAchievement {
+  id: string;
+  type: TaskTypeEnum;
+  maxPoints: number;
+}
