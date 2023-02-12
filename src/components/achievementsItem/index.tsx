@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { IAchievementsPageData } from '../../pages/achievements/types/types';
 import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
+import { IAchievement } from '../../types/interfaces/IAchievement';
 import ImgAchievementItem from '../imgAchievementItem';
 import './index.css';
 
-const AchievementsItem = (data: IAchievementsPageData) => {
+const AchievementsItem = (data: IAchievement) => {
 
 
     const [scoreItem, setScoreItem] = useState(0);
@@ -36,7 +36,7 @@ const AchievementsItem = (data: IAchievementsPageData) => {
     useEffect((() => {
         profileAchievements.map((item) => {
             if (item.type === data.type) {
-                const actualWidth = (item.maxPoints / data.score) * 100;
+                const actualWidth = (item.maxPoints / data.maxPoints) * 100;
                 setWidthImg(Math.min(100, actualWidth));
                 setScoreItem(item.maxPoints);
             }
@@ -52,7 +52,7 @@ const AchievementsItem = (data: IAchievementsPageData) => {
                     <span className={widthImg === 100 ? 'achievements-item_done' : 'hidden'}>✓</span>
                 </p>
                 <p className='achievements-item_description'>{data.description}</p>
-                <p className='achievements-item_score'>Для получения этого достижения необходимо набрать <span className='text-item-orange'>{data.score}</span> баллов.</p>
+                <p className='achievements-item_score'>Для получения этого достижения необходимо набрать <span className='text-item-orange'>{data.maxPoints}</span> баллов.</p>
                 {scoreItem === 0 && <p className='achievements-item_score'>У вас нету баллов за это достижение.</p>}
                 {scoreItem > 0 && <p className='achievements-item_score'>Вы набрали: <span className='text-item-orange'>{scoreItem}</span> баллов.</p>}
             </div>
