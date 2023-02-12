@@ -1,8 +1,8 @@
-import apiClient from "../api/ApiClient";
 import axios from 'axios';
 import { AxiosResponse } from 'axios';
 import { IAuthResponse } from "../types/interfaces/IAuthResponse";
 import appConfig from "../configs/AppConfig";
+import apiClient from '../api/ApiClient';
 
 export default class AuthService {
   static async login(email: string, password: string): Promise<AxiosResponse<IAuthResponse>> {

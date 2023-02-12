@@ -20,7 +20,7 @@ const RatingPage = () => {
 
   useEffect(() => {
     const getRattingArr = async () => {
-      const responceArr = await new RatingService().getRating(page, limit, sort, order);
+      const responceArr = await RatingService.getRating(page, limit, sort, order);
       setrattingArr(responceArr)
     }
     getRattingArr()

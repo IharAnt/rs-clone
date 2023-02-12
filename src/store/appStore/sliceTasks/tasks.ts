@@ -3,12 +3,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import TasksService from '../../../services/TasksService';
 import TaskStatusEnum from '../../../types/enums/TaskStatusEnum';
 
-const service = new TasksService()
-
 export const getTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
   'tasks/getTasks',
   async function ({ id }, { rejectWithValue }) {
-    const result = await service.getExecutorTasks(id);
+    const result = await TasksService.getExecutorTasks(id);
     return result;
   }
 )
@@ -16,7 +14,7 @@ export const getTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue:
 export const updateTaskStatus = createAsyncThunk<ITask, { id: string, status: TaskStatusEnum }, { rejectValue: string }>(
   'tasks/updateTask',
   async function ({ id, status }) {
-    const result = await service.updateTasksStatus(id, status);
+    const result = await TasksService.updateTasksStatus(id, status);
     return result;
   }
 )
@@ -24,7 +22,7 @@ export const updateTaskStatus = createAsyncThunk<ITask, { id: string, status: Ta
 export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
   'tasks/getInspectorTasks',
   async function ({ id }) {
-    const result = await service.getInspectorTasks(id);
+    const result = await TasksService.getInspectorTasks(id);
     return result;
   }
 )

@@ -1,8 +1,8 @@
 import appConfig from '../configs/AppConfig';
 import { IProfile, IUser } from '../types/interfaces/IUser';
 import profile from '../data/Profile';
-import apiClient from '../api/ApiClient';
-import users from '../data/users';
+// import apiClient from '../api/ApiClient';
+import users from '../data/Users';
 
 export default class UserService {
   private userPath = `${appConfig.apiUrl}/user`;
