@@ -2,6 +2,7 @@ import appConfig from '../configs/AppConfig';
 import { IProfile, IUser } from '../types/interfaces/IUser';
 import profile from '../data/Profile';
 import apiClient from '../api/ApiClient';
+import users from '../data/users';
 
 export default class UserService {
   private userPath = `${appConfig.apiUrl}/user`;
@@ -14,7 +15,9 @@ export default class UserService {
   }
 
   static async getUsers(): Promise<IUser[]> {
-    const response = await apiClient.get<IUser[]>('/users');
-    return response.data;
+    // const response = await apiClient.get<IUser[]>('/users');
+    // return response.data;
+
+    return Promise.resolve(users);
   }
 }
