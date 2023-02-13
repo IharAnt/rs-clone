@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../store';
 import { loginChange, userChange } from '../../store/appStore/sliceApp/slice';
 import { IProfile, IUser } from '../../types/interfaces/IUser';
 import Modal from '../modal';
+import ModalEitProfile from '../modalEditProfile';
 import './index.css';
 
 interface IEditProfile {
@@ -34,7 +35,7 @@ const EditProfile = ({ setActive }: IEditProfile) => {
                 <p className='edit-profile-item' onClick={logOut}>Выйти из профиля</p>
             </div>
             <Modal isOpen={modalEditProfile} setModal={setModalEditProfile} >
-                <div>fsdfsdf</div>
+                <ModalEitProfile />
             </Modal>
         </>
     )
