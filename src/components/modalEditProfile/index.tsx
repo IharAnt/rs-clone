@@ -1,44 +1,83 @@
 import React, { useState } from 'react';
+import defaultImg from './../../assets/img/profileIcoDefault.png'
 import './index.css';
 
 const ModalEitProfile = () => {
 
+    const [imgAvatar, setImgAvatar] = useState(defaultImg)
+    const imgAvatarProfile = '';
+
+    if (imgAvatarProfile) {
+        setImgAvatar(imgAvatarProfile)
+    }
+
     return (
 
-        <form name="login-form" className="login-container-form" method="post">
+        <form name="edit-form" className="edit-container-form" method="post">
             <div className="px-7 py-7">
-                <h1 className="login-title">Авторизация</h1>
-                <span className="login-title_text">Введите ваши регистрационные данные для входа в ваш личный кабинет. </span>
+                <h1 className="login-title">Редактировать профиль</h1>
+                <span className="login-title_text">Вы можете отредактировать свои личные данные, установить аватар или сменить пароль.</span>
             </div>
-            <div className="px-7 pb-7 relative">
-                <input
-                    name="e-mail"
-                    type="email"
-                    className={`w-full font-normal border border-solid border-white rounded-md mb-6 input-login input-login__username`}
-                    placeholder="Адрес электронной почты"
-                />
-                <input
-                    name="password"
-                    type="password"
-                    className={`w-full font-normal border border-solid border-white rounded-md input-login `}
-                    placeholder="Пароль"
-                />
+            <div className='edit-form-title'>Профиль
+                <hr /></div>
+            <div className='profile-container-column'>
+                <div className='profile-container-avatar'>
+                    <p className='profile-container-avatar_load'>Загрузить фото</p>
+                    <img className='w-full pointer-events-none' src={imgAvatar} alt="img avatar" />
+                </div>
+                <div className='profile-container-info'>
+                <div className="profile-container-info-input">
+                    <p className='profile-info-input-name'>Сменить имя</p>
+                    <input
+                        name="name"
+                        type="text"
+                        className={`w-full font-normal border border-solid border-white rounded-md input-edit`}
+                        placeholder="Ваше имя"
+                    />
+                </div>
+                <div className="profile-container-info-input">
+                    <p className='profile-info-input-name'>Сменить дату рождения</p>
+                    <input
+                        name="birthday"
+                        type="date"
+                        className={`w-full font-normal border border-solid border-white rounded-md input-edit`}
+                        placeholder="Ваш день рождения"
+                    />
+                </div>
+                <div className="profile-container-info-input">
+                    <p className='profile-info-input-name'>Сменить телефон</p>
+                    <input
+                        name="phone"
+                        type="text"
+                        className={`w-full font-normal border border-solid border-white rounded-md input-edit`}
+                        placeholder="Ваш номер телефона"
+                    />
+                </div>
+                <div className="profile-container-info-input">
+                    <p className='profile-info-input-name'>Сменить адрес электронной почты</p>
+                    <input
+                        name="email"
+                        type="e-mail"
+                        className={`w-full font-normal border border-solid border-white rounded-md input-edit`}
+                        placeholder="Ваш e-mail"
+                    />
+                </div>
+                <div className="profile-container-info-input">
+                    <p className='profile-info-input-name'>Сменить пароль</p>
+                    <input
+                        name="password"
+                        type="password"
+                        className={`w-full font-normal border border-solid border-white rounded-md input-edit`}
+                        placeholder="Ваш номер пароль"
+                    />
+                </div>
+                </div>
             </div>
-            <div className="login-footer">
+            <div className="login-footer edit-login">
                 <input
                     type="button"
-                    value="Регистрация"
-                    className="register-login"
-                />
-                <input
-                    type="button"
-                    value="ВОЙТИ"
+                    value="Сохранить настройки профиля"
                     className="button-login"
-                />
-                <input
-                    type="button"
-                    value="Забыли пароль?"
-                    className="button-forget-password"
                 />
             </div>
         </form>
