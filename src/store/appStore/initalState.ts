@@ -4,7 +4,7 @@ import { IProfile, IUser } from "../../types/interfaces/IUser";
 
 const initalState: typeAppActual = {
     activePage: '/',
-    isLogin: false,
+    isLogin: true,
     activeModalAuth: 'login',
     isLoading: false,
     profile: {} as IProfile,

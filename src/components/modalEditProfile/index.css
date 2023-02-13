@@ -26,12 +26,19 @@
 .profile-container-avatar {
     border-radius: 50%;
     width: 130px;
-    height: 130px;
     position: relative;
 }
 
-.profile-container-avatar_load {
+.input-edit-file {
+    opacity: 0;
     cursor: pointer;
+    width: 130px;
+    height: 130px;
+    position: absolute;
+}
+
+.profile-container-avatar_load {
+    pointer-events: none;
     opacity: 0;
     text-align: center;
     color: var(--COLOR_FONT_BLACK);
@@ -48,9 +55,11 @@
     transition: .3s;
 }
 
-.profile-container-avatar_load:hover {
+.input-edit-file:hover + .profile-container-avatar_load {
     opacity: .7;
 }
+
+
 
 .profile-container-info {}
 
