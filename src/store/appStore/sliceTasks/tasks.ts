@@ -41,7 +41,6 @@ const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-
   },
   extraReducers: (builder) => {
     builder
