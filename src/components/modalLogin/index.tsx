@@ -45,7 +45,7 @@ const ModalLogin = () => {
           <span className="login-title_text">Введите ваши регистрационные данные для входа в ваш личный кабинет. </span>
         </div>
         <div className="px-7 pb-7 relative">
-          {!validEmail && <p className='wrong-email-login'>Некорректный адрес e-mail</p>}
+          {!validEmail && <p className='wrong-email-login wrong-text'>Некорректный адрес e-mail</p>}
           <input
             name="e-mail"
             type="email"
@@ -54,7 +54,7 @@ const ModalLogin = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {!validPassword && <p className='wrong-password-login'>Длина пароля не может быть равна нулю</p>}
+          {!validPassword && <p className='wrong-password-login wrong-text'>Длина пароля не может быть равна нулю</p>}
           <input
             name="password"
             type="password"
@@ -63,7 +63,7 @@ const ModalLogin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {errorMessage.length > 0 && <p className="login_wrong">{errorMessage}</p>}
+          {errorMessage.length > 0 && <p className="error_wrong">{errorMessage}</p>}
         </div>
         <div className="login-footer">
           <input

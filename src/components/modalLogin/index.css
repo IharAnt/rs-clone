@@ -95,7 +95,7 @@
     border: 1px solid #A00000;;
 }
 
-.login_wrong {
+.error_wrong {
     position: relative;
     top: 10px;
     font-size: 11px;
