@@ -8,9 +8,6 @@ interface IBasketOpen {
 
 const HistoryStore = ({ setActive }: IBasketOpen) => {
 
-
-
-
     return (
         <div className={`main-field-history ${setActive ? 'main-field-history_open' : ''}`}>
             <p className='basket-title-text'>История</p>
