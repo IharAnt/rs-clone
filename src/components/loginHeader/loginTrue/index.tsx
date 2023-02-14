@@ -3,12 +3,13 @@ import './index.css';
 import profileIcoDefault from './../../../assets/img/profileIcoDefault.png';
 import motekoinIco from './../../../assets/img/motekoinIco.png';
 import messageIco from './../../../assets/img/mesageIco.png';
+import { useAppSelector } from '../../../store';
 
 const LoginTrue: React.FC = () => {
 
-    const name = 'Andrei fsdfsdf';
-    const motikoin = 4244;
-    const IsMessage = true;
+    const IsMessage = false;
+
+    const { name, moticoins } = useAppSelector(state => state.appState.profile)
 
     return (
         <div className='profile-container'>
@@ -20,7 +21,7 @@ const LoginTrue: React.FC = () => {
                 </div>
                 <div className='profile-container_quantity'>
                     <img className="profile-quantity_ico" src={motekoinIco} alt="motekoin ico" />
-                    <span className='profile-quantity_text'>{motikoin}</span>
+                    <span className='profile-quantity_text'>{moticoins}</span>
                 </div>
             </div>
             <div className='profile-container_profile'>
