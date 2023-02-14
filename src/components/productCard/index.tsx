@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useAppDispatch } from '../../store';
+import { addBasket } from '../../store/storePage/sliceStore/slice';
 import { IProduct } from '../../types/interfaces/IProduct';
 import Modal from '../modal';
 import motikoin from './../../assets/img/motekoinIco.png'
@@ -7,11 +9,13 @@ import './index.css';
 const ProductCard = (product: IProduct) => {
 
     const [modalCardProduct, setModalCardProduct] = useState(false);
-    const [IsButton, setIsutton] = useState(true);
+    const [IsButton, setIsButton] = useState(true);
+    const dispatch = useAppDispatch();
 
     const clickBuyProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
-        console.log(e.currentTarget.id)
+
+        dispatch(addBasket(product))
     }
 
     return (
@@ -29,13 +33,11 @@ const ProductCard = (product: IProduct) => {
                 </div>
                 <div className='product-button-container'>
                     {IsButton ? <button
-                        id={product.id}
                         onClick={(e) => clickBuyProduct(e)}
                         className='product-card_button'>
                         Купить
                     </button>
                         : <button
-                            id={product.id}
                             onClick={(e) => clickBuyProduct(e)}
                             className='product-card_button card-button_delete'>
                             Удалить из корзины
