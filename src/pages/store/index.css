@@ -1,0 +1,38 @@
+.store-container {
+    width: 97vw;
+    height: 67vh;
+    display: flex;
+    position: relative;
+}
+
+.store-container-shop {
+    height: 100%;
+    width: 100%;
+    background: darkgoldenrod;
+}
+
+
+
+.main-field-store {
+    height: calc(100% - 100px);
+    background: darkgreen;
+}
+
+.main-field-history {
+    height: 100px;
+    background: darkblue;
+}
+
+.store-basket-ico {
+    cursor: pointer;
+    right: 0px;
+    top: -25px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    transition: .3s;
+}
+
+.store-basket-ico:hover {
+    transform: scale(1.05);
+}
