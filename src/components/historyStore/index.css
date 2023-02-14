@@ -1,0 +1,17 @@
+.main-field-history {
+    height: 100%;
+    width: 0px;
+    transition: .3s;
+    opacity: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: repeat(2, min-content) 1fr min-content;
+    border-radius: 10px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+}
+
+.main-field-history_open {
+    width: 150px;
+    opacity: 1;
+    padding: 0 5px;
+}

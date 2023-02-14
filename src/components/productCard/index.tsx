@@ -4,7 +4,7 @@ import './index.css';
 const ProductCard = (product: IProduct) => {
 
     return (
-        <div>
+        <div className='product-card-container'>
             <p>{product.brand}</p>
         </div>
     )

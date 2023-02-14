@@ -11,7 +11,7 @@
 }
 
 .main-field-basket_open {
-    width: 200px;
+    width: 220px;
     opacity: 1;
     padding: 0 5px;
 }
@@ -19,7 +19,7 @@
 .basket-title-text {
     font-weight: 600;
     font-size: 20px;
-    text-align: left;
+    text-align: center;
     color: var(--COLOR_FONT_BLACK);
 }
 

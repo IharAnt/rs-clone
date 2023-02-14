@@ -1,37 +1,54 @@
+.title-container-store {
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.title-container-store_text {
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--COLOR_FONT_BLACK);
+}
+
 .store-container {
     width: 97vw;
     height: 67vh;
     display: flex;
-    position: relative;
 }
 
 .store-container-shop {
     height: 100%;
     width: 100%;
-    background: darkgoldenrod;
 }
-
-
 
 .main-field-store {
-    height: calc(100% - 100px);
-    background: darkgreen;
+    padding: 0 10px;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow: auto;
+    justify-content: center;
 }
 
-.main-field-history {
-    height: 100px;
-    background: darkblue;
-}
-
-.store-basket-ico {
+.store-ico {
     cursor: pointer;
-    right: 0px;
-    top: -25px;
-    width: 50px;
-    height: 50px;
-    position: absolute;
+    width: 45px;
+    height: 45px;
     transition: .3s;
     z-index: 1;
+}
+
+.title-container-store_control {
+    display: flex;
+    gap: 5px;
 }
 
 .basket-quality {
@@ -49,6 +66,6 @@
     top: 5px;
 }
 
-.store-basket-ico:hover {
+.store-ico:hover {
     transform: scale(1.05);
 }
