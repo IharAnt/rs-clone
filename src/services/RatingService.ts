@@ -1,4 +1,3 @@
-import WebRequest from '../helpers/WebRequest';
 import appConfig from '../configs/AppConfig';
 import RatingSortType from '../types/enums/RatingSortEnum';
 import OrderType from '../types/enums/OrderEnum';
