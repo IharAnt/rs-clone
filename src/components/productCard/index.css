@@ -57,11 +57,16 @@
     width: 80%;
     font-size: 18px;
     text-transform: uppercase;
-    padding: 3px;
+    padding: 5px;
     background: var(--COLOR_FONT_BLACK);
     color: var(--BACKGROUND_BASIC);
     border-radius: 10px;
     transition: .3s;
+}
+
+.card-button_delete{
+    background: #b63400;
+    font-size: 16px;
 }
 
 .product-card_button:hover {

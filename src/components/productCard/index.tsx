@@ -7,6 +7,7 @@ import './index.css';
 const ProductCard = (product: IProduct) => {
 
     const [modalCardProduct, setModalCardProduct] = useState(false);
+    const [IsButton, setIsutton] = useState(true);
 
     const clickBuyProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -17,7 +18,8 @@ const ProductCard = (product: IProduct) => {
         <>
             <div
                 className='product-card-container'
-                onClick={() => setModalCardProduct(true)}>
+                onClick={() => setModalCardProduct(true)}
+            >
                 <img className='product-card_img' src={product.thumbnail} alt="product img" />
                 <p className='product-card-title_text'>{product.title}</p>
                 <p className='product-card-description_text'>{product.description}</p>
@@ -26,13 +28,20 @@ const ProductCard = (product: IProduct) => {
                     <img className='product-price_img' src={motikoin} alt="motikoin ico" />
                 </div>
                 <div className='product-button-container'>
-                    <button
+                    {IsButton ? <button
                         id={product.id}
                         onClick={(e) => clickBuyProduct(e)}
-                        className='product-card_button'
-                    >Купить</button>
+                        className='product-card_button'>
+                        Купить
+                    </button>
+                        : <button
+                            id={product.id}
+                            onClick={(e) => clickBuyProduct(e)}
+                            className='product-card_button card-button_delete'>
+                            Удалить из корзины
+                        </button>
+                    }
                 </div>
-
             </div>
             <Modal isOpen={modalCardProduct} setModal={setModalCardProduct} >
                 <div className="div">fdsfsdf</div>
