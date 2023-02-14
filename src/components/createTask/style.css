@@ -62,8 +62,15 @@
 .createTask__btn{
   border-radius: 3px;
   background: var(--COLOR_YELLOW);
+  cursor: pointer;
 }
 
 .createTask__input-red{
   border-color: red;
+}
+
+.createTask__error{
+  color: red;
+  margin-top: 10px;
+  margin-left: 10px;
 }

@@ -21,7 +21,7 @@ export default function MotivatorsNavigation({content, setContent}: props ){
           }}>добавить  свою задачу +</button>
       </div>
       <Modal isOpen={modal} setModal={setModal}>
-        <CreateTask />
+        <CreateTask setModal={setModal}/>
       </Modal>
     </div>
   )

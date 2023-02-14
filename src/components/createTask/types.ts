@@ -9,3 +9,7 @@ export type optionInspectorType = {
   label: string;
   value: string
 }
+
+export type props = {
+  setModal: React.Dispatch<React.SetStateAction<boolean>>
+}

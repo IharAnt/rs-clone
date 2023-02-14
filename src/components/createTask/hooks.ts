@@ -50,11 +50,17 @@ export const useInput = (initialValue: string, validations: validateionType) => 
     setDirty(true)
   }
 
+  const clear = () => {
+    setValue('')
+    setDirty(false)
+  } 
+
   return {
     value,
     onChange,
     onBlur,
     isDirty,
+    clear,
     ...valid
   }
 }
@@ -71,7 +77,13 @@ export const useSelect = () => {
     setDirty(true)
   }
 
+  const clear = () => {
+    setDirty(false)
+    setValue(null)
+  }
+
   return {
+    clear,
     value,
     onChange,
     onBlur,
