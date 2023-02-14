@@ -63,8 +63,9 @@ export default function CreateTask({ setModal }: props) {
 
     if (validData) {
       dispatch(createTask({ summary: summary.value, description: description.value, points: +award.value, dueDate: taskDeadline }))
+    } else {
+      setErrorText('Заполните данные правильно!')
     }
-
   }
 
   useEffect(()=>{
@@ -79,6 +80,10 @@ export default function CreateTask({ setModal }: props) {
       setModal(false);
     } 
   }, [createTaskFulfilled])
+
+  useEffect(()=>{
+    if (createTaskReject) setErrorText('ошибка на стороне сервера')
+  }, [createTaskReject])
 
   useEffect(() => {
     if (!(!inspector.value || unvalidSummary || unvalidDescription || unvalidTaskType || unvalidAward)) {
@@ -130,7 +135,7 @@ export default function CreateTask({ setModal }: props) {
         </div>
         <div className="createTask__field">
           <input type={'submit'} onClick={createTaskHandler} disabled={createTaskPending ? true : false} className='motivators-btn createTask__btn' />
-          <div className="createTask__error">{createTaskReject ? 'ошибка на стороне сервера' : errorText}</div>
+          <div className="createTask__error">{errorText}</div>
         </div>
       </div>
     </form>
