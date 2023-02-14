@@ -7,8 +7,7 @@ import './index.css';
 const StorePage = () => {
 
     const [openBasket, setOpenBasket] = useState(false);
-
-
+    const arr = [2, 3];
     const openBasketHandler = () => {
         openBasket ? setOpenBasket(false) : setOpenBasket(true);
     }
@@ -16,6 +15,7 @@ const StorePage = () => {
     return (
         <MainLayout>
             <div className='store-container'>
+                {arr.length > 0 && <p className='basket-quality'>{arr.length}</p>}
                 <img
                     className='store-basket-ico'
                     onClick={openBasketHandler}

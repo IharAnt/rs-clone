@@ -1,7 +1,7 @@
 .main-field-basket {
     height: 100%;
     width: 0px;
-    transition: .2s;
+    transition: .3s;
     opacity: 0;
     overflow: hidden;
     display: grid;
@@ -46,7 +46,7 @@
 }
 
 .basket-list-product {
-    background: darkred;
+  
 }
 
 .buy-button {
