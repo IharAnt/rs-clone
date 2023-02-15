@@ -13,11 +13,30 @@ const sliceStorePage = createSlice({
         },
         deleteProductBasket(state: typeStorePage, action: PayloadAction<string>) {
             state.basketProducts = state.basketProducts.filter((item) => item.product.id !== action.payload);
-            console.log(state.basketProducts)
+        },
+        plusProductBasket(state: typeStorePage, action: PayloadAction<string>) {
+            state.basketProducts = state.basketProducts.map((item) => {
+                if (item.product.id === action.payload) {
+                    item.count += 1;
+                }
+                return item;
+            });
+        },
+        minusProductBasket(state: typeStorePage, action: PayloadAction<string>) {
+            state.basketProducts = state.basketProducts.map((item) => {
+                if (item.product.id === action.payload) {
+                    item.count -= 1;
+                    if (item.count < 1) {
+                        item.count = 0;
+                    }
+                }
+                return item;
+            });
+            state.basketProducts = state.basketProducts.filter((item) => item.count > 0);
         },
 
     }
 })
 
 export default sliceStorePage.reducer;
-export const { addProductBasket, deleteProductBasket } = sliceStorePage.actions;
+export const { addProductBasket, deleteProductBasket, plusProductBasket, minusProductBasket } = sliceStorePage.actions;
