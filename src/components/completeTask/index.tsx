@@ -3,11 +3,17 @@ import './style.css'
 import inspector from '../../assets/icons/inspector.png'
 import download from '../../assets/icons/download.png'
 import { useState } from 'react'
+import { useAppSelector } from '../../store'
 
-export default function CompleteTask({ task }: props) {
+export default function CompleteTask({ task, setModal }: props) {
 
   const [images, setImages] = useState<string[]>([])
   const [report, setReport] = useState('')
+
+  const [reportDirty, setReportDirty] = useState(false)
+  const [errorText, setErrorText] = useState('')
+
+  const completeTaskPending = useAppSelector((state) => state.tasks.completeTaskPending)
 
   function readFileAsText(file: File) {
     return new Promise(function (resolve, reject) {
@@ -34,6 +40,18 @@ export default function CompleteTask({ task }: props) {
     }
   }
 
+  const completeTaskHandler = (deny: boolean = false) => {
+
+    if (deny) {
+      setModal(false)
+    } 
+
+    else {
+      setReportDirty(true)
+      if (!report) setErrorText('Добавьте отчёт!')
+    }
+  }
+
   return (
     <div className='completeTask'>
       <h2 className='completeTask__title'>Завершение Мотиватора: </h2>
@@ -47,7 +65,7 @@ export default function CompleteTask({ task }: props) {
         <textarea value={report} onChange={(e) => setReport(e.target.value)} className='completeTask__report' name="text" />
         <div className='completeTask__fileHelper'>При необходимости прикрепите фотографии результата выполнения</div>
         <div className="completeTask__file input__wrapper">
-          <input name="file" type="file" id="input__file" className="input input__file" multiple accept="image/jpeg,image/png" onChange={(e) => inputFileImagesResult(e)} />
+          <input name="file" type="file" id="input__file" className="input input__file" onBlur={()=>setReportDirty(true)} multiple accept="image/jpeg,image/png" onChange={(e) => inputFileImagesResult(e)} />
           <label htmlFor="input__file" className="input__file-button">
             <span className="input__file-icon-wrapper"><img className="input__file-icon" src={download} alt="Выбрать файл" width="25" /></span>
             <span className="input__file-button-text">Выберите фото</span>
@@ -67,9 +85,10 @@ export default function CompleteTask({ task }: props) {
       <hr />
       <div className='completeTask__inspector'><img className='completeTask__inspectorImg' src={inspector} alt="inspector" title='проверяющий' /> {task.inspector.name}</div>
       <div className='completeTask__btns'>
-        <button className='motivators-btn completeTask__btn-approve'>Сдать задачу</button>
-        <button className='motivators-btn completeTask__btn-cancel'>Отказаться от выполнения</button>
+        <button className='motivators-btn completeTask__btn-approve' onClick={() => completeTaskHandler()} disabled={completeTaskPending ? true : false}>Сдать задачу</button>
+        <button className='motivators-btn completeTask__btn-cancel' onClick={() => completeTaskHandler(true)} disabled={completeTaskPending ? true : false}>Отказаться от выполнения</button>
       </div>
+      <div className='completeTask__error'>{ reportDirty ? errorText : ''}</div>
     </div>
   )
 }

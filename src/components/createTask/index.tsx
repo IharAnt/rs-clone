@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { getUsers } from '../../store/appStore/sliceTasks/tasks';
 import { IUser } from '../../types/interfaces/IUser';
 import { createTask } from '../../store/appStore/sliceTasks/tasks';
-import { updateFulfilled } from '../../store/appStore/sliceTasks/tasks';
+import { updateCreateFulfilled } from '../../store/appStore/sliceTasks/tasks';
 
 export default function CreateTask({ setModal }: props) {
 
@@ -76,7 +76,7 @@ export default function CreateTask({ setModal }: props) {
       award.clear();
       taskType.clear();
       setErrorText('');
-      dispatch(updateFulfilled())
+      dispatch(updateCreateFulfilled())
       setModal(false);
     } 
   }, [createTaskFulfilled])

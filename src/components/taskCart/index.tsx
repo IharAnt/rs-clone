@@ -66,7 +66,7 @@ export default function TaskCart({ task }: props) {
           <>
             <button className='motivators-block motivatorsTask__btn motivatorsTask__btn--inProgress' onClick={() => setModal(true)}>завершить</button>
             <Modal isOpen={modal} setModal={setModal}>
-              <CompleteTask task={task}/>
+              <CompleteTask setModal={setModal} task={task}/>
             </Modal>
           </> : ''}
       </div>

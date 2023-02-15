@@ -27,13 +27,13 @@
   gap: 10px;
 }
 
-.completeTask__field {
-  font-size: 1.2em;
-}
-
 .completeTask__inspector {
   display: flex;
   align-items: center;
+}
+
+.completeTask__error{
+  color: red;
 }
 
 .completeTask__inspectorImg {

@@ -47,13 +47,24 @@ export const createTask = createAsyncThunk<ITask[], {summary: string, descriptio
   }
 )
 
+export const completeTask = createAsyncThunk<ITask[], {}, {}>(
+  'tasks/completeTask' ,
+  async function ({}) {
+    const result = await TasksService.getExecutorTasks('1')
+    return result;
+  }
+)
+
 type tasks = {
   tasks: ITask[]
   inspectorTasks: ITask[]
   users: IUser[],
   createTaskReject: boolean,
   createTaskFulfilled: boolean,
-  createTaskPending: boolean
+  createTaskPending: boolean,
+  completeTaskPending: boolean,
+  completeTaskReject: boolean,
+  completeTaskFulfilled: boolean
 }
 
 const initialState: tasks = {
@@ -62,14 +73,17 @@ const initialState: tasks = {
   users: [],
   createTaskReject: false,
   createTaskFulfilled: false,
-  createTaskPending: false
+  createTaskPending: false,
+  completeTaskPending: false,
+  completeTaskReject: false,
+  completeTaskFulfilled: false
 }
 
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    updateFulfilled: (state) => {
+    updateCreateFulfilled: (state) => {
       state.createTaskFulfilled = false
     }
   },
@@ -97,9 +111,18 @@ const tasksSlice = createSlice({
         state.createTaskPending = false
         state.createTaskReject = false
         state.createTaskFulfilled = true
+      }).addCase(completeTask.pending, (state) => {
+        state.completeTaskPending = true
+      }).addCase(completeTask.rejected, (state) => {
+        state.completeTaskPending = false
+        state.completeTaskReject = true
+      }).addCase(completeTask.fulfilled, (state) => {
+        state.completeTaskPending = false
+        state.completeTaskReject = false
+        state.completeTaskFulfilled = false
       })
   }
 })
 
-export const { updateFulfilled } = tasksSlice.actions
+export const { updateCreateFulfilled } = tasksSlice.actions
 export default tasksSlice.reducer
