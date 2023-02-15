@@ -1,5 +1,5 @@
 import motikoin from './../../assets/img/motekoinIco.png'
-import basketPlus from './../../assets/img/basketAddIco.png';
+import basketPlus from './../../assets/img/basketPlusIco.png';
 import basketMinus from './../../assets/img/basketMinusIco.png';
 import basketDelete from './../../assets/img/basketDeleteIco.png';
 import { ICartProduct } from '../../types/interfaces/IOrder';
@@ -25,7 +25,7 @@ const ItemBasketControl = (item: ICartProduct) => {
                     <p className='basket-item-ico-text'>Цена: {item.product.price}</p>
                     <p className='basket-item-ico-text'>Количество: {item.count}</p>
                     <div className='basket-item-info-price'>
-                        <p className='basket-item-ico-text'>К оплате: {item.count * item.product.price}</p>
+                        <p className='basket-item-ico-text'>Итого: {item.count * item.product.price}</p>
                         <img className='basket-item-ico' src={motikoin} alt="motikoin ico" />
                     </div>
                 </div>

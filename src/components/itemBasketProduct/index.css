@@ -43,7 +43,7 @@
     object-fit: cover;
 }
 
-.basket-item-product:hover .basket-item-product_control {
+.basket-item-product_control:hover {
     opacity: 1;
 }
 

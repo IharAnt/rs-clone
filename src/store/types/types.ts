@@ -1,5 +1,5 @@
 import { store } from "..";
-import { IProfile } from "../../types/interfaces/IUser";
+import { IProfile} from "../../types/interfaces/IUser";
 import OrderType from "../../types/enums/OrderEnum";
 import RatingSortType from "../../types/enums/RatingSortEnum";
 import { ICartProduct } from "../../types/interfaces/IOrder";
