@@ -3,7 +3,8 @@ import TaskTypeEnum from "../enums/TaskTypeEnum";
 export interface IAchievement {
   id: string;
   name: string;
-  img: string;
+  imgBlack: string;
+  imgColor: string;
   type: TaskTypeEnum;
   description: string;
   maxPoints: number;

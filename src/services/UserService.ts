@@ -4,16 +4,17 @@ import apiClient from '../api/ApiClient';
 //import users from '../data/Users';
 
 export default class UserService {
-  static userPath = `/user`;
+  static userPath = `/users`;
+  static profilePath = `/profile`;
 
-  static async getProfile(id: string): Promise<IProfile> {
+  static async getProfile(userId: string): Promise<IProfile> {
     // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
     // return result;
 
     return Promise.resolve(profile);
   }
 
-  static async updateProfile(id: string, updateProfile: IUpdateProfile): Promise<IProfile> {
+  static async updateProfile(userId: string, updateProfile: IUpdateProfile): Promise<IProfile> {
     // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
     // return result;
 

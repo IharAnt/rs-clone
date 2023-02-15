@@ -1,4 +1,4 @@
-import { IUserAchievement } from "./IAchievement";
+import { IAchievement, IUserAchievement } from "./IAchievement";
 import { IExperience } from "./IExperience";
 import { ITasksStats } from "./ITasksStats";
 
@@ -19,7 +19,7 @@ export interface IProfile extends IUpdateProfile {
   totalExperience: number;
   nextLevelExperience: number;
   experiences: IExperience[];
-  achievements: IUserAchievement[]
+  achievements: IAchievement[]
   level: number;
   tasksStats: ITasksStats;
 }
