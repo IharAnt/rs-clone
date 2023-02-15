@@ -1,4 +1,4 @@
-import { ITask } from './../../../types/interfaces/ITask';
+import { ITask } from '../../../types/interfaces/ITask';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import TasksService from '../../../services/TasksService';
 import TaskStatusEnum from '../../../types/enums/TaskStatusEnum';
@@ -38,9 +38,9 @@ export const getUsers = createAsyncThunk<IUser[], undefined, { rejectValue: stri
   }
 )
 
-export const createTask = createAsyncThunk<ITask[], {summary: string, description: string, points: number, dueDate?: string | null }, {}>(
-  'tasks/createTask', 
-  async function ({summary, description, points, dueDate}) {
+export const createTask = createAsyncThunk<ITask[], { summary: string, description: string, points: number, dueDate?: string | null }, {}>(
+  'tasks/createTask',
+  async function ({ summary, description, points, dueDate }) {
     const task = await TasksService.createTask({} as ITask);
     const result = await TasksService.getExecutorTasks('1')
     return result;
@@ -48,8 +48,16 @@ export const createTask = createAsyncThunk<ITask[], {summary: string, descriptio
 )
 
 export const completeTask = createAsyncThunk<ITask[], {}, {}>(
-  'tasks/completeTask' ,
-  async function ({}) {
+  'tasks/completeTask',
+  async function ({ }) {
+    const result = await TasksService.getExecutorTasks('1')
+    return result;
+  }
+)
+
+export const testTask = createAsyncThunk<ITask[], {}, {}>(
+  'testTask',
+  async function ({ }) {
     const result = await TasksService.getExecutorTasks('1')
     return result;
   }
@@ -101,7 +109,7 @@ const tasksSlice = createSlice({
       .addCase(getUsers.fulfilled, (state, action) => {
         state.users = action.payload
       })
-      .addCase(createTask.pending, (state)=> {
+      .addCase(createTask.pending, (state) => {
         state.createTaskPending = true;
       })
       .addCase(createTask.rejected, (state) => {
@@ -120,6 +128,8 @@ const tasksSlice = createSlice({
         state.completeTaskPending = false
         state.completeTaskReject = false
         state.completeTaskFulfilled = false
+      }).addCase(testTask.fulfilled, (state) => {
+
       })
   }
 })

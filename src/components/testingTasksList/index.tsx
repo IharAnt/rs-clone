@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../store'
 import { useEffect } from 'react'
-import { getInspectorTasks } from '../../store/appStore/sliceTasks/tasks'
+import { getInspectorTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
 import './style.css'
 import TestingTask from '../testingTask'
 

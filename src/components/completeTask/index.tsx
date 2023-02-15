@@ -28,19 +28,21 @@ export default function CompleteTask({ task, setModal }: props) {
   const inputFileImagesResult = (e: React.FormEvent<HTMLInputElement>) => {
     const files = e.currentTarget.files
     if (files) {
-      const mas: any = []
-      Array.from(files).forEach((file) => {
+      const mas = Array.from(files).map((file) => {
         if (file) {
-          mas.push(readFileAsText(file))
+          return readFileAsText(file)
         }
       })
       Promise.all(mas).then((values) => {
-        setImages(Array.from(new Set([...images, ...values])).slice(0, 5))
+        setImages(Array.from(new Set([...images, ...values as string[]])).slice(0, 5))
       });
     }
   }
 
   const completeTaskHandler = (deny: boolean = false) => {
+
+    console.log(images);
+    
 
     if (deny) {
       //
@@ -67,7 +69,7 @@ export default function CompleteTask({ task, setModal }: props) {
       <div className="completeTask__load">
         <div className='completeTask__field'>Отчёт о работе: </div>
         <textarea value={report} onChange={(e) => setReport(e.target.value)} className='completeTask__report' name="text" />
-        <div className='completeTask__fileHelper'>При необходимости прикрепите фотографии результата выполнения</div>
+        <div className='completeTask__fileHelper'>При необходимости прикрепите фотографии результата выполнения (не более 5 фото)</div>
         <div className="completeTask__file input__wrapper">
           <input name="file" type="file" id="input__file" className="input input__file" onBlur={()=>setReportDirty(true)} multiple accept="image/jpeg,image/png" onChange={(e) => inputFileImagesResult(e)} />
           <label htmlFor="input__file" className="input__file-button">

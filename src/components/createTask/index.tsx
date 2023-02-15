@@ -6,10 +6,10 @@ import { useState, useEffect } from 'react';
 import CreateTaskHepler from '../createTaskHepler';
 import { useInput, useSelect } from './hooks';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { getUsers } from '../../store/appStore/sliceTasks/tasks';
+import { getUsers } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUser } from '../../types/interfaces/IUser';
-import { createTask } from '../../store/appStore/sliceTasks/tasks';
-import { updateCreateFulfilled } from '../../store/appStore/sliceTasks/tasks';
+import { createTask } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { updateCreateFulfilled } from '../../store/motivatorsStore/sliceTasks/tasks';
 
 export default function CreateTask({ setModal }: props) {
 

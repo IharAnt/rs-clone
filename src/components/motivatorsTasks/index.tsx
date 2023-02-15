@@ -2,7 +2,7 @@ import TaskList from '../taskList/index'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
 import {useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
-import { getTasks } from '../../store/appStore/sliceTasks/tasks'
+import { getTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
 import './style.css'
 
 export default function MotivatorsTasks() {
