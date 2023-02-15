@@ -13,10 +13,9 @@ import './index.css';
 const StorePage = () => {
 
     const [arrProducts, setArrProducts] = useState([] as IProduct[]);
-    const basketArrStore = useAppSelector(state => state.storePage.basketProducts);
+    const basketCount = useAppSelector(state => state.storePage.basketCount);
     const [openBasket, setOpenBasket] = useState(false);
     const [openHistory, setOpenHistory] = useState(false);
-    const [quantityBasket, setQuantityBasket] = useState(0);
 
     const openBasketHandler = () => {
         openBasket ? setOpenBasket(false) : setOpenBasket(true);
@@ -24,11 +23,6 @@ const StorePage = () => {
     const openHistoryHandler = () => {
         openHistory ? setOpenHistory(false) : setOpenHistory(true);
     }
-
-    useEffect((() => {
-        const actualQuantity = basketArrStore.reduce((a, b) => a + b.count, 0);
-        setQuantityBasket(actualQuantity)
-    }), [basketArrStore])
 
     useEffect((() => {
         const getProduct = async () => {
@@ -43,7 +37,7 @@ const StorePage = () => {
             <div className='title-container-store'>
                 <p className='title-container-store_text'>Магазин</p>
                 <div className='title-container-store_control'>
-                    {quantityBasket > 0 && <p className='basket-quality'>{quantityBasket}</p>}
+                    {basketCount > 0 && <p className='basket-quality'>{basketCount}</p>}
                     <img
                         className='store-ico'
                         onClick={openHistoryHandler}

@@ -14,6 +14,7 @@ export type typeAppActual = {
 
 export type typeStorePage = {
     basketProducts: ICartProduct[],
+    basketCount: number,
 }
 
 export type typeRatingPage = {

@@ -8,11 +8,12 @@ const sliceStorePage = createSlice({
     initialState: initalState,
     reducers: {
         addProductBasket(state: typeStorePage, action: PayloadAction<IProduct>) {
-            // const productItem = state.basketProducts.find((item) => item.product.id === action.payload.id)
             state.basketProducts.push({ product: action.payload, count: 1 });
+            state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
         },
         deleteProductBasket(state: typeStorePage, action: PayloadAction<string>) {
             state.basketProducts = state.basketProducts.filter((item) => item.product.id !== action.payload);
+            state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
         },
         plusProductBasket(state: typeStorePage, action: PayloadAction<string>) {
             state.basketProducts = state.basketProducts.map((item) => {
@@ -21,6 +22,7 @@ const sliceStorePage = createSlice({
                 }
                 return item;
             });
+            state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
         },
         minusProductBasket(state: typeStorePage, action: PayloadAction<string>) {
             state.basketProducts = state.basketProducts.map((item) => {
@@ -33,6 +35,7 @@ const sliceStorePage = createSlice({
                 return item;
             });
             state.basketProducts = state.basketProducts.filter((item) => item.count > 0);
+            state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
         },
 
     }
