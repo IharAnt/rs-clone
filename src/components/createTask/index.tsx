@@ -107,14 +107,14 @@ export default function CreateTask({ setModal }: props) {
         <div className="createTask__field">
           <div className="createTask__fieldName">
             <div className="createTask__fieldNameText">Название: </div>
-            <CreateTaskHepler message={'Название должно быть не больше 40 символов'} helper={helperName} setHelper={setHelperName} key={setHelperName.toString()} />
+            <CreateTaskHepler message={'Название должно быть не больше 40 символов'} helper={helperName} setHelper={setHelperName} key={helperName.toString()} />
           </div>
           <input className={unvalidSummary && summary.isDirty ? 'createTask__input createTask__input-red' : 'createTask__input'} type="text" value={summary.value} onBlur={() => summary.onBlur()} onChange={(e: React.ChangeEvent<HTMLInputElement>) => summary.onChange(e)} />
         </div>
         <div className="createTask__field">
           <div className="createTask__fieldName">
             <div className="createTask__fieldNameText">Описание: </div>
-            <CreateTaskHepler message={'Описание должно быть не больше 100 символов'} helper={helperDescription} setHelper={setHelperDescription} key={setHelperDescription.toString()} />
+            <CreateTaskHepler message={'Описание должно быть не больше 100 символов'} helper={helperDescription} setHelper={setHelperDescription} key={helperDescription.toString()} />
           </div>
           <textarea className={unvalidDescription && description.isDirty ? 'createTask__input createTask__input-description createTask__input-red' : 'createTask__input createTask__input-description'} value={description.value} onBlur={description.onBlur} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => description.onChange(e)}></textarea>
         </div>
@@ -129,12 +129,12 @@ export default function CreateTask({ setModal }: props) {
         <div className="createTask__field">
           <div className="createTask__fieldName">
             <div className="createTask__fieldNameText">Награда: </div>
-            <CreateTaskHepler message={'от 10 до 9999 мотикойнов. Награда может быть переопределена проверяющим.'} helper={helperAward} setHelper={setHelperAward} key={setHelperAward.toString()} />
+            <CreateTaskHepler message={'от 10 до 9999 мотикойнов. Награда может быть переопределена проверяющим.'} helper={helperAward} setHelper={setHelperAward} key={helperAward.toString()} />
           </div>
           <input className={unvalidAward && award.isDirty ? 'createTask__input createTask__input-red' : 'createTask__input'} type="number" value={award.value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => award.onChange(e)} onBlur={award.onBlur} />
         </div>
         <div className="createTask__field">
-          <input type={'submit'} onClick={createTaskHandler} disabled={createTaskPending ? true : false} className='motivators-btn createTask__btn' />
+          <input type={'submit'} onClick={createTaskHandler} value='Создать' disabled={createTaskPending ? true : false} className='motivators-btn createTask__btn' />
           <div className="createTask__error">{errorText}</div>
         </div>
       </div>
