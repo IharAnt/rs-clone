@@ -1,24 +1,41 @@
-import appConfig from '../configs/AppConfig';
-import { ITask } from '../types/interfaces/ITask';
+import { ITask, IUpdateTask } from '../types/interfaces/ITask';
 import executorTasks from '../data/ExecutorTasks';
 import inspectorTasks from '../data/InspectorTasks';
 import TaskStatusEnum from '../types/enums/TaskStatusEnum';
+import apiClient from '../api/ApiClient';
 
 export default class TasksService {
-  private tasksPath = `${appConfig.apiUrl}/tasks`;
+  static tasksPath = `/task`;
   
   static async getExecutorTasks(userId: string): Promise<ITask[]> {
-    // const result = await this.webRequest.get<ITask[]>(`${this.tasksPath}/executor/${id}`);
-    // return result;
+    const response = await apiClient.get<ITask[]>(`${this.tasksPath}/executor/${userId}`);
+    return response.data;
 
-    return Promise.resolve(executorTasks);
+    //return Promise.resolve(executorTasks);
   }
 
   static async getInspectorTasks(userId: string): Promise<ITask[]> {
-    // const result = await this.webRequest.get<ITask[]>(`${this.tasksPath}/inspector/${id}`);
-    // return result;
+    const response = await apiClient.get<ITask[]>(`${this.tasksPath}/inspector/${userId}`);
+    return response.data;
 
-    return Promise.resolve(inspectorTasks);
+    //return Promise.resolve(inspectorTasks);
+  }
+
+  static async updateTask(taskId: string, task: IUpdateTask): Promise<ITask> {
+    const response = await apiClient.put<ITask>(`${TasksService.tasksPath}/${taskId}`, task);
+    return response.data;
+
+    // const result: ITask = {...task, id: 'sdfsdf' + Date.now};
+    // return Promise.resolve(result);
+  }
+
+  static async createTask(task: IUpdateTask): Promise<ITask> {
+    const response = await apiClient.post<ITask>(TasksService.tasksPath, task);
+    return response.data;
+    
+    // const result: ITask = {...task, id: 'sdfsdf' + Date.now};
+    // executorTasks.push(result);
+    // return Promise.resolve({} as ITask);
   }
 
   static async updateTasksStatus(taskId: string, newStatus: TaskStatusEnum): Promise<ITask> {
@@ -35,20 +52,6 @@ export default class TasksService {
       return Promise.resolve(task);
     }
 
-    return Promise.resolve({} as ITask);
-  }
-
-  static async updateTask(taskId: string, task: ITask): Promise<ITask> {
-    // const result = await this.webRequest.put<ITask>(`${this.tasksPath}/update/${taskId}`, task);
-    // return result;
-  
-    return Promise.resolve(task);
-  }
-
-  static async createTask(task: ITask): Promise<ITask> {
-    // const result = await this.webRequest.post<ITask>(this.tasksPath, task);
-    // return result;
-    executorTasks.push(task);
     return Promise.resolve({} as ITask);
   }
 }
