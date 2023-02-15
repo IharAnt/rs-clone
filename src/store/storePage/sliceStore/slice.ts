@@ -7,13 +7,12 @@ const sliceStorePage = createSlice({
     name: 'store-page',
     initialState: initalState,
     reducers: {
-        addBasket(state: typeStorePage, action: PayloadAction<IProduct>) {
-            const productItem = state.basketProducts.find((item) => item.product.id === action.payload.id)
-            if (productItem) {
-                productItem.count = +1
-            } else {
-                console.log('нету')
-            }
+        addProductBasket(state: typeStorePage, action: PayloadAction<IProduct>) {
+            // const productItem = state.basketProducts.find((item) => item.product.id === action.payload.id)
+            state.basketProducts.push({ product: action.payload, count: 1 });
+        },
+        deleteProductBasket(state: typeStorePage, action: PayloadAction<string>) {
+            state.basketProducts = state.basketProducts.filter((item) => item.product.id !== action.payload);
             console.log(state.basketProducts)
         },
 
@@ -21,4 +20,4 @@ const sliceStorePage = createSlice({
 })
 
 export default sliceStorePage.reducer;
-export const { addBasket } = sliceStorePage.actions;
+export const { addProductBasket, deleteProductBasket } = sliceStorePage.actions;

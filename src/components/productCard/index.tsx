@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useAppDispatch } from '../../store';
-import { addBasket } from '../../store/storePage/sliceStore/slice';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { addProductBasket, deleteProductBasket } from '../../store/storePage/sliceStore/slice';
+import { ICartProduct } from '../../types/interfaces/IOrder';
 import { IProduct } from '../../types/interfaces/IProduct';
 import Modal from '../modal';
 import motikoin from './../../assets/img/motekoinIco.png'
@@ -11,12 +12,22 @@ const ProductCard = (product: IProduct) => {
     const [modalCardProduct, setModalCardProduct] = useState(false);
     const [IsButton, setIsButton] = useState(true);
     const dispatch = useAppDispatch();
+    const basketArrStore = useAppSelector(state => state.storePage.basketProducts);
 
     const clickBuyProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
-
-        dispatch(addBasket(product))
+        dispatch(addProductBasket(product));
     }
+
+    const clickDeleteProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        dispatch(deleteProductBasket(e.currentTarget.id));
+    }
+
+    useEffect((() => {
+        setIsButton(true);
+        if (basketArrStore.find((item) => item.product.id === product.id)) { setIsButton(false) }
+    }), [basketArrStore, product.id])
 
     return (
         <>
@@ -38,9 +49,10 @@ const ProductCard = (product: IProduct) => {
                         Купить
                     </button>
                         : <button
-                            onClick={(e) => clickBuyProduct(e)}
+                            id={product.id}
+                            onClick={(e) => clickDeleteProduct(e)}
                             className='product-card_button card-button_delete'>
-                            Удалить из корзины
+                            Удалить
                         </button>
                     }
                 </div>
