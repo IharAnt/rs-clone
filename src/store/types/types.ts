@@ -1,5 +1,5 @@
 import { store } from "..";
-import { IProfile, IUser } from "../../types/interfaces/IUser";
+import { IProfile } from "../../types/interfaces/IUser";
 import OrderType from "../../types/enums/OrderEnum";
 import RatingSortType from "../../types/enums/RatingSortEnum";
 import { ICartProduct } from "../../types/interfaces/IOrder";
@@ -15,6 +15,8 @@ export type typeAppActual = {
 export type typeStorePage = {
     basketProducts: ICartProduct[],
     basketCount: number,
+    IsBasketOpen: boolean,
+    IsHistoryOpen: boolean,
 }
 
 export type typeRatingPage = {

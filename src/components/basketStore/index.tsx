@@ -1,26 +1,21 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { ICartProduct } from '../../types/interfaces/IOrder';
 import motikoin from './../../assets/img/motekoinIco.png'
 import basketPlus from './../../assets/img/basketAddIco.png';
 import basketMinus from './../../assets/img/basketMinusIco.png';
 import basketDelete from './../../assets/img/basketDeleteIco.png';
-
 import './index.css';
 import { deleteProductBasket, minusProductBasket, plusProductBasket } from '../../store/storePage/sliceStore/slice';
 
-interface IBasketOpen {
-    setActive: boolean
-}
-
-const BasketStore = ({ setActive }: IBasketOpen) => {
+const BasketStore = () => {
 
     const actualMotikoin = 1111;
     const [isBuy, setIsBuy] = useState(true);
     const [basketArr, setBasketArr] = useState([] as ICartProduct[]);
     const [necessaryMot, setNecessaryMot] = useState(0);
     const dispatch = useAppDispatch();
-    const { basketProducts, basketCount } = useAppSelector(state => state.storePage);
+    const { basketProducts, basketCount, IsBasketOpen } = useAppSelector(state => state.storePage);
 
     useEffect((() => {
         setBasketArr(basketProducts);
@@ -31,7 +26,7 @@ const BasketStore = ({ setActive }: IBasketOpen) => {
     }), [basketProducts])
 
     return (
-        <div className={`main-field-basket ${setActive ? 'main-field-basket_open' : ''}`}>
+        <div className={`main-field-basket ${IsBasketOpen ? 'main-field-basket_open' : ''}`}>
             <p className='basket-title-text'>Корзина</p>
             <p className='basker-summary'>Товаров в корзине: {basketCount}</p>
             <div className='basket-list-product'>

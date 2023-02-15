@@ -7,6 +7,12 @@ const sliceStorePage = createSlice({
     name: 'store-page',
     initialState: initalState,
     reducers: {
+        openBasketWindow(state: typeStorePage, action: PayloadAction<''>) {
+            state.IsBasketOpen ? state.IsBasketOpen = false : state.IsBasketOpen = true;
+        },
+        openHistoryWindow(state: typeStorePage, action: PayloadAction<''>) {
+            state.IsHistoryOpen ? state.IsHistoryOpen = false : state.IsHistoryOpen = true;
+        },
         addProductBasket(state: typeStorePage, action: PayloadAction<IProduct>) {
             state.basketProducts.push({ product: action.payload, count: 1 });
             state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
@@ -42,4 +48,4 @@ const sliceStorePage = createSlice({
 })
 
 export default sliceStorePage.reducer;
-export const { addProductBasket, deleteProductBasket, plusProductBasket, minusProductBasket } = sliceStorePage.actions;
+export const { addProductBasket, deleteProductBasket, plusProductBasket, minusProductBasket, openHistoryWindow, openBasketWindow } = sliceStorePage.actions;

@@ -1,15 +1,12 @@
-import { useState } from 'react';
+import { useAppSelector } from '../../store';
 
 import './index.css';
 
-interface IBasketOpen {
-    setActive: boolean
-}
-
-const HistoryStore = ({ setActive }: IBasketOpen) => {
+const HistoryStore = () => {
+    const { IsHistoryOpen } = useAppSelector(state => state.storePage);
 
     return (
-        <div className={`main-field-history ${setActive ? 'main-field-history_open' : ''}`}>
+        <div className={`main-field-history ${IsHistoryOpen ? 'main-field-history_open' : ''}`}>
             <p className='basket-title-text'>История</p>
         </div>
 
