@@ -49,6 +49,7 @@
 .title-container-store_control {
     display: flex;
     gap: 5px;
+    position: relative;
 }
 
 .basket-quality {
@@ -63,7 +64,7 @@
     border-radius: 50%;
     z-index: 11;
     right: 0px;
-    top: 5px;
+    top: 0px;
 }
 
 .store-ico:hover {
