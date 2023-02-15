@@ -7,16 +7,17 @@ import { useState } from 'react'
 export default function CompleteTask({ task }: props) {
 
   const [images, setImages] = useState<string[]>([])
+  const [report, setReport] = useState('')
 
-  function readFileAsText(file: File){
-    return new Promise(function(resolve,reject){
-        let reader = new FileReader();
-        reader.onload = function(){
-            resolve(reader.result);
-        };
-        reader.readAsDataURL(file);
+  function readFileAsText(file: File) {
+    return new Promise(function (resolve, reject) {
+      let reader = new FileReader();
+      reader.onload = function () {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(file);
     });
-}
+  }
 
   const inputFileImagesResult = (e: React.FormEvent<HTMLInputElement>) => {
     const files = e.currentTarget.files
@@ -43,7 +44,7 @@ export default function CompleteTask({ task }: props) {
       <hr />
       <div className="completeTask__load">
         <div className='completeTask__field'>Отчёт о работе: </div>
-        <textarea className='completeTask__report' name="text" />
+        <textarea value={report} onChange={(e) => setReport(e.target.value)} className='completeTask__report' name="text" />
         <div className='completeTask__fileHelper'>При необходимости прикрепите фотографии результата выполнения</div>
         <div className="completeTask__file input__wrapper">
           <input name="file" type="file" id="input__file" className="input input__file" multiple accept="image/jpeg,image/png" onChange={(e) => inputFileImagesResult(e)} />
@@ -55,7 +56,10 @@ export default function CompleteTask({ task }: props) {
         {images.length ? <>
           <div className='completeTask__fileTitle'>Прикрепленне фотографии: </div>
           <div className='completeTask__fileImages'>
-            {images.map((image) => <img className='completeTask__image' onClick={() => { setImages(images.filter((el) => el !== image)) }} src={image} alt="loaded image" key={image} />)}
+            {images.map((image) =>
+              <div className='completeTask__imageWrapper' onClick={() => { setImages(images.filter((el) => el !== image)) }}>
+                <img className='completeTask__image' src={image} alt="loaded image" key={image} />
+              </div>)}
           </div>
         </>
           : ''}
