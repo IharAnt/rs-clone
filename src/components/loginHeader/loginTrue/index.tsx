@@ -9,9 +9,7 @@ import EditProfile from '../../editProfile';
 const LoginTrue: React.FC = () => {
 
     const IsMessage = false;
-
     const { name, moticoins } = useAppSelector(state => state.appState.profile)
-
     const [editProfile, setEditProfile] = useState(false)
 
     const profileClickEdit = () => {
