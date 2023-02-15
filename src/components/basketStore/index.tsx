@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store';
+import { useAppSelector } from '../../store';
 import { ICartProduct } from '../../types/interfaces/IOrder';
+import ItemBasketControl from '../itemBasketProduct';
 import motikoin from './../../assets/img/motekoinIco.png'
-import basketPlus from './../../assets/img/basketAddIco.png';
-import basketMinus from './../../assets/img/basketMinusIco.png';
-import basketDelete from './../../assets/img/basketDeleteIco.png';
 import './index.css';
-import { deleteProductBasket, minusProductBasket, plusProductBasket } from '../../store/storePage/sliceStore/slice';
+
 
 const BasketStore = () => {
 
@@ -14,7 +12,6 @@ const BasketStore = () => {
     const [isBuy, setIsBuy] = useState(true);
     const [basketArr, setBasketArr] = useState([] as ICartProduct[]);
     const [necessaryMot, setNecessaryMot] = useState(0);
-    const dispatch = useAppDispatch();
     const { basketProducts, basketCount, IsBasketOpen } = useAppSelector(state => state.storePage);
 
     useEffect((() => {
@@ -30,28 +27,9 @@ const BasketStore = () => {
             <p className='basket-title-text'>Корзина</p>
             <p className='basker-summary'>Товаров в корзине: {basketCount}</p>
             <div className='basket-list-product'>
-                {basketArr.map((item) => {
-                    return (
-                        <div className='basket-item-product'>
-                            <div className='basket-item-product_control'>
-                                <img onClick={() => dispatch(plusProductBasket(item.product.id))} className='basket-control_button' src={basketPlus} alt="basket plus" />
-                                <img onClick={() => dispatch(minusProductBasket(item.product.id))} className='basket-control_button' src={basketMinus} alt="basket minus" />
-                                <img onClick={() => dispatch(deleteProductBasket(item.product.id))} className='basket-control_button' src={basketDelete} alt="basket delete" />
-                            </div>
-                            <img className='basket-item-product_img' src={item.product.thumbnail} alt="product img" />
-                            <div className='basket-item-info'>
-                                <p className='basket-item-product_title'>{item.product.title}</p>
-                                <div className='w-full'>
-                                    <p className='basket-item-ico-text'>{`Цена: ${item.product.price}`}</p>
-                                    <p className='basket-item-ico-text'>{`Количество: ${item.count}`}</p>
-                                    <div className='basket-item-info-price'>
-                                        <p className='basket-item-ico-text'>{`К оплате: ${item.count * item.product.price}`}</p>
-                                        <img className='basket-item-ico' src={motikoin} alt="motikoin ico" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>)
-                })}
+                {basketArr.map((item) =>
+                    <ItemBasketControl {...item} key={item.product.id} />
+                )}
             </div>
             <div className='basket-buy'>
                 <div className='basket-buy_container'>
