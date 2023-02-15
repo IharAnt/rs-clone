@@ -20,7 +20,7 @@ const inspectorTasks: ITask[] = [
     dueDate: '2023-02-09',
     type: TaskTypeEnum.Teacher,
     status: TaskStatusEnum.Resolved,
-    taskReport: 'Провел. Ссылка на видео: ссылка',
+    taskReport: 'Провел. Ссылка на видео: ссылка https://github.com',
     messages: null,
     imgFiles: null,
     points: 300,

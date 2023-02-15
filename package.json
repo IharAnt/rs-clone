@@ -16,6 +16,7 @@
     "dayjs": "^1.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-linkify": "^1.0.0-alpha",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-linkify": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.33.0",

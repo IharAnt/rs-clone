@@ -43,12 +43,16 @@ export default function CompleteTask({ task, setModal }: props) {
   const completeTaskHandler = (deny: boolean = false) => {
 
     if (deny) {
+      //
       setModal(false)
     } 
 
     else {
       setReportDirty(true)
-      if (!report) setErrorText('Добавьте отчёт!')
+      if (!report) setErrorText('Добавьте отчёт!') 
+      else {
+        //
+      }
     }
   }
 
