@@ -1,8 +1,8 @@
-import basketIco from './../../assets/img/basketIco.png';
 import historyIco from './../../assets/img/historyIco.png';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { openBasketWindow, openHistoryWindow } from '../../store/storePage/sliceStore/slice';
+import { openHistoryWindow } from '../../store/storePage/sliceStore/slice';
 import './index.css';
+import ControlBasket from '../controlBasket';
 
 const ControlStore = () => {
 
@@ -18,12 +18,7 @@ const ControlStore = () => {
                 src={historyIco}
                 alt="history ico"
             />
-            <img
-                className='store-ico'
-                onClick={() => dispatch(openBasketWindow(''))}
-                src={basketIco}
-                alt="basket ico"
-            />
+            <ControlBasket />
         </div>
 
     );

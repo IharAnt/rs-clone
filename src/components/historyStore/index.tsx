@@ -26,7 +26,7 @@ const HistoryStore = () => {
             <p className='basket-title-text'>История</p>
             <div>
                 {orderArr.map((item) =>
-                    <ItemHistoryProduct {...item} />)}
+                    <ItemHistoryProduct {...item} key={item.id} />)}
             </div>
         </div>
 

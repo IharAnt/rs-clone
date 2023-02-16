@@ -16,7 +16,7 @@
     padding: 0 5px;
 }
 
-.basker-summary{
+.basker-summary {
     color: var(--COLOR_FONT_BLACK);
 }
 
@@ -52,6 +52,12 @@
 .basket-list-product {
     overflow: auto;
     height: 100%;
+}
+
+.basket-list-product_drop {
+    transition: .3s;
+    border-radius: 10px;
+    background: #b4b0b4;
 }
 
 .buy-button {

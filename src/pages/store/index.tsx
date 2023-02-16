@@ -6,6 +6,8 @@ import ProductCard from '../../components/productCard';
 import MainLayout from '../../layouts/main';
 import ShopService from '../../services/ShopService';
 import { IProduct } from '../../types/interfaces/IProduct';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import './index.css';
 
 const StorePage = () => {
@@ -22,23 +24,25 @@ const StorePage = () => {
 
     return (
         <MainLayout>
-            <div className='title-container-store'>
-                <p className='title-container-store_text'>Магазин</p>
-                <ControlStore />
-            </div>
-            <div className='store-container'>
-                <HistoryStore />
-                <div className='store-container-shop'>
-                    <div className='main-field-store'>
-                        {arrProducts.map((product) => {
-                            return (
-                                <ProductCard {...product} key={product.id} />
-                            );
-                        })}
-                    </div>
+            <DndProvider backend={HTML5Backend}>
+                <div className='title-container-store'>
+                    <p className='title-container-store_text'>Магазин</p>
+                    <ControlStore />
                 </div>
-                <BasketStore />
-            </div>
+                <div className='store-container'>
+                    <HistoryStore />
+                    <div className='store-container-shop'>
+                        <div className='main-field-store'>
+                            {arrProducts.map((product) => {
+                                return (
+                                    <ProductCard {...product} key={product.id} />
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <BasketStore />
+                </div>
+            </DndProvider>
         </MainLayout >
     );
 };

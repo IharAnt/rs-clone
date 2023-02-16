@@ -1,15 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { addProductBasket, deleteProductBasket } from '../../store/storePage/sliceStore/slice';
-import { ICartProduct } from '../../types/interfaces/IOrder';
 import { IProduct } from '../../types/interfaces/IProduct';
+import { useDrag } from 'react-dnd';
 import Modal from '../modal';
 import motikoin from './../../assets/img/motekoinIco.png'
 import './index.css';
 
 const ProductCard = (product: IProduct) => {
 
-    const [modalCardProduct, setModalCardProduct] = useState(false);
+    const [{ isDragging }, dragRef] = useDrag({
+        type: 'item-product_add',
+        item: { product },
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging()
+        })
+    })
+
+     const [modalCardProduct, setModalCardProduct] = useState(false);
     const [IsButton, setIsButton] = useState(true);
     const dispatch = useAppDispatch();
     const basketArrStore = useAppSelector(state => state.storePage.basketProducts);
@@ -32,8 +40,9 @@ const ProductCard = (product: IProduct) => {
     return (
         <>
             <div
-                className='product-card-container'
+                className={`product-card-container ${isDragging ? 'product-card-container_drag' : ''}`}
                 onClick={() => setModalCardProduct(true)}
+                ref={dragRef}
             >
                 <img className='product-card_img' src={product.thumbnail} alt="product img" />
                 <p className='product-card-title_text'>{product.title}</p>

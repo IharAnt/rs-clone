@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { ICartProduct } from '../../types/interfaces/IOrder';
 import ItemBasketControl from '../itemBasketProduct';
-import motikoin from './../../assets/img/motekoinIco.png'
+import motikoin from './../../assets/img/motekoinIco.png';
+import { useDrop } from 'react-dnd';
 import './index.css';
+import { addProductBasket } from '../../store/storePage/sliceStore/slice';
+import { IProduct } from '../../types/interfaces/IProduct';
 
 
 const BasketStore = () => {
@@ -13,6 +16,16 @@ const BasketStore = () => {
     const [basketArr, setBasketArr] = useState([] as ICartProduct[]);
     const [necessaryMot, setNecessaryMot] = useState(0);
     const { basketProducts, basketCount, IsBasketOpen } = useAppSelector(state => state.storePage);
+    const dispatch = useAppDispatch();
+    const [{ isOver }, dropRef] = useDrop({
+        accept: 'item-product_add',
+        drop: (item: { product: IProduct }) => {
+            dispatch(addProductBasket(item.product));
+        },
+        collect: (monitor) => ({
+            isOver: monitor.isOver()
+        })
+    })
 
     useEffect((() => {
         setBasketArr(basketProducts);
@@ -23,10 +36,10 @@ const BasketStore = () => {
     }), [basketProducts])
 
     return (
-        <div className={`main-field-basket ${IsBasketOpen ? 'main-field-basket_open' : ''}`}>
+        <div className={`main-field-basket ${IsBasketOpen ? 'main-field-basket_open' : ''}`} ref={dropRef}>
             <p className='basket-title-text'>Корзина</p>
             <p className='basker-summary'>Товаров в корзине: {basketCount}</p>
-            <div className='basket-list-product'>
+            <div className={`basket-list-product ${isOver ? 'basket-list-product_drop' : ''}`}>
                 {basketArr.map((item) =>
                     <ItemBasketControl {...item} key={item.product.id} />
                 )}
@@ -43,7 +56,7 @@ const BasketStore = () => {
                 <button className={`buy-button ${isBuy ? 'buy-button_active' : ''}`}>Купить</button>
             </div>
 
-        </div>
+        </div >
 
     );
 };
