@@ -11,6 +11,12 @@
     padding: 0 5px;
 }
 
+.basket-item-product_drag {
+    width: 98%;
+    border-radius: 10px;
+    background: #b4b0b4;
+}
+
 .basket-item-product_control {
     display: flex;
     align-items: center;
@@ -80,4 +86,18 @@
 .basket-item-ico {
     width: 17px;
     height: 17px;
+}
+
+.drop-area-delete {
+    background-image: url('./../../assets/img/dragDeleteBasket.png');
+    background-repeat: no-repeat;
+    opacity: .6;
+    transition: .3s;
+    background-position: center;
+    width: calc(100% - 250px);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2222;
 }

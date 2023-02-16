@@ -29,7 +29,7 @@ const StorePage = () => {
                     <p className='title-container-store_text'>Магазин</p>
                     <ControlStore />
                 </div>
-                <div className='store-container'>
+                <div className='store-container' >
                     <HistoryStore />
                     <div className='store-container-shop'>
                         <div className='main-field-store'>

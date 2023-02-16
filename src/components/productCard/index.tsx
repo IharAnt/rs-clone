@@ -15,7 +15,6 @@ const ProductCard = (product: IProduct) => {
             isDragging: monitor.isDragging()
         })
     })
-
     const [modalCardProduct, setModalCardProduct] = useState(false);
 
     return (

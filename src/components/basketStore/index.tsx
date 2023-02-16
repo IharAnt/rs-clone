@@ -20,7 +20,7 @@ const BasketStore = () => {
             isOver: monitor.isOver()
         })
     })
- 
+
     return (
         <div className={`main-field-basket ${IsBasketOpen ? 'main-field-basket_open' : ''}`} ref={dropRef}>
             <BasketTitle />
