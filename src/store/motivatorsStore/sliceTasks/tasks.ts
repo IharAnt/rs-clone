@@ -36,7 +36,17 @@ export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rej
   'tasks/getInspectorTasks',
   async function ({ id }) {
     let result = await TasksService.getInspectorTasks(id);
-    result = result.filter((task)=>task.status ===TaskStatusEnum.Resolved)
+    result = result.filter((task) => task.status === TaskStatusEnum.Resolved)
+    return result;
+  }
+)
+
+export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, { rejectValue: string }>(
+  'tasks/updateInspectorTask',
+  async function ({ taskId, updatedTask }) {
+    await TasksService.updateTask(taskId, updatedTask);
+    let result = await TasksService.getInspectorTasks(updatedTask.inspector.id);
+    result = result.filter((task) => task.status === TaskStatusEnum.Resolved)
     return result;
   }
 )
@@ -131,8 +141,8 @@ const tasksSlice = createSlice({
         state.completeTaskPending = false
         state.completeTaskReject = false
         state.completeTaskFulfilled = false
-      }).addCase(testTask.fulfilled, (state) => {
-
+      }).addCase(updateInspectorTask.fulfilled, (state, action) => {
+        state.inspectorTasks = action.payload
       })
   }
 })

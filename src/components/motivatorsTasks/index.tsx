@@ -13,7 +13,7 @@ export default function MotivatorsTasks() {
   useEffect(() => {
     dispatch(getTasks({'id': userId}))
   },
-    [dispatch]
+    [userId]
   )
 
   const data = useAppSelector((state) => state.tasks.tasks)

@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import moticoins from '../../assets/img/motekoinIco.png'
 import CreateTaskHepler from '../createTaskHepler';
-import { updateTask } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { updateInspectorTask } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { useAppDispatch } from '../../store';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 
@@ -38,9 +38,9 @@ export default function ModalTestTask({ task, setModal }: props) {
     if(!testReport) setErrorMessage('Напишите отчёт о проверке!')
     else {
       if (deny) {
-        dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Rejected, messages: [{message: testReport, author: task.inspector}]}}))
+        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Rejected, messages: [{message: testReport, author: task.inspector}]}}))
       } else {
-        dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{message: testReport, author: task.inspector}]}}))
+        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{message: testReport, author: task.inspector}]}}))
       }
       setModal(false)
     }

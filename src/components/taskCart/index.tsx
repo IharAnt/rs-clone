@@ -48,7 +48,7 @@ export default function TaskCart({ task }: props) {
       {isEndedTask ?
         task.messages ?
           <div>
-            <div className="motivatorsTask__description">Комментарий проверяющего: <span className='italic'>{!task.messages[task.messages.length - 1]}</span></div>
+            <div className="motivatorsTask__description">{task.messages[0] ? <>Комментарий проверяющего:<span className='italic'> {task.messages[0].message}</span> </> : ''}</div>
             <div className="motivatorsTask__description">Статус: {getTaskStatus()}</div>
           </div>
           : <div className="motivatorsTask__description">Статус: {getTaskStatus()}</div>

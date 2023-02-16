@@ -11,14 +11,12 @@ import { IImg } from '../../types/interfaces/IImg'
 export default function CompleteTask({ task, setModal }: props) {
 
   const dispatch = useAppDispatch()
+  const completeTaskPending = useAppSelector((state) => state.tasks.completeTaskPending)
 
   const [images, setImages] = useState<IImg[]>([])
   const [report, setReport] = useState('')
-
   const [reportDirty, setReportDirty] = useState(false)
   const [errorText, setErrorText] = useState('')
-
-  const completeTaskPending = useAppSelector((state) => state.tasks.completeTaskPending)
 
   function readFileAsText(file: File) {
     return new Promise(function (resolve, reject) {
