@@ -1,12 +1,13 @@
-import appConfig from '../configs/AppConfig';
 import RatingSortType from '../types/enums/RatingSortEnum';
 import OrderType from '../types/enums/OrderEnum';
 import { IPaginationResponse } from '../types/interfaces/IPagination';
 import { IRating } from '../types/interfaces/IRating';
 import ratings from '../data/Ratings';
+import { IAchievement } from '../types/interfaces/IAchievement';
+import apiClient from '../api/ApiClient';
 
 export default class RatingService {
-  private ratingPath = `${appConfig.apiUrl}/rating`;
+  static ratingPath = `/rating`;
 
   static async getRating(
     page: number,
@@ -34,5 +35,10 @@ export default class RatingService {
     ratings.page = page;
 
     return Promise.resolve(ratings);
+  }
+
+  static async getAchivements(): Promise<IAchievement[]> {
+    const response = await apiClient.get<IAchievement[]>(`${RatingService.ratingPath}/getAchivements`);
+    return response.data;
   }
 }

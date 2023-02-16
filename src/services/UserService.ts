@@ -4,24 +4,25 @@ import apiClient from '../api/ApiClient';
 //import users from '../data/Users';
 
 export default class UserService {
-  static userPath = `/user`;
+  static userPath = `/users`;
+  static profilePath = `/profile`;
 
-  static async getProfile(id: string): Promise<IProfile> {
-    // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
-    // return result;
+  static async getProfile(userId: string): Promise<IProfile> {
+    const response = await apiClient.get<IProfile>(`${UserService.profilePath}/${userId}`);
+    return response.data;
 
-    return Promise.resolve(profile);
+    // return Promise.resolve(profile);
   }
 
-  static async updateProfile(id: string, updateProfile: IUpdateProfile): Promise<IProfile> {
-    // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
-    // return result;
+  static async updateProfile(userId: string, updateProfile: IUpdateProfile): Promise<IProfile> {
+    const response = await apiClient.put<IProfile>(`${UserService.profilePath}/${userId}`, updateProfile);
+    return response.data;
 
-    return Promise.resolve(Object.assign(profile, updateProfile));
+    // return Promise.resolve(Object.assign(profile, updateProfile));
   }
 
   static async getUsers(): Promise<IUser[]> {
-    const response = await apiClient.get<IUser[]>(`${this.userPath}`);
+    const response = await apiClient.get<IUser[]>(`${UserService.userPath}`);
     return response.data;
 
     //return Promise.resolve(users);
