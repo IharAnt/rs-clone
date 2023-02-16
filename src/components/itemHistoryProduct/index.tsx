@@ -1,17 +1,13 @@
-import { useAppDispatch, useAppSelector } from '../../store';
-import { deleteProductBasket, addProductBasket } from '../../store/storePage/sliceStore/slice';
+import { useAppDispatch } from '../../store';
+import { addProductBasket } from '../../store/storePage/sliceStore/slice';
 import basketAdd from './../../assets/img/basketAddIco.png';
-import basketDelete from './../../assets/img/basketDeleteHistoryIco.png';
 import { IOrder } from '../../types/interfaces/IOrder';
 import { useDrag } from 'react-dnd';
 import './index.css';
-import { useEffect, useState } from 'react';
 
 const ItemHistoryProduct = (item: IOrder) => {
 
     const dispatch = useAppDispatch();
-    const [IsBasketProduct, setIsBasketProduct] = useState(true);
-    const basketArrStore = useAppSelector(state => state.storePage.basketProducts);
     const [{ isDragging }, dragRef] = useDrag({
         type: 'item-product_add',
         item: { product: item.product },
@@ -20,19 +16,10 @@ const ItemHistoryProduct = (item: IOrder) => {
         })
     })
 
-    useEffect((() => {
-        if (basketArrStore.find((product) => product.product.id === item.product.id)) {
-            setIsBasketProduct(false);
-        } else {
-            setIsBasketProduct(true);
-        }
-    }), [basketArrStore]);
-
     return (
         <div className='item-history-container' ref={dragRef}>
             {!isDragging && <div className='item-history-control'>
-                {IsBasketProduct && <img onClick={() => dispatch(addProductBasket(item.product))} className='item-control_plus' src={basketAdd} alt="basket plus" />}
-                {!IsBasketProduct && <img onClick={() => dispatch(deleteProductBasket(item.product.id))} className='item-control_plus' src={basketDelete} alt="basket plus" />}
+                <img onClick={() => dispatch(addProductBasket(item.product))} className='item-control_plus' src={basketAdd} alt="basket plus" />
             </div>}
             {!isDragging && <p className='item-history-count'>{item.count}</p>}
             <img className='item-history-img' src={item.product.thumbnail} alt="item history img" />

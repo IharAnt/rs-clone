@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { addProductBasket, deleteProductBasket } from '../../store/storePage/sliceStore/slice';
+import { useState } from 'react';
 import { IProduct } from '../../types/interfaces/IProduct';
 import { useDrag } from 'react-dnd';
 import Modal from '../modal';
 import motikoin from './../../assets/img/motekoinIco.png'
 import './index.css';
+import ProductCartButton from '../productCartButton';
 
 const ProductCard = (product: IProduct) => {
 
@@ -17,25 +16,7 @@ const ProductCard = (product: IProduct) => {
         })
     })
 
-     const [modalCardProduct, setModalCardProduct] = useState(false);
-    const [IsButton, setIsButton] = useState(true);
-    const dispatch = useAppDispatch();
-    const basketArrStore = useAppSelector(state => state.storePage.basketProducts);
-
-    const clickBuyProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation();
-        dispatch(addProductBasket(product));
-    }
-
-    const clickDeleteProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation();
-        dispatch(deleteProductBasket(e.currentTarget.id));
-    }
-
-    useEffect((() => {
-        setIsButton(true);
-        if (basketArrStore.find((item) => item.product.id === product.id)) { setIsButton(false) }
-    }), [basketArrStore, product.id])
+    const [modalCardProduct, setModalCardProduct] = useState(false);
 
     return (
         <>
@@ -51,20 +32,7 @@ const ProductCard = (product: IProduct) => {
                     <p className='product-price_text'>{product.price}</p>
                     <img className='product-price_img' src={motikoin} alt="motikoin ico" />
                 </div>
-                <div className='product-button-container'>
-                    {IsButton ? <button
-                        onClick={(e) => clickBuyProduct(e)}
-                        className='product-card_button'>
-                        Купить
-                    </button>
-                        : <button
-                            id={product.id}
-                            onClick={(e) => clickDeleteProduct(e)}
-                            className='product-card_button card-button_delete'>
-                            Удалить
-                        </button>
-                    }
-                </div>
+                <ProductCartButton {...product} />
             </div>
             <Modal isOpen={modalCardProduct} setModal={setModalCardProduct} >
                 <div className="div">fdsfsdf</div>

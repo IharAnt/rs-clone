@@ -14,7 +14,16 @@ const sliceStorePage = createSlice({
             state.IsHistoryOpen ? state.IsHistoryOpen = false : state.IsHistoryOpen = true;
         },
         addProductBasket(state: typeStorePage, action: PayloadAction<IProduct>) {
-            state.basketProducts.push({ product: action.payload, count: 1 });
+            if (state.basketProducts.length === 0) {
+                state.basketProducts.push({ product: action.payload, count: 1 });
+            } else {
+                const product = state.basketProducts.find((item) => item.product.id === action.payload.id);
+                if (product) {
+                    product.count += 1;
+                } else {
+                    state.basketProducts.push({ product: action.payload, count: 1 });
+                }
+            }
             state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
         },
         deleteProductBasket(state: typeStorePage, action: PayloadAction<string>) {
@@ -43,7 +52,6 @@ const sliceStorePage = createSlice({
             state.basketProducts = state.basketProducts.filter((item) => item.count > 0);
             state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
         },
-
     }
 })
 

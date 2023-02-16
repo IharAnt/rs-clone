@@ -7,10 +7,12 @@ import ControlBasket from '../controlBasket';
 const ControlStore = () => {
 
     const basketCount = useAppSelector(state => state.storePage.basketCount);
+    const IsLogin = useAppSelector(state => state.appState.isLogin);
     const dispatch = useAppDispatch();
 
     return (
-        <div className='title-container-store_control'>
+        <>
+        {IsLogin && <div className='title-container-store_control'>
             {basketCount > 0 && <p className='basket-quality'>{basketCount}</p>}
             <img
                 className='store-ico'
@@ -19,8 +21,8 @@ const ControlStore = () => {
                 alt="history ico"
             />
             <ControlBasket />
-        </div>
-
+        </div>}
+        </>
     );
 };
 
