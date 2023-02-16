@@ -1,11 +1,10 @@
-import appConfig from '../configs/AppConfig';
 import { IProfile, IUpdateProfile, IUser } from '../types/interfaces/IUser';
 import profile from '../data/Profile';
-// import apiClient from '../api/ApiClient';
-import users from '../data/Users';
+import apiClient from '../api/ApiClient';
+//import users from '../data/Users';
 
 export default class UserService {
-  private userPath = `${appConfig.apiUrl}/user`;
+  static userPath = `/user`;
 
   static async getProfile(id: string): Promise<IProfile> {
     // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
@@ -22,9 +21,9 @@ export default class UserService {
   }
 
   static async getUsers(): Promise<IUser[]> {
-    // const response = await apiClient.get<IUser[]>('/users');
-    // return response.data;
+    const response = await apiClient.get<IUser[]>(`${this.userPath}`);
+    return response.data;
 
-    return Promise.resolve(users);
+    //return Promise.resolve(users);
   }
 }

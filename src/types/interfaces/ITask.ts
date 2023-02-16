@@ -4,8 +4,11 @@ import { IImg } from "./IImg";
 import { IMessage } from "./IMessage";
 import { IUser } from "./IUser";
 
-export interface ITask {
+export interface ITask extends IUpdateTask{
   id: string;
+}
+
+export interface IUpdateTask {
   executor: IUser;
   inspector: IUser;
   icon?: string;
