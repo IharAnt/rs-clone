@@ -3,14 +3,17 @@ import basketPlus from './../../assets/img/basketPlusIco.png';
 import basketMinus from './../../assets/img/basketMinusIco.png';
 import basketDelete from './../../assets/img/basketDeleteIco.png';
 import { ICartProduct } from '../../types/interfaces/IOrder';
+import defaultImg from './../../assets/img/defaultImgProduct.png';
 import { useDrag } from 'react-dnd';
 import { deleteProductBasket, minusProductBasket, plusProductBasket } from '../../store/storePage/sliceStore/slice';
 import { useAppDispatch } from '../../store';
 import './index.css';
 import { useDrop } from 'react-dnd';
+import { useState } from 'react';
 
 const ItemBasketProduct = (item: ICartProduct) => {
 
+    const [imgProduct, setImgProduct] = useState(item.product.thumbnail);
     const dispatch = useAppDispatch();
     const [{ isDragging }, dragRefDelete] = useDrag({
         type: 'item-product_delete',
@@ -39,7 +42,7 @@ const ItemBasketProduct = (item: ICartProduct) => {
                 <img onClick={() => dispatch(deleteProductBasket(item.product.id))} className='basket-control_button' src={basketDelete} alt="basket delete" />
             </div>
             }
-            <img className='basket-item-product_img' src={item.product.thumbnail} alt="product img" />
+            <img className='basket-item-product_img' src={imgProduct} alt="product img" onError={() => setImgProduct(defaultImg)}/>
             <div className='basket-item-info'>
                 <p className='basket-item-product_title'>{item.product.title}</p>
                 <div className='w-full'>
