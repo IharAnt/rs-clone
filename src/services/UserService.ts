@@ -4,7 +4,7 @@ import apiClient from '../api/ApiClient';
 //import users from '../data/Users';
 
 export default class UserService {
-  static userPath = `/user`;
+  static userPath = `/users`;
 
   static async getProfile(id: string): Promise<IProfile> {
     // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);

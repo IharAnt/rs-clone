@@ -10,10 +10,14 @@ import { getUsers } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUser } from '../../types/interfaces/IUser';
 import { createTask } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { updateCreateFulfilled } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { IUpdateTask } from '../../types/interfaces/ITask';
+import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
+import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
 
 export default function CreateTask({ setModal }: props) {
 
   const dispatch = useAppDispatch()
+  const profile =  useAppSelector((state) => state.appState.profile)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -22,6 +26,7 @@ export default function CreateTask({ setModal }: props) {
   )
 
   const users = useAppSelector((state) => state.tasks.users)
+
   const inspectors = users.map((user: IUser) => { return { value: user.name, label: user.name } });
   const [errorText, setErrorText] = useState('')
 
@@ -62,14 +67,16 @@ export default function CreateTask({ setModal }: props) {
     taskType.onBlur()
 
     if (validData) {
-      dispatch(createTask({ summary: summary.value, description: description.value, points: +award.value, dueDate: taskDeadline }))
+      const newTask: IUpdateTask = { executor: { id: profile.id, name: profile.name, email: profile.email } as IUser, inspector: users.find((user) => user.name == inspector.value?.value) as IUser, summary: summary.value, description: description.value, dueDate: taskDeadline, type: taskType.value?.value as TaskTypeEnum, status: TaskStatusEnum.Open, points: +award.value }
+      setErrorText('')
+      dispatch(createTask({ task: newTask }))
     } else {
       setErrorText('Заполните данные правильно!')
     }
   }
 
-  useEffect(()=>{
-    if (createTaskFulfilled){
+  useEffect(() => {
+    if (createTaskFulfilled) {
       summary.clear();
       inspector.clear();
       description.clear();
@@ -78,10 +85,10 @@ export default function CreateTask({ setModal }: props) {
       setErrorText('');
       dispatch(updateCreateFulfilled())
       setModal(false);
-    } 
+    }
   }, [createTaskFulfilled])
 
-  useEffect(()=>{
+  useEffect(() => {
     if (createTaskReject) setErrorText('ошибка на стороне сервера')
   }, [createTaskReject])
 

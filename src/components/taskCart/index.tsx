@@ -8,7 +8,7 @@ import sleep from '../../assets/icons/taskTypes/sleep.png'
 import teacher from '../../assets/icons/taskTypes/teacher.png'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
 import moticoins from '../../assets/img/motekoinIco.png'
-import { updateTaskStatus } from '../../store/motivatorsStore/sliceTasks/tasks'
+import { updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
 import { useAppDispatch } from '../../store'
 import Modal from '../modal'
 import { useState } from 'react'
@@ -60,13 +60,13 @@ export default function TaskCart({ task }: props) {
       <div className="motivatorsTask__completion">
         <div className='motivatorsTask__coins'>Награда: {task.points} <img className='motivatorsTask__coinsImg' src={moticoins} alt="moticoins" title='мотикойны' /></div>
         {task.status === TaskStatusEnum.Open ? <button className='motivators-block motivatorsTask__btn motivatorsTask__btn--open' onClick={() => {
-          dispatch(updateTaskStatus({ id: task.id, status: TaskStatusEnum.Inprogress }))
+          dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Inprogress } }))
         }}>выполнять</button> : ''}
         {task.status === TaskStatusEnum.Inprogress ?
           <>
             <button className='motivators-block motivatorsTask__btn motivatorsTask__btn--inProgress' onClick={() => setModal(true)}>завершить</button>
             <Modal isOpen={modal} setModal={setModal}>
-              <CompleteTask setModal={setModal} task={task}/>
+              <CompleteTask setModal={setModal} task={task} />
             </Modal>
           </> : ''}
       </div>

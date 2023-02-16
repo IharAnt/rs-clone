@@ -41,9 +41,6 @@ export default function CompleteTask({ task, setModal }: props) {
 
   const completeTaskHandler = (deny: boolean = false) => {
 
-    console.log(images);
-    
-
     if (deny) {
       //
       setModal(false)

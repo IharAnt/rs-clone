@@ -1,23 +1,32 @@
+import { IUpdateTask } from './../../../types/interfaces/ITask';
 import { ITask } from '../../../types/interfaces/ITask';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import TasksService from '../../../services/TasksService';
-import TaskStatusEnum from '../../../types/enums/TaskStatusEnum';
 import UserService from '../../../services/UserService'
 import { IUser } from '../../../types/interfaces/IUser';
 
-export const getTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
+export const getTasks = createAsyncThunk<ITask[], { id: string }, {}>(
   'tasks/getTasks',
-  async function ({ id }, { rejectWithValue }) {
+  async function ({ id }) {
     const result = await TasksService.getExecutorTasks(id);
     return result;
   }
 )
 
-export const updateTaskStatus = createAsyncThunk<ITask[], { id: string, status: TaskStatusEnum }, { rejectValue: string }>(
+export const createTask = createAsyncThunk<ITask[], { task: IUpdateTask }, {}>(
+  'tasks/createTask',
+  async function ({ task }) {
+    await TasksService.createTask(task)
+    const result = await TasksService.getExecutorTasks(task.executor.id)
+    return result;
+  }
+)
+
+export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, { rejectValue: string }>(
   'tasks/updateTask',
-  async function ({ id, status }) {
-    const task = await TasksService.updateTasksStatus(id, status);
-    const result = await TasksService.getExecutorTasks(('id'));
+  async function ({ taskId, updatedTask }) {
+    const task = await TasksService.updateTask(taskId, updatedTask);
+    const result = await TasksService.getExecutorTasks(task.executor.id);
     return result;
   }
 )
@@ -38,19 +47,10 @@ export const getUsers = createAsyncThunk<IUser[], undefined, { rejectValue: stri
   }
 )
 
-export const createTask = createAsyncThunk<ITask[], { summary: string, description: string, points: number, dueDate?: string | null }, {}>(
-  'tasks/createTask',
-  async function ({ summary, description, points, dueDate }) {
-    const task = await TasksService.createTask({} as ITask);
-    const result = await TasksService.getExecutorTasks('1')
-    return result;
-  }
-)
-
 export const completeTask = createAsyncThunk<ITask[], {}, {}>(
   'tasks/completeTask',
   async function ({ }) {
-    const result = await TasksService.getExecutorTasks('1')
+    const result = await TasksService.getExecutorTasks('2')
     return result;
   }
 )
@@ -100,7 +100,7 @@ const tasksSlice = createSlice({
       .addCase(getTasks.fulfilled, (state, action) => {
         state.tasks = action.payload;
       })
-      .addCase(updateTaskStatus.fulfilled, (state, action) => {
+      .addCase(updateTask.fulfilled, (state, action) => {
         state.tasks = action.payload
       })
       .addCase(getInspectorTasks.fulfilled, (state, action) => {

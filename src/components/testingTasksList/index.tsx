@@ -7,9 +7,10 @@ import TestingTask from '../testingTask'
 export default function TestingTasksList() {
 
   const dispatch = useAppDispatch()
+  const userId = useAppSelector((state) => state.appState.profile.id)
 
   useEffect(() => {
-    dispatch(getInspectorTasks({ 'id': '1' }))
+    dispatch(getInspectorTasks({ 'id': userId }))
   },
     [dispatch]
   )

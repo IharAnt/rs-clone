@@ -7,10 +7,11 @@ import './style.css'
 
 export default function MotivatorsTasks() {
 
+  const userId = useAppSelector((state) => state.appState.profile.id)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getTasks({'id': '1'}))
+    dispatch(getTasks({'id': userId}))
   },
     [dispatch]
   )
