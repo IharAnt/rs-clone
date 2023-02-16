@@ -8,21 +8,21 @@ export default class UserService {
   static profilePath = `/profile`;
 
   static async getProfile(userId: string): Promise<IProfile> {
-    // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
-    // return result;
+    const response = await apiClient.get<IProfile>(`${UserService.profilePath}/${userId}`);
+    return response.data;
 
-    return Promise.resolve(profile);
+    // return Promise.resolve(profile);
   }
 
   static async updateProfile(userId: string, updateProfile: IUpdateProfile): Promise<IProfile> {
-    // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
-    // return result;
+    const response = await apiClient.put<IProfile>(`${UserService.profilePath}/${userId}`, updateProfile);
+    return response.data;
 
-    return Promise.resolve(Object.assign(profile, updateProfile));
+    // return Promise.resolve(Object.assign(profile, updateProfile));
   }
 
   static async getUsers(): Promise<IUser[]> {
-    const response = await apiClient.get<IUser[]>(`${this.userPath}`);
+    const response = await apiClient.get<IUser[]>(`${UserService.userPath}`);
     return response.data;
 
     //return Promise.resolve(users);

@@ -32,6 +32,7 @@ const profile: IProfile = {
     },
   ],
   level: 1,
+  doneTasks: 8,
   tasksStats: {
     approved: 2,
     inprogress: 2,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../../store';
 import defaultImg from './../../assets/img/profileIcoDefault.png'
 import './index.css';
@@ -11,8 +11,13 @@ const ModalEitProfile = () => {
     const [emailUser, setEmailUser] = useState(email);
     const [phoneUser, setPhoneUser] = useState(phone);
     const [birthdayUser, setBirthdayUser] = useState(birthday);
-    if (photo) { setImgAvatar(photo) };
-    console.log(birthdayUser)// c датой решить вопрос
+    
+    //console.log(birthdayUser)// c датой решить вопрос
+
+    useEffect(() => {
+      if (photo) { setImgAvatar(photo) };
+      console.log(imgAvatar);
+    },[])
     
     const inputFileAvatar = (e: React.FormEvent<HTMLInputElement>) => {
         const imgInput = e.currentTarget.files?.[0];
