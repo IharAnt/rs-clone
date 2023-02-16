@@ -5,6 +5,7 @@ import Modal from '../modal';
 import motikoin from './../../assets/img/motekoinIco.png'
 import './index.css';
 import ProductCartButton from '../productCartButton';
+import ModalProduct from '../modalProduct';
 
 const ProductCard = (product: IProduct) => {
 
@@ -34,7 +35,7 @@ const ProductCard = (product: IProduct) => {
                 <ProductCartButton {...product} />
             </div>
             <Modal isOpen={modalCardProduct} setModal={setModalCardProduct} >
-                <div className="div">fdsfsdf</div>
+                <ModalProduct {...product} />
             </Modal>
         </>
     )
