@@ -15,7 +15,7 @@ export default function TestingTask({ task }: props) {
       <div className='motivatorsTesting__report'>{task.taskReport}</div>
       <button className='motivators-block motivatorsTask__btn motivatorsTesting__btn' onClick={() => setModal(true)}>проверить</button>
       <Modal isOpen={modal} setModal={setModal}>
-        <ModalTestTask task={task} />
+        <ModalTestTask task={task} setModal={setModal} />
       </Modal >
     </div>
   )

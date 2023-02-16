@@ -4,7 +4,7 @@
 }
 
 .testTask__title{
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 700;
 }
 
@@ -16,12 +16,54 @@
 
 .testTask__fieldValue{
   flex-grow: 1;
-  font-size: 1.2em;
 }
 
 .testTask__fieldName{
   width: 150px;
-  font-size: 1.2em;
+}
+
+.testTask__fieldPoints{
+  display: flex;
+  gap: 15px;
+}
+
+.testTask__fieldValuePoints{
+  width: 90px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.motivatorsTask__pointsBtn{
+  background: var(--COLOR_BLOCK);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  opacity: 0.85;
+}
+
+.motivatorsTask__pointsBtn:hover{
+  opacity: 1;
+}
+
+.testTask__points{
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.testTask__points-input{
+  border-radius: 3px;
+  border: 1px solid var(--COLOR_BORDER_MOTIVATORS_MODAL);
+  outline: none;
+}
+
+.testTask__award{
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }
 
 .testTask__textarea{
@@ -30,6 +72,7 @@
   resize: none;
   border-radius: 3px;
   height: 120px;
+  border: 1px solid var(--COLOR_BORDER_MOTIVATORS_MODAL)
 }
 
 .testTask__btns{
@@ -44,4 +87,9 @@
 
 .testTask__btn-reject{
   background: var(--COLOR_BLOCK)
+}
+
+.testTask__error{
+  color: red;
+  margin-top: 10px;
 }

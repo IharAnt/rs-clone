@@ -1,5 +1,6 @@
 import { ITask } from './../../types/interfaces/ITask';
 
 export type props = {
-  task: ITask
+  task: ITask,
+  setModal: React.Dispatch<React.SetStateAction<boolean>>
 }

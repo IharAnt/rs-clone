@@ -7,6 +7,7 @@ export default class UserService {
   static userPath = `/users`;
   static profilePath = `/profile`;
 
+
   static async getProfile(userId: string): Promise<IProfile> {
     const response = await apiClient.get<IProfile>(`${UserService.profilePath}/${userId}`);
     return response.data;

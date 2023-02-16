@@ -8,7 +8,7 @@ import sleep from '../../assets/icons/taskTypes/sleep.png'
 import teacher from '../../assets/icons/taskTypes/teacher.png'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
 import moticoins from '../../assets/img/motekoinIco.png'
-import { updateTaskStatus } from '../../store/appStore/sliceTasks/tasks'
+import { updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
 import { useAppDispatch } from '../../store'
 import Modal from '../modal'
 import { useState } from 'react'
@@ -48,7 +48,7 @@ export default function TaskCart({ task }: props) {
       {isEndedTask ?
         task.messages ?
           <div>
-            <div className="motivatorsTask__description">Комментарий проверяющего: <span className='italic'>{!task.messages[task.messages.length - 1]}</span></div>
+            <div className="motivatorsTask__description">{task.messages[0] ? <>Комментарий проверяющего:<span className='italic'> {task.messages[0].message}</span> </> : ''}</div>
             <div className="motivatorsTask__description">Статус: {getTaskStatus()}</div>
           </div>
           : <div className="motivatorsTask__description">Статус: {getTaskStatus()}</div>
@@ -60,13 +60,13 @@ export default function TaskCart({ task }: props) {
       <div className="motivatorsTask__completion">
         <div className='motivatorsTask__coins'>Награда: {task.points} <img className='motivatorsTask__coinsImg' src={moticoins} alt="moticoins" title='мотикойны' /></div>
         {task.status === TaskStatusEnum.Open ? <button className='motivators-block motivatorsTask__btn motivatorsTask__btn--open' onClick={() => {
-          dispatch(updateTaskStatus({ id: task.id, status: TaskStatusEnum.Inprogress }))
+          dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Inprogress } }))
         }}>выполнять</button> : ''}
         {task.status === TaskStatusEnum.Inprogress ?
           <>
             <button className='motivators-block motivatorsTask__btn motivatorsTask__btn--inProgress' onClick={() => setModal(true)}>завершить</button>
             <Modal isOpen={modal} setModal={setModal}>
-              <CompleteTask task={task}/>
+              <CompleteTask setModal={setModal} task={task} />
             </Modal>
           </> : ''}
       </div>
