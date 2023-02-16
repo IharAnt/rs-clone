@@ -4,6 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import TasksService from '../../../services/TasksService';
 import UserService from '../../../services/UserService'
 import { IUser } from '../../../types/interfaces/IUser';
+import TaskStatusEnum from '../../../types/enums/TaskStatusEnum';
 
 export const getTasks = createAsyncThunk<ITask[], { id: string }, {}>(
   'tasks/getTasks',
@@ -16,7 +17,7 @@ export const getTasks = createAsyncThunk<ITask[], { id: string }, {}>(
 export const createTask = createAsyncThunk<ITask[], { task: IUpdateTask }, {}>(
   'tasks/createTask',
   async function ({ task }) {
-    await TasksService.createTask(task)
+    const newTask = await TasksService.createTask(task)
     const result = await TasksService.getExecutorTasks(task.executor.id)
     return result;
   }
@@ -34,7 +35,8 @@ export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTas
 export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
   'tasks/getInspectorTasks',
   async function ({ id }) {
-    const result = await TasksService.getInspectorTasks(id);
+    let result = await TasksService.getInspectorTasks(id);
+    result = result.filter((task)=>task.status ===TaskStatusEnum.Resolved)
     return result;
   }
 )
@@ -115,10 +117,11 @@ const tasksSlice = createSlice({
       .addCase(createTask.rejected, (state) => {
         state.createTaskReject = true
         state.createTaskPending = false
-      }).addCase(createTask.fulfilled, (state) => {
+      }).addCase(createTask.fulfilled, (state, action) => {
         state.createTaskPending = false
         state.createTaskReject = false
         state.createTaskFulfilled = true
+        state.tasks = action.payload
       }).addCase(completeTask.pending, (state) => {
         state.completeTaskPending = true
       }).addCase(completeTask.rejected, (state) => {

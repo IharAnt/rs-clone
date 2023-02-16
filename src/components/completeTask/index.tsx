@@ -3,11 +3,16 @@ import './style.css'
 import inspector from '../../assets/icons/inspector.png'
 import download from '../../assets/icons/download.png'
 import { useState } from 'react'
-import { useAppSelector } from '../../store'
+import { useAppDispatch, useAppSelector } from '../../store'
+import { updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
+import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
+import { IImg } from '../../types/interfaces/IImg'
 
 export default function CompleteTask({ task, setModal }: props) {
 
-  const [images, setImages] = useState<string[]>([])
+  const dispatch = useAppDispatch()
+
+  const [images, setImages] = useState<IImg[]>([])
   const [report, setReport] = useState('')
 
   const [reportDirty, setReportDirty] = useState(false)
@@ -19,7 +24,7 @@ export default function CompleteTask({ task, setModal }: props) {
     return new Promise(function (resolve, reject) {
       let reader = new FileReader();
       reader.onload = function () {
-        resolve(reader.result);
+        resolve({ name: file.name, data: reader.result });
       };
       reader.readAsDataURL(file);
     });
@@ -28,13 +33,13 @@ export default function CompleteTask({ task, setModal }: props) {
   const inputFileImagesResult = (e: React.FormEvent<HTMLInputElement>) => {
     const files = e.currentTarget.files
     if (files) {
-      const mas = Array.from(files).map((file) => {
+      const filesPromices = Array.from(files).map((file) => {
         if (file) {
           return readFileAsText(file)
         }
       })
-      Promise.all(mas).then((values) => {
-        setImages(Array.from(new Set([...images, ...values as string[]])).slice(0, 5))
+      Promise.all(filesPromices).then((values) => {
+        setImages(Array.from([...images, ...values as IImg[]]).slice(0, 5))
       });
     }
   }
@@ -42,18 +47,22 @@ export default function CompleteTask({ task, setModal }: props) {
   const completeTaskHandler = (deny: boolean = false) => {
 
     if (deny) {
-      //
+      dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Cancelled , taskReport: report}}))
       setModal(false)
     } 
 
     else {
       setReportDirty(true)
-      if (!report) setErrorText('Добавьте отчёт!') 
+      if (!report) setErrorText('Добавьте отчёт!')
       else {
-        //
-      }
+        dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Resolved,  taskReport: report, imgFiles: images}}))
+        setReport('')
+        setReportDirty(false)
+        setErrorText('')
+        setModal(false)
     }
   }
+}
 
   return (
     <div className='completeTask'>
@@ -77,9 +86,9 @@ export default function CompleteTask({ task, setModal }: props) {
         {images.length ? <>
           <div className='completeTask__fileTitle'>Прикрепленне фотографии: </div>
           <div className='completeTask__fileImages'>
-            {images.map((image) =>
-              <div className='completeTask__imageWrapper' onClick={() => { setImages(images.filter((el) => el !== image)) }}>
-                <img className='completeTask__image' src={image} alt="loaded image" key={image} />
+            {images.map((image, index) =>
+              <div className='completeTask__imageWrapper' key={Date.now.toString() + index} onClick={() => { setImages(images.filter((el) => el !== image)) }}>
+                <img className='completeTask__image' src={image.data} alt="loaded image" key={Date.now.toString() + index} />
               </div>)}
           </div>
         </>
