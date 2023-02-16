@@ -14,10 +14,7 @@ export interface IUser {
   name: string;
 }
 
-export interface IProfile extends IUser {
-  birthday?: string;
-  phone?: string;
-  photo?: string;
+export interface IProfile extends IUpdateProfile {
   moticoins: number;
   totalExperience: number;
   nextLevelExperience: number;
@@ -25,4 +22,10 @@ export interface IProfile extends IUser {
   achievements: IUserAchievement[]
   level: number;
   tasksStats: ITasksStats;
+}
+
+export interface IUpdateProfile extends IUser {
+  birthday?: string;
+  phone?: string;
+  photo?: string;
 }
