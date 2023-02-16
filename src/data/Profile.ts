@@ -25,10 +25,14 @@ const profile: IProfile = {
     {
       type: TaskTypeEnum.Power,
       id: 'sdf5sd4af6sd54f',
+      name: 'Силач',
+      img: 'asdfasdf',
+      description: 'asdfas dfa dfa sdf asdfasdf asdf ',
       maxPoints: 200,
     },
   ],
   level: 1,
+  doneTasks: 8,
   tasksStats: {
     approved: 2,
     inprogress: 2,
