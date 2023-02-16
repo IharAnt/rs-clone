@@ -24,7 +24,7 @@ const HistoryStore = () => {
     return (
         <div className={`main-field-history ${IsHistoryOpen ? 'main-field-history_open' : ''}`}>
             <p className='basket-title-text'>История</p>
-            <div>
+            <div className='history-item-container'>
                 {orderArr.map((item) =>
                     <ItemHistoryProduct {...item} key={item.id} />)}
             </div>

@@ -52,8 +52,13 @@ const sliceStorePage = createSlice({
             state.basketProducts = state.basketProducts.filter((item) => item.count > 0);
             state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
         },
+        refresBasket(state: typeStorePage, action: PayloadAction<''>) {
+            state.basketProducts.map((item) => item.count = 0);
+            state.basketProducts = state.basketProducts.filter((item) => item.count > 0);
+            state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
+        }
     }
 })
 
 export default sliceStorePage.reducer;
-export const { addProductBasket, deleteProductBasket, plusProductBasket, minusProductBasket, openHistoryWindow, openBasketWindow } = sliceStorePage.actions;
+export const { refresBasket, addProductBasket, deleteProductBasket, plusProductBasket, minusProductBasket, openHistoryWindow, openBasketWindow } = sliceStorePage.actions;

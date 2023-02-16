@@ -7,7 +7,7 @@ import { deleteProductBasket, minusProductBasket, plusProductBasket } from '../.
 import { useAppDispatch } from '../../store';
 import './index.css';
 
-const ItemBasketControl = (item: ICartProduct) => {
+const ItemBasketProduct = (item: ICartProduct) => {
 
     const dispatch = useAppDispatch();
 
@@ -35,4 +35,4 @@ const ItemBasketControl = (item: ICartProduct) => {
     );
 };
 
-export default ItemBasketControl;
+export default ItemBasketProduct;
