@@ -5,8 +5,13 @@ import { useState, useCallback } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import moticoins from '../../assets/img/motekoinIco.png'
 import CreateTaskHepler from '../createTaskHepler';
+import { updateTask } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { useAppDispatch } from '../../store';
+import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 
-export default function ModalTestTask({ task }: props) {
+export default function ModalTestTask({ task, setModal }: props) {
+
+  const dispatch = useAppDispatch()
 
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
@@ -29,8 +34,16 @@ export default function ModalTestTask({ task }: props) {
 
   const [helperAward, setHelperAward] = useState(false)
 
-  const teskTaskHandler = () => {
+  const teskTaskHandler = (deny: boolean = false) => {
     if(!testReport) setErrorMessage('Напишите отчёт о проверке!')
+    else {
+      if (deny) {
+        dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Rejected, messages: [{message: testReport, author: task.inspector}]}}))
+      } else {
+        dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{message: testReport, author: task.inspector}]}}))
+      }
+      setModal(false)
+    }
   }
 
   return (
@@ -103,12 +116,12 @@ export default function ModalTestTask({ task }: props) {
       <hr className='mt-5' />
       <div className="testTask__field">
         <div className="testTask__fieldName">Отчёт о проверке: </div>
-        <textarea className="testTask__fieldValue testTask__textarea"></textarea>
+        <textarea className="testTask__fieldValue testTask__textarea" onChange={(e)=>setTestReport(e.target.value)}></textarea>
       </div>
       <div className='testTask__error'>{errorMessage}</div>
       <div className="testTask__btns">
         <button className="testTask__btn testTask__btn-approve motivators-btn" onClick={() => teskTaskHandler()}>принять</button>
-        <button className="testTask__btn motivators-btn testTask__btn-reject" onClick={() => teskTaskHandler()}>отклонить</button>
+        <button className="testTask__btn motivators-btn testTask__btn-reject" onClick={() => teskTaskHandler(true)}>отклонить</button>
       </div>
     </div>
   )
