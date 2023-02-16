@@ -10,6 +10,7 @@ import ItemBasketProduct from '../itemBasketProduct';
 const BasketStore = () => {
 
     const { basketProducts, IsBasketOpen } = useAppSelector(state => state.storePage);
+    const IsLogin = useAppSelector(state => state.appState.isLogin);
     const dispatch = useAppDispatch();
     const [{ isOver }, dropRef] = useDrop({
         accept: 'item-product_add',
@@ -22,15 +23,17 @@ const BasketStore = () => {
     })
 
     return (
-        <div className={`main-field-basket ${IsBasketOpen ? 'main-field-basket_open' : ''}`} ref={dropRef}>
-            <BasketTitle />
-            <div className={`basket-list-product ${isOver ? 'basket-list-product_drop' : ''}`}>
-                {basketProducts.map((item) =>
-                    <ItemBasketProduct {...item} key={item.product.id} />
-                )}
-            </div>
-            <BasketBuyButton />
-        </div >
+        <>
+            {IsLogin && <div className={`main-field-basket ${IsBasketOpen ? 'main-field-basket_open' : ''}`} ref={dropRef}>
+                <BasketTitle />
+                <div className={`basket-list-product ${isOver ? 'basket-list-product_drop' : ''}`}>
+                    {basketProducts.map((item) =>
+                        <ItemBasketProduct {...item} key={item.product.id} />
+                    )}
+                </div>
+                <BasketBuyButton />
+            </div >}
+        </>
     );
 };
 

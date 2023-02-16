@@ -14,7 +14,6 @@
     background: #b4b0b4;
 }
 
-
 .product-card_img {
     border-radius: 10px;
     height: 100%;
@@ -57,4 +56,14 @@
         inset 0 -3em 3em rgba(0, 0, 0, 0.1),
         0 0 0 2px rgb(255, 255, 255),
         0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width:500px) {
+    .product-card-container {
+        cursor: pointer;
+        padding: 5px;
+        width: 100%;
+    }
+
 }

@@ -8,6 +8,7 @@ import ItemHistoryProduct from '../itemHistoryProduct';
 const HistoryStore = () => {
 
     const { IsHistoryOpen } = useAppSelector(state => state.storePage);
+    const IsLogin = useAppSelector(state => state.appState.isLogin);
     const [orderArr, setOrderArr] = useState([] as IOrder[]);
     const id = '1'
 
@@ -22,14 +23,15 @@ const HistoryStore = () => {
     }), [orderArr, IsHistoryOpen])
 
     return (
-        <div className={`main-field-history ${IsHistoryOpen ? 'main-field-history_open' : ''}`}>
+        <>
+        {IsLogin && <div className={`main-field-history ${IsHistoryOpen ? 'main-field-history_open' : ''}`}>
             <p className='basket-title-text'>История</p>
             <div className='history-item-container'>
                 {orderArr.map((item) =>
                     <ItemHistoryProduct {...item} key={item.id} />)}
             </div>
-        </div>
-
+        </div>}
+        </>
     );
 };
 
