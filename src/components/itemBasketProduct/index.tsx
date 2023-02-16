@@ -20,7 +20,7 @@ const ItemBasketProduct = (item: ICartProduct) => {
         })
     })
 
-    const [{ isOver }, dropRef] = useDrop({
+    const [, dropRef] = useDrop({
         accept: 'item-product_delete',
         drop: (item: { idProduct: string }) => {
             dispatch(deleteProductBasket(item.idProduct))
