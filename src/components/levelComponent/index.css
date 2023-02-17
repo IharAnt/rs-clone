@@ -1,0 +1,51 @@
+.level-container {
+    width: 100%;
+    height: 85px;
+    background: darkcyan;
+    width: 98vw;
+    background: rgba(55, 48, 163, 0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.level-container_img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.level-container_xp {
+    height: 70px;
+    width: 200px;
+}
+
+.level-container_achievements {
+    height: 70px;
+    width: 350px;
+    background: darkred;
+}
+
+.experience_next-level {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.experience_line {
+    width: 90%;
+    height: 15px;
+    background: darkcyan;
+    border-radius: 7px;
+}
+
+.next-level_ico {
+    width: 30px;
+    height: 30px;
+}
+
+.next-level_text {
+    color: var(--COLOR_FONT_BLACK);
+}
