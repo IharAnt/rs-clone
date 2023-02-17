@@ -1,5 +1,6 @@
 .profile-container {
     column-gap: 10px;
+    position: relative;
     display: grid;
     grid-template-columns: auto 50px;
     grid-template-rows: repeat(2, 25px);
@@ -16,6 +17,7 @@
     border-radius: 50%;
     transition: .3s;
 }
+
 
 .profile-container_notice {
     align-self: center;

@@ -1,21 +1,31 @@
-import WebRequest from '../helpers/WebRequest';
-import appConfig from '../configs/AppConfig';
-import { IProfile } from '../types/interfaces/IUser';
+import { IProfile, IUpdateProfile, IUser } from '../types/interfaces/IUser';
 import profile from '../data/Profile';
+import apiClient from '../api/ApiClient';
+//import users from '../data/Users';
 
 export default class UserService {
-  private webRequest: WebRequest;
+  static userPath = `/users`;
+  static profilePath = `/profile`;
 
-  private userPath = `${appConfig.apiUrl}/user`;
 
-  constructor(webRequest: WebRequest = new WebRequest()) {
-    this.webRequest = webRequest;
+  static async getProfile(userId: string): Promise<IProfile> {
+    const response = await apiClient.get<IProfile>(`${UserService.profilePath}/${userId}`);
+    return response.data;
+
+    // return Promise.resolve(profile);
   }
 
-  async getProfile(id: string): Promise<IProfile> {
-    // const result = await this.webRequest.get<IProfile>(`${this.userPath}/${id}`);
-    // return result;
+  static async updateProfile(userId: string, updateProfile: IUpdateProfile): Promise<IProfile> {
+    const response = await apiClient.put<IProfile>(`${UserService.profilePath}/${userId}`, updateProfile);
+    return response.data;
 
-    return Promise.resolve(profile);
+    // return Promise.resolve(Object.assign(profile, updateProfile));
+  }
+
+  static async getUsers(): Promise<IUser[]> {
+    const response = await apiClient.get<IUser[]>(`${UserService.userPath}`);
+    return response.data;
+
+    //return Promise.resolve(users);
   }
 }
