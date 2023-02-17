@@ -11,7 +11,7 @@ export default function MotivatorsTasks() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getTasks({'id': userId}))
+    if(userId) dispatch(getTasks({'id': userId}))
   },
     [userId]
   )

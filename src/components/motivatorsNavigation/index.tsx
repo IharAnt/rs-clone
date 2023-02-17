@@ -3,11 +3,14 @@ import { props } from './types'
 import { useState } from 'react'
 import Modal from '../modal'
 import CreateTask from '../createTask'
+import { useAppDispatch } from '../../store'
+import { updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks'
 
 export default function MotivatorsNavigation({content, setContent}: props ){
 
   const [menu, setMenu] = useState(false)
-  const [modal, setModal] = useState(false)
+  const dispatch = useAppDispatch()
+  // const [modal, setModal] = useState(false)
 
   return (
     <div className='motivatorsNav'>
@@ -17,12 +20,13 @@ export default function MotivatorsNavigation({content, setContent}: props ){
       </div>
       <div className="motivatorsNav__item">
         <button className='motivators-block' onClick={()=>{
-          setModal(true)
+            dispatch(updateModalValue('create'))
+          // setModal(true)
           }}>добавить  свою задачу +</button>
       </div>
-      <Modal isOpen={modal} setModal={setModal}>
+      {/* <Modal isOpen={modal} setModal={setModal}>
         <CreateTask setModal={setModal}/>
-      </Modal>
+      </Modal> */}
     </div>
   )
 }
