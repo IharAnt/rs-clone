@@ -1,47 +1,26 @@
 import { useEffect, useState } from 'react';
-import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
+import { useAppSelector } from '../../store';
 import { IAchievement } from '../../types/interfaces/IAchievement';
 import ImgAchievementItem from '../imgAchievementItem';
 import './index.css';
 
 const AchievementsItem = (data: IAchievement) => {
 
-
     const [scoreItem, setScoreItem] = useState(0);
     const [widthImg, setWidthImg] = useState(0);
-
-    const profileAchievements = [
-        {
-            type: TaskTypeEnum.Power,
-            id: 'sdf5sd4af6sd54f',
-            maxPoints: 900,
-        },
-        {
-            type: TaskTypeEnum.Learner,
-            id: 'sdf5sd4af6sd54f',
-            maxPoints: 100,
-        },
-        {
-            type: TaskTypeEnum.Intelligence,
-            id: 'sdf5sd4af6sd54f',
-            maxPoints: 500,
-        },
-        {
-            type: TaskTypeEnum.Sleep,
-            id: 'sdf5sd4af6sd54f',
-            maxPoints: 2500,
-        },
-    ]
+    const profileAchievement = useAppSelector(state => state.appState.profile.achievements);
 
     useEffect((() => {
-        profileAchievements.map((item) => {
-            if (item.type === data.type) {
-                const actualWidth = (item.maxPoints / data.maxPoints) * 100;
-                setWidthImg(Math.min(100, actualWidth));
-                setScoreItem(item.maxPoints);
-            }
-        })
-    }), [profileAchievements])
+        if (profileAchievement) {
+            profileAchievement.forEach((item) => {
+                if (item.type === data.type) {
+                    const actualWidth = (item.maxPoints / data.maxPoints) * 100;
+                    setWidthImg(Math.min(100, actualWidth));
+                    setScoreItem(item.maxPoints);
+                }
+            })
+        }
+    }), [profileAchievement, data])
 
     return (
         <li className='achievements-container_item'>
