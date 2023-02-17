@@ -1,6 +1,7 @@
 .createTask{
   padding: 25px;
   width: 60vw;
+  color: #000;
 }
 
 .createTask__title{

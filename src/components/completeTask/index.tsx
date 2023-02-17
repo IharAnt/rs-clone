@@ -4,11 +4,11 @@ import inspector from '../../assets/icons/inspector.png'
 import download from '../../assets/icons/download.png'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
-import { updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
+import { updateModalTask, updateModalValue, updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
 import { IImg } from '../../types/interfaces/IImg'
 
-export default function CompleteTask({ task, setModal }: props) {
+export default function CompleteTask({ task }: props) {
 
   const dispatch = useAppDispatch()
   const completeTaskPending = useAppSelector((state) => state.tasks.completeTaskPending)
@@ -46,7 +46,7 @@ export default function CompleteTask({ task, setModal }: props) {
 
     if (deny) {
       dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Cancelled , taskReport: report}}))
-      setModal(false)
+      dispatch(updateModalValue(null))
     } 
 
     else {
@@ -54,10 +54,7 @@ export default function CompleteTask({ task, setModal }: props) {
       if (!report) setErrorText('Добавьте отчёт!')
       else {
         dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Resolved,  taskReport: report, imgFiles: images}}))
-        setReport('')
-        setReportDirty(false)
-        setErrorText('')
-        setModal(false)
+        dispatch(updateModalValue(null))
     }
   }
 }

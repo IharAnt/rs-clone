@@ -1,12 +1,11 @@
 import './style.css'
 import Select from 'react-select';
-import { props } from './types';
 import { selectStyle, options, selectStyleError } from './options';
 import { useState, useEffect } from 'react';
 import CreateTaskHepler from '../createTaskHepler';
 import { useInput, useSelect } from './hooks';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { getUsers } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { getUsers, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUser } from '../../types/interfaces/IUser';
 import { createTask } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { updateCreateFulfilled } from '../../store/motivatorsStore/sliceTasks/tasks';
@@ -14,7 +13,7 @@ import { IUpdateTask } from '../../types/interfaces/ITask';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
 
-export default function CreateTask({ setModal }: props) {
+export default function CreateTask() {
 
   const dispatch = useAppDispatch()
   const profile =  useAppSelector((state) => state.appState.profile)
@@ -70,6 +69,7 @@ export default function CreateTask({ setModal }: props) {
       const newTask: IUpdateTask = { executor: { id: profile.id, name: profile.name, email: profile.email } as IUser, inspector: users.find((user) => user.name == inspector.value?.value) as IUser, summary: summary.value, description: description.value, dueDate: taskDeadline, type: taskType.value?.value as TaskTypeEnum, status: TaskStatusEnum.Open, points: +award.value }
       setErrorText('')
       dispatch(createTask({ task: newTask }))
+      dispatch(updateModalValue(null))
     } else {
       setErrorText('Заполните данные правильно!')
     }
@@ -84,7 +84,6 @@ export default function CreateTask({ setModal }: props) {
       taskType.clear();
       setErrorText('');
       dispatch(updateCreateFulfilled())
-      setModal(false);
     }
   }, [createTaskFulfilled])
 

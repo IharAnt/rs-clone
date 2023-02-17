@@ -17,7 +17,7 @@ export const getTasks = createAsyncThunk<ITask[], { id: string }, {}>(
 export const createTask = createAsyncThunk<ITask[], { task: IUpdateTask }, {}>(
   'tasks/createTask',
   async function ({ task }) {
-    const newTask = await TasksService.createTask(task)
+    await TasksService.createTask(task)
     const result = await TasksService.getExecutorTasks(task.executor.id)
     return result;
   }
@@ -84,7 +84,9 @@ type tasks = {
   createTaskPending: boolean,
   completeTaskPending: boolean,
   completeTaskReject: boolean,
-  completeTaskFulfilled: boolean
+  completeTaskFulfilled: boolean,
+  modal: string | null,
+  modalTask: ITask,
 }
 
 const initialState: tasks = {
@@ -96,7 +98,9 @@ const initialState: tasks = {
   createTaskPending: false,
   completeTaskPending: false,
   completeTaskReject: false,
-  completeTaskFulfilled: false
+  completeTaskFulfilled: false,
+  modal: null,
+  modalTask: {} as ITask,
 }
 
 const tasksSlice = createSlice({
@@ -105,6 +109,12 @@ const tasksSlice = createSlice({
   reducers: {
     updateCreateFulfilled: (state) => {
       state.createTaskFulfilled = false
+    },
+    updateModalValue: (state, action) => {
+      state.modal = action.payload
+    },
+    updateModalTask: (state, action) => {
+      state.modalTask = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -147,5 +157,5 @@ const tasksSlice = createSlice({
   }
 })
 
-export const { updateCreateFulfilled } = tasksSlice.actions
+export const { updateCreateFulfilled, updateModalValue, updateModalTask } = tasksSlice.actions
 export default tasksSlice.reducer
