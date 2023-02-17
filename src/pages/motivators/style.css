@@ -5,22 +5,12 @@
   color: var(--COLOR_FONT_BLACK);
   height: calc(100vh - 160px);
   margin: 0 auto;
-  width: 94vw;
-  padding: 10px;
+  width: 98vw;
+  padding: 10px 40px;
   box-sizing: border-box;
   font-size: 16px;
   line-height: 1;
   overflow: auto;
-}
-
-.motivatorsNav{
-  display: flex;
-  justify-content: space-between;
-}
-
-.motivatorsNav__item{
-  display: flex;
-  gap: 20px;
 }
 
 .motivators-block{
@@ -47,4 +37,16 @@
 
 .motivators-btn:hover{
   opacity: 1;
+}
+
+@media (max-width: 1400px) {
+  .motivators {
+    padding: 10px 30px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .motivators {
+    padding: 10px 20px;
+  }
 }
