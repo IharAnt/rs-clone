@@ -25,6 +25,7 @@ const ModalEitProfile = () => {
             const reader = new FileReader();
             reader.onload = function () {
                 const newAvatar = reader.result;
+                console.log(newAvatar)
                 if (typeof newAvatar === 'string') {
                     setImgAvatar(newAvatar)
                 }
