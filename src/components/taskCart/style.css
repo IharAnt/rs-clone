@@ -1,8 +1,7 @@
 .motivatorsTask {
   font-size: 18px;
   border-radius: 10px;
-  background-color: var(--COLOR_BLOCK);
-  /* border: 1px solid var(--COLOR_BLOCK_BORDER); */
+  background-color:  var(--COLOR_BACKGROUND_ITEM);
   padding: 10px;
 }
 

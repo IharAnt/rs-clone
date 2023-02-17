@@ -10,14 +10,11 @@ const defineCurrentModal = (modal: string | null, task: ITask) => {
   switch(modal) {
     case 'create': 
       return <CreateTask />
-      break;
     case 'complete':
       return <CompleteTask task={task} />
-      break;
     case 'test': 
       return <TestTask task={task} />
-      break;
-    default: <></>
+    default: return <></>
   }
 }
 

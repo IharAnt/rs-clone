@@ -1,6 +1,17 @@
 .motivatorsCnt-container{
   margin-top: 40px;
 }
+.motivators {
+  color: var(--COLOR_FONT_BLACK);
+  height: calc(100vh - 160px);
+  margin: 0 auto;
+  width: 94vw;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1;
+  overflow: auto;
+}
 
 .motivatorsNav{
   display: flex;
@@ -15,8 +26,7 @@
 .motivators-block{
   outline: none;
   border-radius: 3px;
-  background-color: var(--COLOR_BLOCK);
-  border: 1px solid var(--COLOR_BLOCK_BORDER);
+  background-color: var(--COLOR_BACKGROUND_ITEM);
   display: flex;
   justify-content: center;
   align-items: center;
