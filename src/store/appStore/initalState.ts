@@ -1,8 +1,6 @@
 import { typeAppActual } from "../types/types";
 import { IProfile } from "../../types/interfaces/IUser";
 
-import { IProfile } from "../../types/interfaces/IUser";
-
 
 const initalState: typeAppActual = {
     activePage: '/',
