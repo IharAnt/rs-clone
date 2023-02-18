@@ -87,6 +87,7 @@ type tasks = {
   completeTaskFulfilled: boolean,
   modal: string | null,
   modalTask: ITask,
+  loading: boolean
 }
 
 const initialState: tasks = {
@@ -101,6 +102,7 @@ const initialState: tasks = {
   completeTaskFulfilled: false,
   modal: null,
   modalTask: {} as ITask,
+  loading: false
 }
 
 const tasksSlice = createSlice({
@@ -119,14 +121,22 @@ const tasksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getTasks.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(getTasks.fulfilled, (state, action) => {
+        state.loading = false;
         state.tasks = action.payload;
       })
       .addCase(updateTask.fulfilled, (state, action) => {
         state.tasks = action.payload
       })
+      .addCase(getInspectorTasks.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(getInspectorTasks.fulfilled, (state, action) => {
         state.inspectorTasks = action.payload;
+        state.loading = false;
       })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.users = action.payload

@@ -7,15 +7,6 @@ import './style.css'
 
 export default function MotivatorsTasks() {
 
-  const userId = useAppSelector((state) => state.appState.profile.id)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    if(userId) dispatch(getTasks({'id': userId}))
-  },
-    [userId]
-  )
-
   const data = useAppSelector((state) => state.tasks.tasks)
 
   return (

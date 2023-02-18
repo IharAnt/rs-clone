@@ -1,19 +1,8 @@
-import { useAppDispatch, useAppSelector } from '../../store'
-import { useEffect } from 'react'
-import { getInspectorTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
+import { useAppSelector } from '../../store'
 import './style.css'
 import TestingTask from '../testingTask'
 
 export default function TestingTasksList() {
-
-  const dispatch = useAppDispatch()
-  const userId = useAppSelector((state) => state.appState.profile.id)
-
-  useEffect(() => {
-    dispatch(getInspectorTasks({ 'id': userId }))
-  },
-    [dispatch]
-  )
 
   const data = useAppSelector((state) => state.tasks.inspectorTasks)
 
