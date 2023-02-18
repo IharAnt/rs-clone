@@ -23,7 +23,7 @@ export const createTask = createAsyncThunk<ITask[], { task: IUpdateTask }, {}>(
   }
 )
 
-export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, { rejectValue: string }>(
+export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, {}>(
   'tasks/updateTask',
   async function ({ taskId, updatedTask }) {
     const task = await TasksService.updateTask(taskId, updatedTask);
@@ -32,7 +32,7 @@ export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTas
   }
 )
 
-export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
+export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, {}>(
   'tasks/getInspectorTasks',
   async function ({ id }) {
     let result = await TasksService.getInspectorTasks(id);
@@ -41,7 +41,7 @@ export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rej
   }
 )
 
-export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, { rejectValue: string }>(
+export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, {}>(
   'tasks/updateInspectorTask',
   async function ({ taskId, updatedTask }) {
     await TasksService.updateTask(taskId, updatedTask);
@@ -51,7 +51,7 @@ export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string, u
   }
 )
 
-export const getUsers = createAsyncThunk<IUser[], undefined, { rejectValue: string }>(
+export const getUsers = createAsyncThunk<IUser[], undefined, {}>(
   'tasks/getUsers',
   async function () {
     const result = await UserService.getUsers();
@@ -88,6 +88,8 @@ type tasks = {
   modal: string | null,
   modalTask: ITask,
   loading: boolean,
+  loadingTask: boolean,
+  errorTask: string,
   errorMessage: string
 }
 
@@ -104,6 +106,8 @@ const initialState: tasks = {
   modal: null,
   modalTask: {} as ITask,
   loading: true,
+  loadingTask: false,
+  errorTask: '',
   errorMessage: ''
 }
 
@@ -144,19 +148,21 @@ const tasksSlice = createSlice({
         state.users = action.payload
       })
       .addCase(createTask.pending, (state) => {
-        state.modalTaskPending = true
-        state.modalTaskReject = false
+        state.loadingTask = true
       })
       .addCase(createTask.rejected, (state, action) => {
-        state.modalTaskReject = true
-        state.modalTaskPending = false
+        state.loadingTask = false
         state.errorMessage = action.error.message || ''
       }).addCase(createTask.fulfilled, (state, action) => {
-        state.modalTaskPending = false
-        state.modalTaskReject = false
-        state.modalTaskFulfilled = true
+        state.errorMessage = ''
+        state.loadingTask = false
         state.tasks = action.payload
-      }).addCase(completeTask.pending, (state) => {
+      })
+
+
+
+
+      .addCase(completeTask.pending, (state) => {
         state.completeTaskPending = true
       }).addCase(completeTask.rejected, (state) => {
         state.completeTaskPending = false
