@@ -1,7 +1,8 @@
 import { store } from "..";
-import { IProfile} from "../../types/interfaces/IUser";
+import { IProfile } from "../../types/interfaces/IUser";
 import OrderType from "../../types/enums/OrderEnum";
 import RatingSortType from "../../types/enums/RatingSortEnum";
+import { IAchievement } from "../../types/interfaces/IAchievement";
 import { ICartProduct } from "../../types/interfaces/IOrder";
 
 export type typeAppActual = {
@@ -9,6 +10,7 @@ export type typeAppActual = {
     isLogin: boolean,
     activeModalAuth: typeActualModalAuth,
     isLoading: boolean,
+    achievements: IAchievement[],
     profile: IProfile,
 }
 

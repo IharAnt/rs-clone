@@ -1,0 +1,37 @@
+.motivators-block::placeholder {
+  color: var(--COLOR_BLUY_DEFAULT);
+  opacity: 0.7;
+}
+
+.motivatorsNav__update {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-image: url('../../assets/img/updateRating.png');
+  transition: .4s;
+}
+
+.motivatorsNav__update:hover {
+  transform: rotate(450deg);
+}
+
+.motivatorsNav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.motivatorsNav__item{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 10px;
+}
+
+.motivatorsNav__btn:disabled{
+  opacity: 0.5;
+}
+
+.motivatorsNav__btn:hover{
+  background-color: var(--COLOR_BLOCK_BORDER);
+}

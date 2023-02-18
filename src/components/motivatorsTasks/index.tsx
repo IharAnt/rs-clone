@@ -2,17 +2,18 @@ import TaskList from '../taskList/index'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
 import {useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
-import { getTasks } from '../../store/appStore/sliceTasks/tasks'
+import { getTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
 import './style.css'
 
 export default function MotivatorsTasks() {
 
+  const userId = useAppSelector((state) => state.appState.profile.id)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getTasks({'id': '1'}))
+    if(userId) dispatch(getTasks({'id': userId}))
   },
-    [dispatch]
+    [userId]
   )
 
   const data = useAppSelector((state) => state.tasks.tasks)

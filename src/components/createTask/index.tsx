@@ -1,113 +1,149 @@
 import './style.css'
 import Select from 'react-select';
-import { optionInspectorType } from './types';
-import { selectStyle, options } from './options';
+import { selectStyle, options, selectStyleError } from './options';
 import { useState, useEffect } from 'react';
 import CreateTaskHepler from '../createTaskHepler';
+import { useInput, useSelect } from './hooks';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { getUsers, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { IUser } from '../../types/interfaces/IUser';
+import { createTask } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { updateCreateFulfilled } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { IUpdateTask } from '../../types/interfaces/ITask';
+import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
+import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
 
 export default function CreateTask() {
 
-  const [taskSummary, setTaskSummary] = useState('')
-  const [taskDescription, setTaskDescriptione] = useState('')
-  const [taskDeadline, setTaskDeadline] = useState('')
-  const [taskType, setTaskType] = useState<string | null>()
-  const [taskAward, setTaskAward] = useState('')
-
-  const [validName, setValidName] = useState(true)
-  const [validDescription, setValidDescription] = useState(true)
-  const [validType, setValidType] = useState(false)
-  const [validAward, setValidAward] = useState(false)
-
-  const [validData, setValidData] = useState(false)
+  const dispatch = useAppDispatch()
+  const profile =  useAppSelector((state) => state.appState.profile)
 
   useEffect(() => {
-    if (validName && validDescription && validType && validAward) {
+    dispatch(getUsers())
+  },
+    [dispatch]
+  )
+
+  const users = useAppSelector((state) => state.tasks.users)
+
+  const inspectors = users.map((user: IUser) => { return { value: user.name, label: user.name } });
+  const [errorText, setErrorText] = useState('')
+
+  const [helperName, setHelperName] = useState(false)
+  const [helperDescription, setHelperDescription] = useState(false)
+  const [helperAward, setHelperAward] = useState(false)
+  const [taskDeadline, setTaskDeadline] = useState('')
+  const summary = useInput('', { isEmpty: true, maxLength: 40 })
+  const inspector = useSelect()
+  const description = useInput('', { isEmpty: true, maxLength: 100 })
+  const taskType = useSelect()
+  const award = useInput('', { isEmpty: true, maxLength: 4, isCorrectNumber: 2 })
+  const [validData, setValidData] = useState(false)
+
+  const unvalidInspector = !inspector.value
+  const unvalidSummary = (summary.minLengthError || summary.isEmptyError)
+  const unvalidDescription = (description.minLengthError || description.isEmptyError)
+  const unvalidTaskType = !taskType.value
+  const unvalidAward = (award.isCorrectNumberError)
+
+  const closeHelpers = () => {
+    if (helperName) setHelperName(false);
+    if (helperDescription) setHelperDescription(false);
+    if (helperAward) setHelperAward(false);
+  }
+
+  const createTaskReject = useAppSelector((state) => state.tasks.createTaskReject)
+  const createTaskPending = useAppSelector((state) => state.tasks.createTaskPending)
+  const createTaskFulfilled = useAppSelector((state) => state.tasks.createTaskFulfilled)
+
+  const createTaskHandler = async (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault()
+
+    summary.onBlur()
+    inspector.onBlur()
+    description.onBlur()
+    award.onBlur()
+    taskType.onBlur()
+
+    if (validData) {
+      const newTask: IUpdateTask = { executor: { id: profile.id, name: profile.name, email: profile.email } as IUser, inspector: users.find((user) => user.name == inspector.value?.value) as IUser, summary: summary.value, description: description.value, dueDate: taskDeadline, type: taskType.value?.value as TaskTypeEnum, status: TaskStatusEnum.Open, points: +award.value }
+      setErrorText('')
+      dispatch(createTask({ task: newTask }))
+      dispatch(updateModalValue(null))
+    } else {
+      setErrorText('Заполните данные правильно!')
+    }
+  }
+
+  useEffect(() => {
+    if (createTaskFulfilled) {
+      summary.clear();
+      inspector.clear();
+      description.clear();
+      award.clear();
+      taskType.clear();
+      setErrorText('');
+      dispatch(updateCreateFulfilled())
+    }
+  }, [createTaskFulfilled])
+
+  useEffect(() => {
+    if (createTaskReject) setErrorText('ошибка на стороне сервера')
+  }, [createTaskReject])
+
+  useEffect(() => {
+    if (!(!inspector.value || unvalidSummary || unvalidDescription || unvalidTaskType || unvalidAward)) {
       setValidData(true)
     } else {
       setValidData(false)
     }
-  }, [validName, validDescription, validType, validAward])
+  }, [summary, description, inspector, award, taskType])
 
-  const nameHandler = () => taskSummary.length > 0 && taskSummary.length < 40 ? setValidName(true) : setValidName(false)
-
-  const desciptionHandler = () => taskDescription.length > 0 && taskDescription.length < 100 ? setValidDescription(true) : setValidDescription(false)
-
-// const typeHandler = () => {
-//   if (taskType) setValidType(true)
-// }
-
-// const awardHandler = () => {
-//   if (taskSummary) setValidAward(true)
-// }
-
-const [helperName, setHelperName] = useState(false)
-const [helperDescription, setHelperDescription] = useState(false)
-const [helperAward, setHelperAward] = useState(false)
-
-const inspectors: optionInspectorType[] = [
-  {
-    value: 'Andrey',
-    label: 'Андрей',
-  },
-  {
-    value: 'Ihor',
-    label: 'Игорь',
-  },
-  {
-    value: 'Stepan',
-    label: 'Степан',
-  },
-]
-
-function closeHelpers() {
-  if (helperName) setHelperName(false);
-  if (helperDescription) setHelperDescription(false);
-  if (helperAward) setHelperAward(false);
-}
-
-return (
-  <div className='createTask' onClick={closeHelpers}>
-    <h2 className='createTask__title'>Создание Мотиватора: </h2>
-    <div className="createTask__field">
-      <div className="createTask__fieldName">
-        <div className="createTask__fieldNameText">Проверяющий: </div>
+  return (
+    <form action="">
+      <div className='createTask' onClick={closeHelpers}>
+        <h2 className='createTask__title'>Создание Мотиватора: </h2>
+        <div className="createTask__field">
+          <div className="createTask__fieldName">
+            <div className="createTask__fieldNameText">Проверяющий: </div>
+          </div>
+          <Select value={inspector.value} className='createTask__input createTask__input-select' onBlur={() => { inspector.onBlur() }} onChange={(option) => inspector.onChange(option)} options={inspectors} styles={unvalidInspector && inspector.isDirty ? selectStyleError : selectStyle} placeholder={'Выберите проверяющего'} />
+        </div>
+        <hr className='createTask__strip' />
+        <div className="createTask__field">
+          <div className="createTask__fieldName">
+            <div className="createTask__fieldNameText">Название: </div>
+            <CreateTaskHepler message={'Название должно быть не больше 40 символов'} helper={helperName} setHelper={setHelperName} key={helperName.toString()} />
+          </div>
+          <input className={unvalidSummary && summary.isDirty ? 'createTask__input createTask__input-red' : 'createTask__input'} type="text" value={summary.value} onBlur={() => summary.onBlur()} onChange={(e: React.ChangeEvent<HTMLInputElement>) => summary.onChange(e)} />
+        </div>
+        <div className="createTask__field">
+          <div className="createTask__fieldName">
+            <div className="createTask__fieldNameText">Описание: </div>
+            <CreateTaskHepler message={'Описание должно быть не больше 100 символов'} helper={helperDescription} setHelper={setHelperDescription} key={helperDescription.toString()} />
+          </div>
+          <textarea className={unvalidDescription && description.isDirty ? 'createTask__input createTask__input-description createTask__input-red' : 'createTask__input createTask__input-description'} value={description.value} onBlur={description.onBlur} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => description.onChange(e)}></textarea>
+        </div>
+        <div className="createTask__field">
+          <div className="createTask__fieldName">Дедлайн (необязательно): </div>
+          <input className='createTask__input' type="date" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTaskDeadline(event.target.value)} min={new Date().toISOString().split('T')[0]} />
+        </div>
+        <div className="createTask__field">
+          <div className="createTask__fieldName">Тип: </div>
+          <Select value={taskType.value} className='createTask__input createTask__input-select' options={options} styles={unvalidTaskType && taskType.isDirty ? selectStyleError : selectStyle} placeholder={'Выберите тип задачи'} onBlur={() => { taskType.onBlur() }} onChange={(option) => taskType.onChange(option)} />
+        </div>
+        <div className="createTask__field">
+          <div className="createTask__fieldName">
+            <div className="createTask__fieldNameText">Награда: </div>
+            <CreateTaskHepler message={'от 10 до 9999 мотикойнов. Награда может быть переопределена проверяющим.'} helper={helperAward} setHelper={setHelperAward} key={helperAward.toString()} />
+          </div>
+          <input className={unvalidAward && award.isDirty ? 'createTask__input createTask__input-red' : 'createTask__input'} type="number" value={award.value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => award.onChange(e)} onBlur={award.onBlur} />
+        </div>
+        <div className="createTask__field">
+          <input type={'submit'} onClick={createTaskHandler} value='Создать' disabled={createTaskPending ? true : false} className='motivators-btn createTask__btn' />
+          <div className="createTask__error">{errorText}</div>
+        </div>
       </div>
-      <Select className='createTask__input createTask__input-select' options={inspectors} styles={selectStyle} placeholder={'Выберите проверяющего'} />
-    </div>
-    <hr className='createTask__strip' />
-    <div className="createTask__field">
-      <div className="createTask__fieldName">
-        <div className="createTask__fieldNameText">Название: </div>
-        <CreateTaskHepler message={'не больше 40 символов'} helper={helperName} setHelper={setHelperName} key={setHelperName.toString()} />
-      </div>
-      <input className={validName ? 'createTask__input' : 'createTask__input createTask__input-red'} type="text" value={taskSummary} onBlur={nameHandler} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTaskSummary(event.target.value)} />
-    </div>
-    <div className="createTask__field">
-      <div className="createTask__fieldName">
-        <div className="createTask__fieldNameText">Описание: </div>
-        <CreateTaskHepler message={'не больше 100 символов'} helper={helperDescription} setHelper={setHelperDescription} key={setHelperDescription.toString()} />
-      </div>
-      <textarea className={validDescription ? 'createTask__input createTask__input-description' : 'createTask__input createTask__input-description createTask__input-red'} value={taskDescription} onBlur={desciptionHandler} onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => setTaskDescriptione(event.target.value)}></textarea>
-    </div>
-    <div className="createTask__field">
-      <div className="createTask__fieldName">Дедлайн (необязательно): </div>
-      <input className='createTask__input' type="date" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTaskDeadline(event.target.value)} min={new Date().toISOString().split('T')[0]} />
-    </div>
-    <div className="createTask__field">
-      <div className="createTask__fieldName">Тип: </div>
-      <Select className='createTask__input createTask__input-select' options={options} styles={selectStyle} placeholder={'Выберите тип задачи'} onChange={(option) => setTaskType(option?.value)} />
-    </div>
-    <div className="createTask__field">
-      <div className="createTask__fieldName">
-        <div className="createTask__fieldNameText">Награда: </div>
-        <CreateTaskHepler message={'от 10 до 9999 мотикойнов. Награда может быть переопределена проверяющим.'} helper={helperAward} setHelper={setHelperAward} key={setHelperAward.toString()} />
-      </div>
-      <input className='createTask__input' type="number" min={10} max={9999} value={taskAward} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTaskAward(event.target.value.slice(0, 4))} />
-    </div>
-    <div className="createTask__field">
-      <button className='motivators-btn createTask__btn'>Создать</button>
-    </div>
-  </div>
-
-)
+    </form>
+  )
 }

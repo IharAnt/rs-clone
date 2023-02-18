@@ -7,7 +7,7 @@ export default function MotivatorsTypeSelection({ content, setContent, menu, set
   return (
     <div className='selectTypeMode'>
       <div className='selectTypeMode__input motivators-block' onClick={() => setMenu(!menu)} >
-        <p>{content === 'myTasks' ? 'Мои задачи' : 'На проверке'}</p>
+        <p>{content === 'myTasks' ? 'Мои мотиваторы' : 'На проверке'}</p>
         <img className={`selectTypeMode__arrow ${menu ? 'opened' : 'closed'}`} src={arrow} alt="arrow" />
       </div>
       <ul className={`selectTypeMode__menu ${menu ? 'opened' : 'closed'}`}>

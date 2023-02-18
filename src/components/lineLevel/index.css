@@ -1,0 +1,23 @@
+.level-line-container {
+    box-sizing: content-box;
+    width: 100%;
+    height: 13px;
+    border: 2px solid var(--COLOR_FONT_BLACK);
+    border-radius: 7px;
+    position: relative;
+}
+
+.level-line-actual {
+    border-radius: 5px;
+    background: var(--COLOR_YELLOW_DEFAULT);
+    height: 13px;
+}
+
+.level-line-text {
+    font: var(--COLOR_FONT_BLACK);
+    font-size: 12px;
+    font-weight: 700;
+    bottom: -2px;
+    left: 32%;
+    position: absolute;
+}

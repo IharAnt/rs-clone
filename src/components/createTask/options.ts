@@ -50,3 +50,16 @@ export const selectStyle: StylesConfig<MyOptionType | optionInspectorType, IsMul
     };
   }
 };
+
+export const selectStyleError: StylesConfig<MyOptionType | optionInspectorType, IsMulti> = {
+  control: (provided, state) => {
+    return {
+      ...provided,
+      ...customControlStyles,
+      border: state.isFocused ? `solid 1px ${colorFocus}` : '1px solid red',
+      '&:hover': state.isFocused ? {
+        border: `1px solid ${colorFocus}`
+      } : { border: `1px solid ${colorHover}`},
+    };
+  }
+};

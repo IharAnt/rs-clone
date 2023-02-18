@@ -5,7 +5,7 @@ import sliceChangeApp from './appStore/sliceApp/slice';
 import sliceRatingPage from './ratingStore/sliceRating/slice'
 import sliceStorePage from './storePage/sliceStore/slice'
 import { AppDispatch, RootState } from './types/types'
-import tasksSlice from './appStore/sliceTasks/tasks'
+import tasksSlice from './motivatorsStore/sliceTasks/tasks'
 
 
 const rootReducer = combineReducers({
