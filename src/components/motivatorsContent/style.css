@@ -23,3 +23,10 @@
 .motivatorsCnt{
   margin-top: 40px;
 }
+
+.modal-loadingItem{
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: var(--COLOR_BLOCK_BORDER);
+}

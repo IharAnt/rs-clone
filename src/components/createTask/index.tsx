@@ -16,7 +16,7 @@ import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
 export default function CreateTask() {
 
   const dispatch = useAppDispatch()
-  const profile =  useAppSelector((state) => state.appState.profile)
+  const profile = useAppSelector((state) => state.appState.profile)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -52,9 +52,9 @@ export default function CreateTask() {
     if (helperAward) setHelperAward(false);
   }
 
-  const createTaskReject = useAppSelector((state) => state.tasks.createTaskReject)
-  const createTaskPending = useAppSelector((state) => state.tasks.createTaskPending)
-  const createTaskFulfilled = useAppSelector((state) => state.tasks.createTaskFulfilled)
+  const createTaskReject = useAppSelector((state) => state.tasks.modalTaskReject)
+  const createTaskPending = useAppSelector((state) => state.tasks.modalTaskPending)
+  const createTaskFulfilled = useAppSelector((state) => state.tasks.modalTaskFulfilled)
 
   const createTaskHandler = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -69,7 +69,6 @@ export default function CreateTask() {
       const newTask: IUpdateTask = { executor: { id: profile.id, name: profile.name, email: profile.email } as IUser, inspector: users.find((user) => user.name == inspector.value?.value) as IUser, summary: summary.value, description: description.value, dueDate: taskDeadline, type: taskType.value?.value as TaskTypeEnum, status: TaskStatusEnum.Open, points: +award.value }
       setErrorText('')
       dispatch(createTask({ task: newTask }))
-      dispatch(updateModalValue(null))
     } else {
       setErrorText('Заполните данные правильно!')
     }
@@ -77,18 +76,15 @@ export default function CreateTask() {
 
   useEffect(() => {
     if (createTaskFulfilled) {
-      summary.clear();
-      inspector.clear();
-      description.clear();
-      award.clear();
-      taskType.clear();
       setErrorText('');
       dispatch(updateCreateFulfilled())
+      dispatch(updateModalValue(null))
     }
   }, [createTaskFulfilled])
 
+  const error = useAppSelector((state) => state.tasks.errorMessage)
   useEffect(() => {
-    if (createTaskReject) setErrorText('ошибка на стороне сервера')
+    if (createTaskReject) setErrorText(error)
   }, [createTaskReject])
 
   useEffect(() => {
@@ -142,6 +138,7 @@ export default function CreateTask() {
         <div className="createTask__field">
           <input type={'submit'} onClick={createTaskHandler} value='Создать' disabled={createTaskPending ? true : false} className='motivators-btn createTask__btn' />
           <div className="createTask__error">{errorText}</div>
+          {createTaskPending ? <div className='modal-loadingItem'></div> : ''}
         </div>
       </div>
     </form>

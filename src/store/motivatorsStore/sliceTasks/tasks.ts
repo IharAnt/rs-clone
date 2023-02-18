@@ -79,30 +79,32 @@ type tasks = {
   tasks: ITask[]
   inspectorTasks: ITask[]
   users: IUser[],
-  createTaskReject: boolean,
-  createTaskFulfilled: boolean,
-  createTaskPending: boolean,
+  modalTaskPending: boolean,
+  modalTaskReject: boolean,
+  modalTaskFulfilled: boolean,
   completeTaskPending: boolean,
   completeTaskReject: boolean,
   completeTaskFulfilled: boolean,
   modal: string | null,
   modalTask: ITask,
-  loading: boolean
+  loading: boolean,
+  errorMessage: string
 }
 
 const initialState: tasks = {
   tasks: [],
   inspectorTasks: [],
   users: [],
-  createTaskReject: false,
-  createTaskFulfilled: false,
-  createTaskPending: false,
+  modalTaskReject: false,
+  modalTaskFulfilled: false,
+  modalTaskPending: false,
   completeTaskPending: false,
   completeTaskReject: false,
   completeTaskFulfilled: false,
   modal: null,
   modalTask: {} as ITask,
-  loading: false
+  loading: true,
+  errorMessage: ''
 }
 
 const tasksSlice = createSlice({
@@ -110,7 +112,7 @@ const tasksSlice = createSlice({
   initialState,
   reducers: {
     updateCreateFulfilled: (state) => {
-      state.createTaskFulfilled = false
+      state.modalTaskFulfilled = false
     },
     updateModalValue: (state, action) => {
       state.modal = action.payload
@@ -128,9 +130,6 @@ const tasksSlice = createSlice({
         state.loading = false;
         state.tasks = action.payload;
       })
-      .addCase(updateTask.fulfilled, (state, action) => {
-        state.tasks = action.payload
-      })
       .addCase(getInspectorTasks.pending, (state) => {
         state.loading = true;
       })
@@ -138,19 +137,24 @@ const tasksSlice = createSlice({
         state.inspectorTasks = action.payload;
         state.loading = false;
       })
+      .addCase(updateTask.fulfilled, (state, action) => {
+        state.tasks = action.payload
+      })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.users = action.payload
       })
       .addCase(createTask.pending, (state) => {
-        state.createTaskPending = true;
+        state.modalTaskPending = true
+        state.modalTaskReject = false
       })
-      .addCase(createTask.rejected, (state) => {
-        state.createTaskReject = true
-        state.createTaskPending = false
+      .addCase(createTask.rejected, (state, action) => {
+        state.modalTaskReject = true
+        state.modalTaskPending = false
+        state.errorMessage = action.error.message || ''
       }).addCase(createTask.fulfilled, (state, action) => {
-        state.createTaskPending = false
-        state.createTaskReject = false
-        state.createTaskFulfilled = true
+        state.modalTaskPending = false
+        state.modalTaskReject = false
+        state.modalTaskFulfilled = true
         state.tasks = action.payload
       }).addCase(completeTask.pending, (state) => {
         state.completeTaskPending = true
