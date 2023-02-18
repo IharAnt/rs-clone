@@ -1,29 +1,21 @@
 import { useAppSelector } from '../../store';
-import profileIcoDefault from './../../assets/img/profileIcoDefault.png';
 import taskIco from './../../assets/img/taskIco.png';
 import levelIco from './../../assets/img/levelIco.png';
 import xpIco from './../../assets/img/xpIco.png';
 import './index.css';
 import AchievementsLevelComponent from '../achievementsLevelComponent';
 import LineLevel from '../lineLevel';
-import { useEffect, useState } from 'react';
 
 const LevelComponent = () => {
 
     const { profile: { photo, level, doneTasks }, isLogin } = useAppSelector(state => state.appState);
-    const [imgAvatar, setImgAvatar] = useState(profileIcoDefault);
 
-    useEffect((() => {
-        if (photo !== '' && photo) {
-            setImgAvatar(photo);
-        }
-    }), [photo])
 
     return (
         <>
             {isLogin && <div className='level-container'>
                 <div className='flex'>
-                    <img className='level-container_img' src={imgAvatar} alt="profile ico" />
+                    <img className='level-container_img' src={photo} alt="profile ico" />
                     <div className='level-container_xp'>
                         <div className='experience_done-task'>
                             <img className='done-task_ico' src={levelIco} alt="task ico" />

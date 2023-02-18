@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useAppSelector } from '../../store';
-import defaultImg from './../../assets/img/profileIcoDefault.png'
+import React, { useState } from 'react';
+import UserService from '../../services/UserService';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { photoChange } from '../../store/appStore/sliceApp/slice';
 import './index.css';
 
 const ModalEitProfile = () => {
 
-    const [imgAvatar, setImgAvatar] = useState(defaultImg);
-    const { birthday, email, name, phone, photo } = useAppSelector(state => state.appState.profile);
+    const { birthday, email, name, phone, photo, id } = useAppSelector(state => state.appState.profile);
     const [nameUser, setNameUser] = useState(name);
-    const [emailUser, setEmailUser] = useState(email);
     const [phoneUser, setPhoneUser] = useState(phone);
     const [birthdayUser, setBirthdayUser] = useState(birthday);
-    
-    //console.log(birthdayUser)// c датой решить вопрос
+    const dispatch = useAppDispatch();
 
-    useEffect(() => {
-      if (photo) { setImgAvatar(photo) };
-      console.log(imgAvatar);
-    },[])
-    
     const inputFileAvatar = (e: React.FormEvent<HTMLInputElement>) => {
         const imgInput = e.currentTarget.files?.[0];
         if (imgInput) {
             const reader = new FileReader();
+
             reader.onload = function () {
                 const newAvatar = reader.result;
-                console.log(newAvatar)
                 if (typeof newAvatar === 'string') {
-                    setImgAvatar(newAvatar)
+                    dispatch(photoChange(newAvatar))
                 }
             };
             reader.readAsDataURL(imgInput);
@@ -38,7 +31,7 @@ const ModalEitProfile = () => {
         <form name="edit-form" className="edit-container-form" method="post">
             <div className="px-7 py-7">
                 <h1 className="login-title">Редактировать профиль</h1>
-                <span className="login-title_text">Вы можете отредактировать свои личные данные, установить аватар или сменить пароль.</span>
+                <span className="login-title_text">Вы можете отредактировать свои личные данные и установить аватар.</span>
             </div>
             <div className='edit-form-title'>Профиль
                 <hr /></div>
@@ -46,7 +39,7 @@ const ModalEitProfile = () => {
                 <div className='profile-container-avatar'>
                     <input className='input-edit-file' onChange={(e) => inputFileAvatar(e)} type="file" name="AddImage" id="AddImage" accept="image/jpeg,image/png" />
                     <p className='profile-container-avatar_load'>Загрузить фото</p>
-                    <img className='w-full pointer-events-none' src={imgAvatar} alt="img avatar" />
+                    <img className='w-full pointer-events-none' src={photo} alt="img avatar" />
                 </div>
                 <div className='profile-container-info'>
                     <div className="profile-container-info-input">
@@ -83,24 +76,8 @@ const ModalEitProfile = () => {
                         />
                     </div>
                     <div className="profile-container-info-input">
-                        <p className='profile-info-input-name'>Сменить адрес электронной почты</p>
-                        <input
-                            value={emailUser}
-                            name="email"
-                            type="e-mail"
-                            className={`w-full font-normal border border-solid border-white rounded-md input-edit`}
-                            placeholder="Ваш e-mail"
-                            onChange={(e) => setEmailUser(e.currentTarget.value)}
-                        />
-                    </div>
-                    <div className="profile-container-info-input">
-                        <p className='profile-info-input-name'>Сменить пароль</p>
-                        <input
-                            name="password"
-                            type="password"
-                            className={`w-full font-normal border border-solid border-white rounded-md input-edit`}
-                            placeholder="Ваш номер пароль"
-                        />
+                        <p className='profile-info-input-name'>Ваш адрес электронной почты</p>
+                        <p className={`w-full font-normal border border-solid border-white rounded-md input-edit`}>{email}</p>
                     </div>
                 </div>
             </div>
@@ -109,6 +86,8 @@ const ModalEitProfile = () => {
                     type="button"
                     value="Сохранить настройки профиля"
                     className="button-login"
+
+                    onClick={() => UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo })}
                 />
             </div>
         </form>
