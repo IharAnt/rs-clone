@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IAchievement } from "../../../types/interfaces/IAchievement";
-import { IProfile, IUser } from "../../../types/interfaces/IUser";
+import { IProfile } from "../../../types/interfaces/IUser";
 import { typeActualModalAuth, typeAppActual } from "../../types/types";
 import initalState from "../initalState";
 
