@@ -26,8 +26,11 @@ const sliceChangeApp = createSlice({
         achievementsChange(state: typeAppActual, action: PayloadAction<IAchievement[]>) {
             state.achievements = action.payload;
         },
+        photoChange(state: typeAppActual, action: PayloadAction<string>) {
+            state.profile.photo = action.payload;
+        },
     }
 })
 
 export default sliceChangeApp.reducer;
-export const { pageChange, loginChange, authChange, userChange, loadingChange, achievementsChange } = sliceChangeApp.actions;
+export const { photoChange, pageChange, loginChange, authChange, userChange, loadingChange, achievementsChange } = sliceChangeApp.actions;

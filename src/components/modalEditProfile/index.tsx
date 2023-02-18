@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import UserService from '../../services/UserService';
-import { useAppSelector } from '../../store';
-import { avatarDefault } from './const/avatarDefault';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { photoChange } from '../../store/appStore/sliceApp/slice';
 import './index.css';
 
 const ModalEitProfile = () => {
 
-    const [imgAvatar, setImgAvatar] = useState(avatarDefault);
     const { birthday, email, name, phone, photo, id } = useAppSelector(state => state.appState.profile);
     const [nameUser, setNameUser] = useState(name);
     const [phoneUser, setPhoneUser] = useState(phone);
     const [birthdayUser, setBirthdayUser] = useState(birthday);
-
-    useEffect((() => {
-        if (photo !== '' && photo) {
-            setImgAvatar(photo);
-        }
-    }), [photo])
+    const dispatch = useAppDispatch();
 
     const inputFileAvatar = (e: React.FormEvent<HTMLInputElement>) => {
         const imgInput = e.currentTarget.files?.[0];
         if (imgInput) {
             const reader = new FileReader();
-            
+
             reader.onload = function () {
                 const newAvatar = reader.result;
                 if (typeof newAvatar === 'string') {
-                    console.log(newAvatar)
-                    setImgAvatar(newAvatar)
+                    dispatch(photoChange(newAvatar))
                 }
             };
             reader.readAsDataURL(imgInput);
@@ -46,7 +39,7 @@ const ModalEitProfile = () => {
                 <div className='profile-container-avatar'>
                     <input className='input-edit-file' onChange={(e) => inputFileAvatar(e)} type="file" name="AddImage" id="AddImage" accept="image/jpeg,image/png" />
                     <p className='profile-container-avatar_load'>Загрузить фото</p>
-                    <img className='w-full pointer-events-none' src={imgAvatar} alt="img avatar" />
+                    <img className='w-full pointer-events-none' src={photo} alt="img avatar" />
                 </div>
                 <div className='profile-container-info'>
                     <div className="profile-container-info-input">
@@ -94,7 +87,7 @@ const ModalEitProfile = () => {
                     value="Сохранить настройки профиля"
                     className="button-login"
 
-                    onClick={() => UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo: imgAvatar })}
+                    onClick={() => UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo })}
                 />
             </div>
         </form>
