@@ -8,15 +8,15 @@ const AchievementsItem = (data: IAchievement) => {
 
     const [scoreItem, setScoreItem] = useState(0);
     const [widthImg, setWidthImg] = useState(0);
-    const profileAchievement = useAppSelector(state => state.appState.profile.achievements);
+    const profileAchievement = useAppSelector(state => state.appState.profile.experiences);
 
     useEffect((() => {
         if (profileAchievement) {
             profileAchievement.forEach((item) => {
                 if (item.type === data.type) {
-                    const actualWidth = (item.maxPoints / data.maxPoints) * 100;
+                    const actualWidth = (item.value / data.maxPoints) * 100;
                     setWidthImg(Math.min(100, actualWidth));
-                    setScoreItem(item.maxPoints);
+                    setScoreItem(item.value);
                 }
             })
         }
