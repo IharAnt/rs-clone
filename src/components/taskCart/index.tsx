@@ -8,11 +8,8 @@ import sleep from '../../assets/icons/taskTypes/sleep.png'
 import teacher from '../../assets/icons/taskTypes/teacher.png'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
 import moticoins from '../../assets/img/motekoinIco.png'
-import { updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
+import { updateModalTask, updateModalValue, updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
 import { useAppDispatch } from '../../store'
-import Modal from '../modal'
-import { useState } from 'react'
-import CompleteTask from '../completeTask'
 
 export default function TaskCart({ task }: props) {
 
@@ -26,7 +23,6 @@ export default function TaskCart({ task }: props) {
   const type = typeIcons.find((item) => item.type === task.type)
   const isEndedTask = task.status === TaskStatusEnum.Cancelled || task.status === TaskStatusEnum.Rejected || task.status === TaskStatusEnum.Approved
   const dispatch = useAppDispatch()
-  const [modal, setModal] = useState(false)
 
   function getTaskStatus() {
     switch (task.status) {
@@ -64,10 +60,10 @@ export default function TaskCart({ task }: props) {
         }}>выполнять</button> : ''}
         {task.status === TaskStatusEnum.Inprogress ?
           <>
-            <button className='motivators-block motivatorsTask__btn motivatorsTask__btn--inProgress' onClick={() => setModal(true)}>завершить</button>
-            <Modal isOpen={modal} setModal={setModal}>
-              <CompleteTask setModal={setModal} task={task} />
-            </Modal>
+            <button className='motivators-block motivatorsTask__btn motivatorsTask__btn--inProgress' onClick={() => {
+              dispatch(updateModalValue('complete'))
+              dispatch(updateModalTask(task))
+            }}>завершить</button>
           </> : ''}
       </div>
     </div>

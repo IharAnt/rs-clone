@@ -1,18 +1,20 @@
 import './style.css'
 import { useState } from 'react';
-import MotivatorsLayout from '../../layouts/motivators/index'
 import MotivatorsNavigation from '../../components/motivatorsNavigation';
 import MotivatorsContent from '../../components/motivatorsContent';
+import MainLayout from '../../layouts/main';
 
 const MotivatorsPage = () => {
 
   const [content, setContent] = useState('myTasks');
 
   return (
-    <MotivatorsLayout>
-      <MotivatorsNavigation content={content} setContent={setContent} />
-      <MotivatorsContent content={content} setContent={setContent} />
-    </MotivatorsLayout>
+    <MainLayout>
+      <div className='motivators'>
+        <MotivatorsNavigation content={content} setContent={setContent} />
+        <MotivatorsContent content={content} setContent={setContent} />
+      </div>
+    </MainLayout>
   );
 };
 

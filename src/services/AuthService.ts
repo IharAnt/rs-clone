@@ -7,13 +7,13 @@ import apiClient from '../api/ApiClient';
 export default class AuthService {
   static async login(email: string, password: string): Promise<AxiosResponse<IAuthResponse>> {
     const response = await apiClient.post<IAuthResponse>('/login', { email, password });
-    localStorage.setItem('token', response.data.accessToken)
+    localStorage.setItem('token', response.data.accessToken);
     return response;
   }
 
   static async registration(email: string, password: string, name: string): Promise<AxiosResponse<IAuthResponse>> {
     const response = await apiClient.post<IAuthResponse>('/registration', { email, password, name });
-    localStorage.setItem('token', response.data.accessToken)
+    localStorage.setItem('token', response.data.accessToken);
     return response;
   }
 

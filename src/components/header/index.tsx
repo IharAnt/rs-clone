@@ -18,7 +18,6 @@ const Header: React.FC = () => {
         dispatch(loadingChange(true));
         const response = await AuthService.refresh();
         const profile = await UserService.getProfile(response.data.user.id)
-        console.log(response);
         dispatch(userChange(profile));
         dispatch(loginChange(true));
       } catch (error) {

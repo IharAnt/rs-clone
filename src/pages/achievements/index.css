@@ -1,0 +1,25 @@
+.achievements-container {
+    width: 85vw;
+    height: 60vh;
+}
+
+.achievements-container_title {
+    height: 40px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    border-radius: 10px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.achievements-title_text {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+
+.achievements-container-items {
+    height: 88%;
+    overflow: auto;
+}

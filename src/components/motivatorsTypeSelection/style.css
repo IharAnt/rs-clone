@@ -30,6 +30,8 @@
 }
 
 .selectTypeMode__item{
+  display: flex;
+  align-items: center;
   height: 27px;
   cursor: pointer;
   padding: 0 5px;
@@ -45,4 +47,5 @@
 
 .selectTypeMode__menu.opened{
   max-height: 54px;
+  border: 1px solid var(--COLOR_BLOCK_BORDER);
 }

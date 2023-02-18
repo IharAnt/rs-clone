@@ -5,11 +5,11 @@ import { useState, useCallback } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import moticoins from '../../assets/img/motekoinIco.png'
 import CreateTaskHepler from '../createTaskHepler';
-import { updateInspectorTask } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { updateInspectorTask, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { useAppDispatch } from '../../store';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 
-export default function ModalTestTask({ task, setModal }: props) {
+export default function TestTask({ task }: props) {
 
   const dispatch = useAppDispatch()
 
@@ -42,7 +42,7 @@ export default function ModalTestTask({ task, setModal }: props) {
       } else {
         dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{message: testReport, author: task.inspector}]}}))
       }
-      setModal(false)
+      dispatch(updateModalValue(null))
     }
   }
 
