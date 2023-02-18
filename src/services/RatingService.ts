@@ -5,6 +5,7 @@ import { IRating } from '../types/interfaces/IRating';
 import ratings from '../data/Ratings';
 import { IAchievement } from '../types/interfaces/IAchievement';
 import apiClient from '../api/ApiClient';
+import Webrequest from '../helpers/WebRequest';
 
 export default class RatingService {
   static ratingPath = `/rating`;
@@ -15,26 +16,27 @@ export default class RatingService {
     sort?: RatingSortType,
     order?: OrderType
   ): Promise<IPaginationResponse<IRating>> {
-    // let query = this.webRequest.generateQuery({
-    //   _page: page,
-    //   _limit: limit,
-    // });
-    // if (sort && order && sort !== RatingSortType.empty && order !== OrderType.empty) {
-    //   query = this.webRequest.generateQuery({
-    //     _page: page,
-    //     _limit: limit,
-    //     _sort: sort,
-    //     _order: order,
-    //   });
-    // }
-    // const result = await this.webRequest.get<IPaginationResponse<IRating>>(`${this.ratingPath}${query}`);
+    let query = Webrequest.generateQuery({
+      _page: page,
+      _limit: limit,
+    });
+    if (sort && order && sort !== RatingSortType.empty && order !== OrderType.empty) {
+      query = Webrequest.generateQuery({
+        _page: page,
+        _limit: limit,
+        _sort: sort,
+        _order: order,
+      });
+    }
+    const response = await apiClient.get<IPaginationResponse<IRating>>(`${RatingService.ratingPath}${query}`);
+    return response.data;
     
     // return result;
-    ratings.count = 20;
-    ratings.limit = limit;
-    ratings.page = page;
+    // ratings.count = 20;
+    // ratings.limit = limit;
+    // ratings.page = page;
 
-    return Promise.resolve(ratings);
+    // return Promise.resolve(ratings);
   }
 
   static async getAchivements(): Promise<IAchievement[]> {
