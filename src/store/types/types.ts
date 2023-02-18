@@ -1,13 +1,15 @@
 import { store } from "..";
-import { IProfile, IUser } from "../../types/interfaces/IUser";
+import { IProfile } from "../../types/interfaces/IUser";
 import OrderType from "../../types/enums/OrderEnum";
 import RatingSortType from "../../types/enums/RatingSortEnum";
+import { IAchievement } from "../../types/interfaces/IAchievement";
 
 export type typeAppActual = {
     activePage: string,
     isLogin: boolean,
     activeModalAuth: typeActualModalAuth,
     isLoading: boolean,
+    achievements: IAchievement[],
     profile: IProfile,
 }
 
