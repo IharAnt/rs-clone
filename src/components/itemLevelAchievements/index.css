@@ -1,0 +1,30 @@
+.achievements-level_item {
+    position: relative;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.achievements-level_text {
+    color: var(--BACKGROUND_BASIC);
+    font-size: 12px;
+    opacity: 0;
+    top: 0;
+    width: 150px;
+    padding: 2px;
+    left: -35px;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    transition: .4s;
+    border-radius: 10px;
+    background: var(--COLOR_FONT_BLACK);
+}
+
+.achievements-level_item:hover {
+    transform: scale(1.1);
+}
+
+.achievements-level_item:hover .achievements-level_text {
+    top: -27px;
+    opacity: 1;
+}
