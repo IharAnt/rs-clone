@@ -10,10 +10,11 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col justify-between items-center min-h-screen overflow-hidden">
+    <div className="flex flex-col justify-between items-center h-full overflow-hidden">
       <Header />
-      <LevelComponent />
-      <div>{children}</div>
+      <div className='h-full items-center flex flex-col'>
+        <LevelComponent />
+        {children}</div>
       <Footer />
     </div>
   );
