@@ -11,7 +11,6 @@ import { IImg } from '../../types/interfaces/IImg'
 export default function CompleteTask({ task }: props) {
 
   const dispatch = useAppDispatch()
-  const completeTaskPending = useAppSelector((state) => state.tasks.completeTaskPending)
 
   const loading = useAppSelector((state) => state.tasks.loadingTask)
 
@@ -99,8 +98,8 @@ export default function CompleteTask({ task }: props) {
       <div className='completeTask__inspector'><img className='completeTask__inspectorImg' src={inspector} alt="inspector" title='проверяющий' /> {task.inspector.name}</div>
       <div className='completeTask__error'>{ reportDirty ? errorText : ''}</div>
       <div className='completeTask__btns'>
-        <button className='motivators-btn completeTask__btn-approve' onClick={() => completeTaskHandler()} disabled={completeTaskPending ? true : false}>Сдать задачу</button>
-        <button className='motivators-btn completeTask__btn-cancel' onClick={() => completeTaskHandler(true)} disabled={completeTaskPending ? true : false}>Отказаться от выполнения</button>
+        <button className='motivators-btn completeTask__btn-approve' onClick={() => completeTaskHandler()} disabled={loading ? true : false}>Сдать задачу</button>
+        <button className='motivators-btn completeTask__btn-cancel' onClick={() => completeTaskHandler(true)} disabled={loading ? true : false}>Отказаться от выполнения</button>
         {loading ? <div className='modal-loadingItem'></div> : ''}
       </div>
     </div>

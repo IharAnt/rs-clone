@@ -58,13 +58,6 @@ export const getUsers = createAsyncThunk<IUser[], undefined, {}>(
     return result;
   }
 )
-export const testTask = createAsyncThunk<ITask[], {}, {}>(
-  'testTask',
-  async function ({ }) {
-    const result = await TasksService.getExecutorTasks('1')
-    return result;
-  }
-)
 
 type tasks = {
   tasks: ITask[]
@@ -73,9 +66,6 @@ type tasks = {
   modalTaskPending: boolean,
   modalTaskReject: boolean,
   modalTaskFulfilled: boolean,
-  completeTaskPending: boolean,
-  completeTaskReject: boolean,
-  completeTaskFulfilled: boolean,
   modal: string | null,
   modalTask: ITask,
   loading: boolean,
@@ -91,9 +81,6 @@ const initialState: tasks = {
   modalTaskReject: false,
   modalTaskFulfilled: false,
   modalTaskPending: false,
-  completeTaskPending: false,
-  completeTaskReject: false,
-  completeTaskFulfilled: false,
   modal: null,
   modalTask: {} as ITask,
   loading: true,
@@ -150,7 +137,7 @@ const tasksSlice = createSlice({
         state.loadingTask = true
         state.loading = true;
       })
-      .addCase(updateTask.rejected, (state, action) => {
+      .addCase(updateTask.rejected, (state) => {
         state.loadingTask = false
         state.loading = false;
       })
@@ -159,7 +146,14 @@ const tasksSlice = createSlice({
         state.tasks = action.payload
         state.loading = false;
       })
+      .addCase(updateInspectorTask.pending, (state) => {
+        state.loadingTask = true
+      })
+      .addCase(updateInspectorTask.rejected, (state) => {
+        state.loadingTask = false
+      })
       .addCase(updateInspectorTask.fulfilled, (state, action) => {
+        state.loadingTask = false
         state.inspectorTasks = action.payload
       })
   }

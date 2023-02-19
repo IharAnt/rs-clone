@@ -6,8 +6,9 @@ import ImageViewer from "react-simple-image-viewer";
 import moticoins from '../../assets/img/motekoinIco.png'
 import CreateTaskHepler from '../createTaskHepler';
 import { updateInspectorTask, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
+import { useEffect } from 'react'
 
 export default function TestTask({ task }: props) {
 
@@ -19,6 +20,8 @@ export default function TestTask({ task }: props) {
   const [pointsInput, setPointsInput] = useState(false)
   const [testReport, setTestReport] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+
+  const loading = useAppSelector((state) => state.tasks.loadingTask)
 
   const images = task.imgFiles?.map((img) => img.data) as string[];
 
@@ -34,15 +37,19 @@ export default function TestTask({ task }: props) {
 
   const [helperAward, setHelperAward] = useState(false)
 
+  useEffect(()=>{
+    if (!loading && testReport) dispatch(updateModalValue(null))
+  }, [loading])
+
   const teskTaskHandler = (deny: boolean = false) => {
     if(!testReport) setErrorMessage('Напишите отчёт о проверке!')
     else {
+      setErrorMessage('')
       if (deny) {
         dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Rejected, messages: [{message: testReport, author: task.inspector}]}}))
       } else {
-        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{message: testReport, author: task.inspector}]}}))
+        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{message: testReport, author: task.inspector}], points: pointsInput ? task.points : points}}))
       }
-      dispatch(updateModalValue(null))
     }
   }
 
@@ -122,6 +129,7 @@ export default function TestTask({ task }: props) {
       <div className="testTask__btns">
         <button className="testTask__btn testTask__btn-approve motivators-btn" onClick={() => teskTaskHandler()}>принять</button>
         <button className="testTask__btn motivators-btn testTask__btn-reject" onClick={() => teskTaskHandler(true)}>отклонить</button>
+        {loading ? <div className='modal-loadingItem'></div> : ''}
       </div>
     </div>
   )
