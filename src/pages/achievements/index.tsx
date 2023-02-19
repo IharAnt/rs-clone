@@ -1,21 +1,11 @@
 import MainLayout from '../../layouts/main';
 import './index.css';
 import AchievementsItem from '../../components/achievementsItem';
-import { IAchievement } from '../../types/interfaces/IAchievement';
-import { useEffect, useState } from 'react';
-import RatingService from '../../services/RatingService';
+import { useAppSelector } from '../../store';
 
 const AchievementsPage = () => {
 
-    const [achievementsData, setAchievementsData] = useState([] as IAchievement[]);
-
-    useEffect((() => {
-        const getAchievementsData = async () => {
-            const data = await RatingService.getAchivements();
-            setAchievementsData(data);
-        }
-        getAchievementsData();
-    }), [])
+    const achievementsData = useAppSelector(state => state.appState.achievements);
 
     return (
         <MainLayout>

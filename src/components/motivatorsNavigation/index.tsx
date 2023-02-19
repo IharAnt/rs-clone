@@ -3,6 +3,7 @@ import { props } from './types'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { getInspectorTasks, getTasks, updateModalValue, searchTasks, searchInspectorsTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
+
 import './style.css'
 
 export default function MotivatorsNavigation({ content, setContent }: props) {
@@ -10,6 +11,7 @@ export default function MotivatorsNavigation({ content, setContent }: props) {
   const [menu, setMenu] = useState(false)
   const dispatch = useAppDispatch()
   const userId = useAppSelector((state) => state.appState.profile.id)
+
   const [search, setSearch] = useState('')
 
   const update = () => {

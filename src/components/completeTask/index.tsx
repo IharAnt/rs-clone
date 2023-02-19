@@ -56,6 +56,7 @@ export default function CompleteTask({ task }: props) {
       dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Cancelled, taskReport: report } }))
     }
 
+
     else {
       setReportDirty(true)
       if (!report) setErrorText('Добавьте отчёт!')

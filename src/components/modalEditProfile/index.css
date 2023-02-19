@@ -27,6 +27,7 @@
     border-radius: 50%;
     width: 130px;
     position: relative;
+    margin-right: 20px;
 }
 
 .input-edit-file {
@@ -55,13 +56,16 @@
     transition: .3s;
 }
 
-.input-edit-file:hover + .profile-container-avatar_load {
-    opacity: .7;
+.profile-container-avatar_img {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    pointer-events: none;
 }
 
-
-
-.profile-container-info {}
+.input-edit-file:hover+.profile-container-avatar_load {
+    opacity: .7;
+}
 
 .input-edit {
     padding: 10px;

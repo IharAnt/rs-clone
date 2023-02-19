@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDebaunce } from '../../hooks/debounce';
+import { useAppDispatch } from '../../store';
+import { searchChange } from '../../store/ratingStore/sliceRating/slice';
 import './index.css';
 
 
 const SearchUser = () => {
-    const [search, serSearch] = useState('')
-
+    const [search, setSearch] = useState('');
+    const dispatch = useAppDispatch();
     const debounced = useDebaunce(search);
-    useEffect(() => {
 
-    }, [debounced])
+    useEffect(() => {
+        dispatch(searchChange(debounced));
+    }, [debounced, dispatch])
 
     return (
         <div className="search-form">
@@ -18,8 +21,8 @@ const SearchUser = () => {
                 type="text"
                 value={search}
                 placeholder='Поиск участника'
-                onChange={(e) => serSearch(e.currentTarget.value)} />
-            {search && <div className='search-user_reser' onClick={() => serSearch('')}></div>}
+                onChange={(e) => setSearch(e.currentTarget.value)} />
+            {search && <div className='search-user_reser' onClick={() => setSearch('')}></div>}
         </div>
     )
 };

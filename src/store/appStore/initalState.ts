@@ -1,5 +1,5 @@
 import { typeAppActual } from "../types/types";
-import { IProfile, IUser } from "../../types/interfaces/IUser";
+import { IProfile } from "../../types/interfaces/IUser";
 
 
 const initalState: typeAppActual = {
@@ -7,6 +7,7 @@ const initalState: typeAppActual = {
     isLogin: false,
     activeModalAuth: 'login',
     isLoading: false,
+    achievements: [],
     profile: {} as IProfile,
 }
 

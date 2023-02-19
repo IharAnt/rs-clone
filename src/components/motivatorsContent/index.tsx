@@ -5,6 +5,7 @@ import { props } from './types'
 import './style.css'
 import Modal from '../modal'
 import MotivatorsModal from '../motivatorsModal'
+
 import { useAppDispatch, useAppSelector } from '../../store'
 import { getInspectorTasks, getTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
 
@@ -51,6 +52,7 @@ export default function MotivatorsContent({ content, setContent }: props) {
       <Modal isOpen={modal} setModal={setModal}>
         <MotivatorsModal />
       </Modal>
+
     </div>
   )
 }

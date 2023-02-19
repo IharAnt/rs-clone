@@ -1,0 +1,28 @@
+.basket-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.basket-title-refresh {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.basket-title-refresh:hover {
+    transform: scale(1.1);
+}
+
+.basket-title-text {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.basker-summary {
+    color: var(--COLOR_FONT_BLACK);
+}

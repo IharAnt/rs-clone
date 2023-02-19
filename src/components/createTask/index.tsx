@@ -64,6 +64,7 @@ export default function CreateTask() {
       const newTask: IUpdateTask = { executor: { id: profile.id, name: profile.name, email: profile.email } as IUser, inspector: users.find((user) => user.name == inspector.value?.value) as IUser, summary: summary.value, description: description.value, dueDate: taskDeadline, type: taskType.value?.value as TaskTypeEnum, status: TaskStatusEnum.Open, points: +award.value }
       setErrorText('')
       dispatch(createTask({ task: newTask }))
+      dispatch(updateModalValue(null))
     } else {
       setErrorText('Заполните данные правильно!')
     }

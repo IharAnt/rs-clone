@@ -3,6 +3,7 @@ import AchievementsPage from '../pages/achievements';
 import MainPage from '../pages/main';
 import MotivatorsPage from '../pages/motivators';
 import RatingPage from '../pages/rating';
+import StorePage from '../pages/store';
 
 
 export const NAVIGATION_ROUTES = [
@@ -18,7 +19,7 @@ export const NAVIGATION_ROUTES = [
    },
    {
     path: '/store',
-    element: <MainPage />,
+    element: <StorePage />,
     name: 'Магазин',
   },
   {

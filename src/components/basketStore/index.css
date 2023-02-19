@@ -1,0 +1,30 @@
+.main-field-basket {
+    height: 100%;
+    width: 0px;
+    transition: .3s;
+    opacity: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: repeat(2, min-content) 1fr min-content;
+    border-radius: 10px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+}
+
+.main-field-basket_open {
+    width: 270px;
+    opacity: 1;
+    padding: 0 5px;
+}
+
+
+.basket-list-product {
+    overflow: auto;
+    height: 100%;
+}
+
+.basket-list-product_drop {
+    transition: .3s;
+    border-radius: 10px;
+    background: #b4b0b4;
+}
+

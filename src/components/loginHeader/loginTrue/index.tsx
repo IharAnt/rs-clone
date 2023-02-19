@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
-import profileIcoDefault from './../../../assets/img/profileIcoDefault.png';
 import motekoinIco from './../../../assets/img/motekoinIco.png';
 import messageIco from './../../../assets/img/mesageIco.png';
-import { useAppSelector } from '../../../store';
+import { useAppDispatch, useAppSelector } from '../../../store';
 import EditProfile from '../../editProfile';
+import { photoChange } from '../../../store/appStore/sliceApp/slice';
+import { avatarDefault } from '../../../data/avatarDefault';
 
 const LoginTrue: React.FC = () => {
 
     const IsMessage = false;
-    const { name, moticoins } = useAppSelector(state => state.appState.profile)
+    const dispatch = useAppDispatch();
+    const { name, moticoins, photo } = useAppSelector(state => state.appState.profile)
     const [editProfile, setEditProfile] = useState(false)
 
     const profileClickEdit = () => {
@@ -19,6 +21,12 @@ const LoginTrue: React.FC = () => {
             setEditProfile(true)
         }
     }
+
+    useEffect((() => {
+        if (photo === undefined) {
+            dispatch(photoChange(avatarDefault));
+        }
+    }), [dispatch, photo])
 
     return (
         <div className='profile-container'>
@@ -35,7 +43,7 @@ const LoginTrue: React.FC = () => {
             </div>
             <div className='profile-container_profile'
                 onClick={profileClickEdit}>
-                <img src={profileIcoDefault} className="w-full" alt="profile ico" />
+                <img src={photo} className="header-logo_img" alt="profile ico" />
             </div>
             <EditProfile setActive={editProfile} />
         </div>
