@@ -1,4 +1,3 @@
-import MotivatorsTaskHeaders from '../motivatorsTaskHeaders'
 import MotivatorsTasks from '../motivatorsTasks'
 import TestingTasksList from '../testingTasksList'
 import { useState, useEffect } from 'react'
@@ -16,10 +15,7 @@ export default function MotivatorsContent({ content, setContent }: props) {
       case 'myTasks':
         return loading ?
           <div className='motivators-loading'><div className='motivators-loadingItem'></div></div> :
-          <div className='motivatorsTask-grid'>
-            <MotivatorsTaskHeaders />
             <MotivatorsTasks />
-          </div>
       case 'testedTasks':
         return loading ? <div className='motivators-loading'><div className='motivators-loadingItem'></div></div> : <TestingTasksList />
       default: return <></>
