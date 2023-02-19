@@ -36,18 +36,24 @@ export default function TestTask({ task }: props) {
 
   const [helperAward, setHelperAward] = useState(false)
 
-  useEffect(()=>{
-    if (!loading && testReport) dispatch(updateModalValue(null))
+  const error = useAppSelector((state) => state.tasks.errorMessage)
+
+  useEffect(() => {
+    if (!loading && testReport && !error) dispatch(updateModalValue(null))
   }, [loading])
 
+  useEffect(() => {
+    if (error) setErrorMessage(error)
+  })
+
   const teskTaskHandler = (deny: boolean = false) => {
-    if(!testReport) setErrorMessage('Напишите отчёт о проверке!')
+    if (!testReport) setErrorMessage('Напишите отчёт о проверке!')
     else {
       setErrorMessage('')
       if (deny) {
-        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Rejected, messages: [{message: testReport, author: task.inspector}]}}))
+        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Rejected, messages: [{ message: testReport, author: task.inspector }] } }))
       } else {
-        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{message: testReport, author: task.inspector}], points: pointsInput ? task.points : points}}))
+        dispatch(updateInspectorTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Approved, messages: [{ message: testReport, author: task.inspector }], points: pointsInput ? task.points : points } }))
       }
     }
   }
@@ -122,7 +128,7 @@ export default function TestTask({ task }: props) {
       <hr className='mt-5' />
       <div className="testTask__field">
         <div className="testTask__fieldName">Отчёт о проверке: </div>
-        <textarea className="testTask__fieldValue testTask__textarea" onChange={(e)=>setTestReport(e.target.value)}></textarea>
+        <textarea className="testTask__fieldValue testTask__textarea" onChange={(e) => setTestReport(e.target.value)}></textarea>
       </div>
       <div className='testTask__error'>{errorMessage}</div>
       <div className="testTask__btns">

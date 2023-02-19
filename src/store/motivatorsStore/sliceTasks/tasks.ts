@@ -141,7 +141,7 @@ const tasksSlice = createSlice({
       })
       .addCase(createTask.rejected, (state, action) => {
         state.loadingTask = false
-        state.errorMessage = action.error.message || ''
+        state.errorMessage = action.error.message || 'error'
       }).addCase(createTask.fulfilled, (state, action) => {
         state.errorMessage = ''
         state.loadingTask = false
@@ -151,24 +151,28 @@ const tasksSlice = createSlice({
         state.loadingTask = true
         state.loading = true;
       })
-      .addCase(updateTask.rejected, (state) => {
+      .addCase(updateTask.rejected, (state, action) => {
+        state.errorMessage = action.error.message || 'error';
         state.loadingTask = false
         state.loading = false;
       })
       .addCase(updateTask.fulfilled, (state, action) => {
+        state.errorMessage = ''
         state.loadingTask = false
         state.tasks = action.payload
         state.loading = false;
       })
       .addCase(updateInspectorTask.pending, (state) => {
-        state.loadingTask = true
+        state.loadingTask = true;
       })
-      .addCase(updateInspectorTask.rejected, (state) => {
-        state.loadingTask = false
+      .addCase(updateInspectorTask.rejected, (state, action) => {
+        state.loadingTask = false;
+        state.errorMessage = action.error.message || 'error'
       })
       .addCase(updateInspectorTask.fulfilled, (state, action) => {
         state.loadingTask = false
         state.inspectorTasks = action.payload
+        state.errorMessage = ''
       })
   }
 })

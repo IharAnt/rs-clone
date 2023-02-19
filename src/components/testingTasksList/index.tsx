@@ -23,7 +23,7 @@ export default function TestingTasksList() {
             {data.map((task) => <TestingTask task={task} key={task.description}></TestingTask>)}
           </div>
         </>
-        : allData.length !== 0 ? <EmptyCart /> :<EmptyTestTasks />}
+        : allData.length !== 0 ? <EmptyTestTasks /> : <EmptyCart /> }
     </>
   )
 }
