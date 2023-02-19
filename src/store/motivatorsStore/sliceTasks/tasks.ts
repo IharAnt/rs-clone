@@ -60,8 +60,10 @@ export const getUsers = createAsyncThunk<IUser[], undefined, {}>(
 )
 
 type tasks = {
-  tasks: ITask[]
-  inspectorTasks: ITask[]
+  tasks: ITask[],
+  allTasks: ITask[],
+  inspectorTasks: ITask[],
+  allInspectorTasks: ITask[],
   users: IUser[],
   modalTaskPending: boolean,
   modalTaskReject: boolean,
@@ -76,7 +78,9 @@ type tasks = {
 
 const initialState: tasks = {
   tasks: [],
+  allTasks: [],
   inspectorTasks: [],
+  allInspectorTasks: [],
   users: [],
   modalTaskReject: false,
   modalTaskFulfilled: false,
@@ -101,6 +105,14 @@ const tasksSlice = createSlice({
     },
     updateModalTask: (state, action) => {
       state.modalTask = action.payload
+    },
+    searchTasks: (state, action) => {
+      const searchValue = action.payload
+      state.tasks = state.allTasks.filter((task) => task.summary.includes(searchValue))
+    },
+    searchInspectorsTasks: (state, action) => {
+      const searchValue = action.payload
+      state.inspectorTasks = state.allInspectorTasks.filter((task) => task.summary.includes(searchValue))
     }
   },
   extraReducers: (builder) => {
@@ -111,12 +123,14 @@ const tasksSlice = createSlice({
       .addCase(getTasks.fulfilled, (state, action) => {
         state.loading = false;
         state.tasks = action.payload;
+        state.allTasks = action.payload;
       })
       .addCase(getInspectorTasks.pending, (state) => {
         state.loading = true;
       })
       .addCase(getInspectorTasks.fulfilled, (state, action) => {
         state.inspectorTasks = action.payload;
+        state.allInspectorTasks = action.payload;
         state.loading = false;
       })
       .addCase(getUsers.fulfilled, (state, action) => {
@@ -159,5 +173,5 @@ const tasksSlice = createSlice({
   }
 })
 
-export const { updateCreateFulfilled, updateModalValue, updateModalTask } = tasksSlice.actions
+export const { updateCreateFulfilled, updateModalValue, updateModalTask, searchTasks, searchInspectorsTasks } = tasksSlice.actions
 export default tasksSlice.reducer

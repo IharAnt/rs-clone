@@ -4,9 +4,11 @@ import { useAppSelector } from '../../store'
 import './style.css'
 import MotivatorsTaskHeaders from '../motivatorsTaskHeaders'
 import EmptyMotivators from '../emptyMotivators'
+import EmptyCart from '../emptySearch'
 
 export default function MotivatorsTasks() {
 
+  const dataAll = useAppSelector((state) => state.tasks.allTasks)
   const data = useAppSelector((state) => state.tasks.tasks)
 
   return (
@@ -18,8 +20,9 @@ export default function MotivatorsTasks() {
             <TaskList data={data.filter(task => task.status === TaskStatusEnum.Inprogress)}/>
             <TaskList data={data.filter(task => task.status === TaskStatusEnum.Resolved)}/>
             <TaskList data={data.filter(task => task.status === TaskStatusEnum.Cancelled || task.status === TaskStatusEnum.Rejected || task.status === TaskStatusEnum.Approved)}/>
-          </div> :
-          <EmptyMotivators />}
+          </div> : 
+            dataAll.length !== 0 ? <EmptyCart /> : <EmptyMotivators />
+          }
     </>
 
   )

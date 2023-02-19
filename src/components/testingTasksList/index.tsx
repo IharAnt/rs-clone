@@ -2,10 +2,12 @@ import { useAppSelector } from '../../store'
 import './style.css'
 import TestingTask from '../testingTask'
 import EmptyTestTasks from '../emptyTestTasks'
+import EmptyCart from '../emptySearch'
 
 export default function TestingTasksList() {
 
   const data = useAppSelector((state) => state.tasks.inspectorTasks)
+  const allData = useAppSelector((state) => state.tasks.allInspectorTasks)
 
   return (
     <>
@@ -21,7 +23,7 @@ export default function TestingTasksList() {
             {data.map((task) => <TestingTask task={task} key={task.description}></TestingTask>)}
           </div>
         </>
-        : <EmptyTestTasks />}
+        : allData.length !== 0 ? <EmptyCart /> :<EmptyTestTasks />}
     </>
   )
 }
