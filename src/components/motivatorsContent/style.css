@@ -22,7 +22,8 @@
 }
 
 .motivatorsCnt{
-  margin-top: 40px;
+  overflow: auto;
+  padding: 0 40px 20px;
 }
 
 .modal-loadingItem{
