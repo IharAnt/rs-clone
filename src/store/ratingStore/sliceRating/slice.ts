@@ -20,8 +20,11 @@ const sliceRatingPage = createSlice({
         orderChange(state: typeRatingPage, action: PayloadAction<string>) {
             state.order = OrderType[action.payload as keyof typeof OrderType]
         },
+        searchChange(state: typeRatingPage, action: PayloadAction<string>) {
+            state.search = action.payload;
+        },
     }
 })
 
 export default sliceRatingPage.reducer;
-export const { limitChange, sortChange, orderChange, pageChangeRating } = sliceRatingPage.actions;
+export const { limitChange, sortChange, orderChange, pageChangeRating, searchChange } = sliceRatingPage.actions;
