@@ -4,14 +4,13 @@ import inspector from '../../assets/icons/inspector.png'
 import download from '../../assets/icons/download.png'
 import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
-import { updateModalTask, updateModalValue, updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
+import { updateModalValue, updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
 import { IImg } from '../../types/interfaces/IImg'
 
 export default function CompleteTask({ task }: props) {
 
   const dispatch = useAppDispatch()
-
   const loading = useAppSelector((state) => state.tasks.loadingTask)
 
   const [images, setImages] = useState<IImg[]>([])

@@ -1,0 +1,14 @@
+.emptyTestList {
+  margin: 20px;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.emptyTestList__title{
+  font-size: 1.8em;
+}
+
+.emptyTestList__image{
+  height: 3.6em;
+}

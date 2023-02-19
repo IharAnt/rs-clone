@@ -22,7 +22,6 @@ export default function TestTask({ task }: props) {
   const [errorMessage, setErrorMessage] = useState('')
 
   const loading = useAppSelector((state) => state.tasks.loadingTask)
-
   const images = task.imgFiles?.map((img) => img.data) as string[];
 
   const openImageViewer = useCallback((index: any) => {
