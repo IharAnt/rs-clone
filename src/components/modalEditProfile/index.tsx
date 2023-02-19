@@ -45,7 +45,7 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
                 <div className='profile-container-avatar'>
                     <input className='input-edit-file' onChange={(e) => inputFileAvatar(e)} type="file" name="AddImage" id="AddImage" accept="image/jpeg,image/png" />
                     <p className='profile-container-avatar_load'>Загрузить фото</p>
-                    <img className='w-full pointer-events-none' src={photo} alt="img avatar" />
+                    <img className='profile-container-avatar_img' src={photo} alt="img avatar" />
                 </div>
                 <div className='profile-container-info'>
                     <div className="profile-container-info-input">

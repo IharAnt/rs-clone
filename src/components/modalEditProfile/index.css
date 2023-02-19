@@ -56,7 +56,14 @@
     transition: .3s;
 }
 
-.input-edit-file:hover + .profile-container-avatar_load {
+.profile-container-avatar_img {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    pointer-events: none;
+}
+
+.input-edit-file:hover+.profile-container-avatar_load {
     opacity: .7;
 }
 

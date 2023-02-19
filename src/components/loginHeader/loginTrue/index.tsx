@@ -43,7 +43,7 @@ const LoginTrue: React.FC = () => {
             </div>
             <div className='profile-container_profile'
                 onClick={profileClickEdit}>
-                <img src={photo} className="w-full" alt="profile ico" />
+                <img src={photo} className="header-logo_img" alt="profile ico" />
             </div>
             <EditProfile setActive={editProfile} />
         </div>
