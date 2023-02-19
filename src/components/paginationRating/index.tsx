@@ -12,7 +12,7 @@ const PaginationRating = (data: IPaginationResponse<IRating>) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        setMaxPage(Math.max(1, Math.round(data.count / limit)));
+        setMaxPage(Math.max(1, Math.ceil(data.count / limit)));
     }, [data.count, limit])
 
     return (
