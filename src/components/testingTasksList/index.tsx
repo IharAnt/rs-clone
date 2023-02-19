@@ -21,10 +21,10 @@ export default function TestingTasksList() {
             <div></div>
           </div>
           <div className='motivatorsTesting'>
-            {data.map((task) => <TestingTask task={task} key={task.description}></TestingTask>)}
+            {data.map((task) => <TestingTask task={task} key={task.id}></TestingTask>)}
           </div>
         </>
-        : allData.length !== 0 ? <EmptyTestTasks /> : <EmptyCart /> }
+        : allData.length !== 0 ? <EmptyCart /> : <EmptyTestTasks /> }
     </>
   )
 }

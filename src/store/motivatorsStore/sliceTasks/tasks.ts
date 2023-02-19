@@ -172,6 +172,7 @@ const tasksSlice = createSlice({
       .addCase(updateInspectorTask.fulfilled, (state, action) => {
         state.loadingTask = false
         state.inspectorTasks = action.payload
+        state.allInspectorTasks = action.payload
         state.errorMessage = ''
       })
   }

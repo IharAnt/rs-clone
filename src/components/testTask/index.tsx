@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import moticoins from '../../assets/img/motekoinIco.png'
 import CreateTaskHepler from '../createTaskHepler';
-import { updateInspectorTask, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { getInspectorTasks, updateInspectorTask, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { useAppDispatch, useAppSelector } from '../../store';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 import { useEffect } from 'react'
@@ -41,7 +41,7 @@ export default function TestTask({ task }: props) {
   useEffect(() => {
     if (!loading && testReport && !error) dispatch(updateModalValue(null))
     if (error) setErrorMessage(error)
-  }, [loading, error, testReport, dispatch])
+  }, [loading])
 
   const teskTaskHandler = (deny: boolean = false) => {
     if (!testReport) setErrorMessage('Напишите отчёт о проверке!')

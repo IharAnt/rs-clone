@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { getInspectorTasks, getTasks, updateModalValue, searchTasks, searchInspectorsTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
 import './style.css'
+import UserService from '../../services/UserService'
+import { userChange } from '../../store/appStore/sliceApp/slice'
 
 export default function MotivatorsNavigation({ content, setContent }: props) {
 
@@ -12,10 +14,12 @@ export default function MotivatorsNavigation({ content, setContent }: props) {
   const userId = useAppSelector((state) => state.appState.profile.id)
   const [search, setSearch] = useState('')
 
-  const update = () => {
+  const update = async () => {
     setSearch('')
     dispatch(getTasks({ id: userId }))
     dispatch(getInspectorTasks({ id: userId }))
+    const profile = await UserService.getProfile(userId)
+    dispatch(userChange(profile))
   }
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
