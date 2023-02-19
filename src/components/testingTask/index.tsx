@@ -13,6 +13,7 @@ export default function TestingTask({ task }: props) {
 
   useEffect(() => {
     const fn = async () => {
+      setAvatar(defaultPhono)
       const profile = await UserService.getProfile(task.executor.id)
       setAvatar(profile.photo || defaultPhono)
     }
