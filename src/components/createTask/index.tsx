@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { getUsers, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUser } from '../../types/interfaces/IUser';
 import { createTask } from '../../store/motivatorsStore/sliceTasks/tasks';
-import { updateCreateFulfilled } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUpdateTask } from '../../types/interfaces/ITask';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
@@ -16,7 +15,7 @@ import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
 export default function CreateTask() {
 
   const dispatch = useAppDispatch()
-  const profile =  useAppSelector((state) => state.appState.profile)
+  const profile = useAppSelector((state) => state.appState.profile)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -52,10 +51,6 @@ export default function CreateTask() {
     if (helperAward) setHelperAward(false);
   }
 
-  const createTaskReject = useAppSelector((state) => state.tasks.createTaskReject)
-  const createTaskPending = useAppSelector((state) => state.tasks.createTaskPending)
-  const createTaskFulfilled = useAppSelector((state) => state.tasks.createTaskFulfilled)
-
   const createTaskHandler = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
 
@@ -75,21 +70,19 @@ export default function CreateTask() {
     }
   }
 
-  useEffect(() => {
-    if (createTaskFulfilled) {
-      summary.clear();
-      inspector.clear();
-      description.clear();
-      award.clear();
-      taskType.clear();
-      setErrorText('');
-      dispatch(updateCreateFulfilled())
-    }
-  }, [createTaskFulfilled])
+  const error = useAppSelector((state) => state.tasks.errorMessage)
+  const loading = useAppSelector((state) => state.tasks.loadingTask)
 
   useEffect(() => {
-    if (createTaskReject) setErrorText('ошибка на стороне сервера')
-  }, [createTaskReject])
+    if (validData && !error && !loading) {
+      setErrorText('');
+      dispatch(updateModalValue(null))
+    }
+  }, [loading])
+
+  useEffect(() => {
+    if (error) setErrorText(error)
+  }, [error])
 
   useEffect(() => {
     if (!(!inspector.value || unvalidSummary || unvalidDescription || unvalidTaskType || unvalidAward)) {
@@ -140,8 +133,9 @@ export default function CreateTask() {
           <input className={unvalidAward && award.isDirty ? 'createTask__input createTask__input-red' : 'createTask__input'} type="number" value={award.value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => award.onChange(e)} onBlur={award.onBlur} />
         </div>
         <div className="createTask__field">
-          <input type={'submit'} onClick={createTaskHandler} value='Создать' disabled={createTaskPending ? true : false} className='motivators-btn createTask__btn' />
+          <input type={'submit'} onClick={createTaskHandler} value='Создать' disabled={loading ? true : false} className='motivators-btn createTask__btn' />
           <div className="createTask__error">{errorText}</div>
+          {loading ? <div className='modal-loadingItem'></div> : ''}
         </div>
       </div>
     </form>
