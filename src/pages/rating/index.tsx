@@ -16,7 +16,7 @@ const RatingPage = () => {
   const { page, limit, sort, order, search } = useAppSelector(state => state.ratingPage);
   const [update, setUpdate] = useState(0);
   const [ratingArr, setrattingArr] = useState<IPaginationResponse<IRating>>({ count: 0, items: [], limit, page });
-  
+
   useEffect(() => {
     const getRattingArr = async () => {
       const responceArr = await RatingService.getRating(page, limit, sort, order, search);
@@ -43,7 +43,7 @@ const RatingPage = () => {
         </div>
         <TableRatingTitle />
         <div className='container-table-rating_items'>
-          {ratingArr.items.map((userItem, index) => { return <ItemUserRating {...userItem} key={`userItem${index}`} /> })}
+          {ratingArr.items.map((userItem, index) => <ItemUserRating {...userItem} key={`userItem${index}`} />)}
         </div>
         < PaginationRating {...ratingArr} />
       </div>
