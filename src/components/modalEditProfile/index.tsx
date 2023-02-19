@@ -3,8 +3,9 @@ import UserService from '../../services/UserService';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { photoChange } from '../../store/appStore/sliceApp/slice';
 import './index.css';
+import { propsEdit } from './types';
 
-const ModalEitProfile = () => {
+const ModalEitProfile = ({ setModal }: propsEdit) => {
 
     const { birthday, email, name, phone, photo, id } = useAppSelector(state => state.appState.profile);
     const [nameUser, setNameUser] = useState(name);
@@ -25,6 +26,11 @@ const ModalEitProfile = () => {
             };
             reader.readAsDataURL(imgInput);
         }
+    }
+
+    const updateSaveClick = async () => {
+        await UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo });
+        setModal(false);
     }
 
     return (
@@ -86,8 +92,7 @@ const ModalEitProfile = () => {
                     type="button"
                     value="Сохранить настройки профиля"
                     className="button-login"
-
-                    onClick={() => UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo })}
+                    onClick={updateSaveClick}
                 />
             </div>
         </form>
