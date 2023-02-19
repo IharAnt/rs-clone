@@ -10,14 +10,15 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 100px;
 }
 
 .motivators-loadingItem{
+  background: url('../../assets//img/loading.gif');
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  background: var(--COLOR_BLOCK_BORDER);
+  width: 140px;
+  height: 140px;
+  background-size: 100%;
 }
 
 .motivatorsCnt{
@@ -28,5 +29,6 @@
   border-radius: 50%;
   height: 35px;
   width: 35px;
-  background: var(--COLOR_BLOCK_BORDER);
+  background: url('../../assets//img/loading.gif');
+  background-size: 100%;
 }
