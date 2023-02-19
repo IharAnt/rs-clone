@@ -2,7 +2,7 @@ import { props } from './types'
 import './style.css'
 import inspector from '../../assets/icons/inspector.png'
 import download from '../../assets/icons/download.png'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { updateModalTask, updateModalValue, updateTask } from '../../store/motivatorsStore/sliceTasks/tasks'
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum'
@@ -13,10 +13,13 @@ export default function CompleteTask({ task }: props) {
   const dispatch = useAppDispatch()
   const completeTaskPending = useAppSelector((state) => state.tasks.completeTaskPending)
 
+  const loading = useAppSelector((state) => state.tasks.loadingTask)
+
   const [images, setImages] = useState<IImg[]>([])
   const [report, setReport] = useState('')
   const [reportDirty, setReportDirty] = useState(false)
   const [errorText, setErrorText] = useState('')
+  const [deny, setDeny] = useState(false)
 
   function readFileAsText(file: File) {
     return new Promise(function (resolve, reject) {
@@ -42,11 +45,15 @@ export default function CompleteTask({ task }: props) {
     }
   }
 
+  useEffect(()=>{
+    if (!loading && (report || deny)) dispatch(updateModalValue(null))
+  }, [loading])
+
   const completeTaskHandler = (deny: boolean = false) => {
 
     if (deny) {
+      setDeny(true)
       dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Cancelled , taskReport: report}}))
-      dispatch(updateModalValue(null))
     } 
 
     else {
@@ -54,7 +61,6 @@ export default function CompleteTask({ task }: props) {
       if (!report) setErrorText('Добавьте отчёт!')
       else {
         dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Resolved,  taskReport: report, imgFiles: images}}))
-        dispatch(updateModalValue(null))
     }
   }
 }
@@ -91,11 +97,12 @@ export default function CompleteTask({ task }: props) {
       </div>
       <hr />
       <div className='completeTask__inspector'><img className='completeTask__inspectorImg' src={inspector} alt="inspector" title='проверяющий' /> {task.inspector.name}</div>
+      <div className='completeTask__error'>{ reportDirty ? errorText : ''}</div>
       <div className='completeTask__btns'>
         <button className='motivators-btn completeTask__btn-approve' onClick={() => completeTaskHandler()} disabled={completeTaskPending ? true : false}>Сдать задачу</button>
         <button className='motivators-btn completeTask__btn-cancel' onClick={() => completeTaskHandler(true)} disabled={completeTaskPending ? true : false}>Отказаться от выполнения</button>
+        {loading ? <div className='modal-loadingItem'></div> : ''}
       </div>
-      <div className='completeTask__error'>{ reportDirty ? errorText : ''}</div>
     </div>
   )
 }

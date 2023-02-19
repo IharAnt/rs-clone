@@ -58,15 +58,6 @@ export const getUsers = createAsyncThunk<IUser[], undefined, {}>(
     return result;
   }
 )
-
-export const completeTask = createAsyncThunk<ITask[], {}, {}>(
-  'tasks/completeTask',
-  async function ({ }) {
-    const result = await TasksService.getExecutorTasks('2')
-    return result;
-  }
-)
-
 export const testTask = createAsyncThunk<ITask[], {}, {}>(
   'testTask',
   async function ({ }) {
@@ -141,9 +132,6 @@ const tasksSlice = createSlice({
         state.inspectorTasks = action.payload;
         state.loading = false;
       })
-      .addCase(updateTask.fulfilled, (state, action) => {
-        state.tasks = action.payload
-      })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.users = action.payload
       })
@@ -158,20 +146,20 @@ const tasksSlice = createSlice({
         state.loadingTask = false
         state.tasks = action.payload
       })
-
-
-
-
-      .addCase(completeTask.pending, (state) => {
-        state.completeTaskPending = true
-      }).addCase(completeTask.rejected, (state) => {
-        state.completeTaskPending = false
-        state.completeTaskReject = true
-      }).addCase(completeTask.fulfilled, (state) => {
-        state.completeTaskPending = false
-        state.completeTaskReject = false
-        state.completeTaskFulfilled = false
-      }).addCase(updateInspectorTask.fulfilled, (state, action) => {
+      .addCase(updateTask.pending, (state) => {
+        state.loadingTask = true
+        state.loading = true;
+      })
+      .addCase(updateTask.rejected, (state, action) => {
+        state.loadingTask = false
+        state.loading = false;
+      })
+      .addCase(updateTask.fulfilled, (state, action) => {
+        state.loadingTask = false
+        state.tasks = action.payload
+        state.loading = false;
+      })
+      .addCase(updateInspectorTask.fulfilled, (state, action) => {
         state.inspectorTasks = action.payload
       })
   }
