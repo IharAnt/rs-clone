@@ -12,6 +12,7 @@
 }
 
 .level-container_img {
+    object-fit: cover;
     width: 75px;
     height: 75px;
     border-radius: 50%;

@@ -1,0 +1,14 @@
+.emptyCart{
+  display: flex;
+  gap: 30px;
+  margin: 20px;
+  align-items: center;
+}
+
+.emptyCart__title{
+  font-size: 1.6em;
+}
+
+.emptyCart__image{
+  height: 3em;
+}

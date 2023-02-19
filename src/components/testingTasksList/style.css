@@ -11,6 +11,19 @@
 .motivatorsTesting-grid {
   padding: 10px;
   display: grid;
-  grid-template-columns: 2fr 3fr 2fr 1fr;
-  align-items: start;
+  grid-template-columns: 1fr 2fr 3fr 3fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.motivatorsTesting__avatar{
+  object-fit: cover;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.motivatorsTesting__item{
+  height: 80px;
 }

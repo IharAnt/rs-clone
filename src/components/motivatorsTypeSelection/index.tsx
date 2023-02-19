@@ -1,9 +1,8 @@
-import React from 'react'
 import { props } from './types'
 import arrow from '../../assets/icons/icon-arrow.png'
 import './style.css'
 
-export default function MotivatorsTypeSelection({ content, setContent, menu, setMenu }: props) {
+export default function MotivatorsTypeSelection({ content, setContent, menu, setMenu, setSearch }: props) {
   return (
     <div className='selectTypeMode'>
       <div className='selectTypeMode__input motivators-block' onClick={() => setMenu(!menu)} >
@@ -14,10 +13,12 @@ export default function MotivatorsTypeSelection({ content, setContent, menu, set
         <li className={`selectTypeMode__item ${content === 'myTasks' ? 'selected' : ''}`} onClick={() => {
           setContent('myTasks')
           setMenu(false)
+          setSearch('')
         }}>Мои задачи</li>
         <li className={`selectTypeMode__item ${content === 'testedTasks' ? 'selected' : ''}`} onClick={() => {
           setContent('testedTasks')
           setMenu(false)
+          setSearch('')
         }}>На проверке</li>
       </ul>
     </div>
