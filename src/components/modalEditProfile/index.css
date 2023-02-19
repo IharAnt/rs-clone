@@ -57,6 +57,7 @@
 }
 
 .profile-container-avatar_img {
+    object-fit: cover;
     border-radius: 50%;
     width: 130px;
     height: 130px;

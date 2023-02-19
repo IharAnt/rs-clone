@@ -20,7 +20,7 @@
 }
 
 .testTask__fieldName{
-  width: 150px;
+  min-width: 150px;
 }
 
 .testTask__fieldPoints{

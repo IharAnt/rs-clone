@@ -9,7 +9,7 @@ export const options: MyOptionType[] = [{
   label: 'бездельник',
 }, {
   value: TaskTypeEnum.Intelligence,
-  label: 'интеллигент',
+  label: 'интеллектуал',
 }, {
   value: TaskTypeEnum.Learner,
   label: 'ученик',

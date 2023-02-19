@@ -23,7 +23,7 @@ export const createTask = createAsyncThunk<ITask[], { task: IUpdateTask }, {}>(
   }
 )
 
-export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, { rejectValue: string }>(
+export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, {}>(
   'tasks/updateTask',
   async function ({ taskId, updatedTask }) {
     const task = await TasksService.updateTask(taskId, updatedTask);
@@ -32,7 +32,7 @@ export const updateTask = createAsyncThunk<ITask[], { taskId: string, updatedTas
   }
 )
 
-export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rejectValue: string }>(
+export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, {}>(
   'tasks/getInspectorTasks',
   async function ({ id }) {
     let result = await TasksService.getInspectorTasks(id);
@@ -41,7 +41,7 @@ export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, { rej
   }
 )
 
-export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, { rejectValue: string }>(
+export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string, updatedTask: IUpdateTask }, {}>(
   'tasks/updateInspectorTask',
   async function ({ taskId, updatedTask }) {
     await TasksService.updateTask(taskId, updatedTask);
@@ -51,7 +51,7 @@ export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string, u
   }
 )
 
-export const getUsers = createAsyncThunk<IUser[], undefined, { rejectValue: string }>(
+export const getUsers = createAsyncThunk<IUser[], undefined, {}>(
   'tasks/getUsers',
   async function () {
     const result = await UserService.getUsers();
@@ -59,48 +59,38 @@ export const getUsers = createAsyncThunk<IUser[], undefined, { rejectValue: stri
   }
 )
 
-export const completeTask = createAsyncThunk<ITask[], {}, {}>(
-  'tasks/completeTask',
-  async function ({ }) {
-    const result = await TasksService.getExecutorTasks('2')
-    return result;
-  }
-)
-
-export const testTask = createAsyncThunk<ITask[], {}, {}>(
-  'testTask',
-  async function ({ }) {
-    const result = await TasksService.getExecutorTasks('1')
-    return result;
-  }
-)
-
 type tasks = {
-  tasks: ITask[]
-  inspectorTasks: ITask[]
+  tasks: ITask[],
+  allTasks: ITask[],
+  inspectorTasks: ITask[],
+  allInspectorTasks: ITask[],
   users: IUser[],
-  createTaskReject: boolean,
-  createTaskFulfilled: boolean,
-  createTaskPending: boolean,
-  completeTaskPending: boolean,
-  completeTaskReject: boolean,
-  completeTaskFulfilled: boolean,
+  modalTaskPending: boolean,
+  modalTaskReject: boolean,
+  modalTaskFulfilled: boolean,
   modal: string | null,
   modalTask: ITask,
+  loading: boolean,
+  loadingTask: boolean,
+  errorTask: string,
+  errorMessage: string
 }
 
 const initialState: tasks = {
   tasks: [],
+  allTasks: [],
   inspectorTasks: [],
+  allInspectorTasks: [],
   users: [],
-  createTaskReject: false,
-  createTaskFulfilled: false,
-  createTaskPending: false,
-  completeTaskPending: false,
-  completeTaskReject: false,
-  completeTaskFulfilled: false,
+  modalTaskReject: false,
+  modalTaskFulfilled: false,
+  modalTaskPending: false,
   modal: null,
   modalTask: {} as ITask,
+  loading: true,
+  loadingTask: false,
+  errorTask: '',
+  errorMessage: ''
 }
 
 const tasksSlice = createSlice({
@@ -108,54 +98,85 @@ const tasksSlice = createSlice({
   initialState,
   reducers: {
     updateCreateFulfilled: (state) => {
-      state.createTaskFulfilled = false
+      state.modalTaskFulfilled = false
     },
     updateModalValue: (state, action) => {
       state.modal = action.payload
     },
     updateModalTask: (state, action) => {
       state.modalTask = action.payload
+    },
+    searchTasks: (state, action) => {
+      const searchValue = action.payload
+      state.tasks = state.allTasks.filter((task) => task.summary.includes(searchValue))
+    },
+    searchInspectorsTasks: (state, action) => {
+      const searchValue = action.payload
+      state.inspectorTasks = state.allInspectorTasks.filter((task) => task.summary.includes(searchValue))
     }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getTasks.fulfilled, (state, action) => {
-        state.tasks = action.payload;
+      .addCase(getTasks.pending, (state) => {
+        state.loading = true;
       })
-      .addCase(updateTask.fulfilled, (state, action) => {
-        state.tasks = action.payload
+      .addCase(getTasks.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tasks = action.payload;
+        state.allTasks = action.payload;
+      })
+      .addCase(getInspectorTasks.pending, (state) => {
+        state.loading = true;
       })
       .addCase(getInspectorTasks.fulfilled, (state, action) => {
         state.inspectorTasks = action.payload;
+        state.allInspectorTasks = action.payload;
+        state.loading = false;
       })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.users = action.payload
       })
       .addCase(createTask.pending, (state) => {
-        state.createTaskPending = true;
+        state.loadingTask = true
       })
-      .addCase(createTask.rejected, (state) => {
-        state.createTaskReject = true
-        state.createTaskPending = false
+      .addCase(createTask.rejected, (state, action) => {
+        state.loadingTask = false
+        state.errorMessage = action.error.message || 'error'
       }).addCase(createTask.fulfilled, (state, action) => {
-        state.createTaskPending = false
-        state.createTaskReject = false
-        state.createTaskFulfilled = true
+        state.errorMessage = ''
+        state.loadingTask = false
         state.tasks = action.payload
-      }).addCase(completeTask.pending, (state) => {
-        state.completeTaskPending = true
-      }).addCase(completeTask.rejected, (state) => {
-        state.completeTaskPending = false
-        state.completeTaskReject = true
-      }).addCase(completeTask.fulfilled, (state) => {
-        state.completeTaskPending = false
-        state.completeTaskReject = false
-        state.completeTaskFulfilled = false
-      }).addCase(updateInspectorTask.fulfilled, (state, action) => {
+      })
+      .addCase(updateTask.pending, (state) => {
+        state.loadingTask = true
+        state.loading = true;
+      })
+      .addCase(updateTask.rejected, (state, action) => {
+        state.errorMessage = action.error.message || 'error';
+        state.loadingTask = false
+        state.loading = false;
+      })
+      .addCase(updateTask.fulfilled, (state, action) => {
+        state.errorMessage = ''
+        state.loadingTask = false
+        state.tasks = action.payload
+        state.loading = false;
+      })
+      .addCase(updateInspectorTask.pending, (state) => {
+        state.loadingTask = true;
+      })
+      .addCase(updateInspectorTask.rejected, (state, action) => {
+        state.loadingTask = false;
+        state.errorMessage = action.error.message || 'error'
+      })
+      .addCase(updateInspectorTask.fulfilled, (state, action) => {
+        state.loadingTask = false
         state.inspectorTasks = action.payload
+        state.allInspectorTasks = action.payload
+        state.errorMessage = ''
       })
   }
 })
 
-export const { updateCreateFulfilled, updateModalValue, updateModalTask } = tasksSlice.actions
+export const { updateCreateFulfilled, updateModalValue, updateModalTask, searchTasks, searchInspectorsTasks } = tasksSlice.actions
 export default tasksSlice.reducer
