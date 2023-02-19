@@ -1,14 +1,24 @@
 import { store } from "..";
-import { IProfile, IUser } from "../../types/interfaces/IUser";
+import { IProfile } from "../../types/interfaces/IUser";
 import OrderType from "../../types/enums/OrderEnum";
 import RatingSortType from "../../types/enums/RatingSortEnum";
+import { IAchievement } from "../../types/interfaces/IAchievement";
+import { ICartProduct } from "../../types/interfaces/IOrder";
 
 export type typeAppActual = {
     activePage: string,
     isLogin: boolean,
     activeModalAuth: typeActualModalAuth,
     isLoading: boolean,
+    achievements: IAchievement[],
     profile: IProfile,
+}
+
+export type typeStorePage = {
+    basketProducts: ICartProduct[],
+    basketCount: number,
+    IsBasketOpen: boolean,
+    IsHistoryOpen: boolean,
 }
 
 export type typeRatingPage = {
@@ -20,6 +30,5 @@ export type typeRatingPage = {
 }
 
 export type typeActualModalAuth = 'register' | 'login' | 'forget';
-
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

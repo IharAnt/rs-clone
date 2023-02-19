@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import React, { useState } from 'react';
 import AuthService from '../../services/AuthService';
 import UserService from '../../services/UserService';
@@ -38,7 +39,9 @@ const ModalRegister = () => {
         dispatch(userChange(profile));
         dispatch(loginChange(true));
       } catch (error) {
-        setErrorMessage('тут тип ошибки указать')
+        if(error instanceof AxiosError) {
+          setErrorMessage(error.response?.data.message);
+        }
       }
     }
   };

@@ -1,6 +1,9 @@
+.motivatorsCnt-container{
+  margin-top: 40px;
+}
 .motivators {
   color: var(--COLOR_FONT_BLACK);
-  height: calc(100vh - 160px);
+  height: 65vh;
   margin: 0 auto;
   width: 98vw;
   padding: 10px 40px;
@@ -12,7 +15,7 @@
   grid-template-rows: auto 1fr;
 }
 
-.motivators-block{
+.motivators-block {
   outline: none;
   border-radius: 3px;
   background-color: var(--COLOR_BACKGROUND_ITEM);
@@ -23,7 +26,7 @@
   height: 27px;
 }
 
-.motivators-btn{
+.motivators-btn {
   padding: 5px;
   display: flex;
   justify-content: center;
@@ -34,7 +37,7 @@
   opacity: 0.85;
 }
 
-.motivators-btn:hover{
+.motivators-btn:hover {
   opacity: 1;
 }
 

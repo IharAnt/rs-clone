@@ -3,12 +3,14 @@ import './index.css';
 import modalGold from './../../assets/img/goldMedal.png';
 import silverMedal from './../../assets/img/silverMedal.png';
 import bronzeMedal from './../../assets/img/bronzeMedal.png';
+import { useAppSelector } from '../../store';
 
 const ItemUserRating = (data: IRating) => {
-
+    const { id } = useAppSelector(state => state.appState.profile)
+  
     return (
 
-        <div className='table-container_item item-user'>
+        <div className={`table-container_item item-user ${id === data.id ? 'userId_active' : ''}`}>
             <div className='medal-container'>
                 <p className='item-rating-user_text'>{data.place}
                     {data.place === 1 ? <img className='item-rating-user_medal' src={modalGold} alt='first place' /> : ''}

@@ -35,7 +35,7 @@ const EditProfile = ({ setActive }: IEditProfile) => {
                 <p className='edit-profile-item' onClick={logOut}>Выйти из профиля</p>
             </div>
             <Modal isOpen={modalEditProfile} setModal={setModalEditProfile} >
-                <ModalEitProfile />
+                <ModalEitProfile setModal={setModalEditProfile} />
             </Modal>
         </>
     )

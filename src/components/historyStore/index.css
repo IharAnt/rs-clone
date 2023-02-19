@@ -1,0 +1,20 @@
+.main-field-history {
+    width: 0px;
+    transition: .3s;
+    opacity: 0;
+    overflow: hidden;
+    height: 100%;
+    border-radius: 10px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+}
+
+.main-field-history_open {
+    width: 150px;
+    opacity: 1;
+    padding: 0 5px;
+}
+
+.history-item-container {
+    height: 100%;
+    overflow: auto;
+}
