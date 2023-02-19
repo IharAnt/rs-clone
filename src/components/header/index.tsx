@@ -5,31 +5,33 @@ import Navigation from '../navigation';
 import Logo from '../logo';
 import LoginHeader from '../loginHeader';
 import AuthService from '../../services/AuthService';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { loadingChange, loginChange, userChange } from '../../store/appStore/sliceApp/slice';
 import UserService from '../../services/UserService';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
+  let userId = useAppSelector((state) => state.appState.profile.id);
 
   useEffect(() => {
     const refresh = async () => {
       try {
         dispatch(loadingChange(true));
-        const response = await AuthService.refresh();
-        const profile = await UserService.getProfile(response.data.user.id)
+        let id = userId;
+        if (!userId) {
+          const response = await AuthService.refresh();
+          id = response.data.user.id;
+        }
+        const profile = await UserService.getProfile(id);
         dispatch(userChange(profile));
         dispatch(loginChange(true));
       } catch (error) {
         console.log(error);
-        dispatch(loadingChange(false));
       } finally {
         dispatch(loadingChange(false));
       }
     };
-    if (localStorage.getItem('token')) {
-      refresh();
-    }
+    refresh();
   }, []);
 
   return (

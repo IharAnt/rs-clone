@@ -26,7 +26,7 @@ const LoginTrue: React.FC = () => {
         if (photo === undefined) {
             dispatch(photoChange(avatarDefault));
         }
-    }), [])
+    }), [dispatch, photo])
 
     return (
         <div className='profile-container'>
