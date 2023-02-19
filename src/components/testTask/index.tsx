@@ -40,11 +40,8 @@ export default function TestTask({ task }: props) {
 
   useEffect(() => {
     if (!loading && testReport && !error) dispatch(updateModalValue(null))
-  }, [loading])
-
-  useEffect(() => {
     if (error) setErrorMessage(error)
-  })
+  }, [loading, error, testReport, dispatch])
 
   const teskTaskHandler = (deny: boolean = false) => {
     if (!testReport) setErrorMessage('Напишите отчёт о проверке!')

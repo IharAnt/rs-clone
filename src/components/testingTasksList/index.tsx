@@ -14,7 +14,8 @@ export default function TestingTasksList() {
       {data.length !== 0 ?
         <>
           <div className="motivatorsTesting__headers motivatorsTesting-grid">
-            <div>Задача: </div>
+            <div></div>
+            <div>Мотиватор: </div>
             <div>Описание:</div>
             <div>Отчёт: </div>
             <div></div>
