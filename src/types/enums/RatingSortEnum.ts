@@ -1,6 +1,6 @@
 enum RatingSortType {
   place = 'place',
-  name = 'name',
+  // name = 'name',
   totalExperience = 'totalExperience',
   approvedTasks = 'approvedTasks',
   achievements = 'achievements',
