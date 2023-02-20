@@ -21,7 +21,7 @@ export default class ShopService {
   }
 
   static async addOrders(userId: string, cartProducts: ICartProduct[]):  Promise<IOrder[]> {
-    const response = await apiClient.post<IOrder[]>(`${ShopService.shopPath}/addtOrders/${userId}`, cartProducts);
+    const response = await apiClient.post<IOrder[]>(`${ShopService.shopPath}/addOrders/${userId}`, cartProducts);
     return response.data;
 
     // const newOrders = cartProducts.map((prod, index) => ({id: 'asdfa' + index, userId, product: prod.product, count: prod.count}))
