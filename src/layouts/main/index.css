@@ -1,0 +1,10 @@
+.mainLayout-container {
+    overflow: hidden;
+    height: 100vh;
+    display: grid;
+    padding: 8px 0;
+    grid-template-rows: 56px 85px 1fr 48px;
+    align-items: center;
+    justify-items: center;
+    gap: 8px;
+}

@@ -7,14 +7,13 @@ import LevelComponent from '../../components/levelComponent';
 interface MainLayoutProps {
   children: React.ReactNode;
 }
-
+// flex flex-col justify-between items-center h-full overflow-hidden
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col justify-between items-center h-full overflow-hidden">
+    <div className="mainLayout-container">
       <Header />
-      <div className='h-full items-center flex flex-col'>
-        <LevelComponent />
-        {children}</div>
+      <LevelComponent />
+      {children}
       <Footer />
     </div>
   );
