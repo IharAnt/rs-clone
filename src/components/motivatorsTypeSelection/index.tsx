@@ -14,7 +14,7 @@ export default function MotivatorsTypeSelection({ content, setContent, menu, set
           setContent('myTasks')
           setMenu(false)
           setSearch('')
-        }}>Мои задачи</li>
+        }}>Мои мотиваторы</li>
         <li className={`selectTypeMode__item ${content === 'testedTasks' ? 'selected' : ''}`} onClick={() => {
           setContent('testedTasks')
           setMenu(false)
