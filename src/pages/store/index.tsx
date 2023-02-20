@@ -25,22 +25,24 @@ const StorePage = () => {
     return (
         <MainLayout>
             <DndProvider backend={HTML5Backend}>
-                <div className='title-container-store'>
-                    <p className='title-container-store_text'>Магазин</p>
-                    <ControlStore />
-                </div>
-                <div className='store-container' >
-                    <HistoryStore />
-                    <div className='store-container-shop'>
-                        <div className='main-field-store'>
-                            {arrProducts.map((product) => {
-                                return (
-                                    <ProductCard {...product} key={product.id} />
-                                );
-                            })}
-                        </div>
+                <div className='store-main-container'>
+                    <div className='title-container-store'>
+                        <p className='title-container-store_text'>Магазин</p>
+                        <ControlStore />
                     </div>
-                    <BasketStore />
+                    <div className='store-container' >
+                        <HistoryStore />
+                        <div className='store-container-shop'>
+                            <div className='main-field-store'>
+                                {arrProducts.map((product) => {
+                                    return (
+                                        <ProductCard {...product} key={product.id} />
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        <BasketStore />
+                    </div>
                 </div>
             </DndProvider>
         </MainLayout >

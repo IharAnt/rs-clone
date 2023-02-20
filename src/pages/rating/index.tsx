@@ -10,17 +10,21 @@ import { IPaginationResponse } from '../../types/interfaces/IPagination';
 import { useAppSelector } from '../../store';
 import ItemUserRating from '../../components/itemUserRating';
 import PaginationRating from '../../components/paginationRating';
+import loadingGif from './../../assets/img/loading.gif';
 
 const RatingPage = () => {
 
   const { page, limit, sort, order, search } = useAppSelector(state => state.ratingPage);
   const [update, setUpdate] = useState(0);
   const [ratingArr, setrattingArr] = useState<IPaginationResponse<IRating>>({ count: 0, items: [], limit, page });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(false);
     const getRattingArr = async () => {
       const responceArr = await RatingService.getRating(page, limit, sort, order, search);
-      setrattingArr(responceArr)
+      setrattingArr(responceArr);
+      setLoading(true);
     }
     getRattingArr()
   }, [page, limit, sort, order, update, search])
@@ -42,8 +46,11 @@ const RatingPage = () => {
           <p className='rating-quantily-member_text'>{`Всего участников: ${ratingArr.count}`}</p>
         </div>
         <TableRatingTitle />
+        {!loading && <div className='rating-loading'>
+            <img src={loadingGif} alt="loading gif" /></div>}
         <div className='container-table-rating_items'>
-          {ratingArr.items.map((userItem, index) => <ItemUserRating {...userItem} key={`userItem${index}`} />)}
+          
+          {loading && ratingArr.items.map((userItem, index) => <ItemUserRating {...userItem} key={`userItem${index}`} />)}
         </div>
         < PaginationRating {...ratingArr} />
       </div>

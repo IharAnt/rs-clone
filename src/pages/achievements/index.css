@@ -1,6 +1,6 @@
 .achievements-container {
-    width: 85vw;
-    height: 65vh;
+    width: 98vw;
+    height: 75vh;
 }
 
 .achievements-container_title {
@@ -22,4 +22,11 @@
 .achievements-container-items {
     height: 88%;
     overflow: auto;
+}
+
+@media (max-height:1000px) {
+    .achievements-container {
+        height: 65vh;
+    }
+
 }

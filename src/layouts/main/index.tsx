@@ -3,18 +3,20 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import React from 'react';
 import LevelComponent from '../../components/levelComponent';
+import { useAppSelector } from '../../store';
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
+
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+  const isLogin = useAppSelector(state => state.appState.isLogin);
   return (
-    <div className="flex flex-col justify-between items-center h-full overflow-hidden">
+    <div className={`mainLayout-container ${isLogin ? 'mainLayout-container_four' : 'mainLayout-container_three'} `}>
       <Header />
-      <div className='h-full items-center flex flex-col'>
-        <LevelComponent />
-        {children}</div>
+      <LevelComponent />
+      {children}
       <Footer />
     </div>
   );

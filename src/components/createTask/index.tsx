@@ -25,7 +25,7 @@ export default function CreateTask() {
 
   const users = useAppSelector((state) => state.tasks.users)
   const inspectors = users
-    // .filter((user)=>user.id !== profile.id)
+    .filter((user)=>user.id !== profile.id)
     .map((user: IUser) => { return { value: user.name, label: user.name } });
   const [errorText, setErrorText] = useState('')
 

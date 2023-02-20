@@ -19,7 +19,7 @@
 
 .store-container {
     width: 98vw;
-    height: 55vh;
+    height: 88%;
     display: flex;
 }
 
@@ -38,7 +38,15 @@
     justify-content: center;
 }
 
+.store-main-container {
+    width: 98vw;
+    height: 75vh;
+}
 
 
+@media (max-height:1000px) {
+    .store-main-container {
+        height: 65vh;
+    }
 
-
+}

@@ -1,11 +1,23 @@
 import MainLayout from '../../layouts/main';
 import './index.css';
 import AchievementsItem from '../../components/achievementsItem';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { useEffect } from 'react';
+import { achievementsChange } from '../../store/appStore/sliceApp/slice';
+import RatingService from '../../services/RatingService';
 
 const AchievementsPage = () => {
 
-    const achievementsData = useAppSelector(state => state.appState.achievements);
+    const { achievements } = useAppSelector(state => state.appState)
+    const dispatch = useAppDispatch();
+
+    useEffect((() => {
+        const funcGetAchievements = async () => {
+            const achievements = await RatingService.getAchivements();
+            dispatch(achievementsChange(achievements));
+        }
+        funcGetAchievements();
+    }), [dispatch])
 
     return (
         <MainLayout>
@@ -14,7 +26,7 @@ const AchievementsPage = () => {
                     <h1 className='achievements-title_text'>Достижения</h1>
                 </div>
                 <ul className='achievements-container-items'>
-                    {achievementsData.map((item) => {
+                    {achievements.map((item) => {
                         return (
                             <AchievementsItem {...item} key={item.name} />
                         )

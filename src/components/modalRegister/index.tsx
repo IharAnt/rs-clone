@@ -90,11 +90,11 @@ const ModalRegister = () => {
           className="register-login login-button"
           onClick={() => dispatch(authChange('login'))}
         />
-        <input
+        {/* <input
           type="button"
           value="Забыли пароль?"
           className="button-forget-password"
-          onClick={() => dispatch(authChange('forget'))} />
+          onClick={() => dispatch(authChange('forget'))} /> */}
       </div>
     </form>
   );

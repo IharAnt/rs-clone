@@ -1,9 +1,10 @@
-.motivatorsCnt-container{
+.motivatorsCnt-container {
   margin-top: 40px;
 }
+
 .motivators {
   color: var(--COLOR_FONT_BLACK);
-  height: 65vh;
+  height: 75vh;
   margin: 0 auto;
   box-sizing: border-box;
   font-size: 16px;
@@ -37,16 +38,4 @@
 
 .motivators-btn:hover {
   opacity: 1;
-}
-
-@media (max-width: 1400px) {
-  .motivators {
-    padding: 10px 30px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .motivators {
-    padding: 10px 20px;
-  }
 }

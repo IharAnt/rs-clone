@@ -1,10 +1,8 @@
 .level-container {
-    width: 100%;
     height: 85px;
     width: 98vw;
     background: rgba(55, 48, 163, 0.1);
     border-radius: 10px;
-    margin-bottom: 10px;
     display: flex;
     gap: 10px;
     align-items: center;
