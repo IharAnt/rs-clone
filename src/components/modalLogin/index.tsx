@@ -79,12 +79,12 @@ const ModalLogin = () => {
             onClick={() => dispatch(authChange('register'))}
           />
           <input type="button" value="ВОЙТИ" className="button-login" onClick={loginClick} />
-          <input
+          {/* <input
             type="button"
             value="Забыли пароль?"
             className="button-forget-password"
             onClick={() => dispatch(authChange('forget'))}
-          />
+          /> */}
         </div>
       </form>
     </>
