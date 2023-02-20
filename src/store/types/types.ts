@@ -3,7 +3,7 @@ import { IProfile } from "../../types/interfaces/IUser";
 import OrderType from "../../types/enums/OrderEnum";
 import RatingSortType from "../../types/enums/RatingSortEnum";
 import { IAchievement } from "../../types/interfaces/IAchievement";
-import { ICartProduct } from "../../types/interfaces/IOrder";
+import { ICartProduct, IOrder } from "../../types/interfaces/IOrder";
 
 export type typeAppActual = {
     activePage: string,
@@ -16,6 +16,7 @@ export type typeAppActual = {
 
 export type typeStorePage = {
     basketProducts: ICartProduct[],
+    orders: IOrder[],
     basketCount: number,
     IsBasketOpen: boolean,
     IsHistoryOpen: boolean,

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IOrder } from "../../../types/interfaces/IOrder";
 import { IProduct } from "../../../types/interfaces/IProduct";
 import { typeStorePage } from "../../types/types";
 import initalState from "../initalState";
@@ -56,9 +57,12 @@ const sliceStorePage = createSlice({
             state.basketProducts.map((item) => item.count = 0);
             state.basketProducts = state.basketProducts.filter((item) => item.count > 0);
             state.basketCount = state.basketProducts.reduce((a, b) => a + b.count, 0);
+        },
+        refreshOrders(state: typeStorePage, action: PayloadAction<IOrder[]>) {
+          state.orders = action.payload;
         }
     }
 })
 
 export default sliceStorePage.reducer;
-export const { refresBasket, addProductBasket, deleteProductBasket, plusProductBasket, minusProductBasket, openHistoryWindow, openBasketWindow } = sliceStorePage.actions;
+export const { refresBasket, addProductBasket, deleteProductBasket, plusProductBasket, minusProductBasket, openHistoryWindow, openBasketWindow, refreshOrders } = sliceStorePage.actions;
