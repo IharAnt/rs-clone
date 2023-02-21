@@ -1,0 +1,25 @@
+.motivatorsTask-column{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.motivatorsTask-grid{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 14px;
+}
+
+@media (max-width: 800px) {
+  .motivatorsTask-grid{
+    gap: 10px;
+  }
+}
+
+@media (max-width: 660px) {
+  .motivatorsTask-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

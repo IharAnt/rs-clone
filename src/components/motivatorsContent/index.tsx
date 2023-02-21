@@ -1,14 +1,17 @@
 import MotivatorsTasks from '../motivatorsTasks'
 import TestingTasksList from '../testingTasksList'
 import { useState, useEffect } from 'react'
-import { props } from './types'
 import './style.css'
 import Modal from '../modal'
 import MotivatorsModal from '../motivatorsModal'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { getInspectorTasks, getTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
 
-export default function MotivatorsContent({ content, setContent }: props) {
+export default function MotivatorsContent() {
+
+  const dispatch = useAppDispatch();
+
+  const content = useAppSelector((state) => state.tasks.motivatorsPage)
 
   const handleMotivatorsPage = () => {
     switch (content) {
@@ -28,7 +31,6 @@ export default function MotivatorsContent({ content, setContent }: props) {
   }
 
   const userId = useAppSelector((state) => state.appState.profile.id)
-  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (content === 'myTasks' && userId) dispatch(getTasks({ 'id': userId }))

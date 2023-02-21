@@ -6,7 +6,7 @@ import Logo from '../logo';
 import LoginHeader from '../loginHeader';
 import AuthService from '../../services/AuthService';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { loadingChange, loginChange, userChange } from '../../store/appStore/sliceApp/slice';
+import { finishLoading, loadingChange, loginChange, userChange } from '../../store/appStore/sliceApp/slice';
 import UserService from '../../services/UserService';
 
 const Header: React.FC = () => {
@@ -29,6 +29,7 @@ const Header: React.FC = () => {
         console.log(error);
       } finally {
         dispatch(loadingChange(false));
+        dispatch(finishLoading())
       }
     };
     refresh();

@@ -5,6 +5,7 @@ import { authChange, loginChange, userChange } from '../../store/appStore/sliceA
 import AuthService from '../../services/AuthService';
 import UserService from '../../services/UserService';
 import { AxiosError } from 'axios';
+import { getInspectorTasks } from '../../store/motivatorsStore/sliceTasks/tasks';
 
 const ModalLogin = () => {
   const regExEmail = '^[\\w.%+-]+@[\\w.-]+\\.[\\w]{2,6}$';
@@ -31,6 +32,7 @@ const ModalLogin = () => {
         const profile = await UserService.getProfile(response.data.user.id);
         dispatch(userChange(profile));
         dispatch(loginChange(true));
+        dispatch(getInspectorTasks({ id: profile.id }))
       } catch (error) {
         if (error instanceof AxiosError) {
           setErrorMessage(error.response?.data.message);
@@ -51,9 +53,8 @@ const ModalLogin = () => {
           <input
             name="e-mail"
             type="email"
-            className={`w-full font-normal border border-solid border-white rounded-md mb-6 input-login input-login__username ${
-              !validEmail ? 'input-wrong-change' : ''
-            }`}
+            className={`w-full font-normal border border-solid border-white rounded-md mb-6 input-login input-login__username ${!validEmail ? 'input-wrong-change' : ''
+              }`}
             placeholder="Адрес электронной почты"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -62,9 +63,8 @@ const ModalLogin = () => {
           <input
             name="password"
             type="password"
-            className={`w-full font-normal border border-solid border-white rounded-md input-login ${
-              !validPassword ? 'input-wrong-change' : ''
-            }`}
+            className={`w-full font-normal border border-solid border-white rounded-md input-login ${!validPassword ? 'input-wrong-change' : ''
+              }`}
             placeholder="Пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

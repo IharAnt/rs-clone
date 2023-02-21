@@ -12,6 +12,11 @@
   transition: .4s;
 }
 
+.motivatorsNav__search{
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}
+
 .motivatorsNav__update:hover {
   transform: rotate(450deg);
 }
@@ -33,6 +38,35 @@
   opacity: 0.5;
 }
 
+.motivatorsNav__btn {
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}
 .motivatorsNav__btn:hover{
   background-color: var(--COLOR_BLOCK_BORDER);
+}
+
+@media (max-width: 800px) {
+  .motivatorsNav{
+    padding: 10px 20px 20px;
+  }
+  .motivatorsNav__search{
+    width: 170px;
+    font-size: 0.9em;
+  }
+  .motivatorsNav__btn{
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 660px) {
+  .motivatorsNav__search{
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .motivatorsNav__btn{
+    width: 100px;
+  }
 }

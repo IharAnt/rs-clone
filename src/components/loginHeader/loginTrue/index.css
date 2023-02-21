@@ -51,7 +51,7 @@
     justify-self: end;
     font-size: 16px;
     font-weight: 400;
-    color: var(COLOR_BLUY_DEFAULT);
+    color: var(--COLOR_BLUY_DEFAULT);
 }
 
 .profile-notice_active {
@@ -59,7 +59,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(COLOR_BLUY_DEFAULT);
+    background: var(--COLOR_BLUY_DEFAULT);
     top: -3px;
     right: -3px;
 }

@@ -1,13 +1,12 @@
 .motivatorsTask {
-  font-size: 16px;
   border-radius: 10px;
   background-color:  var(--COLOR_BACKGROUND_ITEM);
   padding: 10px;
 }
 
 .motivatorsTask__icon {
-  width: 3em;
-  height: 3em;
+  width: 3.3em;
+  height: 3.3em;
 }
 
 .motivatorsTask__header {
@@ -43,11 +42,13 @@
 }
 
 .motivatorsTask__btn {
-  opacity: 0.85;
+  transition: 0.3s all;
+  border-radius: 7px;
 }
 
 .motivatorsTask__btn:hover {
-  opacity: 1;
+  transform: scale(1.05);
+
 }
 
 .motivatorsTask__btn--inProgress {
@@ -55,8 +56,16 @@
   color: white;
 }
 
+.motivatorsTask__btn--inProgress:hover{
+  background: rgb(36, 1, 82);
+}
+
 .motivatorsTask__btn--open {
   background: var(--COLOR_YELLOW);
+}
+
+.motivatorsTask__btn--open:hover{
+  background: var(--COLOR_YELLOW_DEFAULT);
 }
 
 .motivatorsTask__coinsImg {
@@ -69,14 +78,33 @@
   gap: 1px;
 }
 
-@media (max-width: 1200px) {
-  .motivatorsTask {
-    font-size: 14px;
+@media (max-width: 1000px) {
+  .motivatorsTask__completion{
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+  .motivatorsTask__icon {
+    width: 3em;
+    height: 3em;
   }
 }
 
 @media (max-width: 800px) {
-  .motivatorsTask {
-    font-size: 12px;
+  .motivatorsTask__icon{
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+
+@media (max-width: 660px) {
+  .motivatorsTask__icon{
+    width: 3.5em;
+    height: 3.5em;
+  }
+  .motivatorsTask__completion{
+    flex-direction: row;
+    align-items: center;
+    
   }
 }

@@ -29,8 +29,11 @@ const sliceChangeApp = createSlice({
         photoChange(state: typeAppActual, action: PayloadAction<string>) {
             state.profile.photo = action.payload;
         },
+        finishLoading(state: typeAppActual) {
+            state.isLoadingEnd = true
+        }
     }
 })
 
 export default sliceChangeApp.reducer;
-export const { photoChange, pageChange, loginChange, authChange, userChange, loadingChange, achievementsChange } = sliceChangeApp.actions;
+export const { photoChange, pageChange, loginChange, authChange, userChange, loadingChange, achievementsChange, finishLoading } = sliceChangeApp.actions;

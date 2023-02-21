@@ -5,8 +5,13 @@
 }
 
 .motivatorsTesting__btn{
+  width: 90px;
   background: var(--COLOR_YELLOW);
   align-self: center;
+}
+
+.motivatorsTesting__btn:hover{
+  background: var(--COLOR_YELLOW_DEFAULT);
 }
 
 .motivatorsTesting__description{

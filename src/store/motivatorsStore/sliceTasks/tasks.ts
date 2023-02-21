@@ -73,7 +73,8 @@ type tasks = {
   loading: boolean,
   loadingTask: boolean,
   errorTask: string,
-  errorMessage: string
+  errorMessage: string,
+  motivatorsPage: string,
 }
 
 const initialState: tasks = {
@@ -90,7 +91,8 @@ const initialState: tasks = {
   loading: true,
   loadingTask: false,
   errorTask: '',
-  errorMessage: ''
+  errorMessage: '',
+  motivatorsPage: 'myTasks',
 }
 
 const tasksSlice = createSlice({
@@ -108,11 +110,15 @@ const tasksSlice = createSlice({
     },
     searchTasks: (state, action) => {
       const searchValue = action.payload
-      state.tasks = state.allTasks.filter((task) => task.summary.includes(searchValue))
+      state.tasks = state.allTasks.filter((task) => task.summary.includes(searchValue) || task.description.includes(searchValue))
     },
     searchInspectorsTasks: (state, action) => {
       const searchValue = action.payload
-      state.inspectorTasks = state.allInspectorTasks.filter((task) => task.summary.includes(searchValue))
+      state.inspectorTasks = state.allInspectorTasks.filter((task) => task.summary.includes(searchValue) || task.description.includes(searchValue))
+    },
+    selectMotivatorsPage: (state, action) => {
+      const page = action.payload
+      state.motivatorsPage = page
     }
   },
   extraReducers: (builder) => {
@@ -146,6 +152,7 @@ const tasksSlice = createSlice({
         state.errorMessage = ''
         state.loadingTask = false
         state.tasks = action.payload
+        state.allTasks = action.payload
       })
       .addCase(updateTask.pending, (state) => {
         state.loadingTask = true
@@ -178,5 +185,5 @@ const tasksSlice = createSlice({
   }
 })
 
-export const { updateCreateFulfilled, updateModalValue, updateModalTask, searchTasks, searchInspectorsTasks } = tasksSlice.actions
+export const { updateCreateFulfilled, updateModalValue, updateModalTask, searchTasks, searchInspectorsTasks, selectMotivatorsPage } = tasksSlice.actions
 export default tasksSlice.reducer

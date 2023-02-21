@@ -1,5 +1,4 @@
 import MotivatorsTypeSelection from '../motivatorsTypeSelection'
-import { props } from './types'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { getInspectorTasks, getTasks, updateModalValue, searchTasks, searchInspectorsTasks } from '../../store/motivatorsStore/sliceTasks/tasks'
@@ -7,7 +6,9 @@ import './style.css'
 import UserService from '../../services/UserService'
 import { userChange } from '../../store/appStore/sliceApp/slice'
 
-export default function MotivatorsNavigation({ content, setContent }: props) {
+export default function MotivatorsNavigation() {
+
+  const content = useAppSelector((state) => state.tasks.motivatorsPage)
 
   const [menu, setMenu] = useState(false)
   const dispatch = useAppDispatch()
@@ -35,8 +36,8 @@ export default function MotivatorsNavigation({ content, setContent }: props) {
   return (
     <div className='motivatorsNav'>
       <div className="motivatorsNav__item">
-        <MotivatorsTypeSelection content={content} setContent={setContent} menu={menu} setMenu={setMenu} setSearch={setSearch}/>
-        <input className='motivators-block' type={'text'} value={search} placeholder={'поиск'} onChange={onSearch}></input>
+        <MotivatorsTypeSelection menu={menu} setMenu={setMenu} setSearch={setSearch}/>
+        <input className='motivators-block motivatorsNav__search' type={'text'} value={search} placeholder={'поиск'} onChange={onSearch}></input>
       </div>
       <div className="motivatorsNav__item">
         <button className='motivators-block motivatorsNav__btn' disabled={content === 'myTasks' ? false : true} onClick={() => {

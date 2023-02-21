@@ -1,6 +1,8 @@
 .selectTypeMode{
   width: 200px;
   position: relative;
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_YELLOW_DEFAULT);
 }
 
 .selectTypeMode__arrow{
@@ -11,6 +13,7 @@
 }
 
 .selectTypeMode__input {
+  border-radius: 8px;
   justify-content: space-between;
 }
 
@@ -48,4 +51,16 @@
 .selectTypeMode__menu.opened{
   max-height: 54px;
   border: 1px solid var(--COLOR_BLOCK_BORDER);
+}
+
+@media (max-width: 800px) {
+  .selectTypeMode {
+    width: 170px;
+  }
+}
+
+@media (max-width: 480px) {
+  .selectTypeMode {
+    width: 150px;
+  }
 }
