@@ -108,11 +108,11 @@ const tasksSlice = createSlice({
     },
     searchTasks: (state, action) => {
       const searchValue = action.payload
-      state.tasks = state.allTasks.filter((task) => task.summary.includes(searchValue))
+      state.tasks = state.allTasks.filter((task) => task.summary.includes(searchValue) || task.description.includes(searchValue))
     },
     searchInspectorsTasks: (state, action) => {
       const searchValue = action.payload
-      state.inspectorTasks = state.allInspectorTasks.filter((task) => task.summary.includes(searchValue))
+      state.inspectorTasks = state.allInspectorTasks.filter((task) => task.summary.includes(searchValue) || task.description.includes(searchValue))
     }
   },
   extraReducers: (builder) => {
@@ -146,6 +146,7 @@ const tasksSlice = createSlice({
         state.errorMessage = ''
         state.loadingTask = false
         state.tasks = action.payload
+        state.allTasks = action.payload
       })
       .addCase(updateTask.pending, (state) => {
         state.loadingTask = true
