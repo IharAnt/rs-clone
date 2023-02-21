@@ -6,10 +6,12 @@ import { useAppDispatch, useAppSelector } from '../../../store';
 import EditProfile from '../../editProfile';
 import { photoChange } from '../../../store/appStore/sliceApp/slice';
 import { avatarDefault } from '../../../data/avatarDefault';
+import { Link } from 'react-router-dom';
+import { selectMotivatorsPage } from '../../../store/motivatorsStore/sliceTasks/tasks';
 
 const LoginTrue: React.FC = () => {
 
-    const IsMessage = false;
+    const inspectorsTasks = useAppSelector((state) => state.tasks.allInspectorTasks)
     const dispatch = useAppDispatch();
     const { name, moticoins, photo } = useAppSelector(state => state.appState.profile)
     const [editProfile, setEditProfile] = useState(false)
@@ -32,10 +34,10 @@ const LoginTrue: React.FC = () => {
         <div className='profile-container'>
             <p className='profile-container_name'>{name}</p>
             <div className='profile-container_info'>
-                <div className='profile-container_notice'>
+                <Link className='profile-container_notice' to={'/motivators'} onClick={() => dispatch(selectMotivatorsPage('testedTasks'))}>
                     <img className='profile-notice_ico' src={messageIco} alt="message ico" />
-                    {IsMessage && <div className='profile-notice_active'></div>}
-                </div>
+                    {inspectorsTasks.length !== 0 && <div className='profile-notice_active'></div>}
+                </Link>
                 <div className='profile-container_quantity'>
                     <img className="profile-quantity_ico" src={motekoinIco} alt="motekoin ico" />
                     <span className='profile-quantity_text'>{moticoins}</span>

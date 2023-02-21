@@ -73,7 +73,8 @@ type tasks = {
   loading: boolean,
   loadingTask: boolean,
   errorTask: string,
-  errorMessage: string
+  errorMessage: string,
+  motivatorsPage: string,
 }
 
 const initialState: tasks = {
@@ -90,7 +91,8 @@ const initialState: tasks = {
   loading: true,
   loadingTask: false,
   errorTask: '',
-  errorMessage: ''
+  errorMessage: '',
+  motivatorsPage: 'myTasks',
 }
 
 const tasksSlice = createSlice({
@@ -113,6 +115,10 @@ const tasksSlice = createSlice({
     searchInspectorsTasks: (state, action) => {
       const searchValue = action.payload
       state.inspectorTasks = state.allInspectorTasks.filter((task) => task.summary.includes(searchValue) || task.description.includes(searchValue))
+    },
+    selectMotivatorsPage: (state, action) => {
+      const page = action.payload
+      state.motivatorsPage = page
     }
   },
   extraReducers: (builder) => {
@@ -179,5 +185,5 @@ const tasksSlice = createSlice({
   }
 })
 
-export const { updateCreateFulfilled, updateModalValue, updateModalTask, searchTasks, searchInspectorsTasks } = tasksSlice.actions
+export const { updateCreateFulfilled, updateModalValue, updateModalTask, searchTasks, searchInspectorsTasks, selectMotivatorsPage } = tasksSlice.actions
 export default tasksSlice.reducer

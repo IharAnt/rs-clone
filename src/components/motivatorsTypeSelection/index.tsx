@@ -4,8 +4,11 @@ import './style.css'
 import UserService from '../../services/UserService'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { userChange } from '../../store/appStore/sliceApp/slice'
+import { selectMotivatorsPage } from '../../store/motivatorsStore/sliceTasks/tasks'
 
-export default function MotivatorsTypeSelection({ content, setContent, menu, setMenu, setSearch }: props) {
+export default function MotivatorsTypeSelection({ menu, setMenu, setSearch }: props) {
+
+  const content = useAppSelector((state) => state.tasks.motivatorsPage)
 
   const dispatch = useAppDispatch()
   const userId = useAppSelector((state)=> state.appState.profile.id)
@@ -25,11 +28,11 @@ export default function MotivatorsTypeSelection({ content, setContent, menu, set
       </div>
       <ul className={`selectTypeMode__menu ${menu ? 'opened' : 'closed'}`}>
         <li className={`selectTypeMode__item ${content === 'myTasks' ? 'selected' : ''}`} onClick={() => {
-          setContent('myTasks')
+          dispatch(selectMotivatorsPage(('myTasks'))) 
           onChangeMotivatorsPage()
         }}>Мои мотиваторы</li>
         <li className={`selectTypeMode__item ${content === 'testedTasks' ? 'selected' : ''}`} onClick={() => {
-          setContent('testedTasks')
+          dispatch(selectMotivatorsPage(('testedTasks')))
           onChangeMotivatorsPage()
         }}>На проверке</li>
       </ul>
