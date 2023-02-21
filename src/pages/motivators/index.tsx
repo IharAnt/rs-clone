@@ -7,14 +7,21 @@ import { Navigate } from 'react-router-dom';
 
 const MotivatorsPage = () => {
 
+  const isLoadingEnd = useAppSelector((state) => state.appState.isLoadingEnd)
   const isLogin = useAppSelector((state) => state.appState.isLogin)
 
   return (
     <MainLayout>
-      {!isLogin ? <Navigate to={"/"} /> : ''} 
       <div className='motivators'>
-        <MotivatorsNavigation />
-        <MotivatorsContent />
+        {isLoadingEnd ?
+          !isLogin ?
+            <Navigate to={"/"} /> :
+            <>
+              <MotivatorsNavigation />
+              <MotivatorsContent />
+            </> :
+          ''
+        }
       </div>
     </MainLayout>
   );

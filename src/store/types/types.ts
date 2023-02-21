@@ -12,6 +12,7 @@ export type typeAppActual = {
     isLoading: boolean,
     achievements: IAchievement[],
     profile: IProfile,
+    isLoadingEnd: boolean,
 }
 
 export type typeStorePage = {

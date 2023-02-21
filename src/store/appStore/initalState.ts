@@ -9,6 +9,7 @@ const initalState: typeAppActual = {
     isLoading: false,
     achievements: [],
     profile: {} as IProfile,
+    isLoadingEnd: false
 }
 
 export default initalState;
