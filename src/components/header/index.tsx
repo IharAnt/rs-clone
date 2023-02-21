@@ -26,7 +26,7 @@ const Header: React.FC = () => {
         dispatch(userChange(profile));
         dispatch(loginChange(true));
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       } finally {
         dispatch(loadingChange(false));
         dispatch(finishLoading())
