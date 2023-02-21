@@ -16,4 +16,6 @@
 .emptyMotivators__btn{
   font-size: 1.3em;
   height: 32px;
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_YELLOW_DEFAULT);
 }

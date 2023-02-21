@@ -7,7 +7,7 @@
   height: 75vh;
   margin: 0 auto;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 1em;
   line-height: 1;
   width: 98vw;
   display: grid;
@@ -38,4 +38,10 @@
 
 .motivators-btn:hover {
   opacity: 1;
+}
+
+@media (max-width: 800px) {
+  .motivators{
+    font-size: 15px
+  }
 }

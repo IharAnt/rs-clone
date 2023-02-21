@@ -2,8 +2,22 @@
   height: 35px;
   padding: 0 20px;
   justify-content: space-between;
+  border: 2px solid var(--COLOR_FONT_BLACK);
+  border-radius: 10px;
 }
 
 .motivatorsCnt__taskHeaderIcon{
   width: 27px;
+}
+
+@media (max-width: 800px) {
+  .motivatorsCnt__taskHeader{
+    padding: 8px;
+  }
+}
+
+@media (max-width: 660px) {
+  .motivatorsCnt__taskHeader{
+    padding: 20px;
+  }
 }

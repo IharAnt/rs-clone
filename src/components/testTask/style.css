@@ -20,7 +20,7 @@
 }
 
 .testTask__fieldName{
-  min-width: 150px;
+  width: 150px;
 }
 
 .testTask__fieldPoints{
@@ -93,4 +93,19 @@
 .testTask__error{
   color: red;
   margin-top: 10px;
+}
+
+@media (max-width: 800px) {
+  .testTask{
+    width: 90vw;
+  }
+  .testTask__fieldName{
+    width: 120px;
+  }
+}
+
+@media (max-width: 500px) {
+  .testTask__btns{
+    flex-direction: column;
+  }
 }

@@ -37,7 +37,7 @@ export default function MotivatorsNavigation() {
     <div className='motivatorsNav'>
       <div className="motivatorsNav__item">
         <MotivatorsTypeSelection menu={menu} setMenu={setMenu} setSearch={setSearch}/>
-        <input className='motivators-block' type={'text'} value={search} placeholder={'поиск'} onChange={onSearch}></input>
+        <input className='motivators-block motivatorsNav__search' type={'text'} value={search} placeholder={'поиск'} onChange={onSearch}></input>
       </div>
       <div className="motivatorsNav__item">
         <button className='motivators-block motivatorsNav__btn' disabled={content === 'myTasks' ? false : true} onClick={() => {
