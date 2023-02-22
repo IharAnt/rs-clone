@@ -9,9 +9,8 @@ interface MainLayoutProps {
   children: React.ReactNode;
 }
 
-
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  const isLogin = useAppSelector(state => state.appState.isLogin);
+  const isLogin = useAppSelector((state) => state.appState.isLogin);
   return (
     <div className={`mainLayout-container ${isLogin ? 'mainLayout-container_four' : 'mainLayout-container_three'} `}>
       <Header />

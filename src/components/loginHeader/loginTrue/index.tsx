@@ -10,46 +10,48 @@ import { Link } from 'react-router-dom';
 import { selectMotivatorsPage } from '../../../store/motivatorsStore/sliceTasks/tasks';
 
 const LoginTrue: React.FC = () => {
+  const inspectorsTasks = useAppSelector((state) => state.tasks.allInspectorTasks);
+  const dispatch = useAppDispatch();
+  const { name, moticoins, photo } = useAppSelector((state) => state.appState.profile);
+  const [editProfile, setEditProfile] = useState(false);
 
-    const inspectorsTasks = useAppSelector((state) => state.tasks.allInspectorTasks)
-    const dispatch = useAppDispatch();
-    const { name, moticoins, photo } = useAppSelector(state => state.appState.profile)
-    const [editProfile, setEditProfile] = useState(false)
-
-    const profileClickEdit = () => {
-        if (editProfile) {
-            setEditProfile(false)
-        } else {
-            setEditProfile(true)
-        }
+  const profileClickEdit = () => {
+    if (editProfile) {
+      setEditProfile(false);
+    } else {
+      setEditProfile(true);
     }
+  };
 
-    useEffect((() => {
-        if (photo === undefined) {
-            dispatch(photoChange(avatarDefault));
-        }
-    }), [dispatch, photo])
+  useEffect(() => {
+    if (photo === undefined) {
+      dispatch(photoChange(avatarDefault));
+    }
+  }, [dispatch, photo]);
 
-    return (
-        <div className='profile-container'>
-            <p className='profile-container_name'>{name}</p>
-            <div className='profile-container_info'>
-                <Link className='profile-container_notice' to={'/motivators'} onClick={() => dispatch(selectMotivatorsPage('testedTasks'))}>
-                    <img className='profile-notice_ico' src={messageIco} alt="message ico" />
-                    {inspectorsTasks.length !== 0 && <div className='profile-notice_active'></div>}
-                </Link>
-                <div className='profile-container_quantity'>
-                    <img className="profile-quantity_ico" src={motekoinIco} alt="motekoin ico" />
-                    <span className='profile-quantity_text'>{moticoins}</span>
-                </div>
-            </div>
-            <div className='profile-container_profile'
-                onClick={profileClickEdit}>
-                <img src={photo} className="header-logo_img" alt="profile ico" />
-            </div>
-            <EditProfile setActive={editProfile} />
+  return (
+    <div className="profile-container">
+      <p className="profile-container_name">{name}</p>
+      <div className="profile-container_info">
+        <Link
+          className="profile-container_notice"
+          to={'/motivators'}
+          onClick={() => dispatch(selectMotivatorsPage('testedTasks'))}
+        >
+          <img className="profile-notice_ico" src={messageIco} alt="message ico" />
+          {inspectorsTasks.length !== 0 && <div className="profile-notice_active"></div>}
+        </Link>
+        <div className="profile-container_quantity">
+          <img className="profile-quantity_ico" src={motekoinIco} alt="motekoin ico" />
+          <span className="profile-quantity_text">{moticoins}</span>
         </div>
-    )
+      </div>
+      <div className="profile-container_profile" onClick={profileClickEdit}>
+        <img src={photo} className="header-logo_img" alt="profile ico" />
+      </div>
+      <EditProfile setActive={editProfile} />
+    </div>
+  );
 };
 
 export default LoginTrue;

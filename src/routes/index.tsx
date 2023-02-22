@@ -5,7 +5,6 @@ import MotivatorsPage from '../pages/motivators';
 import RatingPage from '../pages/rating';
 import StorePage from '../pages/store';
 
-
 export const NAVIGATION_ROUTES = [
   {
     path: '/achievements',
@@ -16,8 +15,8 @@ export const NAVIGATION_ROUTES = [
     path: '/motivators',
     element: <MotivatorsPage />,
     name: 'Мотиваторы',
-   },
-   {
+  },
+  {
     path: '/store',
     element: <StorePage />,
     name: 'Магазин',
@@ -27,7 +26,7 @@ export const NAVIGATION_ROUTES = [
     element: <RatingPage />,
     name: 'Рейтинг',
   },
-]
+];
 
 export const ROUTES = [
   {

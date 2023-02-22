@@ -30,7 +30,7 @@ const BasketBuyButton = () => {
     dispatch(refreshOrders(orders));
     const profile = await UserService.getProfile(id);
     dispatch(userChange(profile));
-  }
+  };
 
   return (
     <div className="basket-buy">
@@ -44,10 +44,7 @@ const BasketBuyButton = () => {
         </p>
         <img className="basket-buy_ico" src={motikoin} alt="motikoin ico" />
       </div>
-      <button
-        className={`buy-button ${isBuy ? 'buy-button_active' : ''}`}
-        onClick={buy}
-      >
+      <button className={`buy-button ${isBuy ? 'buy-button_active' : ''}`} onClick={buy}>
         Купить
       </button>
     </div>

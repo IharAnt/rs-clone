@@ -4,20 +4,13 @@ import LoginFalse from './loginFalse';
 import LoginTrue from './loginTrue';
 
 const LoginHeader: React.FC = () => {
-    const { isLogin, isLoading } = useAppSelector(state => state.appState);
-    
+  const { isLogin, isLoading } = useAppSelector((state) => state.appState);
 
-    // if (isLoading) {
-    //   return <div></div>;
-    // }
-    
-    return (
-        <div className='header-profile'>
-            {isLogin
-                ? <LoginTrue />
-                : !isLoading ? <LoginFalse /> : ''}
-        </div>
-    )
+  // if (isLoading) {
+  //   return <div></div>;
+  // }
+
+  return <div className="header-profile">{isLogin ? <LoginTrue /> : !isLoading ? <LoginFalse /> : ''}</div>;
 };
 
 export default LoginHeader;

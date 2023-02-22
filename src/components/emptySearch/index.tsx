@@ -1,5 +1,5 @@
-import notFound from '../../assets/img/notFound.png'
-import './style.css'
+import notFound from '../../assets/img/notFound.png';
+import './style.css';
 
 export default function EmptyCart() {
   return (
@@ -7,5 +7,5 @@ export default function EmptyCart() {
       <div className="emptyCart__title">По данному запросу ничего не найдено</div>
       <img className="emptyCart__image" src={notFound} alt="not found" />
     </div>
-  )
+  );
 }

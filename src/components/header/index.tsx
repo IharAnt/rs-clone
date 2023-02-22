@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         // console.log(error);
       } finally {
         dispatch(loadingChange(false));
-        dispatch(finishLoading())
+        dispatch(finishLoading());
       }
     };
     refresh();
