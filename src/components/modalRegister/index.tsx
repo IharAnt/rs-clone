@@ -39,7 +39,11 @@ const ModalRegister = () => {
         dispatch(loginChange(true));
       } catch (error) {
         if (error instanceof AxiosError) {
-          setErrorMessage(error.response?.data.message);
+          setErrorMessage(error.response?.data.message || error.message);
+        } else if (error instanceof Error) {
+          setErrorMessage(error.message);
+        } else {
+          setErrorMessage('Unknown error');
         }
       }
     }
