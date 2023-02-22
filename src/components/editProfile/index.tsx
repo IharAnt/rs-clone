@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import AuthService from '../../services/AuthService';
-import UserService from '../../services/UserService';
 import { useAppDispatch } from '../../store';
 import { loginChange, userChange } from '../../store/appStore/sliceApp/slice';
-import { IProfile, IUser } from '../../types/interfaces/IUser';
+import { IProfile } from '../../types/interfaces/IUser';
 import Modal from '../modal';
 import ModalEitProfile from '../modalEditProfile';
 import './index.css';

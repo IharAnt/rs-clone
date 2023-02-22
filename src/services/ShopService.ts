@@ -1,6 +1,4 @@
 import apiClient from "../api/ApiClient";
-import orders from "../data/Orders";
-import products from "../data/Products";
 import { ICartProduct, IOrder } from "../types/interfaces/IOrder";
 import { IProduct } from "../types/interfaces/IProduct";
 

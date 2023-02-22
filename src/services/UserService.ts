@@ -1,5 +1,4 @@
 import { IProfile, IUpdateProfile, IUser } from '../types/interfaces/IUser';
-import profile from '../data/Profile';
 import apiClient from '../api/ApiClient';
 //import users from '../data/Users';
 

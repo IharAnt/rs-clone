@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react';
 import './style.css';
 import close from '../../assets/icons/close.svg';
 import { ModalType } from './types/ModalType';

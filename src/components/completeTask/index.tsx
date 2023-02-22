@@ -120,7 +120,7 @@ export default function CompleteTask({ task }: props) {
                   <img
                     className="completeTask__image"
                     src={image.data}
-                    alt="loaded image"
+                    alt="loaded"
                     key={Date.now.toString() + index}
                   />
                 </div>

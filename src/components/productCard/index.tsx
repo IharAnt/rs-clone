@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { IProduct } from '../../types/interfaces/IProduct';
 import { useDrag } from 'react-dnd';
 import Modal from '../modal';

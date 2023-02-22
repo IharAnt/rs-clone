@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../store';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './index.css';
 import ShopService from '../../services/ShopService';
 import ItemHistoryProduct from '../itemHistoryProduct';
@@ -8,7 +8,6 @@ import { refreshOrders } from '../../store/storePage/sliceStore/slice';
 const HistoryStore = () => {
   const { IsHistoryOpen, orders } = useAppSelector((state) => state.storePage);
   const IsLogin = useAppSelector((state) => state.appState.isLogin);
-  // const [orderArr, setOrderArr] = useState([] as IOrder[]);
   const id = useAppSelector((state) => state.appState.profile.id);
   const dispatch = useAppDispatch();
 
