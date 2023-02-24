@@ -41,7 +41,13 @@
 }
 
 @media (max-width: 800px) {
-  .motivators{
+  .motivators {
     font-size: 15px
+  }
+}
+
+@media (max-height: 900px) {
+  .motivators {
+    height: 65vh;
   }
 }

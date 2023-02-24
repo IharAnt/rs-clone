@@ -30,7 +30,7 @@ const Slider = () => {
         >
           <img src={arrow} alt="arrow left" />
         </div>
-        <div className="w-full flex overflow-hidden mx-3">
+        <div className="w-full flex overflow-hidden mx-3 slider-container">
           <div
             className="flex transition transform ease-in-out duration-700"
             style={{
@@ -40,8 +40,8 @@ const Slider = () => {
             {SLIDER_DATA.map((item, index) => {
               return (
                 <div className="min-w-full max-w-full flex justify-between items-center" key={index}>
-                  <img className="w-32" src={item.img} alt="step item" />
-                  <span className="text-center text-lg text-indigo-800">{item.text}</span>
+                  <img className="slider-img w-32" src={item.img} alt="step item" />
+                  <span className="slider-text text-center text-lg text-indigo-800">{item.text}</span>
                 </div>
               );
             })}
