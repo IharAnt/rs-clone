@@ -2,6 +2,7 @@
     cursor: pointer;
     padding: 10px;
     width: 250px;
+    max-height: 320px;
     border-radius: 10px;
     background: var(--COLOR_BACKGROUND_ITEM);
     display: grid;

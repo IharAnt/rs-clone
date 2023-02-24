@@ -28,3 +28,9 @@
     top: -27px;
     opacity: 1;
 }
+
+@media (max-width:850px) {
+    .achievements-level_text {
+        display: none;
+    }
+}
