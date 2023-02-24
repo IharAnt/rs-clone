@@ -26,14 +26,13 @@ const Header: React.FC = () => {
         dispatch(userChange(profile));
         dispatch(loginChange(true));
       } catch (error) {
-        // console.log(error);
       } finally {
         dispatch(loadingChange(false));
         dispatch(finishLoading());
       }
     };
     refresh();
-  }, []);
+  }, [userId, dispatch]);
 
   return (
     <div className="items-center header-container gap-9 w-screen h-14 rounded-lg relative z-10 px-3">

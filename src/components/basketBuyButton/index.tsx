@@ -21,7 +21,7 @@ const BasketBuyButton = () => {
     if (summaMot > moticoins) {
       setIsBuy(false);
     }
-  }, [basketProducts]);
+  }, [basketProducts, moticoins]);
 
   const buy = async () => {
     dispatch(refresBasket(''));
