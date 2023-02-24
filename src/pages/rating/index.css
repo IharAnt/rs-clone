@@ -48,6 +48,7 @@
 .rating-quantily-member_text {
     color: var(--COLOR_FONT_BLACK);
     font-weight: bolder;
+    margin-bottom: 25px;
 }
 
 .container-table-rating_items {

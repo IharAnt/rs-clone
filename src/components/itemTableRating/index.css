@@ -39,18 +39,41 @@
 .table-container_ico-text {
     position: absolute;
     font-size: 11px;
-    width: 200px;
+    width: min-content;
     white-space: nowrap;
     text-align: center;
     border-radius: 10px;
-    padding: 2px 3px;
+    padding: 2px 5px;
     background: var(--COLOR_BACKGROUND_ITEM);
     color: var(--COLOR_FONT_BLACK);
     opacity: 0;
     transition: .3s;
     top: 0;
-    left: -80px;
     pointer-events: none;
+}
+
+.table-container_ico-text__name {
+    right: -15px;
+}
+
+.table-container_ico-text__place {
+    right: -30px;
+}
+
+.table-container_ico-text__totalLevel {
+    right: -25px;
+}
+
+.table-container_ico-text__totalExperience {
+    right: -60px;
+}
+
+.table-container_ico-text__achievements {
+    right: -50px;
+}
+
+.table-container_ico-text__approvedTasks {
+    right: -60px;
 }
 
 .order-text {
@@ -60,4 +83,17 @@
     font-weight: 400;
     right: -14px;
     top: -7px;
+}
+
+
+@media (max-width:1000px) {
+    .table-container_ico-text__achievements {
+        right: -15px;
+    }
+}
+
+@media (max-width:500px) {
+    .table-container_ico-text__achievements {
+        right: 0px;
+    }
 }

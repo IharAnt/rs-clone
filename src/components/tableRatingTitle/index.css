@@ -12,9 +12,8 @@
 }
 
 
-@media (max-width:800px) {
+@media (max-width:1000px) {
     .table-container_item {
         width: 98vw;
     }
-
 }

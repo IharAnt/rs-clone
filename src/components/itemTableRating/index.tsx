@@ -27,7 +27,7 @@ const ItemTableRating = ({ name, text, img }: ITableRatingTitle) => {
       className={`table-container_ico title-ico_${name}`}
     >
       <img className="w-full" src={img} alt={`${name} ico`} />
-      <p className={`table-container_ico-text title-text_${name}`}>{text}</p>
+      <p className={`table-container_ico-text table-container_ico-text__${name} title-text_${name}`}>{text}</p>
       {order === 'asc' && name === sort ? <p className="order-text">↑</p> : ''}
       {order === 'desc' && name === sort ? <p className="order-text">↓</p> : ''}
     </div>
