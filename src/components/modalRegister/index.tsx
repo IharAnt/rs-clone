@@ -50,7 +50,7 @@ const ModalRegister = () => {
   };
 
   return (
-    <form name="login-form" className="login-container-form" method="post">
+    <form name="login-form" className="login-container-form" method="post" autoComplete='off'>
       <div className="px-7 py-7">
         <h1 className="login-title">Регистрация</h1>
         <span className="login-title_text">Введите данные, неоходимые для регистрации вашего личного профиля. </span>
@@ -60,9 +60,9 @@ const ModalRegister = () => {
         <input
           name="e-mail"
           type="email"
-          className={`w-full font-normal border border-solid border-white rounded-md mb-4 input-login ${
-            !validEmail ? 'input-wrong-change' : ''
-          }`}
+          autoComplete="new-email"
+          className={`w-full font-normal border border-solid border-white rounded-md mb-4 input-login ${!validEmail ? 'input-wrong-change' : ''
+            }`}
           placeholder="Ваш e-mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -70,10 +70,10 @@ const ModalRegister = () => {
         {!validName && <p className="wrong-name-registration wrong-text">Длина имени не может быть равна нулю</p>}
         <input
           name="username"
+          autoComplete="new-username"
           type="text"
-          className={`w-full font-normal border border-solid border-white rounded-md mb-4 input-login input-login__username  ${
-            !validName ? 'input-wrong-change' : ''
-          }`}
+          className={`w-full font-normal border border-solid border-white rounded-md mb-4 input-login input-login__username  ${!validName ? 'input-wrong-change' : ''
+            }`}
           placeholder="Логин"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -84,9 +84,9 @@ const ModalRegister = () => {
         <input
           name="password"
           type="password"
-          className={`w-full font-normal border border-solid border-white rounded-md input-login ${
-            !validPassword ? 'input-wrong-change ' : ''
-          }`}
+          autoComplete="new-password"
+          className={`w-full font-normal border border-solid border-white rounded-md input-login ${!validPassword ? 'input-wrong-change ' : ''
+            }`}
           placeholder="Пароль"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
