@@ -50,3 +50,10 @@
     }
 
 }
+
+@media (max-height:600px) {
+    .store-main-container {
+        height: 100%;
+    }
+
+}

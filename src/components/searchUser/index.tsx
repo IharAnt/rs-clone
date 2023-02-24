@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDebaunce } from '../../hooks/debounce';
 import { useAppDispatch } from '../../store';
-import { searchChange } from '../../store/ratingStore/sliceRating/slice';
+import { pageChangeRating, searchChange } from '../../store/ratingStore/sliceRating/slice';
 import './index.css';
 
 const SearchUser = () => {
@@ -11,6 +11,7 @@ const SearchUser = () => {
 
   useEffect(() => {
     dispatch(searchChange(debounced));
+    dispatch(pageChangeRating(1));
   }, [debounced, dispatch]);
 
   return (

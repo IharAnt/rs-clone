@@ -1,18 +1,30 @@
 .mainLayout-container {
-    overflow: hidden;
     height: 100vh;
+    width: 100vw;
     display: grid;
     padding: 8px 0;
-    grid-template-rows: 56px 85px 1fr 48px;
     align-items: center;
     justify-items: center;
     gap: 8px;
+    overflow: hidden;
 }
 
 .mainLayout-container_three {
-    grid-template-rows: 56px 1fr 48px;
+    grid-template-rows: auto 1fr max-content;
 }
 
 .mainLayout-container_four {
-    grid-template-rows: 56px 85px 1fr 48px;
+    grid-template-rows: auto auto 1fr max-content;
+}
+
+@media (max-height:650px) {
+    .mainLayout-container {
+        overflow: unset;
+    }
+}
+
+@media (max-width:750px) {
+    .mainLayout-container {
+        overflow: unset;
+    }
 }

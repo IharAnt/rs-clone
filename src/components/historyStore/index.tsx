@@ -19,7 +19,7 @@ const HistoryStore = () => {
       }
     };
     getOrder();
-  }, [IsHistoryOpen, id]);
+  }, [IsHistoryOpen, id, dispatch]);
 
   return (
     <>
