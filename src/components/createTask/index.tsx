@@ -11,6 +11,7 @@ import { createTask } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUpdateTask } from '../../types/interfaces/ITask';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 import TaskTypeEnum from '../../types/enums/TaskTypeEnum';
+import { onChangeExecutor, optionSelectUser } from './types';
 
 export default function CreateTask() {
   const dispatch = useAppDispatch();
@@ -21,21 +22,30 @@ export default function CreateTask() {
   }, [dispatch]);
 
   const users = useAppSelector((state) => state.tasks.users);
-  const inspectors = users
-    .filter((user) => user.id !== profile.id)
-    .map((user: IUser) => {
-      return { value: user.name, label: user.name };
-    });
-  const [errorText, setErrorText] = useState('');
+  let executors = users.map((user: IUser) => {
+    return { value: user.name, label: user.name };
+  });
 
+  let inspectors = executors.filter((inspector) => inspector.value !== profile.name);
+  const myself = executors.find((executor) => executor.value === profile.name);
+
+  const executor = useSelect();
+  const taskType = useSelect();
+  const inspector = useSelect();
+
+  useEffect(() => {
+    if (myself) executor.change(myself);
+  }, [users]);
+
+  const [executorMyself, setExecutorMyself] = useState(true);
+  const [errorText, setErrorText] = useState('');
   const [helperName, setHelperName] = useState(false);
   const [helperDescription, setHelperDescription] = useState(false);
   const [helperAward, setHelperAward] = useState(false);
   const [taskDeadline, setTaskDeadline] = useState('');
   const summary = useInput('', { isEmpty: true, maxLength: 40 });
-  const inspector = useSelect();
   const description = useInput('', { isEmpty: true, maxLength: 100 });
-  const taskType = useSelect();
+
   const award = useInput('', { isEmpty: true, maxLength: 4, isCorrectNumber: 2 });
   const [validData, setValidData] = useState(false);
 
@@ -62,8 +72,8 @@ export default function CreateTask() {
 
     if (validData) {
       const newTask: IUpdateTask = {
-        executor: { id: profile.id, name: profile.name, email: profile.email } as IUser,
-        inspector: users.find((user) => user.name === inspector.value?.value) as IUser,
+        executor: users.find((user) => user.name === executor.value?.value) as IUser,
+        inspector: users.find((user) => user.name == inspector.value?.value) as IUser,
         summary: summary.value,
         description: description.value,
         dueDate: taskDeadline,
@@ -72,7 +82,7 @@ export default function CreateTask() {
         points: +award.value,
       };
       setErrorText('');
-      dispatch(createTask({ task: newTask }));
+      dispatch(createTask({ task: newTask, id: profile.id }));
     } else {
       setErrorText('Заполните данные правильно!');
     }
@@ -100,10 +110,37 @@ export default function CreateTask() {
     }
   }, [summary, description, inspector, award, taskType]);
 
+  const onChangeExecutor: onChangeExecutor = (option) => {
+    if (option.value !== profile.name) {
+      setExecutorMyself(false);
+      inspector.change(myself as optionSelectUser);
+    } else {
+      setExecutorMyself(true);
+      inspector.change(null);
+    }
+    executor.change(option);
+  };
+
   return (
     <form action="">
       <div className="createTask" onClick={closeHelpers}>
         <h2 className="createTask__title">Создание Мотиватора: </h2>
+        <div className="createTask__field">
+          <div className="createTask__fieldName">
+            <div className="createTask__fieldNameText">Исполнитель: </div>
+          </div>
+          <Select
+            value={executor.value}
+            className="createTask__input createTask__input-select"
+            onBlur={() => {
+              executor.onBlur();
+            }}
+            onChange={(option) => onChangeExecutor(option as optionSelectUser)}
+            options={executors}
+            styles={selectStyle}
+            placeholder={'Выберите исполнителя'}
+          />
+        </div>
         <div className="createTask__field">
           <div className="createTask__fieldName">
             <div className="createTask__fieldNameText">Проверяющий: </div>
@@ -114,8 +151,8 @@ export default function CreateTask() {
             onBlur={() => {
               inspector.onBlur();
             }}
-            onChange={(option) => inspector.onChange(option)}
-            options={inspectors}
+            onChange={(option) => inspector.change(option)}
+            options={executorMyself ? inspectors : [myself as optionSelectUser]}
             styles={unvalidInspector && inspector.isDirty ? selectStyleError : selectStyle}
             placeholder={'Выберите проверяющего'}
           />
@@ -182,7 +219,7 @@ export default function CreateTask() {
             onBlur={() => {
               taskType.onBlur();
             }}
-            onChange={(option) => taskType.onChange(option)}
+            onChange={(option) => taskType.change(option)}
           />
         </div>
         <div className="createTask__field">
