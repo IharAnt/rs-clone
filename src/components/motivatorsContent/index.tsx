@@ -6,6 +6,7 @@ import Modal from '../modal';
 import MotivatorsModal from '../motivatorsModal';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { getInspectorTasks, getTasks } from '../../store/motivatorsStore/sliceTasks/tasks';
+import MotivatorsCreatedTasks from '../motivatorsCreatedTasks';
 
 export default function MotivatorsContent() {
   const dispatch = useAppDispatch();
@@ -29,6 +30,14 @@ export default function MotivatorsContent() {
           </div>
         ) : (
           <TestingTasksList />
+        );
+      case 'createdTasks':
+        return loading ? (
+          <div className="motivators-loading">
+            <div className="motivators-loadingItem"></div>
+          </div>
+        ) : (
+          <MotivatorsCreatedTasks />
         );
       default:
         return <></>;

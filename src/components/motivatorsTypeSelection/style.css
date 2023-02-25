@@ -1,11 +1,11 @@
-.selectTypeMode{
+.selectTypeMode {
   width: 200px;
   position: relative;
   border-radius: 10px;
   border: 2px solid var(--COLOR_YELLOW_DEFAULT);
 }
 
-.selectTypeMode__arrow{
+.selectTypeMode__arrow {
   transform: rotate(90deg);
   width: 16px;
   cursor: pointer;
@@ -17,11 +17,11 @@
   justify-content: space-between;
 }
 
-.selectTypeMode__arrow.opened{
+.selectTypeMode__arrow.opened {
   transform: rotate(180deg);
 }
 
-.selectTypeMode__menu{
+.selectTypeMode__menu {
   width: 100%;
   position: absolute;
   top: 27px;
@@ -32,7 +32,7 @@
   border-radius: 3px;
 }
 
-.selectTypeMode__item{
+.selectTypeMode__item {
   display: flex;
   align-items: center;
   height: 27px;
@@ -40,16 +40,16 @@
   padding: 0 5px;
 }
 
-.selectTypeMode__item.selected{
+.selectTypeMode__item.selected {
   background: var(--COLOR_BLOCK_BORDER);
 }
 
-.selectTypeMode__menu.closed{
+.selectTypeMode__menu.closed {
   max-height: 0px;
 }
 
-.selectTypeMode__menu.opened{
-  max-height: 54px;
+.selectTypeMode__menu.opened {
+  max-height: 81px;
   border: 1px solid var(--COLOR_BLOCK_BORDER);
 }
 
