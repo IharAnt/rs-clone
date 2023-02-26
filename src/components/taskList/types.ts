@@ -1,5 +1,6 @@
-import { ITask } from "../../types/interfaces/ITask";
+import { ITask } from '../../types/interfaces/ITask';
 
 export type props = {
-  data: Array<ITask>
-}
+  data: Array<ITask>;
+  isInspectorsTasks: boolean;
+};

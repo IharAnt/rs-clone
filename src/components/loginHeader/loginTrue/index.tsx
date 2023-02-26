@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { selectMotivatorsPage } from '../../../store/motivatorsStore/sliceTasks/tasks';
 
 const LoginTrue: React.FC = () => {
-  const inspectorsTasks = useAppSelector((state) => state.tasks.allInspectorTasks);
+  const inspectorsTasks = useAppSelector((state) => state.tasks.allInspectorResolvedTasks);
   const dispatch = useAppDispatch();
   const { name, moticoins, photo } = useAppSelector((state) => state.appState.profile);
   const [editProfile, setEditProfile] = useState(false);

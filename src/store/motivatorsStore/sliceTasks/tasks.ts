@@ -34,7 +34,6 @@ export const getInspectorTasks = createAsyncThunk<ITask[], { id: string }, {}>(
   'tasks/getInspectorTasks',
   async function ({ id }) {
     let result = await TasksService.getInspectorTasks(id);
-    result = result.filter((task) => task.status === TaskStatusEnum.Resolved);
     return result;
   },
 );
@@ -57,6 +56,8 @@ export const getUsers = createAsyncThunk<IUser[], undefined, {}>('tasks/getUsers
 type tasks = {
   tasks: ITask[];
   allTasks: ITask[];
+  inspectorResolvedTasks: ITask[];
+  allInspectorResolvedTasks: ITask[];
   inspectorTasks: ITask[];
   allInspectorTasks: ITask[];
   users: IUser[];
@@ -75,6 +76,8 @@ type tasks = {
 const initialState: tasks = {
   tasks: [],
   allTasks: [],
+  inspectorResolvedTasks: [],
+  allInspectorResolvedTasks: [],
   inspectorTasks: [],
   allInspectorTasks: [],
   users: [],
@@ -111,7 +114,7 @@ const tasksSlice = createSlice({
     },
     searchInspectorsTasks: (state, action) => {
       const searchValue = action.payload;
-      state.inspectorTasks = state.allInspectorTasks.filter(
+      state.inspectorResolvedTasks = state.allInspectorResolvedTasks.filter(
         (task) => task.summary.includes(searchValue) || task.description.includes(searchValue),
       );
     },
@@ -134,8 +137,12 @@ const tasksSlice = createSlice({
         state.loading = true;
       })
       .addCase(getInspectorTasks.fulfilled, (state, action) => {
-        state.inspectorTasks = action.payload;
-        state.allInspectorTasks = action.payload;
+        const tasks = action.payload;
+        const resolvedTasks = tasks.filter((task) => task.status === TaskStatusEnum.Resolved);
+        state.inspectorTasks = tasks;
+        state.allInspectorTasks = tasks;
+        state.inspectorResolvedTasks = resolvedTasks;
+        state.allInspectorResolvedTasks = resolvedTasks;
         state.loading = false;
       })
       .addCase(getUsers.fulfilled, (state, action) => {
@@ -178,8 +185,8 @@ const tasksSlice = createSlice({
       })
       .addCase(updateInspectorTask.fulfilled, (state, action) => {
         state.loadingTask = false;
-        state.inspectorTasks = action.payload;
-        state.allInspectorTasks = action.payload;
+        state.inspectorResolvedTasks = action.payload;
+        state.allInspectorResolvedTasks = action.payload;
         state.errorMessage = '';
       });
   },

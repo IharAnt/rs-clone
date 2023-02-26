@@ -11,7 +11,7 @@ import moticoins from '../../assets/img/motekoinIco.png';
 import { updateModalTask, updateModalValue, updateTask } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { useAppDispatch } from '../../store';
 
-export default function TaskCart({ task }: props) {
+export default function TaskCart({ task, isInspectorTask }: props) {
   const typeIcons = [
     { type: 'power', icon: strong, title: 'силач' },
     { type: 'intelligence', icon: intelligence, title: 'умник' },
@@ -70,6 +70,7 @@ export default function TaskCart({ task }: props) {
           <div className="motivatorsTask__deadline">Дедлайн: {task.dueDate ? task.dueDate : 'нет'}</div>
         </div>
       )}
+      {isInspectorTask ? <>Исполнитель Проверяющий</> : <></>}
       <div className="motivatorsTask__completion">
         <div className="motivatorsTask__coins">
           Награда: {task.points}{' '}
