@@ -11,6 +11,8 @@ import moticoins from '../../assets/img/motekoinIco.png';
 import TaskCartDescription from '../taskCartDescription';
 import TaskCartStatus from '../taskCartStatus';
 import MotivatorsCartBtns from '../motivatorsCartBtns';
+import { useAppDispatch } from '../../store';
+import { updateModalTask, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 
 export default function TaskCart({ task, isInspectorTask }: props) {
   const typeIcons = [
@@ -28,8 +30,17 @@ export default function TaskCart({ task, isInspectorTask }: props) {
     task.status === TaskStatusEnum.Rejected ||
     task.status === TaskStatusEnum.Approved;
 
+  const dispatch = useAppDispatch();
+
   return (
-    <div className="motivatorsTask">
+    <div
+      className="motivatorsTask"
+      onClick={(e) => {
+        e.stopPropagation();
+        dispatch(updateModalValue('info'));
+        dispatch(updateModalTask(task));
+      }}
+    >
       <div className="motivatorsTask__header">
         <h2 className="motivatorsTask__title">{task.summary}</h2>
         <img className="motivatorsTask__icon" src={type?.icon} alt="task" title={type?.title} />

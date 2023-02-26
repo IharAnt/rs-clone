@@ -1,7 +1,8 @@
 .motivatorsTask {
   border-radius: 10px;
-  background-color:  var(--COLOR_BACKGROUND_ITEM);
+  background-color: var(--COLOR_BACKGROUND_ITEM);
   padding: 10px;
+  cursor: pointer;
 }
 
 .motivatorsTask__icon {
@@ -48,7 +49,6 @@
 
 .motivatorsTask__btn:hover {
   transform: scale(1.05);
-
 }
 
 .motivatorsTask__btn--inProgress {
@@ -56,7 +56,7 @@
   color: white;
 }
 
-.motivatorsTask__btn--inProgress:hover{
+.motivatorsTask__btn--inProgress:hover {
   background: rgb(36, 1, 82);
 }
 
@@ -64,7 +64,7 @@
   background: var(--COLOR_YELLOW);
 }
 
-.motivatorsTask__btn--open:hover{
+.motivatorsTask__btn--open:hover {
   background: var(--COLOR_YELLOW_DEFAULT);
 }
 
@@ -79,7 +79,7 @@
 }
 
 @media (max-width: 1000px) {
-  .motivatorsTask__completion{
+  .motivatorsTask__completion {
     flex-direction: column;
     align-items: start;
     gap: 5px;
@@ -91,20 +91,19 @@
 }
 
 @media (max-width: 800px) {
-  .motivatorsTask__icon{
+  .motivatorsTask__icon {
     width: 2.5em;
     height: 2.5em;
   }
 }
 
 @media (max-width: 660px) {
-  .motivatorsTask__icon{
+  .motivatorsTask__icon {
     width: 3.5em;
     height: 3.5em;
   }
-  .motivatorsTask__completion{
+  .motivatorsTask__completion {
     flex-direction: row;
     align-items: center;
-    
   }
 }

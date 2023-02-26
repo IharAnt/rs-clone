@@ -13,7 +13,8 @@ export default function MotivatorsCartBtns({ task, isInspectorTask }: props) {
           {task.status === TaskStatusEnum.Resolved ? (
             <button
               className="motivators-block motivatorsTask__btn motivatorsTask__btn--open"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 dispatch(updateModalValue('test'));
                 dispatch(updateModalTask(task));
               }}
@@ -29,7 +30,8 @@ export default function MotivatorsCartBtns({ task, isInspectorTask }: props) {
           {task.status === TaskStatusEnum.Open ? (
             <button
               className="motivators-block motivatorsTask__btn motivatorsTask__btn--open"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 dispatch(updateTask({ taskId: task.id, updatedTask: { ...task, status: TaskStatusEnum.Inprogress } }));
               }}
             >
@@ -42,7 +44,8 @@ export default function MotivatorsCartBtns({ task, isInspectorTask }: props) {
             <>
               <button
                 className="motivators-block motivatorsTask__btn motivatorsTask__btn--inProgress"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   dispatch(updateModalValue('complete'));
                   dispatch(updateModalTask(task));
                 }}
