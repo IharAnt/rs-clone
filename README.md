@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+## Как пользоваться приложением
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. На главной странице нажимаем кнопку "Войти" => "Регистрация". Регистрируемся.
+![image](https://user-images.githubusercontent.com/75478739/221410539-77892ed5-d34e-468d-9122-942ec4c98a60.png)
 
-## Available Scripts
+2. Заходим на вкладку Мотиваторы и создаем мотиваторы для себя или для своих друзей. Нажимаем на кнопку
+![image](https://user-images.githubusercontent.com/75478739/221410611-4763c77a-eb85-4bb5-ab9e-5d9c20e16f60.png)
 
-In the project directory, you can run:
+3. Заполняем соответствующие поля, выбираем Испольнителя и Проверяющего и нажимаем кнопку "Создать". Если исполнителем выбрать себя(текущего авторизованного пользователя), то проверяющим может быть любой. Если вы хотите создать Мотиватор для другого пользователя, то проверяющим можно выбрать только себя.
+![image](https://user-images.githubusercontent.com/75478739/221410797-3e98c3ba-b31c-45fd-bbc2-70c980b13405.png).
 
-### `npm start`
+4. В зависимости от выбранного Исполнителя и Проверящего Мотиватор будет создан во вкладке "Созданные для меня" или "Созданные мной".
+![image](https://user-images.githubusercontent.com/75478739/221411036-38b8de1a-d6f9-4b34-9bc8-f83346a07952.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+5. Созданные на вас мотиваторы можно начать выполнять, нажав кнопку "Выполнять". Мотиватор переместиться во колонку "В работе".
+![image](https://user-images.githubusercontent.com/75478739/221411097-f92e515f-3ed0-4fe8-8268-7e2c439fb9ee.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+6. Когда вы закончили выполение Мотиватора, нажимаем кнопку "Завершить". В появившемся модальном окне заполняем соответствующие поля(Ссылки на доказательства, фото) и нажимаем кнопку "Сдать задачу". Задача переместится в колону "Тестируется".
+![image](https://user-images.githubusercontent.com/75478739/221411313-189b9f37-a179-4847-892e-6d210263c03f.png)
 
-### `npm test`
+7. У проверяющего появится нотификация о том, что у него есть Мотиваторы для проверки. Для перехода к списку проверки проверяющему необходимо нажать на иконку конверта или выбрать соответствующий пункт в селекторе Мотиваторов.
+![image](https://user-images.githubusercontent.com/75478739/221411683-c68545ac-bb77-40ef-b40f-7dd7c65649d5.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+8. Нажимаем на кнопку "Проверить". В появившемся модальном окне сверяем данные, смотрим доказательства, заполняем отчет о проверке. Если все хорошо, нажимаем кнопку "Принять". Если вы не согласны, нажимаем кнопку "Отклонить". Выбор можно сделать один раз. Решение обжалованию не подлежит.
+![image](https://user-images.githubusercontent.com/75478739/221411968-9904a0a5-5105-4cb3-ae26-8e9d7a1fd2dd.png)
 
-### `npm run build`
+9. Мотиватор у исполнителя переместится в колонку "Закрыто". При подтвержденном Мотиваторе ему будет начислены очки достижений и мотекоины, которые можно тратить в магазине.
+![image](https://user-images.githubusercontent.com/75478739/221412174-c670d932-b045-4b21-a514-ff1aad09cec2.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Вкладка Рейтинг**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Во вкладке Рейтинг можно сортировать по колонкам "Место", "Суммырное количество опыта", "Количество выполненных квестов", "Количество полученных достижений".
+Также можно искать участников по имени.
+![image](https://user-images.githubusercontent.com/75478739/221412264-9b214db2-0c75-4d05-8f2f-459ac6f8dccb.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+**Вкладка Достижений**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Во вкладке Достижений виден прогресс пользователя по соответсвующему типу Мотиваторов.
+![image](https://user-images.githubusercontent.com/75478739/221412730-8efd8158-5f91-4abb-8bc1-212e758f93bf.png)
