@@ -4,8 +4,6 @@ import { options } from './options';
 import InfoTaskItem from '../infoTaskItem';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 import points from '../../assets/img/motekoinIco.png';
-import { useEffect } from 'react';
-import UserService from '../../services/UserService';
 
 export default function InfoTask({ task }: props) {
   function getTaskStatus() {
