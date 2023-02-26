@@ -57,7 +57,7 @@ export default function MotivatorsNavigation() {
       <div className="motivatorsNav__item">
         <button
           className="motivators-block motivatorsNav__btn"
-          disabled={content === 'myTasks' ? false : true}
+          disabled={content === 'testedTasks' ? true : false}
           onClick={() => {
             setSearch('');
             dispatch(updateModalValue('create'));

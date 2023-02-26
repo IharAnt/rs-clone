@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import CreateTaskHepler from '../createTaskHepler';
 import { useInput, useSelect } from './hooks';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { getUsers, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
+import { getUsers, selectMotivatorsPage, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUser } from '../../types/interfaces/IUser';
 import { createTask } from '../../store/motivatorsStore/sliceTasks/tasks';
 import { IUpdateTask } from '../../types/interfaces/ITask';
@@ -83,6 +83,8 @@ export default function CreateTask() {
       };
       setErrorText('');
       dispatch(createTask({ task: newTask, id: profile.id }));
+      if (profile.id === newTask.executor.id) dispatch(selectMotivatorsPage('myTasks'));
+      if (profile.id === newTask.inspector.id) dispatch(selectMotivatorsPage('myInspectorsTasks'));
     } else {
       setErrorText('Заполните данные правильно!');
     }
