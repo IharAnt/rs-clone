@@ -18,9 +18,9 @@ const Navigation: FC = () => {
 
   return (
     <>
-      <Modal isOpen={modalAuthorization} setModal={setModalAuthorization}>
+      {!isLogin && <Modal isOpen={modalAuthorization} setModal={setModalAuthorization}>
         <Authorization />
-      </Modal>
+      </Modal>}
       <ul className="flex gap-4 header-navigation">
         {NAVIGATION_ROUTES.map((route) => {
           return (
