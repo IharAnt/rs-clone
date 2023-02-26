@@ -17,6 +17,7 @@ const MotivatorsPage = () => {
             <Navigate to={'/'} />
           ) : (
             <>
+              <h2 className="motivators__title">Мотиваторы</h2>
               <MotivatorsNavigation />
               <MotivatorsContent />
             </>

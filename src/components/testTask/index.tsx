@@ -136,10 +136,18 @@ export default function TestTask({ task }: props) {
       <div className="testTask__field">
         <div className="testTask__fieldName">Отчёт о работе: </div>
         <div className="testTask__fieldValue">
-          <Linkify>{task.taskReport}</Linkify>
+          <Linkify
+            componentDecorator={(decoratedHref, decoratedText, key) => (
+              <a className="linkify" target="blank" href={decoratedHref} key={key}>
+                {decoratedText}
+              </a>
+            )}
+          >
+            {task.taskReport}
+          </Linkify>
         </div>
       </div>
-      {images ? (
+      {images.length !== 0 ? (
         <div className="testTask__field">
           <div className="testTask__fieldName">Фотоотчёт: </div>
           <div style={{ display: 'flex' }}>

@@ -19,10 +19,23 @@ export default function MotivatorsTypeSelection({ menu, setMenu, setSearch }: pr
     dispatch(userChange(profile));
   };
 
+  const getTitleSelect = (): string => {
+    switch (content) {
+      case 'myTasks':
+        return 'Созданные для меня';
+      case 'myInspectorsTasks':
+        return 'Созданные мной';
+      case 'testedTasks':
+        return 'На проверке';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className="selectTypeMode">
       <div className="selectTypeMode__input motivators-block" onClick={() => setMenu(!menu)}>
-        <p>{content === 'myTasks' ? 'Мои мотиваторы' : 'На проверке'}</p>
+        <p>{getTitleSelect()}</p>
         <img className={`selectTypeMode__arrow ${menu ? 'opened' : 'closed'}`} src={arrow} alt="arrow" />
       </div>
       <ul className={`selectTypeMode__menu ${menu ? 'opened' : 'closed'}`}>
@@ -33,7 +46,16 @@ export default function MotivatorsTypeSelection({ menu, setMenu, setSearch }: pr
             onChangeMotivatorsPage();
           }}
         >
-          Мои мотиваторы
+          Созданные для меня
+        </li>
+        <li
+          className={`selectTypeMode__item ${content === 'myInspectorsTasks' ? 'selected' : ''}`}
+          onClick={() => {
+            dispatch(selectMotivatorsPage('myInspectorsTasks'));
+            onChangeMotivatorsPage();
+          }}
+        >
+          Созданные мной
         </li>
         <li
           className={`selectTypeMode__item ${content === 'testedTasks' ? 'selected' : ''}`}

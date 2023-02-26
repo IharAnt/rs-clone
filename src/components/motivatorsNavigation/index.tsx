@@ -6,6 +6,7 @@ import {
   getTasks,
   updateModalValue,
   searchTasks,
+  searchTestedTasks,
   searchInspectorsTasks,
 } from '../../store/motivatorsStore/sliceTasks/tasks';
 import './style.css';
@@ -34,6 +35,9 @@ export default function MotivatorsNavigation() {
       dispatch(searchTasks(e.target.value));
     }
     if (content === 'testedTasks') {
+      dispatch(searchTestedTasks(e.target.value));
+    }
+    if (content === 'myInspectorsTasks') {
       dispatch(searchInspectorsTasks(e.target.value));
     }
   };
@@ -53,7 +57,7 @@ export default function MotivatorsNavigation() {
       <div className="motivatorsNav__item">
         <button
           className="motivators-block motivatorsNav__btn"
-          disabled={content === 'myTasks' ? false : true}
+          disabled={content === 'testedTasks' ? true : false}
           onClick={() => {
             setSearch('');
             dispatch(updateModalValue('create'));

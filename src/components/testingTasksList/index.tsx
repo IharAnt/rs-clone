@@ -5,8 +5,8 @@ import EmptyTestTasks from '../emptyTestTasks';
 import EmptyCart from '../emptySearch';
 
 export default function TestingTasksList() {
-  const data = useAppSelector((state) => state.tasks.inspectorTasks);
-  const allData = useAppSelector((state) => state.tasks.allInspectorTasks);
+  const data = useAppSelector((state) => state.tasks.inspectorResolvedTasks);
+  const allData = useAppSelector((state) => state.tasks.allInspectorResolvedTasks);
 
   return (
     <>

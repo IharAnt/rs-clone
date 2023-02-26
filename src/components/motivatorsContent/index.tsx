@@ -9,7 +9,6 @@ import { getInspectorTasks, getTasks } from '../../store/motivatorsStore/sliceTa
 
 export default function MotivatorsContent() {
   const dispatch = useAppDispatch();
-
   const content = useAppSelector((state) => state.tasks.motivatorsPage);
 
   const handleMotivatorsPage = () => {
@@ -20,7 +19,7 @@ export default function MotivatorsContent() {
             <div className="motivators-loadingItem"></div>
           </div>
         ) : (
-          <MotivatorsTasks />
+          <MotivatorsTasks isInspectorsTasks={false} />
         );
       case 'testedTasks':
         return loading ? (
@@ -29,6 +28,14 @@ export default function MotivatorsContent() {
           </div>
         ) : (
           <TestingTasksList />
+        );
+      case 'myInspectorsTasks':
+        return loading ? (
+          <div className="motivators-loading">
+            <div className="motivators-loadingItem"></div>
+          </div>
+        ) : (
+          <MotivatorsTasks isInspectorsTasks={true} />
         );
       default:
         return <></>;
@@ -43,8 +50,8 @@ export default function MotivatorsContent() {
   const userId = useAppSelector((state) => state.appState.profile.id);
 
   useEffect(() => {
-    if (content === 'myTasks' && userId) dispatch(getTasks({ id: userId }));
-    if (content === 'testedTasks') dispatch(getInspectorTasks({ id: userId }));
+    dispatch(getTasks({ id: userId }));
+    dispatch(getInspectorTasks({ id: userId }));
   }, [content, userId]);
 
   const [modal, setModal] = useState(false);

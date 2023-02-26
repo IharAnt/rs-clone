@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../store';
 import { updateModalTask, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 import UserService from '../../services/UserService';
 import defaultPhono from '../../assets/img/profileIcoDefault.png';
+import Linkify from 'react-linkify';
 
 export default function TestingTask({ task }: props) {
   const dispatch = useAppDispatch();
@@ -33,7 +34,17 @@ export default function TestingTask({ task }: props) {
           <img className="motivatorsTesting__avatar" src={avatar} alt="avatar" />
           <h2 className="motivatorsTesting__name">{task.summary}</h2>
           <div className="motivatorsTesting__description">{task.description}</div>
-          <div className="motivatorsTesting__report">{shortReport}</div>
+          <div className="motivatorsTesting__report">
+            <Linkify
+              componentDecorator={(decoratedHref, decoratedText, key) => (
+                <a className="linkify" target="blank" href={decoratedHref} key={key}>
+                  {decoratedText}
+                </a>
+              )}
+            >
+              {shortReport}
+            </Linkify>
+          </div>
           <button
             className="motivators-block motivatorsTask__btn motivatorsTesting__btn"
             onClick={() => {
