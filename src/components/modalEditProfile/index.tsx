@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserService from '../../services/UserService';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { photoChange } from '../../store/appStore/sliceApp/slice';
@@ -10,6 +10,7 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
   const [nameUser, setNameUser] = useState(name);
   const [phoneUser, setPhoneUser] = useState(phone);
   const [birthdayUser, setBirthdayUser] = useState(birthday);
+  const [photoUser, setPhotoUser] = useState(photo);
   const dispatch = useAppDispatch();
 
   const inputFileAvatar = (e: React.FormEvent<HTMLInputElement>) => {
@@ -20,7 +21,7 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
       reader.onload = function () {
         const newAvatar = reader.result;
         if (typeof newAvatar === 'string') {
-          dispatch(photoChange(newAvatar));
+          setPhotoUser(newAvatar);
         }
       };
       reader.readAsDataURL(imgInput);
@@ -28,7 +29,8 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
   };
 
   const updateSaveClick = async () => {
-    await UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo });
+    await UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo: photoUser });
+    if (photoUser) dispatch(photoChange(photoUser));
     setModal(false);
   };
 
@@ -53,7 +55,7 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
             accept="image/jpeg,image/png"
           />
           <p className="profile-container-avatar_load">Загрузить фото</p>
-          <img className="profile-container-avatar_img" src={photo} alt="img avatar" />
+          <img className="profile-container-avatar_img" src={photoUser} alt="img avatar" />
         </div>
         <div className="profile-container-info">
           <div className="profile-container-info-input">

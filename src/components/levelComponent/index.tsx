@@ -16,7 +16,7 @@ const LevelComponent = () => {
     <>
       {isLogin && (
         <div className="level-container">
-          <div className="flex">
+          <div className="flex gap-2.5">
             <img className="level-container_img" src={photo} alt="profile ico" />
             <div className="level-container_xp">
               <div className="experience_done-task">

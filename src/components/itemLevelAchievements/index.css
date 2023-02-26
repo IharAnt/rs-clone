@@ -22,9 +22,11 @@
 
 .achievements-level_item:hover {
     transform: scale(1.1);
+    z-index: 22;
 }
 
 .achievements-level_item:hover .achievements-level_text {
+    
     top: -27px;
     opacity: 1;
 }
