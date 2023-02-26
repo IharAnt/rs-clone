@@ -147,7 +147,7 @@ export default function TestTask({ task }: props) {
           </Linkify>
         </div>
       </div>
-      {images ? (
+      {images.length !== 0 ? (
         <div className="testTask__field">
           <div className="testTask__fieldName">Фотоотчёт: </div>
           <div style={{ display: 'flex' }}>

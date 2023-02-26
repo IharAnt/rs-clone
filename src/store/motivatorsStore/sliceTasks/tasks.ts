@@ -41,8 +41,7 @@ export const updateInspectorTask = createAsyncThunk<ITask[], { taskId: string; u
   'tasks/updateInspectorTask',
   async function ({ taskId, updatedTask }) {
     await TasksService.updateTask(taskId, updatedTask);
-    let result = await TasksService.getInspectorTasks(updatedTask.inspector.id);
-    result = result.filter((task) => task.status === TaskStatusEnum.Resolved);
+    const result = await TasksService.getInspectorTasks(updatedTask.inspector.id);
     return result;
   },
 );
@@ -196,8 +195,8 @@ const tasksSlice = createSlice({
       })
       .addCase(updateInspectorTask.fulfilled, (state, action) => {
         state.loadingTask = false;
-        state.inspectorResolvedTasks = action.payload;
-        state.allInspectorResolvedTasks = action.payload;
+        state.inspectorTasks = action.payload;
+        state.allInspectorTasks = action.payload;
         state.errorMessage = '';
       });
   },

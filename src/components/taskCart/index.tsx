@@ -8,7 +8,6 @@ import sleep from '../../assets/icons/taskTypes/sleep.png';
 import teacher from '../../assets/icons/taskTypes/teacher.png';
 import TaskStatusEnum from '../../types/enums/TaskStatusEnum';
 import moticoins from '../../assets/img/motekoinIco.png';
-import { useAppDispatch } from '../../store';
 import TaskCartDescription from '../taskCartDescription';
 import TaskCartStatus from '../taskCartStatus';
 import MotivatorsCartBtns from '../motivatorsCartBtns';
@@ -28,7 +27,6 @@ export default function TaskCart({ task, isInspectorTask }: props) {
     task.status === TaskStatusEnum.Cancelled ||
     task.status === TaskStatusEnum.Rejected ||
     task.status === TaskStatusEnum.Approved;
-  const dispatch = useAppDispatch();
 
   return (
     <div className="motivatorsTask">
@@ -36,8 +34,11 @@ export default function TaskCart({ task, isInspectorTask }: props) {
         <h2 className="motivatorsTask__title">{task.summary}</h2>
         <img className="motivatorsTask__icon" src={type?.icon} alt="task" title={type?.title} />
       </div>
+      <div className="motivatorsTask__description">
+        Описание: <span className="italic">{task.description}</span>
+      </div>
       {isInspectorTask ? (
-        <div>{`Исполнитель: ${task.executor.name}`}</div>
+        <div className="motivatorsTask__description">{`Исполнитель: ${task.executor.name}`}</div>
       ) : (
         <>{isEndedTask ? <TaskCartStatus task={task} /> : <TaskCartDescription task={task} />}</>
       )}
