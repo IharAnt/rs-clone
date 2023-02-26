@@ -1,22 +1,10 @@
 import MainLayout from '../../layouts/main';
 import './index.css';
 import AchievementsItem from '../../components/achievementsItem';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { useEffect } from 'react';
-import { achievementsChange } from '../../store/appStore/sliceApp/slice';
-import RatingService from '../../services/RatingService';
+import { useAppSelector } from '../../store';
 
 const AchievementsPage = () => {
   const { achievements } = useAppSelector((state) => state.appState);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const funcGetAchievements = async () => {
-      const achievements = await RatingService.getAchivements();
-      dispatch(achievementsChange(achievements));
-    };
-    funcGetAchievements();
-  }, [dispatch]);
 
   return (
     <MainLayout>

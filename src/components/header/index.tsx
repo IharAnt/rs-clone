@@ -6,8 +6,9 @@ import Logo from '../logo';
 import LoginHeader from '../loginHeader';
 import AuthService from '../../services/AuthService';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { finishLoading, loadingChange, loginChange, userChange } from '../../store/appStore/sliceApp/slice';
+import { achievementsChange, finishLoading, loadingChange, loginChange, userChange } from '../../store/appStore/sliceApp/slice';
 import UserService from '../../services/UserService';
+import RatingService from '../../services/RatingService';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +32,11 @@ const Header: React.FC = () => {
         dispatch(finishLoading());
       }
     };
+    const funcGetAchievements = async () => {
+      const achievements = await RatingService.getAchivements();
+      dispatch(achievementsChange(achievements));
+    };
+    funcGetAchievements();
     refresh();
   }, [userId, dispatch]);
 
