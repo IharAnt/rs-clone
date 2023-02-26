@@ -2,6 +2,7 @@
     position: relative;
     cursor: pointer;
     transition: .4s;
+    z-index: 22;
 }
 
 .achievements-level_text {
@@ -25,6 +26,7 @@
 }
 
 .achievements-level_item:hover .achievements-level_text {
+    
     top: -27px;
     opacity: 1;
 }
