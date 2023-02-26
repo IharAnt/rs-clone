@@ -6,8 +6,6 @@ import { updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 
 export default function Modal({ isOpen, setModal, children }: ModalType) {
   const dispatch = useAppDispatch();
-  const rootClasess = ['modal-overlay'];
-  if (isOpen) rootClasess.push('active');
 
   const closeModal = () => {
     dispatch(updateModalValue(null));
@@ -16,8 +14,8 @@ export default function Modal({ isOpen, setModal, children }: ModalType) {
 
   return (
     <>
-      <div className={rootClasess.join(' ')} onClick={closeModal}>
-        <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+      <div className={isOpen ? 'modal-overlay active' : 'modal-overlay'} onClick={closeModal}>
+        <div className={isOpen ? 'modal-box active' : 'modal-box'} onClick={(e) => e.stopPropagation()}>
           <img className="modal-close" src={close} alt="close icon" onClick={closeModal} />
           {children}
         </div>

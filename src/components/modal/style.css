@@ -4,31 +4,41 @@
   height: 100vh;
   top: 0;
   left: 0;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(0, 0, 0, 0.5);
   z-index: 11;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.24s;
 }
 
 .modal-overlay.active {
   padding: 10px 0;
   overflow: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .modal-box {
-  overflow: scroll;
+  overflow: auto;
   max-height: 100vh;
   box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-  -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
+  -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-  -o-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
-  -ms-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
+  -o-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   position: relative;
   background: var(--BACKGROUND_BASIC);
   border-radius: 10px;
   min-width: 250px;
+  transition: 0.24s;
+  transform: scale(0.5);
+}
+
+.modal-box.active {
+  transform: scale(1);
 }
 
 .modal-close {
@@ -38,7 +48,7 @@
   right: 7px;
   width: 20px;
   z-index: 20;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .modal-close:hover {
