@@ -29,7 +29,7 @@ export default function MotivatorsContent() {
         ) : (
           <TestingTasksList />
         );
-      case 'createdTasks':
+      case 'myInspectorsTasks':
         return loading ? (
           <div className="motivators-loading">
             <div className="motivators-loadingItem"></div>

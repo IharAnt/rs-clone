@@ -23,7 +23,7 @@ export default function MotivatorsTypeSelection({ menu, setMenu, setSearch }: pr
     switch (content) {
       case 'myTasks':
         return 'Созданные для меня';
-      case 'createdTasks':
+      case 'myInspectorsTasks':
         return 'Созданные мной';
       case 'testedTasks':
         return 'На проверке';
@@ -49,9 +49,9 @@ export default function MotivatorsTypeSelection({ menu, setMenu, setSearch }: pr
           Созданные для меня
         </li>
         <li
-          className={`selectTypeMode__item ${content === 'createdTasks' ? 'selected' : ''}`}
+          className={`selectTypeMode__item ${content === 'myInspectorsTasks' ? 'selected' : ''}`}
           onClick={() => {
-            dispatch(selectMotivatorsPage('createdTasks'));
+            dispatch(selectMotivatorsPage('myInspectorsTasks'));
             onChangeMotivatorsPage();
           }}
         >

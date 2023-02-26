@@ -6,6 +6,7 @@ import {
   getTasks,
   updateModalValue,
   searchTasks,
+  searchTestedTasks,
   searchInspectorsTasks,
 } from '../../store/motivatorsStore/sliceTasks/tasks';
 import './style.css';
@@ -34,6 +35,9 @@ export default function MotivatorsNavigation() {
       dispatch(searchTasks(e.target.value));
     }
     if (content === 'testedTasks') {
+      dispatch(searchTestedTasks(e.target.value));
+    }
+    if (content === 'myInspectorsTasks') {
       dispatch(searchInspectorsTasks(e.target.value));
     }
   };

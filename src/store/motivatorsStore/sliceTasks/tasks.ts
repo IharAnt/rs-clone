@@ -1,4 +1,3 @@
-import { useAppSelector } from './../../index';
 import { IUpdateTask } from './../../../types/interfaces/ITask';
 import { ITask } from '../../../types/interfaces/ITask';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -109,18 +108,30 @@ const tasksSlice = createSlice({
     searchTasks: (state, action) => {
       const searchValue = action.payload;
       state.tasks = state.allTasks.filter(
-        (task) => task.summary.includes(searchValue) || task.description.includes(searchValue),
+        (task) =>
+          task.summary.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) ||
+          task.description.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()),
       );
     },
-    searchInspectorsTasks: (state, action) => {
+    searchTestedTasks: (state, action) => {
       const searchValue = action.payload;
       state.inspectorResolvedTasks = state.allInspectorResolvedTasks.filter(
-        (task) => task.summary.includes(searchValue) || task.description.includes(searchValue),
+        (task) =>
+          task.summary.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) ||
+          task.description.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()),
       );
     },
     selectMotivatorsPage: (state, action) => {
       const page = action.payload;
       state.motivatorsPage = page;
+    },
+    searchInspectorsTasks: (state, action) => {
+      const searchValue = action.payload;
+      state.inspectorTasks = state.allInspectorTasks.filter(
+        (task) =>
+          task.summary.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) ||
+          task.description.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()),
+      );
     },
   },
   extraReducers: (builder) => {
@@ -197,7 +208,8 @@ export const {
   updateModalValue,
   updateModalTask,
   searchTasks,
-  searchInspectorsTasks,
+  searchTestedTasks,
   selectMotivatorsPage,
+  searchInspectorsTasks,
 } = tasksSlice.actions;
 export default tasksSlice.reducer;

@@ -12,9 +12,13 @@ import closed from '../../assets/icons/tasksStatus/closed.png';
 import { props } from './types';
 
 export default function MotivatorsTasks({ isInspectorsTasks }: props) {
-  const executorTasks = useAppSelector((state) => state.tasks.allTasks);
-  const inspectorTasks = useAppSelector((state) => state.tasks.allInspectorTasks);
+  const executorTasks = useAppSelector((state) => state.tasks.tasks);
+  const inspectorTasks = useAppSelector((state) => state.tasks.inspectorTasks);
 
+  const executorAllTasks = useAppSelector((state) => state.tasks.allTasks);
+  const inspectorAllTasks = useAppSelector((state) => state.tasks.allInspectorTasks);
+
+  const allData = isInspectorsTasks ? inspectorAllTasks : executorAllTasks;
   const data = isInspectorsTasks ? inspectorTasks : executorTasks;
 
   return (
@@ -55,7 +59,7 @@ export default function MotivatorsTasks({ isInspectorsTasks }: props) {
             />
           </div>
         </div>
-      ) : data.length !== 0 ? (
+      ) : allData.length !== 0 ? (
         <EmptyCart />
       ) : (
         <EmptyMotivators />
