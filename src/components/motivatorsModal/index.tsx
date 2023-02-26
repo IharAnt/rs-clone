@@ -4,6 +4,7 @@ import CreateTask from '../../components/createTask/index';
 import CompleteTask from '../completeTask';
 import { ITask } from '../../types/interfaces/ITask';
 import TestTask from '../testTask';
+import InfoTask from '../infoTask';
 
 const defineCurrentModal = (modal: string | null, task: ITask) => {
   switch (modal) {
@@ -13,6 +14,8 @@ const defineCurrentModal = (modal: string | null, task: ITask) => {
       return <CompleteTask task={task} />;
     case 'test':
       return <TestTask task={task} />;
+    case 'info':
+      return <InfoTask task={task} />;
     default:
       return <></>;
   }

@@ -195,8 +195,12 @@ const tasksSlice = createSlice({
       })
       .addCase(updateInspectorTask.fulfilled, (state, action) => {
         state.loadingTask = false;
-        state.inspectorTasks = action.payload;
-        state.allInspectorTasks = action.payload;
+        const tasks = action.payload;
+        const resolvedTasks = tasks.filter((task) => task.status === TaskStatusEnum.Resolved);
+        state.inspectorTasks = tasks;
+        state.allInspectorTasks = tasks;
+        state.inspectorResolvedTasks = resolvedTasks;
+        state.allInspectorResolvedTasks = resolvedTasks;
         state.errorMessage = '';
       });
   },
