@@ -28,6 +28,7 @@
 ![image](https://user-images.githubusercontent.com/75478739/221412174-c670d932-b045-4b21-a514-ff1aad09cec2.png)
 
 **Вкладка Магазин**
+
 В магазине можно потратить заработанные мотекоины. Нажмите кнопку купить или перетяните в корзину нужный товар.
 ![image](https://user-images.githubusercontent.com/75478739/221441177-0778a540-42a8-433d-80d7-ce2406146b15.png)
 
