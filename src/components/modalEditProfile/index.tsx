@@ -28,6 +28,7 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
       reader.readAsDataURL(imgInput);
     }
   };
+  useEffect((() => { setPhotoUser(photo) }), [photo])
 
   const updateSaveClick = async () => {
     setActiveButton(false);
