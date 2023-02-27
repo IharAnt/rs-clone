@@ -12,6 +12,7 @@ import {
 import './style.css';
 import UserService from '../../services/UserService';
 import { userChange } from '../../store/appStore/sliceApp/slice';
+import { useEffect } from 'react';
 
 export default function MotivatorsNavigation() {
   const content = useAppSelector((state) => state.tasks.motivatorsPage);
@@ -41,6 +42,13 @@ export default function MotivatorsNavigation() {
       dispatch(searchInspectorsTasks(e.target.value));
     }
   };
+
+  const allTasks = useAppSelector((state) => state.tasks.allTasks);
+  const allInspectorTasks = useAppSelector((state) => state.tasks.allInspectorTasks);
+  const allInspectorResolvedTasks = useAppSelector((state) => state.tasks.allInspectorResolvedTasks);
+  useEffect(() => {
+    setSearch('');
+  }, [allTasks, allInspectorTasks, allInspectorResolvedTasks]);
 
   return (
     <div className="motivatorsNav">
