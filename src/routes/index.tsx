@@ -1,4 +1,5 @@
 import React from 'react';
+import Page404 from '../pages/404';
 import AchievementsPage from '../pages/achievements';
 import MainPage from '../pages/main';
 import MotivatorsPage from '../pages/motivators';
@@ -34,5 +35,11 @@ export const ROUTES = [
     element: <MainPage />,
     name: 'Home',
   },
+  {
+    path: '*',
+    element: <Page404 />,
+    name: '404',
+  },
+  
   ...NAVIGATION_ROUTES,
 ];
