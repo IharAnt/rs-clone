@@ -15,8 +15,10 @@ const ModalLogin = () => {
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [activeButton, setActiveButton] = useState(true);
 
   const loginClick = async () => {
+    setActiveButton(false);
     let isSend = true;
     if (password.length < 1) {
       isSend = false;
@@ -30,10 +32,12 @@ const ModalLogin = () => {
       try {
         const response = await AuthService.login(email, password);
         const profile = await UserService.getProfile(response.data.user.id);
+        setActiveButton(true);
         dispatch(userChange(profile));
         dispatch(loginChange(true));
         dispatch(getInspectorTasks({ id: profile.id }));
       } catch (error) {
+        setActiveButton(true);
         if (error instanceof AxiosError) {
           setErrorMessage(error.response?.data.message || error.message);
         } else if (error instanceof Error) {
@@ -84,7 +88,7 @@ const ModalLogin = () => {
             className="register-login"
             onClick={() => dispatch(authChange('register'))}
           />
-          <input type="button" value="ВОЙТИ" className="button-login" onClick={loginClick} />
+          <input type="button" value="ВОЙТИ" className={`button-login ${activeButton ? '' : 'pointer-events-none'}`} onClick={loginClick} />
           {/* <input
             type="button"
             value="Забыли пароль?"

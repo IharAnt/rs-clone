@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AxiosResponse } from 'axios';
-import { IAuthResponse } from "../types/interfaces/IAuthResponse";
-import appConfig from "../configs/AppConfig";
+import { IAuthResponse } from '../types/interfaces/IAuthResponse';
+import appConfig from '../configs/AppConfig';
 import apiClient from '../api/ApiClient';
 
 export default class AuthService {
@@ -18,12 +18,12 @@ export default class AuthService {
   }
 
   static async logout(): Promise<void> {
-    apiClient.post<IAuthResponse>('/logout');
-    localStorage.removeItem('token')
+    await apiClient.post<IAuthResponse>('/logout');
+    localStorage.removeItem('token');
   }
 
   static async refresh(): Promise<AxiosResponse<IAuthResponse>> {
-    const response = await axios.get<IAuthResponse>(`${appConfig.apiUrl}/refresh`, {withCredentials: true});
+    const response = await axios.get<IAuthResponse>(`${appConfig.apiUrl}/refresh`, { withCredentials: true });
     localStorage.setItem('token', response.data.accessToken);
     return response;
   }
