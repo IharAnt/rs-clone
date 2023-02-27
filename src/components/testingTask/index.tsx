@@ -5,7 +5,6 @@ import { useAppDispatch } from '../../store';
 import { updateModalTask, updateModalValue } from '../../store/motivatorsStore/sliceTasks/tasks';
 import UserService from '../../services/UserService';
 import defaultPhono from '../../assets/img/profileIcoDefault.png';
-import Linkify from 'react-linkify';
 
 export default function TestingTask({ task }: props) {
   const dispatch = useAppDispatch();
@@ -25,18 +24,6 @@ export default function TestingTask({ task }: props) {
     return string!.length > 80 ? shortString : string;
   };
 
-  const linkify = (node: ReactNode) => (
-    <Linkify
-      componentDecorator={(decoratedHref, decoratedText, key) => (
-        <a className="linkify" target="blank" href={decoratedHref} key={key}>
-          {decoratedText}
-        </a>
-      )}
-    >
-      {node}
-    </Linkify>
-  );
-
   return (
     <div
       className="motivatorsTesting__item motivatorsTesting-grid"
@@ -48,8 +35,8 @@ export default function TestingTask({ task }: props) {
     >
       <img className="motivatorsTesting__avatar" src={avatar} alt="avatar" />
       <h2 className="motivatorsTesting__name">{task.summary}</h2>
-      <div className="motivatorsTesting__description">{linkify(doShortString(task.description as string))}</div>
-      <div className="motivatorsTesting__report">{linkify(doShortString(task.taskReport as string))}</div>
+      <div className="motivatorsTesting__description">{doShortString(task.description as string)}</div>
+      <div className="motivatorsTesting__report">{doShortString(task.taskReport as string)}</div>
       <button
         className="motivators-block motivatorsTask__btn motivatorsTesting__btn"
         onClick={(e) => {
