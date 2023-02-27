@@ -5,6 +5,10 @@
   cursor: pointer;
 }
 
+.motivatorsTask__fieldTitle {
+  font-weight: 700;
+}
+
 .motivatorsTask__icon {
   width: 3.3em;
   height: 3.3em;
