@@ -73,6 +73,7 @@ export default function InfoTask({ task }: props) {
           onClose={closeImageViewer}
           disableScroll={false}
           backgroundStyle={{
+            zIndex: '20',
             backgroundColor: 'rgba(0,0,0,0.9)',
           }}
           closeOnClickOutside={true}
