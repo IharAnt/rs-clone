@@ -19,6 +19,7 @@
 }
 
 .infoTask__fieldValue {
+  width: 50%;
   flex-grow: 1;
 }
 
