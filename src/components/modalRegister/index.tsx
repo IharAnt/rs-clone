@@ -16,8 +16,10 @@ const ModalRegister = () => {
   const [validPassword, setValidPassword] = useState(true);
   const [validName, setValidName] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [activeButton, setActiveButton] = useState(true);
 
   const registration = async () => {
+
     let isSend = true;
     if (password.length < 1) {
       isSend = false;
@@ -33,11 +35,14 @@ const ModalRegister = () => {
     } else setValidEmail(true);
     if (isSend) {
       try {
+        setActiveButton(false);
         const response = await AuthService.registration(email, password, name);
         const profile = await UserService.getProfile(response.data.user.id);
         dispatch(userChange(profile));
         dispatch(loginChange(true));
+        setActiveButton(true);
       } catch (error) {
+        setActiveButton(true);
         if (error instanceof AxiosError) {
           setErrorMessage(error.response?.data.message || error.message);
         } else if (error instanceof Error) {
@@ -94,7 +99,7 @@ const ModalRegister = () => {
       </div>
       {errorMessage.length > 0 && <p className="error-registration_wrong">{errorMessage}</p>}
       <div className="login-footer register-footer">
-        <input type="button" value="Зарегистрироваться" className="button-login" onClick={registration} />
+        <input type="button" value="Зарегистрироваться" className={`button-login ${activeButton ? '' : 'pointer-events-none'}`} onClick={registration} />
         <input
           type="button"
           value="Войти в профиль"

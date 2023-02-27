@@ -12,6 +12,7 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
   const [birthdayUser, setBirthdayUser] = useState(birthday);
   const [photoUser, setPhotoUser] = useState(photo);
   const dispatch = useAppDispatch();
+  const [activeButton, setActiveButton] = useState(true);
 
   const inputFileAvatar = (e: React.FormEvent<HTMLInputElement>) => {
     const imgInput = e.currentTarget.files?.[0];
@@ -29,9 +30,11 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
   };
 
   const updateSaveClick = async () => {
+    setActiveButton(false);
     await UserService.updateProfile(id, { id, email, name: nameUser, birthday: birthdayUser, phone: phoneUser, photo: photoUser });
     if (photoUser) dispatch(photoChange(photoUser));
     setModal(false);
+    setActiveButton(true);
   };
 
   return (
@@ -98,7 +101,7 @@ const ModalEitProfile = ({ setModal }: propsEdit) => {
         </div>
       </div>
       <div className="login-footer edit-login">
-        <input type="button" value="Сохранить настройки профиля" className="button-login" onClick={updateSaveClick} />
+        <input type="button" value="Сохранить настройки профиля" className={`button-login ${activeButton ? '' : 'pointer-events-none'}`} onClick={updateSaveClick} />
       </div>
     </form>
   );
