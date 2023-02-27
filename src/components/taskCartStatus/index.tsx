@@ -20,7 +20,7 @@ export default function TaskCartStatus({ task }: props) {
           <div className="motivatorsTask__description">
             {task.messages[0] ? (
               <>
-                <span className="motivatorsTask__fieldTitle">Комментарий проверяющего:</span>
+                <span className="motivatorsTask__fieldTitle">Комментарий: </span>
                 <span className="italic"> {task.messages[0].message}</span>{' '}
               </>
             ) : (
