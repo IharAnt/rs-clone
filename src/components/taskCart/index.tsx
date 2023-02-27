@@ -46,16 +46,19 @@ export default function TaskCart({ task, isInspectorTask }: props) {
         <img className="motivatorsTask__icon" src={type?.icon} alt="task" title={type?.title} />
       </div>
       <div className="motivatorsTask__description">
-        Описание: <span className="italic">{task.description}</span>
+        <span className="motivatorsTask__fieldTitle">Описание:</span> <span className="italic">{task.description}</span>
       </div>
       {isInspectorTask ? (
-        <div className="motivatorsTask__description">{`Исполнитель: ${task.executor.name}`}</div>
+        <div className="motivatorsTask__description">
+          <span className="motivatorsTask__fieldTitle">Исполнитель: </span>
+          {task.executor.name}
+        </div>
       ) : (
         <>{isEndedTask ? <TaskCartStatus task={task} /> : <TaskCartDescription task={task} />}</>
       )}
       <div className="motivatorsTask__completion">
         <div className="motivatorsTask__coins">
-          Награда: {task.points}{' '}
+          <span className="motivatorsTask__fieldTitle">Награда:</span> {task.points}{' '}
           <img className="motivatorsTask__coinsImg" src={moticoins} alt="moticoins" title="мотикойны" />
         </div>
         <MotivatorsCartBtns task={task} isInspectorTask={isInspectorTask} />
