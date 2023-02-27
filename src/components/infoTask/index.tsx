@@ -94,7 +94,7 @@ export default function InfoTask({ task }: props) {
       <InfoTaskItem title="Тип:" valueNode={options.find((type) => type.value === task.type)?.label} />
       <InfoTaskItem title="Награда:" valueNode={pointsNode} />
       {task.taskReport && <InfoTaskItem title="Отчёт о работе:" valueNode={linkify(task.taskReport)} />}
-      {task.taskReport && <InfoTaskItem title="Фотоотчёт:" valueNode={photoReportNode} />}
+      {task.imgFiles && task.imgFiles[0] && <InfoTaskItem title="Фотоотчёт:" valueNode={photoReportNode} />}
       {task.messages && task.messages[0] && (
         <>
           <hr className="mt-2.5" />

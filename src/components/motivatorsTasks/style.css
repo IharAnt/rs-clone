@@ -6,14 +6,13 @@
 
 .motivatorsTask-grid {
   display: grid;
-  grid-template-columns: calc(100% / 4 - 14px) calc(100% / 4 - 14px) calc(100% / 4 - 14px) calc(100% / 4 - 14px);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .motivatorsTask-grid {
     gap: 10px;
-    grid-template-columns: calc(100% / 4 - 10px) calc(100% / 4 - 10px) calc(100% / 4 - 10px) calc(100% / 4 - 10px);
   }
 }
 
