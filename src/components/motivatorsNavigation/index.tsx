@@ -54,13 +54,23 @@ export default function MotivatorsNavigation() {
     <div className="motivatorsNav">
       <div className="motivatorsNav__item">
         <MotivatorsTypeSelection menu={menu} setMenu={setMenu} setSearch={setSearch} />
-        <input
-          className="motivators-block motivatorsNav__search"
-          type={'text'}
-          value={search}
-          placeholder={'поиск'}
-          onChange={onSearch}
-        ></input>
+        <div className="motivatorsNav__search-form">
+          <input
+            className="motivators-block motivatorsNav__search"
+            type={'text'}
+            value={search}
+            placeholder={'поиск'}
+            onChange={onSearch}
+          ></input>
+          {search && (
+            <div
+              className="motivatorsNav__searchClear"
+              onClick={() => {
+                update();
+              }}
+            ></div>
+          )}
+        </div>
       </div>
       <div className="motivatorsNav__item">
         <button
