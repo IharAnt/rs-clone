@@ -1,41 +1,40 @@
 .modal-product-container {
-    width: 320px;
-    padding-top: 40px;
-    display: flex;
-    flex-direction: column;
-    padding-left: 5px;
-    justify-content: space-between;
-    gap: 7px;
-    padding-bottom: 10px;
+  margin: 35px 10px 10px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 7px;
+  padding-bottom: 10px;
 }
 
 .modal-product-img {
-    width: 300px;
-    margin: 0 10px;
-    border-radius: 10px;
+  width: 300px;
+  margin: 0 10px;
+  border-radius: 10px;
 }
 
 .modal-product-text {
-    padding-left: 10px;
-    font-size: 16px;
-    color: var(--COLOR_FONT_BLACK);
+  padding-left: 10px;
+  font-size: 16px;
+  color: var(--COLOR_FONT_BLACK);
 }
 
 .modal-product-text_bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .modal-title {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .modal-product-price {
-    display: flex;
-    align-items: center;
-    gap: 3px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .modal-product-motikoin {
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 }
