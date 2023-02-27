@@ -18,6 +18,7 @@
 .testTask__fieldValue {
   width: 50%;
   flex-grow: 1;
+  white-space: break-spaces;
 }
 
 .testTask__fieldName {
@@ -107,6 +108,7 @@
   .testTask__btns {
     flex-direction: column;
   }
+
   .testTask__fieldName {
     flex-basis: 100px;
     min-width: 100px;

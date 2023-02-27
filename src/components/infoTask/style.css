@@ -21,6 +21,7 @@
 .infoTask__fieldValue {
   width: 50%;
   flex-grow: 1;
+  white-space: break-spaces;
 }
 
 .infoTask__field {
