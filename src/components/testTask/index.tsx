@@ -1,7 +1,7 @@
 import './style.css';
 import { props } from './types';
 import Linkify from 'react-linkify';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, ReactNode } from 'react';
 import ImageViewer from 'react-simple-image-viewer';
 import moticoins from '../../assets/img/motekoinIco.png';
 import CreateTaskHepler from '../createTaskHepler';
@@ -73,6 +73,18 @@ export default function TestTask({ task }: props) {
     }
   };
 
+  const linkify = (node: ReactNode) => (
+    <Linkify
+      componentDecorator={(decoratedHref, decoratedText, key) => (
+        <a className="linkify" target="blank" href={decoratedHref} key={key}>
+          {decoratedText}
+        </a>
+      )}
+    >
+      {node}
+    </Linkify>
+  );
+
   return (
     <div className="testTask">
       <h2 className="testTask__title">Проверка:</h2>
@@ -86,7 +98,7 @@ export default function TestTask({ task }: props) {
       </div>
       <div className="testTask__field">
         <div className="testTask__fieldName">Описание: </div>
-        <div className="testTask__fieldValue">{task.description}</div>
+        <div className="testTask__fieldValue">{linkify(task.description)}</div>
       </div>
       <div className="testTask__field">
         <div className="testTask__fieldName testTask__award">
@@ -135,17 +147,7 @@ export default function TestTask({ task }: props) {
       </div>
       <div className="testTask__field">
         <div className="testTask__fieldName">Отчёт о работе: </div>
-        <div className="testTask__fieldValue">
-          <Linkify
-            componentDecorator={(decoratedHref, decoratedText, key) => (
-              <a className="linkify" target="blank" href={decoratedHref} key={key}>
-                {decoratedText}
-              </a>
-            )}
-          >
-            {task.taskReport}
-          </Linkify>
-        </div>
+        <div className="testTask__fieldValue">{linkify(task.taskReport)}</div>
       </div>
       {images.length !== 0 ? (
         <div className="testTask__field">
