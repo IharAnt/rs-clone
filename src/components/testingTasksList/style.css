@@ -4,7 +4,7 @@
   gap: 15px;
 }
 
-.motivatorsTesting__name{
+.motivatorsTesting__name {
   font-weight: 700;
 }
 
@@ -16,15 +16,11 @@
   gap: 30px;
 }
 
-.motivatorsTesting__avatar{
+.motivatorsTesting__avatar {
   object-fit: cover;
   height: 60px;
   width: 60px;
   border-radius: 50%;
-}
-
-.motivatorsTesting__item{
-  height: 80px;
 }
 
 @media (max-width: 800px) {
@@ -42,18 +38,17 @@
     grid-template-columns: 60px 2fr 3fr 90px;
   }
 
-  .motivatorsTesting__description{
+  .motivatorsTesting__description {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
-
   .motivatorsTesting-grid {
     grid-template-columns: 60px 1fr 90px;
   }
 
-  .motivatorsTesting__report{
+  .motivatorsTesting__report {
     display: none;
   }
 }
