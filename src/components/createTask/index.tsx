@@ -44,7 +44,7 @@ export default function CreateTask() {
   const [helperAward, setHelperAward] = useState(false);
   const [taskDeadline, setTaskDeadline] = useState('');
   const summary = useInput('', { isEmpty: true, maxLength: 40 });
-  const description = useInput('', { isEmpty: true, maxLength: 100 });
+  const description = useInput('', { isEmpty: true, maxLength: 200 });
 
   const award = useInput('', { isEmpty: true, maxLength: 4, isCorrectNumber: 2 });
   const [validData, setValidData] = useState(false);
@@ -184,7 +184,7 @@ export default function CreateTask() {
           <div className="createTask__fieldName">
             <div className="createTask__fieldNameText">Описание: </div>
             <CreateTaskHepler
-              message={'Описание должно быть не больше 100 символов'}
+              message={'Описание должно быть не больше 200 символов'}
               helper={helperDescription}
               setHelper={setHelperDescription}
               key={helperDescription.toString()}

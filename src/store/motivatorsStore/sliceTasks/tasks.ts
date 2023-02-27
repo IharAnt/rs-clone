@@ -184,6 +184,7 @@ const tasksSlice = createSlice({
         state.errorMessage = '';
         state.loadingTask = false;
         state.tasks = action.payload;
+        state.allTasks = action.payload;
         state.loading = false;
       })
       .addCase(updateInspectorTask.pending, (state) => {
