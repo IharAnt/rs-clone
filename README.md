@@ -1,3 +1,32 @@
+**Frontend stack:**
+
+1. React: https://reactjs.org/
+2. Redux toolkit: https://redux-toolkit.js.org/
+3. Typescript: https://www.typescriptlang.org/
+
+**Backend stack:** 
+
+1. Node.js: https://nodejs.org/en/
+2. Express: https://expressjs.com/
+3. MongoDb: https://www.mongodb.com/
+4. Mongoose: https://mongoosejs.com/
+5. cookie-parser: https://www.npmjs.com/package/cookie-parser
+6. cors: https://expressjs.com/en/resources/middleware/cors.html
+7. jsonwebtoken: https://www.npmjs.com/package/jsonwebtoken
+8. bcrypt: https://www.npmjs.com/package/bcryptjs
+
+**Frontend libs: **
+
+1. react-select - https://www.npmjs.com/package/react-select
+2. react-simple-image-viewer - https://www.npmjs.com/package/react-simple-image-viewer
+3. react-linkify - https://www.npmjs.com/package/react-linkify
+
+**Linters:**
+
+1. eslint
+2. prettier
+
+
 ## Как пользоваться приложением
 
 1. На главной странице нажимаем кнопку "Войти" => "Регистрация". Регистрируемся.
