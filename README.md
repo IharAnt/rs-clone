@@ -15,7 +15,7 @@
 7. jsonwebtoken: https://www.npmjs.com/package/jsonwebtoken
 8. bcrypt: https://www.npmjs.com/package/bcryptjs
 
-**Frontend libs: **
+**Frontend libs:**
 
 1. react-select - https://www.npmjs.com/package/react-select
 2. react-simple-image-viewer - https://www.npmjs.com/package/react-simple-image-viewer
