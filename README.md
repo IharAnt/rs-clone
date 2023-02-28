@@ -4,6 +4,13 @@
 2. Redux toolkit: https://redux-toolkit.js.org/
 3. Typescript: https://www.typescriptlang.org/
 
+**Frontend libs:**
+
+1. react-select - https://www.npmjs.com/package/react-select
+2. react-simple-image-viewer - https://www.npmjs.com/package/react-simple-image-viewer
+3. react-linkify - https://www.npmjs.com/package/react-linkify
+4. axios: https://axios-http.com/docs/intro
+
 **Backend stack:** 
 
 1. Node.js: https://nodejs.org/en/
@@ -14,13 +21,6 @@
 6. cors: https://expressjs.com/en/resources/middleware/cors.html
 7. jsonwebtoken: https://www.npmjs.com/package/jsonwebtoken
 8. bcrypt: https://www.npmjs.com/package/bcryptjs
-
-**Frontend libs:**
-
-1. react-select - https://www.npmjs.com/package/react-select
-2. react-simple-image-viewer - https://www.npmjs.com/package/react-simple-image-viewer
-3. react-linkify - https://www.npmjs.com/package/react-linkify
-4. axios: https://axios-http.com/docs/intro
 
 **Linters:**
 
