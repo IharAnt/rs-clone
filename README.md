@@ -20,6 +20,7 @@
 1. react-select - https://www.npmjs.com/package/react-select
 2. react-simple-image-viewer - https://www.npmjs.com/package/react-simple-image-viewer
 3. react-linkify - https://www.npmjs.com/package/react-linkify
+4. axios: https://axios-http.com/docs/intro
 
 **Linters:**
 
