@@ -27,6 +27,9 @@
 1. eslint
 2. prettier
 
+**Presentation**
+https://iharant.github.io/tododone/presentation/
+
 
 ## Как пользоваться приложением
 
