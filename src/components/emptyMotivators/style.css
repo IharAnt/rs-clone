@@ -1,0 +1,21 @@
+.emptyMotivators{
+  margin: 20px;
+  align-items: center;
+  display: flex;
+  gap: 40px;
+}
+
+.emptyMotivators__title{
+  font-size: 1.6em;
+}
+
+.emptyMotivators__btn:hover{
+  background: var(--COLOR_BLOCK_BORDER)
+}
+
+.emptyMotivators__btn{
+  font-size: 1.3em;
+  height: 32px;
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}

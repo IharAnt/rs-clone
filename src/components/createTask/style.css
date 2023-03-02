@@ -1,0 +1,95 @@
+.createTask {
+  padding: 25px;
+  width: 60vw;
+  color: #000;
+}
+
+.createTask__title {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.createTask__field {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.createTask__fieldName {
+  height: 20px;
+  margin-top: 6px;
+  min-width: 150px;
+  flex-basis: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.createTask__strip {
+  margin-top: 20px;
+}
+
+.createTask__input {
+  padding: 3px;
+  outline: none;
+  flex-grow: 1;
+  border-radius: 3px;
+  border: 1px solid var(--COLOR_BORDER_MOTIVATORS_MODAL);
+  height: 35px;
+}
+
+.createTask__input:focus {
+  border-color: var(--COLOR_BLUY_DEFAULT);
+}
+
+.createTask__input:hover {
+  border-color: var(--COLOR_YELLOW);
+}
+
+.createTask__input:hover:focus {
+  border-color: var(--COLOR_BLUY_DEFAULT);
+}
+
+.createTask__input-select {
+  padding: 0;
+  border: none;
+}
+
+.createTask__input-description {
+  font-style: italic;
+  resize: none;
+  height: 100px;
+}
+
+.createTask__btn {
+  border-radius: 3px;
+  background: var(--COLOR_YELLOW);
+  cursor: pointer;
+}
+
+.createTask__input-red {
+  border-color: red;
+}
+
+.createTask__error {
+  color: red;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+@media (max-width: 800px) {
+  .createTask {
+    padding: 10px;
+    width: 90vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .createTask {
+    padding: 10px;
+  }
+  .createTask__fieldName {
+    min-width: 100px;
+    flex-basis: 100px;
+  }
+}

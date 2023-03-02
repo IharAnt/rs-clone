@@ -1,0 +1,34 @@
+.motivators-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.motivators-loadingItem {
+  background: url('../../assets//img/loading.gif');
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  background-size: 100%;
+}
+
+.motivatorsCnt {
+  overflow: auto;
+  padding: 0 40px 20px;
+}
+
+.modal-loadingItem {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: url('../../assets//img/loading.gif');
+  background-size: 100%;
+}
+
+@media (max-width: 800px) {
+  .motivatorsCnt {
+    padding: 0 5px 5px;
+  }
+}

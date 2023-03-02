@@ -1,0 +1,102 @@
+.rating-container {
+    overflow: hidden;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.rating-title_container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-title-update {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    background-image: url('../../assets/img/updateRating.png');
+    transition: .4s;
+}
+
+.rating-strip {
+    height: 50px;
+    width: 100%;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+}
+
+.rating-title_menu {
+    display: flex;
+    gap: 15px;
+}
+
+.rating-quantily-member {
+    height: 65px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.rating-quantily-member_text {
+    color: var(--COLOR_FONT_BLACK);
+    font-weight: bolder;
+    margin-bottom: 25px;
+}
+
+.container-table-rating_items {
+    overflow: auto;
+    height: 100%;
+}
+
+.rating-loading {
+    display: flex;
+    justify-content: center;
+    z-index: 11;
+    width: 100%;
+    position: absolute;
+    top: 120px;
+}
+
+.rating-title {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.rating-title-update:hover {
+    transform: rotate(450deg);
+}
+
+
+@media (max-width:650px) {
+    .rating-strip {
+        padding: 5px 0;
+        gap: 5px;
+        height: 100px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .rating-loading {
+        top: 150px;
+    }
+}
+
+@media (max-height:1000px) {
+    .rating-container {
+        height: 65vh;
+    }
+
+}
+

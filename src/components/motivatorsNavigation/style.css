@@ -1,0 +1,92 @@
+.motivators-block::placeholder {
+  color: var(--COLOR_BLUY_DEFAULT);
+  opacity: 0.7;
+}
+
+.motivatorsNav__update {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-image: url('../../assets/img/updateRating.png');
+  transition: 0.4s;
+}
+
+.motivatorsNav__search {
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}
+
+.motivatorsNav__search-form {
+  position: relative;
+}
+
+.motivatorsNav__searchClear {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  background-image: url('./../../assets/img/resetInput.png');
+  background-size: cover;
+  cursor: pointer;
+  top: 5px;
+  right: 6px;
+  transition: 0.3s;
+}
+
+.motivatorsNav__searchClear:hover {
+  transform: scale(1.1);
+}
+
+.motivatorsNav__update:hover {
+  transform: rotate(450deg);
+}
+
+.motivatorsNav {
+  padding: 10px 40px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.motivatorsNav__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 10px;
+}
+
+.motivatorsNav__btn:disabled {
+  opacity: 0.5;
+}
+
+.motivatorsNav__btn {
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}
+.motivatorsNav__btn:hover {
+  background-color: var(--COLOR_BLOCK_BORDER);
+}
+
+@media (max-width: 800px) {
+  .motivatorsNav {
+    padding: 10px 20px 20px;
+  }
+  .motivatorsNav__search {
+    width: 170px;
+    font-size: 0.9em;
+  }
+  .motivatorsNav__btn {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 660px) {
+  .motivatorsNav__search {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .motivatorsNav__btn {
+    width: 100px;
+  }
+}

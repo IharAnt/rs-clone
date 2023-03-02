@@ -1,0 +1,45 @@
+.infoTask {
+  padding: 25px;
+  width: 60vw;
+  color: #000;
+  max-height: 90vh;
+}
+
+.infoTask__title {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.infoTask__fieldName {
+  min-width: 150px;
+  flex-basis: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infoTask__fieldValue {
+  width: 50%;
+  flex-grow: 1;
+  white-space: break-spaces;
+}
+
+.infoTask__field {
+  display: flex;
+  align-items: start;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+@media (max-width: 800px) {
+  .infoTask {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .infoTask__fieldName {
+    min-width: 100px;
+    flex-basis: 100px;
+  }
+}

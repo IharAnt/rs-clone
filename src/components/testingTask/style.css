@@ -1,0 +1,25 @@
+.motivatorsTesting__item {
+  background: var(--COLOR_BLOCK);
+  border-radius: 10px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.motivatorsTesting__btn {
+  width: 90px;
+  background: var(--COLOR_YELLOW);
+  align-self: center;
+}
+
+.motivatorsTesting__btn:hover {
+  background: var(--COLOR_YELLOW_DEFAULT);
+}
+
+.motivatorsTesting__description {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.motivatorsTesting__report {
+  font-size: 0.8em;
+}

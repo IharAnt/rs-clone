@@ -1,0 +1,133 @@
+.login-container-form {
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.input-login {
+    padding: 15px 25px;
+    font-size: 14px;
+    color: #9d9e9e;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+    background: #fff;
+    box-shadow: inset 0 1px 3px rgb(0 0 0 / 50%);
+    outline: none;
+}
+
+.login-title {
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 34px;
+    color: #414848;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+    margin-bottom: 10px;
+}
+
+.login-title_text {
+    font-size: 11px;
+    line-height: 16px;
+    color: #678889;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+}
+
+.button-login {
+    float: right;
+    padding: 0px 25px;
+    font-weight: 300;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 0px 1px 0 rgb(0 0 0 / 25%);
+    background: #56c2e1;
+    border: 1px solid #46b3d3;
+    border-radius: 5px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: inset 0 0 2px rgb(255 255 255 / 75%);
+    transition: .4s;
+}
+
+.register-login {
+    display: block;
+    float: right;
+    padding: 10px 5px 10px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 18px;
+    color: #858585;
+    text-shadow: 0px 1px 0 rgb(255 255 255 / 50%);
+    transition: .4s;
+}
+
+.login-footer {
+    padding: 20px 30px 15px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: auto;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    border-top: 1px solid #fff;
+    box-shadow: inset 0 1px 0 rgb(0 0 0 / 15%);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.wrong-email-login {
+    top: 52px;
+    left: 35px;
+    position: absolute;
+    font-size: 11px;
+    color: #A00000;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+}
+
+.wrong-password-login{
+    top: 130px;
+    left: 35px;
+    position: absolute;
+    font-size: 11px;
+    color: #A00000;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+}
+
+.input-wrong-change {
+    border: 1px solid #A00000;;
+}
+
+.error_wrong {
+    position: relative;
+    top: 10px;
+    font-size: 11px;
+    color: #A00000;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+}
+
+.button-forget-password {
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #031530;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.button-login:hover {
+    background: #0668fa;
+}
+
+.register-login:hover {
+    color: #031530;
+}
+
+.button-forget-password:hover {
+    opacity: 1;
+}
+
+
+.input-login:focus {
+    bottom: -1px;
+    box-shadow: inset 0 1px 6px rgba(256, 256, 256, 0.75);
+}

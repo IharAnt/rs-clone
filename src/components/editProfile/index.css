@@ -1,0 +1,30 @@
+.edit-profile-container {
+    position: absolute;
+    opacity: 0;
+    top: 0px;
+    right: -10px;
+    transition: .4s;
+    padding: 0px 5px;
+    border-radius: 10px;
+    width: max-content;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    pointer-events: none;
+    border: 2px solid var(--COLOR_FONT_BLACK);
+}
+
+.edit-profile-container_active {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateY(60px);
+}
+
+.edit-profile-item {
+    margin-bottom: 5px;
+    transition: .1s;
+    cursor: pointer;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.edit-profile-item:hover {
+    color: #320074;
+}

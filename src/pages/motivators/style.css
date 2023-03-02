@@ -1,0 +1,76 @@
+.motivatorsCnt-container {
+  margin-top: 40px;
+}
+
+.motivators {
+  color: var(--COLOR_FONT_BLACK);
+  height: 100%;
+  overflow: auto;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  font-size: 1em;
+  line-height: 1;
+  width: 98vw;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  overflow-wrap: break-word;
+}
+
+.motivators-block {
+  outline: none;
+  border-radius: 3px;
+  background-color: var(--COLOR_BACKGROUND_ITEM);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  height: 27px;
+}
+
+.motivators-btn {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 35px;
+  min-width: 150px;
+  border-radius: 3px;
+  opacity: 0.85;
+}
+
+.motivators-btn:hover {
+  opacity: 1;
+}
+
+.linkify {
+  color: var(--COLOR_BLUY_DEFAULT);
+  text-decoration: underline;
+}
+
+.motivators__title {
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  background: var(--COLOR_BACKGROUND_ITEM);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--COLOR_FONT_BLACK);
+}
+
+@media (max-width: 900px) {
+  .motivators {
+    font-size: 15px;
+  }
+}
+
+@media (max-height: 900px) {
+  .motivators {
+    height: 65vh;
+  }
+}

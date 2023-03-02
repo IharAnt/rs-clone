@@ -1,0 +1,103 @@
+.basket-item-product {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 90px;
+    margin-bottom: 5px;
+    padding: 0 5px;
+}
+
+.basket-item-product_drag {
+    width: 98%;
+    border-radius: 10px;
+    background: #b4b0b4;
+}
+
+.basket-item-product_control {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 5px;
+    transition: .3s;
+    opacity: 0;
+    position: absolute;
+    width: 98%;
+    height: 98%;
+    border-radius: 10px;
+    border: 2px solid var(--COLOR_BLOCK_BORDER);
+    background: rgba(248, 237, 252, 0.7)
+}
+
+.basket-control_button {
+    width: 40px;
+    transition: .2s;
+}
+
+.basket-control_button:hover {
+    transform: scale(1.05);
+}
+
+.basket-item-product_img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+.basket-item-product_control:hover {
+    opacity: 1;
+}
+
+.basket-item-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.basket-item-product_title {
+    font-size: 16px;
+    color: var(--COLOR_FONT_BLACK);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.basket-item-info-price {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 3px;
+}
+
+.basket-item-ico-text {
+    font-size: 14px;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.basket-item-ico {
+    width: 17px;
+    height: 17px;
+}
+
+.drop-area-delete {
+    background-image: url('./../../assets/img/dragDeleteBasket.png');
+    background-repeat: no-repeat;
+    opacity: .6;
+    transition: .3s;
+    background-position: center;
+    width: calc(100% - 250px);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2222;
+}

@@ -1,0 +1,39 @@
+.text-item-orange{
+    color: var(--COLOR_YELLOW_DEFAULT);
+    border-bottom: 2px solid var(--COLOR_YELLOW_DEFAULT);
+}
+
+.achievements-item_done{
+    margin-left: 5px;
+    color: #19a800;
+}
+
+.achievements-item_title {
+    font-size: 18px;
+    font-weight: bolder;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.achievements-item_description {
+    text-align: justify;
+    font-size: 16px;
+    color: var(--COLOR_FONT_BLACK);
+    margin-bottom: 5px;
+}
+
+.achievements-item_score {
+    margin-bottom: -3px;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--COLOR_FONT_BLACK);
+}
+
+.achievements-container_item {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 5px 10px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    margin-bottom: 10px;
+}

@@ -1,0 +1,33 @@
+.register-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button {
+    margin: 0;
+}
+
+.wrong-text {
+    left: 35px;
+    position: absolute;
+    font-size: 11px;
+    color: #A00000;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+}
+
+.wrong-password-registration {
+    top: 190px;
+}
+
+.wrong-name-registration {
+    top: 120px;
+}
+
+.error-registration_wrong{
+    position: relative;
+    top: 0;
+    left: 30px;
+    font-size: 11px;
+    color: #A00000;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+}

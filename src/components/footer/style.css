@@ -1,0 +1,34 @@
+.footer-container {
+    z-index: 0;
+    width: 98vw;
+    background: rgba(55, 48, 163, 0.1);
+}
+
+@media (max-width:900px) {
+    .img-footer {
+        left: -100px;
+    }
+
+}
+
+@media (max-width:750px) {
+    .img-footer {
+        height: 70px;
+    }
+
+}
+
+@media (max-width:600px) {
+    .img-footer {
+        display: none;
+    }
+
+    .footer-container{
+        height: min-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 5px 0;
+    }
+
+}

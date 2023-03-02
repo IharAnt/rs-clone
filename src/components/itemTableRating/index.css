@@ -1,0 +1,99 @@
+.title-ico_totalExperience:hover .title-text_totalExperience {
+    opacity: 1;
+    top: -25px;
+}
+
+.title-ico_place:hover .title-text_place {
+    opacity: 1;
+    top: -25px;
+}
+
+.title-ico_name:hover .title-text_name {
+    opacity: 1;
+    top: -25px;
+}
+
+.title-ico_achievements:hover .title-text_achievements {
+    opacity: 1;
+    top: -25px;
+}
+
+.title-ico_approvedTasks:hover .title-text_approvedTasks {
+    opacity: 1;
+    top: -25px;
+}
+
+.title-ico_totalLevel:hover .title-text_totalLevel {
+    opacity: 1;
+    top: -25px;
+}
+
+.table-container_ico {
+    position: relative;
+    width: 40px;
+    cursor: pointer;
+    transition: .2s;
+    justify-self: center;
+}
+
+.table-container_ico-text {
+    position: absolute;
+    font-size: 11px;
+    width: min-content;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2px 5px;
+    background: var(--COLOR_BACKGROUND_ITEM);
+    color: var(--COLOR_FONT_BLACK);
+    opacity: 0;
+    transition: .3s;
+    top: 0;
+    pointer-events: none;
+}
+
+.table-container_ico-text__name {
+    right: -15px;
+}
+
+.table-container_ico-text__place {
+    right: -30px;
+}
+
+.table-container_ico-text__totalLevel {
+    right: -25px;
+}
+
+.table-container_ico-text__totalExperience {
+    right: -60px;
+}
+
+.table-container_ico-text__achievements {
+    right: -50px;
+}
+
+.table-container_ico-text__approvedTasks {
+    right: -60px;
+}
+
+.order-text {
+    position: absolute;
+    font-size: 32px;
+    color: var(--COLOR_YELLOW_DEFAULT);
+    font-weight: 400;
+    right: -14px;
+    top: -7px;
+}
+
+
+@media (max-width:1000px) {
+    .table-container_ico-text__achievements {
+        right: -15px;
+    }
+}
+
+@media (max-width:500px) {
+    .table-container_ico-text__achievements {
+        right: 0px;
+    }
+}

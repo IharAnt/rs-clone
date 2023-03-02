@@ -1,0 +1,54 @@
+.motivatorsTesting {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.motivatorsTesting__name {
+  font-weight: 700;
+}
+
+.motivatorsTesting-grid {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 60px 2fr 3fr 3fr 90px;
+  align-items: center;
+  gap: 30px;
+}
+
+.motivatorsTesting__avatar {
+  object-fit: cover;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+@media (max-width: 800px) {
+  .motivatorsTesting-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 660px) {
+  .motivatorsTesting__headers {
+    display: none;
+  }
+
+  .motivatorsTesting-grid {
+    grid-template-columns: 60px 2fr 3fr 90px;
+  }
+
+  .motivatorsTesting__description {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .motivatorsTesting-grid {
+    grid-template-columns: 60px 1fr 90px;
+  }
+
+  .motivatorsTesting__report {
+    display: none;
+  }
+}
